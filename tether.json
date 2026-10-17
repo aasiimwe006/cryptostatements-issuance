@@ -1,0 +1,10 @@
+{
+ "publisher": "Tether",
+ "source": "https://tether.to/en/transparency/?tab=usdt",
+ "chain": "ethereum",
+ "token": "USDT",
+ "note": "Tether's own figures for USDT on Ethereum, as shown on its Transparency page (USD₮ tab, 'On Ethereum'). One reading per line; asOf is the page's 'Last Update' time. Amounts in USDT. The site checks that totalAuthorized - notIssued = circulation.",
+ "readings": [
+  {"asOf": "2026-10-16T23:30:00Z", "totalAuthorized": 88302633055.70, "notIssued": 2132161384.80, "circulation": 86170471670.90, "read": "2026-10-17T22:59:00Z", "how": "read by the editor from the Transparency page; screenshot kept"}
+ ]
+}
