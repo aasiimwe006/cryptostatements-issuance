@@ -1653,5 +1653,16 @@
    }
   }
  ],
- "updated": "2026-10-17T21:26:09.957Z"
+ "updated": "2026-10-17T21:31:11.772Z",
+ "months": [
+  {
+   "month": "2026-09",
+   "file": "issuance-2026-09.json.gz",
+   "url": "https://github.com/aasiimwe006/cryptostatements-issuance/releases/download/issuance-2026-09/issuance-2026-09.json.gz",
+   "days": 14,
+   "complete": false,
+   "events": 94531,
+   "bytes": 4906515
+  }
+ ]
 }
