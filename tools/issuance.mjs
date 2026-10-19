@@ -1,6 +1,7 @@
 /* issuance.mjs — CRYPTO STATEMENTS · daily on-chain issuance archive (repository cryptostatements-issuance, r140)
    Reads one UTC day of mint, burn, freeze, wipe and pause events from the USDC, USDT,
-   PAXG, EURC and PYUSD contracts on Ethereum (EURC and PYUSD from r147) and writes work/<date>.json (uploaded by the workflow to that
+   PAXG, EURC and PYUSD contracts on Ethereum (EURC and PYUSD from r147), and RLUSD's mints and
+   burns as Transfer events from or to the zero address (r152) and writes work/<date>.json (uploaded by the workflow to that
    month's release, issuance-YYYY-MM) and index.json (daily totals, served by GitHub Pages).
    Primary on-chain facts only: what each contract recorded, with block, time and
    transaction; never why. The decode table is the same as the platform page's.
@@ -49,11 +50,22 @@ const ISS_TOKENS=[
      PYUSD: Paxos's token, the PAXG V2 event set (address from docs.paxos.com, PYUSD FAQ).
      Their decimals are checked against the contract at the start of every run. */
   {sym:'EURC',contract:'0x1abaea1f7c830bd89acc67ec4af516284b1bc33c',decimals:6},
-  {sym:'PYUSD',contract:'0x6c3ea9036406852006290770bedfcaba0e23a0e8',decimals:6}
+  {sym:'PYUSD',contract:'0x6c3ea9036406852006290770bedfcaba0e23a0e8',decimals:6},
+  /* r152: RLUSD (Ripple). Its mints and burns are read as ERC-20 Transfer events from or to the
+     zero address, the standard signal of supply change (EIP-20), not a contract-specific event.
+     Proxy address from docs.ripple.com (token addresses). Decimals checked against the contract. */
+  {sym:'RLUSD',contract:'0x8292bb45bf1ee4d140127049757c2e0ff06317ed',decimals:18,via:'transfer'}
 ];
+const ISS_TRANSFER='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef', ISS_ZERO='0x'+'0'.repeat(64);
 function issDecode(l){
   if(!l||l.removed) return null;
   const E=ISS_EVENTS[(l.topics[0]||'').toLowerCase()], T=ISS_TOKENS.find(t=>t.contract===String(l.address).toLowerCase());
+  if(T&&T.via==='transfer'){   /* r152: supply changes read from the ERC-20 Transfer event, from or to the zero address (EIP-20) */
+    if((l.topics[0]||'').toLowerCase()!==ISS_TRANSFER) return null;
+    const z=t=>/^0x0{64}$/i.test(t||''), mint=z(l.topics[1]), burn=z(l.topics[2]); if(mint===burn) return null;
+    const h=l.data.slice(2,66), addr=x=>x?'0x'+x.slice(-40):null; let amt=null;
+    if(h.length===64){ const v=BigInt('0x'+h), d=10n**BigInt(T.decimals); amt=Number(v/d)+Number(v%d)/Number(d); }
+    return {sym:T.sym,ev:mint?'Transfer from 0x0 (mint)':'Transfer to 0x0 (burn)',k:mint?'issue':'redeem',who:addr(mint?l.topics[2]:l.topics[1]),amt,block:parseInt(l.blockNumber,16),li:parseInt(l.logIndex,16),tx:l.transactionHash}; }
   if(!E||!T) return null;
   const w=i=>{const h=l.data.slice(2+64*i,2+64*(i+1));return h.length===64?h:null;}, addr=h=>h?'0x'+h.slice(-40):null;
   const who=E.who!=null?addr(l.topics[E.who]):E.whoData!=null?addr(w(E.whoData)):null;
@@ -102,10 +114,14 @@ async function readDay(date,head){
   if(t1>Date.now()/1000) throw new Error(date+' has not ended yet (UTC)');
   const guess=head-Math.ceil((Date.now()/1000-t0)/12);
   const from=await firstBlockAtOrAfter(t0,Math.max(1,guess-1500),Math.min(head,guess+1500)), to=(await firstBlockAtOrAfter(t1,from,Math.min(head,from+7500)))-1;
-  const addrs=ISS_TOKENS.map(t=>t.contract), topics=Object.keys(ISS_EVENTS); let rows=[], step=2000, url=null;
+  const addrs=ISS_TOKENS.filter(t=>!t.via).map(t=>t.contract), via=ISS_TOKENS.filter(t=>t.via==='transfer').map(t=>t.contract), topics=Object.keys(ISS_EVENTS); let rows=[], step=2000, url=null;
+  const take=l=>{const d=issDecode(l); if(d&&l.blockTimestamp) d.bts=parseInt(l.blockTimestamp,16); return d;};
   for(let a=from;a<=to;){ const b=Math.min(to,a+step-1);
     try{ const r=await rpc({jsonrpc:'2.0',id:2,method:'eth_getLogs',params:[{fromBlock:hex(a),toBlock:hex(b),address:addrs,topics:[topics]}]}); url=r.url;
-      rows=rows.concat(r.j.result.map(l=>{const d=issDecode(l); if(d&&l.blockTimestamp) d.bts=parseInt(l.blockTimestamp,16); return d;}).filter(Boolean)); a=b+1; }
+      let part=r.j.result.map(take).filter(Boolean);
+      if(via.length) for(const tp of [[ISS_TRANSFER,ISS_ZERO],[ISS_TRANSFER,null,ISS_ZERO]]){   /* r152: RLUSD mints and burns */
+        const v=await rpc({jsonrpc:'2.0',id:3,method:'eth_getLogs',params:[{fromBlock:hex(a),toBlock:hex(b),address:via,topics:tp}]}); part=part.concat(v.j.result.map(take).filter(Boolean)); }
+      rows=rows.concat(part); a=b+1; }
     catch(e){ if(e.rpcError&&step>10){ step=Math.max(10,Math.floor(step/2)); console.log('  smaller log range:',step,'blocks'); continue; } throw e; } }
   rows.sort((x,y)=>x.block-y.block||x.li-y.li);
   for(const r of rows) if(r.bts&&!tsCache[r.block]) tsCache[r.block]=r.bts;   /* newer nodes put the block time on each log */
