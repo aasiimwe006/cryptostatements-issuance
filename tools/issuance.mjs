@@ -1,6 +1,6 @@
 /* issuance.mjs — CRYPTO STATEMENTS · daily on-chain issuance archive (repository cryptostatements-issuance, r140)
-   Reads one UTC day of mint, burn, freeze, wipe and pause events from the USDC, USDT and
-   PAXG contracts on Ethereum and writes work/<date>.json (uploaded by the workflow to that
+   Reads one UTC day of mint, burn, freeze, wipe and pause events from the USDC, USDT,
+   PAXG, EURC and PYUSD contracts on Ethereum (EURC and PYUSD from r147) and writes work/<date>.json (uploaded by the workflow to that
    month's release, issuance-YYYY-MM) and index.json (daily totals, served by GitHub Pages).
    Primary on-chain facts only: what each contract recorded, with block, time and
    transaction; never why. The decode table is the same as the platform page's.
@@ -44,7 +44,12 @@ const ISS_EVENTS={
 const ISS_TOKENS=[
   {sym:'USDC',contract:'0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',decimals:6},
   {sym:'USDT',contract:'0xdac17f958d2ee523a2206206994597c13d831ec7',decimals:6},
-  {sym:'PAXG',contract:'0x45804880de22913dafe09f4980848ece6ecbaf78',decimals:18}
+  {sym:'PAXG',contract:'0x45804880de22913dafe09f4980848ece6ecbaf78',decimals:18},
+  /* r147 (AP6). EURC: Circle's FiatToken, the USDC event set (address from developers.circle.com).
+     PYUSD: Paxos's token, the PAXG V2 event set (address from docs.paxos.com, PYUSD FAQ).
+     Their decimals are checked against the contract at the start of every run. */
+  {sym:'EURC',contract:'0x1abaea1f7c830bd89acc67ec4af516284b1bc33c',decimals:6},
+  {sym:'PYUSD',contract:'0x6c3ea9036406852006290770bedfcaba0e23a0e8',decimals:6}
 ];
 function issDecode(l){
   if(!l||l.removed) return null;
@@ -121,6 +126,10 @@ async function main(){
   fs.mkdirSync(OUT,{recursive:true});
   const idxPath='index.json'; const idx=fs.existsSync(idxPath)?JSON.parse(fs.readFileSync(idxPath,'utf8')):{chain:'ethereum',method:'iss-v1',days:[]};
   const {j}=await rpc({jsonrpc:'2.0',id:1,method:'eth_blockNumber',params:[]}); const head=parseInt(j.result,16);
+  for(const t of ISS_TOKENS.slice()){ try{   /* a token whose contract reports other decimals is left out, never mis-scaled */
+      const {j:d}=await rpc({jsonrpc:'2.0',id:1,method:'eth_call',params:[{to:t.contract,data:'0x313ce567'},'latest']});
+      const dec=Number(BigInt(d.result)); if(dec!==t.decimals){ console.error(t.sym,'reports',dec,'decimals, expected',t.decimals,'- left out of this run'); ISS_TOKENS.splice(ISS_TOKENS.indexOf(t),1); } }
+    catch(e){ console.error(t.sym,'decimals not checked:',e.message); } }
   let wrote=0, failed=0;
   console.log('nodes:',RPCS.map(u=>new URL(u).host).join(', '));
   for(let i=0;i<n;i++){ const date=new Date(Date.parse(start+'T00:00:00Z')+i*86400000).toISOString().slice(0,10), file=date+'.json', fp=path.join(OUT,file);
