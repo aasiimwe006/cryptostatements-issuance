@@ -1706,9 +1706,64 @@
      "unpause": 0
     }
    }
+  },
+  {
+   "date": "2026-10-18",
+   "file": "2026-10-18.json",
+   "url": "https://github.com/aasiimwe006/cryptostatements-issuance/releases/download/issuance-2026-10/2026-10-18.json",
+   "from": 26215722,
+   "to": 26222895,
+   "events": 5797,
+   "totals": {
+    "USDC": {
+     "issue": {
+      "n": 3671,
+      "sum": 381093595.5828802
+     },
+     "redeem": {
+      "n": 2089,
+      "sum": 217930767.5851589
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "USDT": {
+     "issue": {
+      "n": 0,
+      "sum": 0
+     },
+     "redeem": {
+      "n": 0,
+      "sum": 0
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "PAXG": {
+     "issue": {
+      "n": 17,
+      "sum": 13.750819000000003
+     },
+     "redeem": {
+      "n": 20,
+      "sum": 32.557002000000004
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    }
+   }
   }
  ],
- "updated": "2026-10-18T01:03:48.770Z",
+ "updated": "2026-10-19T01:05:23.241Z",
  "months": [
   {
    "month": "2026-09",
