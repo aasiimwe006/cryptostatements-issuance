@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/33664250/README.md)
+[README.md](https://github.com/user-attachments/files/33667518/README.md)
 # cryptostatements-issuance
 
 The daily on-chain issuance archive behind the CRYPTO STATEMENTS Reserve Monitor: mint, burn,
@@ -16,4 +16,9 @@ redemption of the whole token.
 
 ## Daily supply readings (r147)
 
-`supply.json` holds one reading per UTC day of `totalSupply()` for USDC, USDT, PAXG, EURC, PYUSD and RLUSD on Ethereum, taken by the daily workflow just after midnight UTC at the latest block, with the block number and block time. Each address is the one the issuer publishes (listed under `tokens` with its source page). It is the supply on Ethereum at that block: not the issue across chains, not a market value, not a reserve check. EURC and PYUSD are also in the daily event archive from r147.
+`supply.json` holds one reading per UTC day of `totalSupply()` for USDC, USDT, PAXG, EURC, PYUSD, RLUSD, XAU₮ (key `XAUT`) and BUIDL (two addresses BlackRock lists, keys `BUIDL:0x7712` and `BUIDL:0x6a9d`, never added together) on Ethereum, taken by the daily workflow just after midnight UTC at the latest block, with the block number and block time. Each address is the one the issuer publishes (listed under `tokens` with its source page). It is the supply on Ethereum at that block: not the issue across chains, not a market value, not a reserve check. EURC and PYUSD are also in the daily event archive from r147.
+
+
+From r152, each reading also carries RLUSD on the XRP Ledger (key `RLUSD:XRPL`): the issuer account's obligations from `gateway_balances` at a validated ledger (issuer rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De, as Ripple publishes it), with the ledger index under `xrpl`. RLUSD's Ethereum mints and burns join the daily event archive, read as Transfer events from or to the zero address.
+
+From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21cAef8A43163Eea865baeE23b9C2E327696A3bf as Tether publishes it), with that chain's block under `bsc`. Each chain is its own figure; chains are never added together.
