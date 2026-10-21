@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/33667518/README.md)
+[README.md](https://github.com/user-attachments/files/33780925/README.md)
 # cryptostatements-issuance
 
 The daily on-chain issuance archive behind the CRYPTO STATEMENTS Reserve Monitor: mint, burn,
@@ -22,3 +22,8 @@ redemption of the whole token.
 From r152, each reading also carries RLUSD on the XRP Ledger (key `RLUSD:XRPL`): the issuer account's obligations from `gateway_balances` at a validated ledger (issuer rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De, as Ripple publishes it), with the ledger index under `xrpl`. RLUSD's Ethereum mints and burns join the daily event archive, read as Transfer events from or to the zero address.
 
 From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21cAef8A43163Eea865baeE23b9C2E327696A3bf as Tether publishes it), with that chain's block under `bsc`. Each chain is its own figure; chains are never added together.
+
+
+## Official source registry (r178, AP28)
+
+`sources.json` lists the official sources used in the AP23 regional audits: UAE, UK, EU, Hong Kong, Singapore, US and Africa, with 38 authorities. For each authority it gives the list page that was read, how it reads (`automated`, `founder-checked` when the site blocks automated reading and the founder supplied the text, `partial`, or `blocked`), what was found and excluded, the limits, the source pages behind each record, and the archive records it produced. It is built from the Coverage page's authority-audit panels, and only pages actually read are listed. It is the source list the disclosure watcher (AP12) will read. It does not contain prices, readings or interpretation.
