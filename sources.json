@@ -1,0 +1,1565 @@
+{
+ "name": "CRYPTO STATEMENTS official source registry",
+ "version": "1.1",
+ "generated": "2026-10-21",
+ "built_from": "Coverage page authority-audit panels (AP23), revision 178",
+ "rule": "Only pages actually read are listed. reading = automated | founder-checked | partial. Records list the archive entries each source produced. watch = how the intake reads the authority: feeds (already in feeds.json), rss, page, or manual (listed once a week for a check by hand).",
+ "regions": [
+  {
+   "id": "af",
+   "name": "Africa",
+   "checked": "21 Oct 2026",
+   "scope": "Digital-asset laws and official statements in African jurisdictions, 2025–2026, by country",
+   "authorities": [
+    {
+     "authority": "Kenya",
+     "list_page": "https://new.kenyalaw.org/akn/ke/act/ln/2026/134/eng@2026-07-22/source",
+     "reading": "automated",
+     "found": "VASP Act 2025, VASP Regulations 2026 (final), Central Bank impact statement",
+     "excluded": null,
+     "limits": "Capital Markets Authority licensing notices not yet read",
+     "source_pages": [
+      "https://new.kenyalaw.org/akn/ke/act/ln/2026/134/eng@2026-07-22/source",
+      "https://new.kenyalaw.org/akn/ke/act/2025/20/eng@2025-11-04/source.pdf",
+      "https://www.centralbank.go.ke/wp-content/uploads/2026/03/Regulatory-Impact-Statement-on-VASP-Regulations-2026.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-287",
+       "date": "JUL 22 2026",
+       "title": "KENYA · VIRTUAL ASSET SERVICE PROVIDERS REGULATIONS, 2026 (LEGAL NOTICE 134 OF 2026)",
+       "source": "https://new.kenyalaw.org/akn/ke/act/ln/2026/134/eng@2026-07-22/source"
+      },
+      {
+       "id": "VERIFY-202",
+       "date": "OCT 21 2025",
+       "title": "KENYA · VIRTUAL ASSET SERVICE PROVIDERS ACT, 2025 (ACT NO. 20 OF 2025)",
+       "source": "https://new.kenyalaw.org/akn/ke/act/2025/20/eng@2025-11-04/source.pdf"
+      },
+      {
+       "id": "VERIFY-118",
+       "date": "MAR 2026",
+       "title": "CENTRAL BANK OF KENYA · DRAFT VASP REGULATIONS · REGULATORY IMPACT STATEMENT",
+       "source": "https://www.centralbank.go.ke/wp-content/uploads/2026/03/Regulatory-Impact-Statement-on-VASP-Regulations-2026.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Rwanda",
+     "list_page": "https://www.cma.rw/fileadmin/user_upload/law_regulating_virtual_asset_business.pdf",
+     "reading": "automated",
+     "found": "Law 023/2026, CBDC pilot in the inclusion roadmap",
+     "excluded": null,
+     "limits": "Implementing regulations not yet issued or not found",
+     "source_pages": [
+      "https://www.cma.rw/fileadmin/user_upload/law_regulating_virtual_asset_business.pdf",
+      "https://www.bnr.rw/documents/National_Financial_Inclusion_Roadmap_2026-2030_aX40crJ.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-288",
+       "date": "MAY 25 2026",
+       "title": "RWANDA · LAW Nº 023/2026 REGULATING VIRTUAL ASSET BUSINESS",
+       "source": "https://www.cma.rw/fileadmin/user_upload/law_regulating_virtual_asset_business.pdf"
+      },
+      {
+       "id": "VERIFY-138",
+       "date": "MAR 11 2026",
+       "title": "NATIONAL BANK OF RWANDA · CBDC PILOT",
+       "source": "https://www.bnr.rw/documents/National_Financial_Inclusion_Roadmap_2026-2030_aX40crJ.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "South Africa",
+     "list_page": "https://www.resbank.co.za/content/dam/sarb/what-we-do/payments-and-settlements/regulation-oversight-and-supervision/designation-notices/280526%20Joint%20Communication_Crypto%20assets%20for%20domestic%20payment%20purposes.pdf",
+     "reading": "automated",
+     "found": "SARB/FSCA payments communication, draft cross-border manual, Prudential Authority definition",
+     "excluded": null,
+     "limits": "FSCA licensing lists not read",
+     "source_pages": [
+      "https://www.resbank.co.za/content/dam/sarb/what-we-do/payments-and-settlements/regulation-oversight-and-supervision/designation-notices/280526%20Joint%20Communication_Crypto%20assets%20for%20domestic%20payment%20purposes.pdf",
+      "https://www.resbank.co.za/en/home/publications/publication-detail-pages/media-releases/2026/crypto-assets",
+      "https://www.resbank.co.za/content/dam/sarb/publications/prudential-authority/pa-public-awareness/communication/2026/prudential-communication-10-of-2026/Annexure%20D-%20Draft%20Authorisation%20Framework.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-289",
+       "date": "MAY 28 2026",
+       "title": "SOUTH AFRICA · SARB AND FSCA · CRYPTO ASSETS FOR DOMESTIC PAYMENT PURPOSES",
+       "source": "https://www.resbank.co.za/content/dam/sarb/what-we-do/payments-and-settlements/regulation-oversight-and-supervision/designation-notices/280526%20Joint%20Communication_Crypto%20assets%20for%20domestic%20payment%20purposes.pdf"
+      },
+      {
+       "id": "VERIFY-120",
+       "date": "AUG 03 2026",
+       "title": "SOUTH AFRICA · CRYPTO CROSS-BORDER MANUAL",
+       "source": "https://www.resbank.co.za/en/home/publications/publication-detail-pages/media-releases/2026/crypto-assets"
+      },
+      {
+       "id": "VERIFY-133",
+       "date": "2026",
+       "title": "SARB PRUDENTIAL AUTHORITY · CRYPTO DEFINITION",
+       "source": "https://www.resbank.co.za/content/dam/sarb/publications/prudential-authority/pa-public-awareness/communication/2026/prudential-communication-10-of-2026/Annexure%20D-%20Draft%20Authorisation%20Framework.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Uganda",
+     "list_page": "https://fia.go.ug/wp-content/uploads/2026/02/National-ML.TF-Risk-Assessment-on-VAs-and-VASPs-for-Uganda-compressed.pdf",
+     "reading": "automated",
+     "found": "BoU Governor keynote, FIA risk assessment, Ministry of Finance on the VASP law",
+     "excluded": "CMA fintech sandbox (does not mention virtual assets)",
+     "limits": "Bank of Uganda pages block automated reading",
+     "source_pages": [
+      "https://bou.or.ug/bouwebsite/bouwebsitecontent/MediaCenter/GovernorSection/speeches/GovernorsSpeeches/2025/Nov/Gov_BlockchainConference_24Nov2025.pdf",
+      "https://fia.go.ug/wp-content/uploads/2026/02/National-ML.TF-Risk-Assessment-on-VAs-and-VASPs-for-Uganda-compressed.pdf",
+      "https://www.finance.go.ug/sites/default/files/2026-06/Background%20to%20the%20Budget%20FY2026.27.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-266",
+       "date": "NOV 24 2025",
+       "title": "MICHAEL ATINGI-EGO · BANK OF UGANDA",
+       "source": "https://bou.or.ug/bouwebsite/bouwebsitecontent/MediaCenter/GovernorSection/speeches/GovernorsSpeeches/2025/Nov/Gov_BlockchainConference_24Nov2025.pdf"
+      },
+      {
+       "id": "VERIFY-267",
+       "date": "SEP 2025",
+       "title": "UGANDA · FINANCIAL INTELLIGENCE AUTHORITY · NATIONAL ML/TF RISK ASSESSMENT ON VIRTUAL ASSETS",
+       "source": "https://fia.go.ug/wp-content/uploads/2026/02/National-ML.TF-Risk-Assessment-on-VAs-and-VASPs-for-Uganda-compressed.pdf"
+      },
+      {
+       "id": "VERIFY-268",
+       "date": "JUN 2026",
+       "title": "UGANDA · MINISTRY OF FINANCE · VASP LEGISLATIVE FRAMEWORK BEING FAST-TRACKED",
+       "source": "https://www.finance.go.ug/sites/default/files/2026-06/Background%20to%20the%20Budget%20FY2026.27.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Tanzania",
+     "list_page": "https://bot.go.tz/Publications/Regular/Annual%20Report/en/2026072316300213.pdf",
+     "reading": "automated",
+     "found": "Bank of Tanzania CBDC and crypto position",
+     "excluded": null,
+     "limits": "Only the annual report read",
+     "source_pages": [
+      "https://bot.go.tz/Publications/Regular/Annual%20Report/en/2026072316300213.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-135",
+       "date": "JUL 23 2026",
+       "title": "BANK OF TANZANIA · CBDC AND CRYPTO POSITION",
+       "source": "https://bot.go.tz/Publications/Regular/Annual%20Report/en/2026072316300213.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Nigeria",
+     "list_page": "https://sec.gov.ng/documents/1427/CIRCULAR_Number_26-1._Minimum_Capital_Requirements.pdf",
+     "reading": "automated",
+     "found": "SEC Circular 26-1, President Tinubu; Investments and Securities Act 2025 not yet held",
+     "excluded": null,
+     "limits": "The Investments and Securities Act 2025 waits for a primary source",
+     "source_pages": [
+      "https://sec.gov.ng/documents/1427/CIRCULAR_Number_26-1._Minimum_Capital_Requirements.pdf",
+      "https://statehouse.gov.ng/president-tinubu-signs-executive-order-on-virtual-assets-establishes-council-to-harmonise-regulation-of-digital-economy/"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-243",
+       "date": "JAN 16 2026",
+       "title": "SECURITIES AND EXCHANGE COMMISSION NIGERIA · CIRCULAR 26-1 · MINIMUM CAPITAL FOR DIGITAL-ASSET OPERATORS",
+       "source": "https://sec.gov.ng/documents/1427/CIRCULAR_Number_26-1._Minimum_Capital_Requirements.pdf"
+      },
+      {
+       "id": "VERIFY-017",
+       "date": "JUL 17 2026",
+       "title": "BOLA TINUBU · PRESIDENT OF NIGERIA",
+       "source": "https://statehouse.gov.ng/president-tinubu-signs-executive-order-on-virtual-assets-establishes-council-to-harmonise-regulation-of-digital-economy/"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Ghana",
+     "list_page": "https://www.bog.gov.gh/wp-content/uploads/2026/03/VASP-Act-FAQs.pdf",
+     "reading": "automated",
+     "found": "VASP Act 2025, Bank of Ghana Governor",
+     "excluded": null,
+     "limits": "Found by search and filing",
+     "source_pages": [
+      "https://www.bog.gov.gh/wp-content/uploads/2026/03/VASP-Act-FAQs.pdf",
+      "https://www.bog.gov.gh/wp-content/uploads/2026/06/First-Deputy-Governor-Speech-June-2026.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-200",
+       "date": "DEC 19 2025",
+       "title": "PARLIAMENT OF GHANA · VIRTUAL ASSET SERVICE PROVIDERS ACT, 2025 (ACT 1154)",
+       "source": "https://www.bog.gov.gh/wp-content/uploads/2026/03/VASP-Act-FAQs.pdf"
+      },
+      {
+       "id": "VERIFY-131",
+       "date": "JUN 19 2026",
+       "title": "ZAKARI MUMUNI · BANK OF GHANA",
+       "source": "https://www.bog.gov.gh/wp-content/uploads/2026/06/First-Deputy-Governor-Speech-June-2026.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Botswana",
+     "list_page": "https://botswanalaws.com/consolidated-statutes/principle-legislation/virtual-assets-act",
+     "reading": "automated",
+     "found": "Virtual Assets Act 2025, Bank of Botswana framework, NBFIRA caution",
+     "excluded": null,
+     "limits": "Found by search and filing",
+     "source_pages": [
+      "https://botswanalaws.com/consolidated-statutes/principle-legislation/virtual-assets-act",
+      "https://www.bankofbotswana.bw/sites/default/files/Fintech%20Analytical%20Assessment%20Framework%20-%20October%2015,%202025_2.pdf",
+      "https://www.nbfira.org.bw/news/caution-against-transacting-business-with-unlicensed-virtual-asset-service-providers-vasps/"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-201",
+       "date": "JAN 24 2025",
+       "title": "BOTSWANA · VIRTUAL ASSETS ACT, 2025 (ACT NO. 4 OF 2025) · COMMENCEMENT",
+       "source": "https://botswanalaws.com/consolidated-statutes/principle-legislation/virtual-assets-act"
+      },
+      {
+       "id": "VERIFY-136",
+       "date": "OCT 2025",
+       "title": "BANK OF BOTSWANA · FINTECH ASSESSMENT FRAMEWORK",
+       "source": "https://www.bankofbotswana.bw/sites/default/files/Fintech%20Analytical%20Assessment%20Framework%20-%20October%2015,%202025_2.pdf"
+      },
+      {
+       "id": "VERIFY-203",
+       "date": "SEP 25 2026",
+       "title": "NBFIRA · BOTSWANA · CAUTION AGAINST UNLICENSED VIRTUAL ASSET SERVICE PROVIDERS",
+       "source": "https://www.nbfira.org.bw/news/caution-against-transacting-business-with-unlicensed-virtual-asset-service-providers-vasps/"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "WAEMU (BCEAO)",
+     "list_page": "https://www.bceao.int/sites/default/files/inline-files/Fiche-synoptique_Synopsis-note-06052026.pdf",
+     "reading": "automated",
+     "found": "BCEAO stablecoin and sovereignty note",
+     "excluded": null,
+     "limits": "Found by search and filing",
+     "source_pages": [
+      "https://www.bceao.int/sites/default/files/inline-files/Fiche-synoptique_Synopsis-note-06052026.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-124",
+       "date": "MAY 06 2026",
+       "title": "BCEAO · STABLECOIN AND SOVEREIGNTY NOTE",
+       "source": "https://www.bceao.int/sites/default/files/inline-files/Fiche-synoptique_Synopsis-note-06052026.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Mauritius",
+     "list_page": "https://www.bom.mu/sites/default/files/bom_ar_2025_web.pdf",
+     "reading": "automated",
+     "found": "Bank of Mauritius digital rupee and mBridge",
+     "excluded": null,
+     "limits": "Only the annual report read",
+     "source_pages": [
+      "https://www.bom.mu/sites/default/files/bom_ar_2025_web.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-134",
+       "date": "DEC 05 2025",
+       "title": "BANK OF MAURITIUS · DIGITAL RUPEE AND mBRIDGE",
+       "source": "https://www.bom.mu/sites/default/files/bom_ar_2025_web.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Morocco",
+     "list_page": "https://en.industries.ma/cryptocurrencies-in-morocco-between-a-ban-a-regulatory-framework-in-preparation-and-growing-corporate-interest/",
+     "reading": "automated",
+     "found": "Draft Law 42-25 and a 31 Aug 2026 joint warning, known only from a news report",
+     "excluded": null,
+     "limits": "Not yet on the record: Bank Al-Maghrib, AMMC and Office des Changes primary pages are needed",
+     "source_pages": [],
+     "records": [],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "us",
+   "name": "United States",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications of the federal agencies and Congress, with the GENIUS Act as the anchor",
+   "authorities": [
+    {
+     "authority": "SEC",
+     "list_page": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
+     "reading": "automated",
+     "found": "8 rules, orders and staff items, plus Chair Atkins statements",
+     "excluded": null,
+     "limits": "The SEC news list was not read in full; items found by search and filing. Coverage is dense from August, thinner earlier in 2026",
+     "source_pages": [
+      "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+      "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets",
+      "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "https://www.sec.gov/files/rules/ic/2026/ic-36333.pdf",
+      "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
+      "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+      "https://www.federalregister.gov/documents/2026/10/16/2026-21128/self-regulatory-organizations-cboe-bzx-exchange-inc-notice-of-filing-and-immediate-effectiveness-of",
+      "https://x.com/SECPaulSAtkins/status/2105752956431679818",
+      "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "https://www.sec.gov/newsroom/speeches-statements/atkins-statement-regulation-crypto-assets-081826"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-116",
+       "date": "MAR 17 2026",
+       "title": "SEC · CRYPTO ASSET INTERPRETATION",
+       "source": "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets"
+      },
+      {
+       "id": "VERIFY-183",
+       "date": "SEP 25 2026",
+       "title": "SEC · STAFF FAQS ON CRYPTO ASSETS AND STAKING RECEIPT TOKENS",
+       "source": "https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets"
+      },
+      {
+       "id": "VERIFY-180",
+       "date": "SEP 17 2026",
+       "title": "SEC · INNOVATION EXEMPTION · TOKENIZED NMS STOCK",
+       "source": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment"
+      },
+      {
+       "id": "VERIFY-192",
+       "date": "SEP 21 2026",
+       "title": "SEC · ORDER IC-36333 · ARK VENTURE FUND TOKENIZED SHARE CLASS",
+       "source": "https://www.sec.gov/files/rules/ic/2026/ic-36333.pdf"
+      },
+      {
+       "id": "VERIFY-210",
+       "date": "OCT 01 2026",
+       "title": "SEC · PROPOSED RULE · CUSTODY OF CRYPTO ASSETS BY INVESTMENT ADVISERS AND FUNDS",
+       "source": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal"
+      },
+      {
+       "id": "VERIFY-218",
+       "date": "OCT 02 2026",
+       "title": "SEC · ORDER APPROVING 3X BITCOIN AND ETHER FUNDS ON CBOE BZX (VS TRUST)",
+       "source": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf"
+      },
+      {
+       "id": "VERIFY-239",
+       "date": "SEP 29 2026",
+       "title": "SEC · CBOE BZX · GENERIC LISTING CRITERIA FOR OPTIONS ON MULTI-CRYPTO-ASSET TRUSTS",
+       "source": "https://www.federalregister.gov/documents/2026/10/16/2026-21128/self-regulatory-organizations-cboe-bzx-exchange-inc-notice-of-filing-and-immediate-effectiveness-of"
+      },
+      {
+       "id": "VERIFY-211",
+       "date": "OCT 01 2026",
+       "title": "PAUL ATKINS · SEC CHAIRMAN · STATEMENT ON THE CRYPTO CUSTODY PROPOSAL",
+       "source": "https://x.com/SECPaulSAtkins/status/2105752956431679818"
+      },
+      {
+       "id": "VERIFY-205",
+       "date": "SEP 17 2026",
+       "title": "PAUL ATKINS · SEC CHAIRMAN · STATEMENT ON THE INNOVATION EXEMPTION",
+       "source": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726"
+      },
+      {
+       "id": "VERIFY-040",
+       "date": "AUG 18 2026",
+       "title": "PAUL ATKINS · SEC CHAIR",
+       "source": "https://www.sec.gov/newsroom/speeches-statements/atkins-statement-regulation-crypto-assets-081826"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "sec-press",
+       "sec-statements"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "CFTC",
+     "list_page": "https://www.cftc.gov/PressRoom/PressReleases/9307-26",
+     "reading": "automated",
+     "found": "4 actions plus Selig and Pham statements",
+     "excluded": null,
+     "limits": "The CFTC press list was not read in full",
+     "source_pages": [
+      "https://www.cftc.gov/PressRoom/PressReleases/pr-9242-26",
+      "https://www.cftc.gov/PressRoom/PressReleases/9307-26",
+      "https://www.cftc.gov/PressRoom/PressReleases/9303-26",
+      "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations/64361",
+      "https://x.com/ChairmanSelig/status/2102855474546966700",
+      "https://x.com/ChairmanSelig/status/2102824559376531537",
+      "https://www.cftc.gov/PressRoom/SpeechesTestimony/opapham19"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-042",
+       "date": "MAY 29 2026",
+       "title": "CFTC · PERPETUAL CONTRACTS",
+       "source": "https://www.cftc.gov/PressRoom/PressReleases/pr-9242-26"
+      },
+      {
+       "id": "VERIFY-217",
+       "date": "OCT 05 2026",
+       "title": "CFTC · ADVANCE NOTICE OF PROPOSED RULEMAKING · REGULATION CRYPTO ASSET TRANSACTIONS AND CRYPTO ASSET MARKETS",
+       "source": "https://www.cftc.gov/PressRoom/PressReleases/9307-26"
+      },
+      {
+       "id": "VERIFY-184",
+       "date": "SEP 24 2026",
+       "title": "CFTC · TOKENIZED INVESTMENTS AND ONCHAIN RECORDS",
+       "source": "https://www.cftc.gov/PressRoom/PressReleases/9303-26"
+      },
+      {
+       "id": "VERIFY-196",
+       "date": "SEP 28 2026",
+       "title": "CFTC · COINBASE CLEARING LLC · DCO REGISTRATION",
+       "source": "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations/64361"
+      },
+      {
+       "id": "VERIFY-186",
+       "date": "SEP 23 2026",
+       "title": "MICHAEL SELIG · CFTC CHAIRMAN · MARKET STRUCTURE UNDER EXISTING AUTHORITY",
+       "source": "https://x.com/ChairmanSelig/status/2102855474546966700"
+      },
+      {
+       "id": "VERIFY-187",
+       "date": "SEP 23 2026",
+       "title": "MICHAEL SELIG · CFTC CHAIRMAN · ONCHAIN MARKETS",
+       "source": "https://x.com/ChairmanSelig/status/2102824559376531537"
+      },
+      {
+       "id": "VERIFY-103",
+       "date": "SEP 08 2026",
+       "title": "CAROLINE PHAM · CFTC",
+       "source": "https://www.cftc.gov/PressRoom/SpeechesTestimony/opapham19"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "cftc-press"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "Federal Reserve",
+     "list_page": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+     "reading": "automated",
+     "found": "GENIUS proposals, FEDS note, FOMC decisions and speeches",
+     "excluded": "AML/CFT programme proposal (9 Jul 2026), not crypto-specific",
+     "limits": "Press releases found by search and filing",
+     "source_pages": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+      "https://www.federalreserve.gov/econres/notes/feds-notes/new-forms-of-money-and-the-u-s-monetary-aggregates-20260904.html",
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+      "https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20260729.pdf",
+      "https://www.federalreserve.gov/newsevents/pressreleases/barr-statement-20260924.htm",
+      "https://www.federalreserve.gov/newsevents/speech/files/waller20260622a.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-181",
+       "date": "SEP 24 2026",
+       "title": "FEDERAL RESERVE · GENIUS ACT STABLECOIN PROPOSALS",
+       "source": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm"
+      },
+      {
+       "id": "VERIFY-104",
+       "date": "SEP 04 2026",
+       "title": "FEDERAL RESERVE · FEDS NOTE ON STABLECOINS",
+       "source": "https://www.federalreserve.gov/econres/notes/feds-notes/new-forms-of-money-and-the-u-s-monetary-aggregates-20260904.html"
+      },
+      {
+       "id": "VERIFY-228",
+       "date": "SEP 16 2026",
+       "title": "FEDERAL OPEN MARKET COMMITTEE · SEPTEMBER DECISION",
+       "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+      },
+      {
+       "id": "VERIFY-026",
+       "date": "JUL 29 2026",
+       "title": "FEDERAL OPEN MARKET COMMITTEE · CHAIR K. WARSH",
+       "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+      },
+      {
+       "id": "VERIFY-027",
+       "date": "JUL 29 2026",
+       "title": "KEVIN WARSH · CHAIRMAN, FEDERAL RESERVE",
+       "source": "https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20260729.pdf"
+      },
+      {
+       "id": "VERIFY-182",
+       "date": "SEP 24 2026",
+       "title": "MICHAEL BARR · FEDERAL RESERVE",
+       "source": "https://www.federalreserve.gov/newsevents/pressreleases/barr-statement-20260924.htm"
+      },
+      {
+       "id": "VERIFY-071",
+       "date": "JUN 22 2026",
+       "title": "CHRISTOPHER WALLER · FEDERAL RESERVE",
+       "source": "https://www.federalreserve.gov/newsevents/speech/files/waller20260622a.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "fed-press"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "OCC",
+     "list_page": "https://occ.gov/news-issuances/news-releases/2026/nr-occ-2026-9.html",
+     "reading": "automated",
+     "found": "2 (GENIUS proposal, Form PS-02 reporting)",
+     "excluded": "AML/CFT programme proposal (10 Apr 2026), not crypto-specific",
+     "limits": "The final GENIUS rule, reported as due by November, is not tracked until the OCC states it",
+     "source_pages": [
+      "https://occ.gov/news-issuances/news-releases/2026/nr-occ-2026-9.html",
+      "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-24d.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-282",
+       "date": "FEB 25 2026",
+       "title": "OCC · PROPOSED RULE TO IMPLEMENT THE GENIUS ACT",
+       "source": "https://occ.gov/news-issuances/news-releases/2026/nr-occ-2026-9.html"
+      },
+      {
+       "id": "VERIFY-105",
+       "date": "JUL 20 2026",
+       "title": "OCC · FORM PS-02 REPORTING",
+       "source": "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-24d.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "occ-news"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "FDIC",
+     "list_page": "https://www.fdic.gov/news/financial-institution-letters/2026/notice-proposed-rulemaking-establish-genius-act",
+     "reading": "founder-checked",
+     "found": "1 (GENIUS proposal)",
+     "excluded": "AML/CFT programme proposal (10 Apr 2026), not crypto-specific",
+     "limits": "The site blocks automated reading; summary supplied by the founder",
+     "source_pages": [
+      "https://www.fdic.gov/news/financial-institution-letters/2026/notice-proposed-rulemaking-establish-genius-act"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-284",
+       "date": "APR 07 2026",
+       "title": "FDIC · PROPOSED RULE TO IMPLEMENT THE GENIUS ACT",
+       "source": "https://www.fdic.gov/news/financial-institution-letters/2026/notice-proposed-rulemaking-establish-genius-act"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Site blocks automated reading; FDIC rules also reach the intake through the Federal Register feeds"
+     }
+    },
+    {
+     "authority": "US Treasury",
+     "list_page": "https://home.treasury.gov/news/press-releases/sb0605",
+     "reading": "founder-checked",
+     "found": "GENIUS state-regime proposal, Bessent statements, OFAC action, buybacks",
+     "excluded": "FinCEN AML/CFT programme proposal (10 Apr 2026), not crypto-specific",
+     "limits": "Press release sb0428 could not be read; text supplied by the founder",
+     "source_pages": [
+      "https://home.treasury.gov/news/press-releases/sb0428",
+      "https://home.treasury.gov/news/press-releases/sb0605",
+      "https://home.treasury.gov/news/press-releases/sb0539",
+      "https://home.treasury.gov/news/press-releases/sb0624",
+      "https://home.treasury.gov/news/press-releases/sb0607"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-283",
+       "date": "APR 01 2026",
+       "title": "US TREASURY · GENIUS ACT PROPOSED RULE · STATE-LEVEL REGULATORY REGIMES",
+       "source": "https://home.treasury.gov/news/press-releases/sb0428"
+      },
+      {
+       "id": "VERIFY-073",
+       "date": "AUG 17 2026",
+       "title": "SCOTT BESSENT · US TREASURY",
+       "source": "https://home.treasury.gov/news/press-releases/sb0605"
+      },
+      {
+       "id": "VERIFY-072",
+       "date": "JUN 23 2026",
+       "title": "SCOTT BESSENT · US TREASURY",
+       "source": "https://home.treasury.gov/news/press-releases/sb0539"
+      },
+      {
+       "id": "VERIFY-108",
+       "date": "SEP 09 2026",
+       "title": "US TREASURY · OFAC XINBI DESIGNATION",
+       "source": "https://home.treasury.gov/news/press-releases/sb0624"
+      },
+      {
+       "id": "VERIFY-081",
+       "date": "AUG 19 2026",
+       "title": "US TREASURY · BUYBACK OPERATIONS",
+       "source": "https://home.treasury.gov/news/press-releases/sb0607"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Press releases answered 404 to GitHub on 8 Oct 2026; Treasury rules also reach the intake through the Federal Register feeds"
+     }
+    },
+    {
+     "authority": "Congress",
+     "list_page": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm",
+     "reading": "automated",
+     "found": "GENIUS Act (law), CLARITY Act committee vote and failed cloture",
+     "excluded": null,
+     "limits": "House actions on CLARITY in 2025 are not filed separately",
+     "source_pages": [
+      "https://www.congress.gov/bill/119th-congress/senate-bill/1582/text",
+      "https://www.banking.senate.gov/newsroom/majority/chairman-scott-senate-banking-committee-advance-clarity-act-in-historic-bipartisan-vote",
+      "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-199",
+       "date": "JUL 18 2025",
+       "title": "US CONGRESS · GENIUS ACT · PUBLIC LAW 119–27",
+       "source": "https://www.congress.gov/bill/119th-congress/senate-bill/1582/text"
+      },
+      {
+       "id": "VERIFY-285",
+       "date": "MAY 14 2026",
+       "title": "US SENATE BANKING COMMITTEE · CLARITY ACT ADVANCES 15–9",
+       "source": "https://www.banking.senate.gov/newsroom/majority/chairman-scott-senate-banking-committee-advance-clarity-act-in-historic-bipartisan-vote"
+      },
+      {
+       "id": "VERIFY-286",
+       "date": "SEP 15 2026",
+       "title": "US SENATE · CLARITY ACT · CLOTURE ON MOTION TO PROCEED REJECTED 49–50",
+       "source": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "hk",
+   "name": "Hong Kong",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications on each authority’s own pages, plus late-2025 items still shaping 2026",
+   "authorities": [
+    {
+     "authority": "HKMA",
+     "list_page": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/04/20260410-4/",
+     "reading": "automated",
+     "found": "5 (stablecoin licences, custody guidance, tokenised bonds with FSTB, two Howard Lee speeches)",
+     "excluded": null,
+     "limits": "Press releases found by search; the full 2026 list was not read",
+     "source_pages": [
+      "https://www.hkma.gov.hk/gb_chi/news-and-media/press-releases/2026/04/20260410-4/",
+      "https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20260527-6-EN/20260527-6-EN.pdf",
+      "https://www.hkma.gov.hk/chi/news-and-media/press-releases/2026/06/20260629-4/",
+      "https://www.hkma.gov.hk/eng/news-and-media/speeches/2026/05/20260529-1/",
+      "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/06/20260618-8/"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-093",
+       "date": "APR 10 2026",
+       "title": "HKMA · STABLECOIN ISSUER LICENCES",
+       "source": "https://www.hkma.gov.hk/gb_chi/news-and-media/press-releases/2026/04/20260410-4/"
+      },
+      {
+       "id": "VERIFY-098",
+       "date": "MAY 27 2026",
+       "title": "HKMA · DIGITAL ASSET CUSTODY GUIDANCE",
+       "source": "https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20260527-6-EN/20260527-6-EN.pdf"
+      },
+      {
+       "id": "VERIFY-096",
+       "date": "JUN 29 2026",
+       "title": "HKMA & FSTB · TOKENISED BONDS",
+       "source": "https://www.hkma.gov.hk/chi/news-and-media/press-releases/2026/06/20260629-4/"
+      },
+      {
+       "id": "VERIFY-099",
+       "date": "MAY 29 2026",
+       "title": "HOWARD LEE · HKMA",
+       "source": "https://www.hkma.gov.hk/eng/news-and-media/speeches/2026/05/20260529-1/"
+      },
+      {
+       "id": "VERIFY-106",
+       "date": "JUN 18 2026",
+       "title": "HOWARD LEE · HKMA",
+       "source": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/06/20260618-8/"
+      }
+     ],
+     "watch": {
+      "mode": "rss",
+      "url": "https://www.hkma.gov.hk/eng/other-information/rss/rss_press-release.xml",
+      "note": "Own feed; read and current on 21 Oct 2026"
+     }
+    },
+    {
+     "authority": "SFC",
+     "list_page": "https://www.shlegal.com/insights/sfc-circulars-in-february-2026-trading-initiatives-to-boost-digital-asset-market-vibrancy/",
+     "reading": "partial",
+     "found": "5 in 2026 (dealing finance, perpetual contracts, affiliated market makers, tokenisation, relevant stablecoins)",
+     "excluded": null,
+     "limits": "SFC circular and press-release pages need a script to display; 11 Feb 2026 texts checked by the founder",
+     "source_pages": [
+      "https://apps.sfc.hk/edistributionWeb/api/circular/openFile?refNo=26EC5",
+      "https://www.sfc.hk/-/media/EN/files/ER/SFC-Perpetual-Framework/SFC-Perpetual-Framework-ENG.pdf?rev=a6d5da2cb12846d4b2e2a6d97ffca160&hash=C93EA4BA960DD039BFECB61A959D481F",
+      "https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC6",
+      "https://www.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC22",
+      "https://apps.sfc.hk/edistributionWeb/api/circular/openFile?lang=EN&refNo=26EC26"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-102",
+       "date": "FEB 11 2026",
+       "title": "SFC HONG KONG · VA DEALING FINANCE",
+       "source": "https://apps.sfc.hk/edistributionWeb/api/circular/openFile?refNo=26EC5"
+      },
+      {
+       "id": "VERIFY-279",
+       "date": "FEB 11 2026",
+       "title": "SFC HONG KONG · VIRTUAL ASSET PERPETUAL CONTRACTS FRAMEWORK",
+       "source": "https://www.sfc.hk/-/media/EN/files/ER/SFC-Perpetual-Framework/SFC-Perpetual-Framework-ENG.pdf?rev=a6d5da2cb12846d4b2e2a6d97ffca160&hash=C93EA4BA960DD039BFECB61A959D481F"
+      },
+      {
+       "id": "VERIFY-280",
+       "date": "FEB 11 2026",
+       "title": "SFC HONG KONG · AFFILIATED MARKET MAKERS ON VA TRADING PLATFORMS",
+       "source": "https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC6"
+      },
+      {
+       "id": "VERIFY-100",
+       "date": "APR 20 2026",
+       "title": "SFC HONG KONG · PRODUCT TOKENISATION",
+       "source": "https://www.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC22"
+      },
+      {
+       "id": "VERIFY-101",
+       "date": "MAY 27 2026",
+       "title": "SFC HONG KONG · RELEVANT STABLECOINS",
+       "source": "https://apps.sfc.hk/edistributionWeb/api/circular/openFile?lang=EN&refNo=26EC26"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Circular and press-release pages need a script to display"
+     }
+    },
+    {
+     "authority": "FSTB",
+     "list_page": "https://www.info.gov.hk/gia/general/202512/24/P2025122400265.htm",
+     "reading": "automated",
+     "found": "1 (dealing and custodian conclusions, with the SFC); bill due in 2026",
+     "excluded": null,
+     "limits": "The Secretary’s 5 Oct 2026 Legislative Council remarks are known only from a news report",
+     "source_pages": [
+      "https://www.info.gov.hk/gia/general/202512/24/P2025122400265.htm"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-277",
+       "date": "DEC 24 2025",
+       "title": "FSTB · SFC HONG KONG · VA DEALING AND CUSTODIAN REGIMES · CONSULTATION CONCLUSIONS",
+       "source": "https://www.info.gov.hk/gia/general/202512/24/P2025122400265.htm"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    }
+   ]
+  },
+  {
+   "id": "sg",
+   "name": "Singapore",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications on MAS’s own pages",
+   "authorities": [
+    {
+     "authority": "MAS",
+     "list_page": "https://www.mas.gov.sg/news/media-releases/2026/mas-establishes-future-of-finance-institute-to-scale-financial-innovation",
+     "reading": "founder-checked",
+     "found": "3 in 2026 (stablecoin consultation, Future of Finance Institute, AML/CFT expectations for DPT service providers), plus speeches",
+     "excluded": null,
+     "limits": "MAS’s site blocks automated reading; 2026 titles and texts checked by the founder",
+     "source_pages": [
+      "https://www.mas.gov.sg/publications/consultations/2026/consultation-on-proposed-amendments-to-the-payment-services-act-for-stablecoin-regulation",
+      "https://www.mas.gov.sg/news/media-releases/2026/mas-establishes-future-of-finance-institute-to-scale-financial-innovation",
+      "https://www.mas.gov.sg/regulation/guidance/amlcft-supervisory-expectations-for-dptsps",
+      "https://www.mas.gov.sg/news/media-releases/2026/mas-consults-on-legislative-amendments-to-implement-stablecoin-regulatory-framework",
+      "https://www.mas.gov.sg/news/speeches/2025/creating-the-future-of-finance"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-278",
+       "date": "SEP 01 2026",
+       "title": "MAS · CONSULTATION P015-2026 · STABLECOIN AMENDMENTS TO THE PAYMENT SERVICES ACT",
+       "source": "https://www.mas.gov.sg/publications/consultations/2026/consultation-on-proposed-amendments-to-the-payment-services-act-for-stablecoin-regulation"
+      },
+      {
+       "id": "VERIFY-087",
+       "date": "JUN 25 2026",
+       "title": "MAS · FUTURE OF FINANCE INSTITUTE",
+       "source": "https://www.mas.gov.sg/news/media-releases/2026/mas-establishes-future-of-finance-institute-to-scale-financial-innovation"
+      },
+      {
+       "id": "VERIFY-281",
+       "date": "JUL 13 2026",
+       "title": "MAS · AML/CFT SUPERVISORY EXPECTATIONS FOR DIGITAL PAYMENT TOKEN SERVICE PROVIDERS",
+       "source": "https://www.mas.gov.sg/regulation/guidance/amlcft-supervisory-expectations-for-dptsps"
+      },
+      {
+       "id": "VERIFY-085",
+       "date": "SEP 01 2026",
+       "title": "HO HERN SHIN · MONETARY AUTHORITY OF SINGAPORE",
+       "source": "https://www.mas.gov.sg/news/media-releases/2026/mas-consults-on-legislative-amendments-to-implement-stablecoin-regulatory-framework"
+      },
+      {
+       "id": "VERIFY-022",
+       "date": "NOV 13 2025",
+       "title": "CHIA DER JIUN · MONETARY AUTHORITY OF SINGAPORE",
+       "source": "https://www.mas.gov.sg/news/speeches/2025/creating-the-future-of-finance"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Site blocks automated reading"
+     }
+    }
+   ]
+  },
+  {
+   "id": "eu",
+   "name": "European Union",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications of the EU institutions, plus late-2025 items still shaping 2026",
+   "authorities": [
+    {
+     "authority": "ESMA",
+     "list_page": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+     "reading": "automated",
+     "found": "5 (transfer guidelines, end of transition, non-MiCA stablecoin opinion, tokenised collateral, Q&A 2949)",
+     "excluded": null,
+     "limits": "The news list was not read in full; items found by search. The MiCA register re-read is due around 11 Nov",
+     "source_pages": [
+      "https://www.esma.europa.eu/document/guidelines-transfer-services-crypto-assets-under-mica",
+      "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "https://www.esma.europa.eu/press-news/esma-news/esma-sets-out-supervisory-expectations-services-related-unauthorised",
+      "https://www.esma.europa.eu/press-news/esma-news/esma-seeks-evidence-use-tokenised-collateral-central-clearing",
+      "https://www.esma.europa.eu/print/pdf/node/235952"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-114",
+       "date": "FEB 24 2026",
+       "title": "ESMA · CRYPTO TRANSFER SERVICES GUIDELINES",
+       "source": "https://www.esma.europa.eu/document/guidelines-transfer-services-crypto-assets-under-mica"
+      },
+      {
+       "id": "VERIFY-269",
+       "date": "APR 17 2026",
+       "title": "ESMA · STATEMENT · END OF MICA TRANSITIONAL PERIODS",
+       "source": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf"
+      },
+      {
+       "id": "VERIFY-224",
+       "date": "OCT 08 2026",
+       "title": "ESMA · OPINION ON SERVICES RELATED TO NON-MICA-COMPLIANT STABLECOINS",
+       "source": "https://www.esma.europa.eu/press-news/esma-news/esma-sets-out-supervisory-expectations-services-related-unauthorised"
+      },
+      {
+       "id": "VERIFY-225",
+       "date": "OCT 09 2026",
+       "title": "ESMA · CALL FOR EVIDENCE · TOKENISED COLLATERAL IN CENTRAL CLEARING",
+       "source": "https://www.esma.europa.eu/press-news/esma-news/esma-seeks-evidence-use-tokenised-collateral-central-clearing"
+      },
+      {
+       "id": "VERIFY-242",
+       "date": "OCT 16 2026",
+       "title": "ESMA · MICA Q&A 2949 · CASP CLIENT FUNDS AT NON-BANK PAYMENT PROVIDERS",
+       "source": "https://www.esma.europa.eu/print/pdf/node/235952"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "esma"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "EBA",
+     "list_page": "https://eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+     "reading": "automated",
+     "found": "2 (no-action transition end, USDC significant)",
+     "excluded": null,
+     "limits": "Press releases found by search",
+     "source_pages": [
+      "https://eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+      "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-270",
+       "date": "FEB 12 2026",
+       "title": "EBA · END OF NO-ACTION TRANSITION FOR CASP E-MONEY TOKEN SERVICES",
+       "source": "https://eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter"
+      },
+      {
+       "id": "VERIFY-235",
+       "date": "OCT 14 2026",
+       "title": "EBA · USDC, THE FIRST SIGNIFICANT E-MONEY TOKEN IN THE EU",
+       "source": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union"
+      }
+     ],
+     "watch": {
+      "mode": "rss",
+      "url": "https://www.eba.europa.eu/news-press/news/rss.xml",
+      "note": "Own feed; on 21 Oct 2026 its newest item was 27 Aug 2026, so it may be stale. The health report shows whether it moves"
+     }
+    },
+    {
+     "authority": "European Commission",
+     "list_page": "https://www.esma.europa.eu/node/223962",
+     "reading": "automated",
+     "found": "2 (MiCA review, market integration proposal)",
+     "excluded": null,
+     "limits": "The package page was not found; recorded from ESMA’s release",
+     "source_pages": [
+      "https://finance.ec.europa.eu/document/download/62be7015-f066-4fac-b74e-71bacdbcc9f5_en?filename=2026-mica-review-targeted-consultation-document_en.pdf",
+      "https://www.esma.europa.eu/node/223962"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-111",
+       "date": "MAY 20 2026",
+       "title": "EUROPEAN COMMISSION · MiCA REVIEW",
+       "source": "https://finance.ec.europa.eu/document/download/62be7015-f066-4fac-b74e-71bacdbcc9f5_en?filename=2026-mica-review-targeted-consultation-document_en.pdf"
+      },
+      {
+       "id": "VERIFY-271",
+       "date": "DEC 04 2025",
+       "title": "EUROPEAN COMMISSION · MARKET INTEGRATION PACKAGE · ESMA DIRECT SUPERVISION OF SIGNIFICANT CASPS",
+       "source": "https://www.esma.europa.eu/node/223962"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Blocks automated reading or has no readable news page; listed weekly for a check by hand"
+     }
+    },
+    {
+     "authority": "Council of the EU",
+     "list_page": "https://www.consilium.europa.eu/en/policies/digital-euro/timeline/",
+     "reading": "automated",
+     "found": "1 (digital euro position)",
+     "excluded": null,
+     "limits": "The timeline page was last reviewed 19 Dec 2025",
+     "source_pages": [
+      "https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/single-currency-council-agrees-position-on-the-digital-euro-and-on-strengthening-the-role-of-cash/"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-272",
+       "date": "DEC 19 2025",
+       "title": "COUNCIL OF THE EU · DIGITAL EURO NEGOTIATING POSITION",
+       "source": "https://www.consilium.europa.eu/en/press/press-releases/2025/12/19/single-currency-council-agrees-position-on-the-digital-euro-and-on-strengthening-the-role-of-cash/"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.consilium.europa.eu/en/press/press-releases/",
+      "note": "News page; to be confirmed by the dry run"
+     }
+    },
+    {
+     "authority": "European Parliament",
+     "list_page": "https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations",
+     "reading": "founder-checked",
+     "found": "1 (digital euro mandate)",
+     "excluded": null,
+     "limits": "The site blocks automated reading; release text supplied by the founder",
+     "source_pages": [
+      "https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-275",
+       "date": "JUL 09 2026",
+       "title": "EUROPEAN PARLIAMENT · DIGITAL EURO · MANDATE FOR NEGOTIATIONS",
+       "source": "https://www.europarl.europa.eu/news/en/press-room/20260708IPR46377/digital-euro-meps-ready-to-start-negotiations"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "Site blocks automated reading"
+     }
+    },
+    {
+     "authority": "European Central Bank",
+     "list_page": "https://www.ecb.europa.eu/press/govcdec/otherdec/2026/html/ecb.gc261002~54c6b5672b.en.html",
+     "reading": "partial",
+     "found": "6 policy items (pilot calls, innovation call, Pontes, stablecoin annex, Polish opinion), plus speeches",
+     "excluded": "ESCB response to the MiCA review (the review is held)",
+     "limits": "Governing Council decisions list (2 Oct 2026) and the pilot page read; the CON/2026/26 text blocks automated reading",
+     "source_pages": [
+      "https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html",
+      "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260928.en.html",
+      "https://x.com/Lagarde/status/2102110002240537051",
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260601_annex~8852850053.en.pdf",
+      "https://www.ecb.europa.eu/press/govcdec/otherdec/2026/html/ecb.gc261002~54c6b5672b.en.html",
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260508~dd909fbed1.en.html",
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260615~35e6c6c4de.en.html",
+      "https://www.euronews.com/my-europe/2026/07/09/digital-euro-will-not-replace-cash-lagarde-tells-euronews-as-negotiations-advance",
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html",
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html",
+      "https://www.ecb.europa.eu/press/inter/date/2026/html/ecb.in260824~fa5acbddea.en.html"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-273",
+       "date": "MAR 05 2026",
+       "title": "EUROPEAN CENTRAL BANK · DIGITAL EURO PILOT · PAYMENT PROVIDER CALL",
+       "source": "https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html"
+      },
+      {
+       "id": "VERIFY-274",
+       "date": "SEP 15 2026",
+       "title": "EUROPEAN CENTRAL BANK · DIGITAL EURO PILOT · MERCHANT CALL",
+       "source": "https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html"
+      },
+      {
+       "id": "VERIFY-204",
+       "date": "SEP 28 2026",
+       "title": "EUROPEAN CENTRAL BANK · DIGITAL EURO INNOVATION PLATFORM · NEW CALL",
+       "source": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260928.en.html"
+      },
+      {
+       "id": "VERIFY-178",
+       "date": "SEP 21 2026",
+       "title": "CHRISTINE LAGARDE · PONTES LAUNCH",
+       "source": "https://x.com/Lagarde/status/2102110002240537051"
+      },
+      {
+       "id": "VERIFY-109",
+       "date": "JUN 01 2026",
+       "title": "ECB · STABLECOIN MARKET STRUCTURE ANNEX",
+       "source": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260601_annex~8852850053.en.pdf"
+      },
+      {
+       "id": "VERIFY-276",
+       "date": "AUG 12 2026",
+       "title": "EUROPEAN CENTRAL BANK · OPINION CON/2026/26 · PROPOSED POLISH BAN ON CRYPTO-ASSET ACTIVITIES",
+       "source": "https://www.ecb.europa.eu/press/govcdec/otherdec/2026/html/ecb.gc261002~54c6b5672b.en.html"
+      },
+      {
+       "id": "VERIFY-075",
+       "date": "MAY 08 2026",
+       "title": "CHRISTINE LAGARDE · EUROPEAN CENTRAL BANK",
+       "source": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260508~dd909fbed1.en.html"
+      },
+      {
+       "id": "VERIFY-007",
+       "date": "JUN 15 2026",
+       "title": "CHRISTINE LAGARDE · EUROPEAN CENTRAL BANK",
+       "source": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260615~35e6c6c4de.en.html"
+      },
+      {
+       "id": "VERIFY-006",
+       "date": "JUL 09 2026",
+       "title": "CHRISTINE LAGARDE · EUROPEAN CENTRAL BANK",
+       "source": "https://www.euronews.com/my-europe/2026/07/09/digital-euro-will-not-replace-cash-lagarde-tells-euronews-as-negotiations-advance"
+      },
+      {
+       "id": "VERIFY-054",
+       "date": "AUG 28 2026",
+       "title": "ISABEL SCHNABEL · EUROPEAN CENTRAL BANK",
+       "source": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260828~fe9afc86e8.en.html"
+      },
+      {
+       "id": "VERIFY-077",
+       "date": "AUG 26 2026",
+       "title": "PIERO CIPOLLONE · EUROPEAN CENTRAL BANK",
+       "source": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html"
+      },
+      {
+       "id": "VERIFY-048",
+       "date": "AUG 24 2026",
+       "title": "PIERO CIPOLLONE · EUROPEAN CENTRAL BANK",
+       "source": "https://www.ecb.europa.eu/press/inter/date/2026/html/ecb.in260824~fa5acbddea.en.html"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "ecb-press"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    }
+   ]
+  },
+  {
+   "id": "uk",
+   "name": "United Kingdom",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications on each authority’s own pages",
+   "authorities": [
+    {
+     "authority": "FCA",
+     "list_page": "https://www.fca.org.uk/firms/cryptoassets",
+     "reading": "partial",
+     "found": "3 own (final rules 30 Jun, perimeter guidance, authorisation gateway), plus 2 joint with the Bank",
+     "excluded": "CP26/4 consultation (its final rules are held)",
+     "limits": "The cryptoassets hub links one 2026 publication; checked by the founder",
+     "source_pages": [
+      "https://www.fca.org.uk/news/press-releases/fca-sets-landmark-crypto-rules-cement-uks-place-global-hub",
+      "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "https://www.fca.org.uk/news/press-releases/fca-opens-gateway-regulated-crypto",
+      "https://www.fca.org.uk/news/statements/fca-and-bank-england-set-out-approach-joint-regulation-systemic-stablecoin-issuers",
+      "https://www.fca.org.uk/publication/call-for-input/future-tokenisation-joint-vision-authorities-uk-wholesale-financial-markets.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-084",
+       "date": "JUN 30 2026",
+       "title": "DAVID GEALE · FCA",
+       "source": "https://www.fca.org.uk/news/press-releases/fca-sets-landmark-crypto-rules-cement-uks-place-global-hub"
+      },
+      {
+       "id": "VERIFY-164",
+       "date": "SEP 16 2026",
+       "title": "FCA · CRYPTOASSET PERIMETER GUIDANCE",
+       "source": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance"
+      },
+      {
+       "id": "VERIFY-223",
+       "date": "SEP 30 2026",
+       "title": "FCA · CRYPTOASSET AUTHORISATION GATEWAY OPENS",
+       "source": "https://www.fca.org.uk/news/press-releases/fca-opens-gateway-regulated-crypto"
+      },
+      {
+       "id": "VERIFY-086",
+       "date": "JUN 30 2026",
+       "title": "BANK OF ENGLAND & FCA · SYSTEMIC STABLECOINS",
+       "source": "https://www.fca.org.uk/news/statements/fca-and-bank-england-set-out-approach-joint-regulation-systemic-stablecoin-issuers"
+      },
+      {
+       "id": "VERIFY-020",
+       "date": "MAY 18 2026",
+       "title": "FCA & BANK OF ENGLAND · JOINT",
+       "source": "https://www.fca.org.uk/publication/call-for-input/future-tokenisation-joint-vision-authorities-uk-wholesale-financial-markets.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "fca-news"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "Bank of England",
+     "list_page": "https://www.bankofengland.co.uk/the-digital-pound/digital-pound-news",
+     "reading": "automated",
+     "found": "4 (stablecoin policy statement, digital pound update, Breeden speech, Bailey letter)",
+     "excluded": null,
+     "limits": "The general news list was not read in full; items found on the digital pound page and by search",
+     "source_pages": [
+      "https://www.bankofengland.co.uk/news/2026/june/bank-of-england-launches-policy-statement-and-draft-rules-on-regulating-systemic-stablecoins",
+      "https://www.bankofengland.co.uk/the-digital-pound/progress-update-digital-pound-design-phase",
+      "https://www.bankofengland.co.uk/speech/2026/may/sarah-breeden-speech-at-city-week-the-future-of-money-in-a-digital-world",
+      "https://www.bankofengland.co.uk/-/media/boe/files/letter/2026/letter-to-joe-powell-july-2026.pdf"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-262",
+       "date": "JUN 22 2026",
+       "title": "BANK OF ENGLAND · SYSTEMIC STABLECOIN POLICY STATEMENT AND DRAFT CODE OF PRACTICE",
+       "source": "https://www.bankofengland.co.uk/news/2026/june/bank-of-england-launches-policy-statement-and-draft-rules-on-regulating-systemic-stablecoins"
+      },
+      {
+       "id": "VERIFY-264",
+       "date": "MAR 04 2026",
+       "title": "BANK OF ENGLAND · DIGITAL POUND DESIGN PHASE PROGRESS UPDATE",
+       "source": "https://www.bankofengland.co.uk/the-digital-pound/progress-update-digital-pound-design-phase"
+      },
+      {
+       "id": "VERIFY-079",
+       "date": "MAY 2026",
+       "title": "SARAH BREEDEN · BANK OF ENGLAND",
+       "source": "https://www.bankofengland.co.uk/speech/2026/may/sarah-breeden-speech-at-city-week-the-future-of-money-in-a-digital-world"
+      },
+      {
+       "id": "VERIFY-078",
+       "date": "JUL 07 2026",
+       "title": "ANDREW BAILEY · BANK OF ENGLAND",
+       "source": "https://www.bankofengland.co.uk/-/media/boe/files/letter/2026/letter-to-joe-powell-july-2026.pdf"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "boe-news"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "PRA",
+     "list_page": "https://www.bankofengland.co.uk/prudential-regulation/regulatory-digest/2026/may-2026",
+     "reading": "automated",
+     "found": "2 (letters to CEOs, 18 May)",
+     "excluded": null,
+     "limits": "May 2026 regulatory digest read; other months not read",
+     "source_pages": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/letter/2026/tokenised-assets-stablecoins-and-other-cryptoasset-exposures.pdf",
+      "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/letter/2026/innovations-in-the-use-of-deposits-emoney-and-regulated-stablecoins"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-263",
+       "date": "MAY 18 2026",
+       "title": "PRA · DEAR CEO LETTER · PRUDENTIAL TREATMENT OF CRYPTOASSET EXPOSURES",
+       "source": "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/letter/2026/tokenised-assets-stablecoins-and-other-cryptoasset-exposures.pdf"
+      },
+      {
+       "id": "VERIFY-265",
+       "date": "MAY 18 2026",
+       "title": "PRA · DEAR CEO LETTER · DEPOSITS, E-MONEY AND STABLECOINS",
+       "source": "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/letter/2026/innovations-in-the-use-of-deposits-emoney-and-regulated-stablecoins"
+      }
+     ],
+     "watch": {
+      "mode": "feeds",
+      "feeds": [
+       "boe-news"
+      ],
+      "note": "Already read by the intake through feeds.json"
+     }
+    },
+    {
+     "authority": "HM Treasury",
+     "list_page": "https://www.legislation.gov.uk/uksi/2026/102/contents/made",
+     "reading": "partial",
+     "found": "1 (SI 2026/102)",
+     "excluded": null,
+     "limits": "2026 crypto publications checked by the founder",
+     "source_pages": [
+      "https://www.legislation.gov.uk/uksi/2026/102/contents/made"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-261",
+       "date": "FEB 04 2026",
+       "title": "HM TREASURY · FSMA 2000 (CRYPTOASSETS) REGULATIONS 2026 · SI 2026/102",
+       "source": "https://www.legislation.gov.uk/uksi/2026/102/contents/made"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.gov.uk/government/organisations/hm-treasury",
+      "note": "News page: new links matching a digital-asset term; first run records what is there"
+     }
+    },
+    {
+     "authority": "HMRC",
+     "list_page": "https://www.gov.uk/guidance/collecting-cryptoasset-user-and-transaction-data",
+     "reading": "automated",
+     "found": "1 (reporting framework from 1 Jan 2026)",
+     "excluded": null,
+     "limits": "Guidance page read; no wider HMRC list checked",
+     "source_pages": [
+      "https://www.gov.uk/guidance/collecting-cryptoasset-user-and-transaction-data"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-089",
+       "date": "JAN 01 2026",
+       "title": "HMRC · CRYPTOASSET REPORTING FRAMEWORK",
+       "source": "https://www.gov.uk/guidance/collecting-cryptoasset-user-and-transaction-data"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "No crypto-specific news page; checked weekly"
+     }
+    }
+   ]
+  },
+  {
+   "id": "uae",
+   "name": "United Arab Emirates",
+   "checked": "21 Oct 2026",
+   "scope": "2026 digital-asset publications on each authority’s own pages",
+   "authorities": [
+    {
+     "authority": "VARA (Dubai)",
+     "list_page": "https://www.vara.ae/en/news/",
+     "reading": "automated",
+     "found": "4 (news list and rulebook site)",
+     "excluded": "4 compliance circulars: travel rule, AML/CFT implementation, proliferation-financing risk assessment, high-risk jurisdictions",
+     "limits": "Full 2026 news list read",
+     "source_pages": [
+      "https://rulebooks.vara.ae/sites/default/files/en_net_file_store/VARA_EN_258_VER20260331.pdf",
+      "https://media.umbraco.io/dwtc/p1zdm1ig/circular-regarding-reserve-assets-audit-report.pdf",
+      "https://media.umbraco.io/dwtc/nllk32pi/vasp-circular-guidance-on-investor-classifications-v3.pdf",
+      "https://x.com/varadubai/status/2065309842374545508"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-251",
+       "date": "MAR 31 2026",
+       "title": "VARA DUBAI · EXCHANGE SERVICES RULEBOOK · MARGIN AND DERIVATIVES",
+       "source": "https://rulebooks.vara.ae/sites/default/files/en_net_file_store/VARA_EN_258_VER20260331.pdf"
+      },
+      {
+       "id": "VERIFY-254",
+       "date": "OCT 06 2026",
+       "title": "VARA DUBAI · CIRCULAR · RESERVE ASSETS AUDIT REPORT",
+       "source": "https://media.umbraco.io/dwtc/p1zdm1ig/circular-regarding-reserve-assets-audit-report.pdf"
+      },
+      {
+       "id": "VERIFY-255",
+       "date": "JAN 08 2026",
+       "title": "VARA DUBAI · CIRCULAR · INVESTOR CLASSIFICATION AND SUITABILITY",
+       "source": "https://media.umbraco.io/dwtc/nllk32pi/vasp-circular-guidance-on-investor-classifications-v3.pdf"
+      },
+      {
+       "id": "VERIFY-066",
+       "date": "JUN 12 2026",
+       "title": "VARA DUBAI · AML/CFT GUIDANCE",
+       "source": "https://x.com/varadubai/status/2065309842374545508"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.vara.ae/en/news/",
+      "note": "News page: new links matching a digital-asset term; first run records what is there"
+     }
+    },
+    {
+     "authority": "CBUAE",
+     "list_page": "https://centralbank.ae/en/news-and-publications/news-and-insights/",
+     "reading": "founder-checked",
+     "found": "0 on its own list; 3 approvals announced by the issuers",
+     "excluded": "Aani instant payments (not a digital asset)",
+     "limits": "The list renders by script; its 2026 entries were checked by the founder",
+     "source_pages": [
+      "https://www.universal.ae/news/universal-launches-uaes-first-central-bank-registered-usd-stablecoin",
+      "https://www.zawya.com/en/press-release/companies-news/rakbank-receives-in-principle-approval-to-launch-an-aed-backed-stablecoin-372774",
+      "https://x.com/ihc__official/status/2021710375604171133"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-252",
+       "date": "JAN 29 2026",
+       "title": "UNIVERSAL DIGITAL · USDU REGISTERED BY THE CBUAE AS A FOREIGN PAYMENT TOKEN",
+       "source": "https://www.universal.ae/news/universal-launches-uaes-first-central-bank-registered-usd-stablecoin"
+      },
+      {
+       "id": "VERIFY-253",
+       "date": "JAN 07 2026",
+       "title": "RAKBANK · CBUAE IN-PRINCIPLE APPROVAL FOR AN AED PAYMENT TOKEN",
+       "source": "https://www.zawya.com/en/press-release/companies-news/rakbank-receives-in-principle-approval-to-launch-an-aed-backed-stablecoin-372774"
+      },
+      {
+       "id": "VERIFY-257",
+       "date": "FEB 11 2026",
+       "title": "IHC · SIRIUS · FAB · CBUAE APPROVES DDSC DIRHAM STABLECOIN TO GO LIVE",
+       "source": "https://x.com/ihc__official/status/2021710375604171133"
+      }
+     ],
+     "watch": {
+      "mode": "manual",
+      "note": "News list renders by script"
+     }
+    },
+    {
+     "authority": "ADGM FSRA",
+     "list_page": "https://www.adgm.com/media/announcements",
+     "reading": "automated",
+     "found": "3",
+     "excluded": null,
+     "limits": "The announcements list shows recent items only",
+     "source_pages": [
+      "https://assets.adgm.com/download/assets/AFRT+List+Feb+2026.pdf/c1b34426b88e11f0912ade26907f67ec",
+      "https://www.adgm.com/media/announcements/adgm-fsra-finalises-regulatory-framework-for-the-staking-of-virtual-assets",
+      "https://www.adgm.com/media/announcements/adgm-fsra-invites-industry-feedback-on-proposed-defi-risk-management-guidance"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-068",
+       "date": "FEB 03 2026",
+       "title": "ADGM FSRA · ACCEPTED FRT LIST",
+       "source": "https://assets.adgm.com/download/assets/AFRT+List+Feb+2026.pdf/c1b34426b88e11f0912ade26907f67ec"
+      },
+      {
+       "id": "VERIFY-067",
+       "date": "APR 29 2026",
+       "title": "ADGM FSRA · STAKING FRAMEWORK",
+       "source": "https://www.adgm.com/media/announcements/adgm-fsra-finalises-regulatory-framework-for-the-staking-of-virtual-assets"
+      },
+      {
+       "id": "VERIFY-259",
+       "date": "OCT 06 2026",
+       "title": "ADGM FSRA · CONSULTATION PAPER 5 OF 2026 · DEFI RISK MANAGEMENT GUIDANCE",
+       "source": "https://www.adgm.com/media/announcements/adgm-fsra-invites-industry-feedback-on-proposed-defi-risk-management-guidance"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.adgm.com/media/announcements",
+      "note": "News page; titles were readable on 21 Oct 2026, links to be confirmed by the dry run"
+     }
+    },
+    {
+     "authority": "DFSA",
+     "list_page": "https://www.dfsa.ae/news",
+     "reading": "blocked",
+     "found": "0 new in 2026; token rules issued 15 Dec 2025, in force 12 Jan 2026",
+     "excluded": null,
+     "limits": "Rulebook archive not machine-readable",
+     "source_pages": [
+      "https://www.dfsa.ae/news/dfsa-issues-updated-rules-regulation-crypto-tokens-difc"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-250",
+       "date": "DEC 15 2025",
+       "title": "DFSA · RECOGNISED CRYPTO TOKEN LIST ENDS IN THE DIFC",
+       "source": "https://www.dfsa.ae/news/dfsa-issues-updated-rules-regulation-crypto-tokens-difc"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.dfsa.ae/news",
+      "note": "News page: new links matching a digital-asset term; first run records what is there"
+     }
+    },
+    {
+     "authority": "CMA (formerly SCA)",
+     "list_page": "https://www.uaecma.gov.ae/en/media-centre/news.aspx",
+     "reading": "founder-checked",
+     "found": "1 announcement, plus the Resolution text",
+     "excluded": null,
+     "limits": "The archive renders by script; its 2026 entries were checked by the founder",
+     "source_pages": [
+      "https://www.zawya.com/en/press-release/companies-news/the-cma-issues-the-virtual-assets-framework-jv85egoi",
+      "https://www.uaecma.gov.ae/assets/849bd7e0/the-chairman-of-the-authoritys-board-of-directors-resolution-no4of-2026-concerning-the.aspx"
+     ],
+     "records": [
+      {
+       "id": "VERIFY-260",
+       "date": "APR 13 2026",
+       "title": "UAE · CAPITAL MARKET AUTHORITY · VIRTUAL ASSETS FRAMEWORK ANNOUNCED",
+       "source": "https://www.zawya.com/en/press-release/companies-news/the-cma-issues-the-virtual-assets-framework-jv85egoi"
+      },
+      {
+       "id": "VERIFY-256",
+       "date": "FEB 13 2026",
+       "title": "UAE · CAPITAL MARKET AUTHORITY · RESOLUTION 04/CHAIRMAN OF 2026 · VASP REGULATION",
+       "source": "https://www.uaecma.gov.ae/assets/849bd7e0/the-chairman-of-the-authoritys-board-of-directors-resolution-no4of-2026-concerning-the.aspx"
+      }
+     ],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.uaecma.gov.ae/en/media-centre/news.aspx",
+      "note": "Latest items readable; the archive renders by script"
+     }
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "regions": 7,
+  "authorities": 38,
+  "records": 121,
+  "source_pages": 120,
+  "watch": {
+   "manual": 21,
+   "feeds": 9,
+   "rss": 2,
+   "page": 6
+  }
+ }
+}
