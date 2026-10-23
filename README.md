@@ -26,3 +26,9 @@ From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21c
 ## Official source registry (r178, AP28)
 
 `sources.json` lists the official sources used in the AP23 regional audits: UAE, UK, EU, Hong Kong, Singapore, US and Africa, with 39 authorities. For each authority it gives the list page that was read, how it reads (`automated`, `founder-checked` when the site blocks automated reading and the founder supplied the text, `partial`, or `blocked`), what was found and excluded, the limits, the source pages behind each record, and the archive records it produced. It is built from the Coverage page's authority-audit panels, and only pages actually read are listed. It is the source list the disclosure watcher (AP12) will read. It does not contain prices, readings or interpretation.
+
+## bStocks (bstocks.json, bstocks_prices.json)
+
+`bstocks.json` is the record side: the issuer's weekly ADGM filing of certificates outstanding per ticker, daily `totalSupply()` on BNB Chain for tokens whose address the issuer group has published, the supply rebuilt at each Friday 23:59:59 UTC, and the comparison of the two (`tools/bstocks.mjs`). The shares at the custodian are not checked; no periodic independent attestation of them is published.
+
+`bstocks_prices.json` is market context, kept apart: the daily candles of each bStock that trades on Binance Spot against USDT, as the exchange records them, one row per completed UTC day (`[date, open, high, low, close, quote volume in USDT, trades]`), backfilled from a pair's first day and appended daily (`tools/bstocks_prices.mjs`). It lists the disclosed tickers with no Spot pair and the day a new pair is first seen. It is not a valuation and is not compared with the US share price.
