@@ -1,6 +1,6 @@
 {
  "name": "CRYPTO STATEMENTS official source registry",
- "version": "1.1",
+ "version": "1.2",
  "generated": "2026-10-21",
  "built_from": "Coverage page authority-audit panels (AP23), revision 178",
  "rule": "Only pages actually read are listed. reading = automated | founder-checked | partial. Records list the archive entries each source produced. watch = how the intake reads the authority: feeds (already in feeds.json), rss, page, or manual (listed once a week for a check by hand).",
@@ -1546,20 +1546,38 @@
       "url": "https://www.uaecma.gov.ae/en/media-centre/news.aspx",
       "note": "Latest items readable; the archive renders by script"
      }
+    },
+    {
+     "authority": "ADGM Listing Authority (issuer disclosures)",
+     "list_page": "https://www.adgm.com/financial-services-regulatory-authority/listing-authority/public-disclosures",
+     "reading": "partial",
+     "found": "BTech Services weekly disclosures of bStocks certificates outstanding, and corporate actions",
+     "excluded": null,
+     "limits": "Titles were readable on 22 Oct 2026; whether the PDF links are in the page or added by script is for the dry run to show",
+     "source_pages": [
+      "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-28-aug-2026_08_30_2026_19-03-17.pdf"
+     ],
+     "records": [],
+     "watch": {
+      "mode": "page",
+      "url": "https://www.adgm.com/financial-services-regulatory-authority/listing-authority/public-disclosures",
+      "filter": "all",
+      "note": "AP39: every new disclosure is listed (no term filter), so each weekly bStocks filing reaches the digest; added to bstocks.json by the editor"
+     }
     }
    ]
   }
  ],
  "counts": {
   "regions": 7,
-  "authorities": 38,
+  "authorities": 39,
   "records": 121,
   "source_pages": 120,
   "watch": {
    "manual": 21,
    "feeds": 9,
    "rss": 2,
-   "page": 6
+   "page": 7
   }
  }
 }
