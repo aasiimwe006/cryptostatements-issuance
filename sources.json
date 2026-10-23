@@ -1,7 +1,7 @@
 {
  "name": "CRYPTO STATEMENTS official source registry",
- "version": "1.2",
- "generated": "2026-10-21",
+ "version": "1.3",
+ "generated": "2026-10-23",
  "built_from": "Coverage page authority-audit panels (AP23), revision 178",
  "rule": "Only pages actually read are listed. reading = automated | founder-checked | partial. Records list the archive entries each source produced. watch = how the intake reads the authority: feeds (already in feeds.json), rss, page, or manual (listed once a week for a check by hand).",
  "regions": [
@@ -1045,9 +1045,9 @@
       }
      ],
      "watch": {
-      "mode": "page",
+      "mode": "manual",
       "url": "https://www.consilium.europa.eu/en/press/press-releases/",
-      "note": "News page; to be confirmed by the dry run"
+      "note": "Press page refused the runner (HTTP 403, also as a browser) in the 23 Oct 2026 dry run; checked by hand weekly"
      }
     },
     {
@@ -1542,9 +1542,9 @@
       }
      ],
      "watch": {
-      "mode": "page",
+      "mode": "manual",
       "url": "https://www.uaecma.gov.ae/en/media-centre/news.aspx",
-      "note": "Latest items readable; the archive renders by script"
+      "note": "News page renders by script: the 23 Oct 2026 dry run read only 1 link, so automated watching would miss new items; checked by hand weekly"
      }
     },
     {
@@ -1574,10 +1574,10 @@
   "records": 121,
   "source_pages": 120,
   "watch": {
-   "manual": 21,
+   "manual": 23,
    "feeds": 9,
    "rss": 2,
-   "page": 7
+   "page": 5
   }
  }
 }
