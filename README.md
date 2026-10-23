@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33780925/README.md)
 # cryptostatements-issuance
 
 The daily on-chain issuance archive behind the CRYPTO STATEMENTS Reserve Monitor: mint, burn,
@@ -26,4 +25,4 @@ From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21c
 
 ## Official source registry (r178, AP28)
 
-`sources.json` lists the official sources used in the AP23 regional audits: UAE, UK, EU, Hong Kong, Singapore, US and Africa, with 38 authorities. For each authority it gives the list page that was read, how it reads (`automated`, `founder-checked` when the site blocks automated reading and the founder supplied the text, `partial`, or `blocked`), what was found and excluded, the limits, the source pages behind each record, and the archive records it produced. It is built from the Coverage page's authority-audit panels, and only pages actually read are listed. It is the source list the disclosure watcher (AP12) will read. It does not contain prices, readings or interpretation.
+`sources.json` lists the official sources used in the AP23 regional audits: UAE, UK, EU, Hong Kong, Singapore, US and Africa, with 39 authorities. For each authority it gives the list page that was read, how it reads (`automated`, `founder-checked` when the site blocks automated reading and the founder supplied the text, `partial`, or `blocked`), what was found and excluded, the limits, the source pages behind each record, and the archive records it produced. It is built from the Coverage page's authority-audit panels, and only pages actually read are listed. It is the source list the disclosure watcher (AP12) will read. It does not contain prices, readings or interpretation.
