@@ -7,7 +7,7 @@
   "prospectus_example": "https://www.adgm.com/globalassets/market-disclosure/content/prospectus/btech-holdings-prospectus----29-june---microsoft-bstocks_06_30_2026_08-44-42.pdf",
   "disclosure_list": "https://www.adgm.com/financial-services-regulatory-authority/listing-authority/public-disclosures",
   "proof_of_collateral": "https://www.binance.com/en/proof-of-collateral/bstocks",
-  "proof_of_collateral_reading": "Read by the founder on 22 Oct 2026: the Proof of Collateral page shows each bStocks token with backing listed at 100%. No verifier or attestation firm was reported; until one is named, it is the issuer group’s own statement."
+  "proof_of_collateral_reading": "The Proof of Collateral page lists each bStocks token with backing at 100%. Confirmed by the founder on 23 Oct 2026 that it names no third-party independent verifier: it is the issuer group’s own statement, not an attestation."
  },
  "tokens": {
   "AMDB": {
@@ -1895,7 +1895,7 @@
      "rie_trading": 20665.75
     }
    },
-   "note": "ADGM’s listing page counts 95 securities for this filing; 94 rows were read from the PDF. The missing row, if any, is to be checked against the PDF."
+   "note": "94 rows, confirmed by the founder’s own count on 23 Oct 2026; ADGM’s listing page shows 95, which the PDF does not bear out."
   }
  ],
  "readings": [],
