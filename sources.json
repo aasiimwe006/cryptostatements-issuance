@@ -1383,7 +1383,8 @@
       "https://rulebooks.vara.ae/sites/default/files/en_net_file_store/VARA_EN_258_VER20260331.pdf",
       "https://media.umbraco.io/dwtc/p1zdm1ig/circular-regarding-reserve-assets-audit-report.pdf",
       "https://media.umbraco.io/dwtc/nllk32pi/vasp-circular-guidance-on-investor-classifications-v3.pdf",
-      "https://x.com/varadubai/status/2065309842374545508"
+      "https://x.com/varadubai/status/2065309842374545508",
+      "https://www.vara.ae/en/licenses-and-register/public-register/bybit-fintech-fze-bybit/"
      ],
      "records": [
       {
@@ -1409,6 +1410,12 @@
        "date": "JUN 12 2026",
        "title": "VARA DUBAI · AML/CFT GUIDANCE",
        "source": "https://x.com/varadubai/status/2065309842374545508"
+      },
+      {
+       "id": "VERIFY-294",
+       "date": "OCT 20 2026",
+       "title": "VARA DUBAI · BYBIT FINTECH FZE LICENSED FOR EXCHANGE SERVICES",
+       "source": "https://www.vara.ae/en/licenses-and-register/public-register/bybit-fintech-fze-bybit/"
       }
      ],
      "watch": {
@@ -1571,8 +1578,8 @@
  "counts": {
   "regions": 7,
   "authorities": 39,
-  "records": 121,
-  "source_pages": 120,
+  "records": 122,
+  "source_pages": 121,
   "watch": {
    "manual": 23,
    "feeds": 9,
