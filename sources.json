@@ -1507,7 +1507,9 @@
      "excluded": null,
      "limits": "Rulebook archive not machine-readable",
      "source_pages": [
-      "https://www.dfsa.ae/news/dfsa-issues-updated-rules-regulation-crypto-tokens-difc"
+      "https://www.dfsa.ae/news/dfsa-issues-updated-rules-regulation-crypto-tokens-difc",
+      "https://www.dfsa.ae/public-register/firms",
+      "https://www.difc.com/whats-on/news/robinhood-regional-headquarters-dubai"
      ],
      "records": [
       {
@@ -1515,6 +1517,12 @@
        "date": "DEC 15 2025",
        "title": "DFSA · RECOGNISED CRYPTO TOKEN LIST ENDS IN THE DIFC",
        "source": "https://www.dfsa.ae/news/dfsa-issues-updated-rules-regulation-crypto-tokens-difc"
+      },
+      {
+       "id": "VERIFY-295",
+       "date": "OCT 22 2026",
+       "title": "DFSA · ROBINHOOD MENA LIMITED AUTHORISED IN THE DIFC",
+       "source": "https://www.difc.com/whats-on/news/robinhood-regional-headquarters-dubai"
       }
      ],
      "watch": {
@@ -1578,8 +1586,8 @@
  "counts": {
   "regions": 7,
   "authorities": 39,
-  "records": 122,
-  "source_pages": 121,
+  "records": 123,
+  "source_pages": 123,
   "watch": {
    "manual": 23,
    "feeds": 9,
