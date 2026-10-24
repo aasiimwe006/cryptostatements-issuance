@@ -3,8 +3,36 @@
  "source": "https://tether.to/en/transparency/?tab=usdt",
  "chain": "ethereum",
  "token": "USDT",
- "note": "Tether's own figures for USDT on Ethereum, as shown on its Transparency page (USD₮ tab, 'On Ethereum'). One reading per line; asOf is the page's 'Last Update' time. Amounts in USDT. The site checks that totalAuthorized - notIssued = circulation.",
+ "note": "Tether's own figures for USDT on Ethereum, as shown on its Transparency page (USD₮ tab, 'On Ethereum'). One reading per line; asOf is the page's 'Last Update' time. Amounts in USDT. The site checks that totalAuthorized - notIssued = circulation. allChains.circulation is the page’s headline “USD₮ in Tether” Net Circulation under the same Last Update (circulation only). alsoOnPage keeps the other headline figures shown on the page; the site does not display them.",
  "readings": [
-  {"asOf": "2026-10-16T23:30:00Z", "totalAuthorized": 88302633055.70, "notIssued": 2132161384.80, "circulation": 86170471670.90, "read": "2026-10-17T22:59:00Z", "how": "read by the editor from the Transparency page; screenshot kept"}
+  {
+   "asOf": "2026-10-16T23:30:00Z",
+   "totalAuthorized": 88302633055.7,
+   "notIssued": 2132161384.8,
+   "circulation": 86170471670.9,
+   "read": "2026-10-17T22:59:00Z",
+   "how": "read by the editor from the Transparency page; screenshot kept"
+  },
+  {
+   "asOf": "2026-10-23T23:30:02Z",
+   "totalAuthorized": 88301265725.97,
+   "notIssued": 2817394055.07,
+   "circulation": 85483871670.9,
+   "allChains": {
+    "circulation": 182555163624.71
+   },
+   "alsoOnPage": {
+    "XAUT": {
+     "circulation": 827417.63,
+     "unit": "fine troy oz"
+    },
+    "MXNT": {
+     "circulation": 19562400.0,
+     "unit": "MXN"
+    }
+   },
+   "read": "2026-10-24T22:26:00Z",
+   "how": "supplied by the founder from the Transparency page (USD₮ tab, On Ethereum rows and the headline Net Circulation figures)"
+  }
  ]
 }
