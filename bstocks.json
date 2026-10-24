@@ -14,68 +14,78 @@
    "isin": "AE000A4AVCE0",
    "contract": "0x75fd4cf6f8392e41e70391d60c90c0d5211603a1",
    "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "CRCLB": {
    "isin": "AE000A4AU3B0",
    "contract": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
    "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "EWYB": {
    "isin": "AE000A4AVCD2",
    "contract": "0xbe82f76637dba2c114c41df856c2c51e522e2cb8",
    "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "INTCB": {
    "isin": "AE000A4AU3D6",
    "contract": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283",
    "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "MSTRB": {
    "isin": "AE000A4AU3A2",
    "contract": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14",
    "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MUB": {
    "isin": "AE000A4AVAY2",
    "contract": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
    "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "NVDAB": {
    "isin": "AE000A4AVAZ9",
    "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
    "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "SNDKB": {
    "isin": "AE000A4AVAX4",
    "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
    "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "SPCXB": {
    "isin": "AE000A4AVAW6",
    "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
    "source": "https://www.binance.com/en/support/announcement/detail/191cb96109f24c5c85362631a55a45d3",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "TSLAB": {
    "isin": "AE000A4AU295",
    "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
    "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MSFTB": {
    "isin": "AE000A4AVCW2",
@@ -106,61 +116,71 @@
    "isin": "AE000A4AVFX3",
    "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "QCOMB": {
    "isin": "AE000A4AVFZ8",
    "contract": "0x5f7a56e877b9130608bf8be962621011182fefe1",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "COINB": {
    "isin": "AE000A4AVF19",
    "contract": "0x585bde7c54abb5ccd7791f923d6c2187635f3952",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SPYB": {
    "isin": "AE000A4AU3E4",
    "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "WDCB": {
    "isin": "AE000A4AVMH2",
    "contract": "0xebe29695f8047c13d36e7a790ca8c1b239ffad1c",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "GLWB": {
    "isin": "AE000A4AVMD1",
    "contract": "0x740e075cbbea22a082b9d6679e65e82767875b6a",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "NBISB": {
    "isin": "AE000A4AVMG4",
    "contract": "0xe256bc2a4f5297f8ba6f043f180a46300ecbcbb1",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SOXLB": {
    "isin": "AE000A4AVMJ8",
    "contract": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "DRAMB": {
    "isin": "AE000A4AVME9",
    "contract": "0x93862d63fd9fd488b1328e9b47717d75e994a84b",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "CBRSB": {
    "isin": "AE000A4AVMF6",
    "contract": "0xe81c6bb0266cd68b4f17278531dd03ea1f12da4e",
    "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
-   "source_kind": "issuer"
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SKHYB": {
    "isin": "AE000A4AVMT7",
@@ -377,7 +397,8 @@
    "contract": "0xf2ec508422174ee564de98187db9359d318afb6b",
    "source": "https://www.binance.com/en/support/announcement/detail/653dce6a74234b999d7a189c0fa49a80",
    "source_kind": "issuer",
-   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026"
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MRNAB": {
    "isin": "AE000A4AWH99",
@@ -691,7 +712,7 @@
     },
     "TQQQB": {
      "outstanding": 26558.02,
-     "rie_trading": 22661.0
+     "rie_trading": 22661
     },
     "QNTB": {
      "outstanding": 11443.8,
@@ -779,14 +800,14 @@
     },
     "ALABB": {
      "outstanding": 2835.78,
-     "rie_trading": 2512.0
+     "rie_trading": 2512
     },
     "GMEB": {
      "outstanding": 292352.84,
      "rie_trading": 195533.56
     },
     "DJTB": {
-     "outstanding": 382970.0,
+     "outstanding": 382970,
      "rie_trading": 295677.4
     }
    }
@@ -830,7 +851,7 @@
      "rie_trading": 14615.04
     },
     "SPCXB": {
-     "outstanding": 532118.0,
+     "outstanding": 532118,
      "rie_trading": 436054.23
     },
     "TSLAB": {
@@ -931,7 +952,7 @@
     },
     "AVGOB": {
      "outstanding": 40604.63,
-     "rie_trading": 30957.0
+     "rie_trading": 30957
     },
     "MRVLB": {
      "outstanding": 30893.53,
@@ -1299,7 +1320,7 @@
     },
     "AXTIB": {
      "outstanding": 51565.05,
-     "rie_trading": 49612.0
+     "rie_trading": 49612
     },
     "CRWVB": {
      "outstanding": 22011.65,
@@ -1327,7 +1348,7 @@
     },
     "QNTB": {
      "outstanding": 18308.63,
-     "rie_trading": 15572.0
+     "rie_trading": 15572
     },
     "ORCLB": {
      "outstanding": 28178.22,
@@ -1640,7 +1661,7 @@
     },
     "NOKB": {
      "outstanding": 224312.39,
-     "rie_trading": 200408.0
+     "rie_trading": 200408
     },
     "TSMB": {
      "outstanding": 17756.82,
@@ -1712,7 +1733,7 @@
     },
     "AMZNB": {
      "outstanding": 16379.03,
-     "rie_trading": 14217.0
+     "rie_trading": 14217
     },
     "SOXSB": {
      "outstanding": 31421.15,
@@ -1815,7 +1836,7 @@
      "rie_trading": 2031.68
     },
     "GPROB": {
-     "outstanding": 453965.0,
+     "outstanding": 453965,
      "rie_trading": 343597.8
     },
     "RDDTB": {
@@ -1879,7 +1900,7 @@
      "rie_trading": 862.1
     },
     "MDBB": {
-     "outstanding": 2013.0,
+     "outstanding": 2013,
      "rie_trading": 1790.6
     },
     "BBB": {
@@ -1898,7 +1919,68 @@
    "note": "94 rows, confirmed by the founder’s own count on 23 Oct 2026; ADGM’s listing page shows 95, which the PDF does not bear out."
   }
  ],
- "readings": [],
- "snapshots": [],
- "reconciliations": []
+ "readings": [
+  {
+   "date": "2026-10-24",
+   "block": 129423794,
+   "time": "2026-10-24T01:12:41Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.33441409,
+    "CRCLB": 1820605.57760258,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 75017.41018456,
+    "NVDAB": 213620.47016593,
+    "SNDKB": 68882.7698941,
+    "SPCXB": 1028885.21323141,
+    "TSLAB": 67997.552532,
+    "GOOGLB": 115787.38372488,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739145.14729596,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  }
+ ],
+ "snapshots": [
+  {
+   "asOf": "2026-10-23T23:59:59Z",
+   "block": 129414101,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.16547658,
+    "CRCLB": 1820585.45452633,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 74734.03429682,
+    "NVDAB": 213618.92532218,
+    "SNDKB": 68711.2310851,
+    "SPCXB": 1028655.77773498,
+    "TSLAB": 67997.35435964,
+    "GOOGLB": 115771.49673339,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739144.14773771,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  }
+ ],
+ "reconciliations": [],
+ "updated": "2026-10-24T01:12:41.889Z"
 }
