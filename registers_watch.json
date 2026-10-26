@@ -1,0 +1,554 @@
+{
+ "about": "Input for tools/registers.mjs: which register rows to re-read each night. Not the Exchange Register's data file, which is held for the API (AP56).",
+ "version": "1.0",
+ "registers": {
+  "esma": {
+   "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica"
+  },
+  "vara": {
+   "url": "https://www.vara.ae/en/licenses-and-register/public-register/"
+  },
+  "sfc": {
+   "url": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms"
+  },
+  "nydfs": {
+   "url": "https://www.dfs.ny.gov/virtual_currency_businesses"
+  },
+  "jfsa": {
+   "url": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf"
+  },
+  "fsra": {
+   "url": "https://www.adgm.com/public-registers/fsra"
+  },
+  "dfsa": {
+   "url": "https://www.dfsa.ae/public-register"
+  },
+  "cftc": {
+   "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations"
+  }
+ },
+ "exchanges": [
+  {
+   "id": "binance",
+   "name": "Binance",
+   "licences": [
+    {
+     "entity": "Nest Clearing and Custody Limited (formerly Binance (AD) Limited)",
+     "register": "fsra",
+     "reference": "Recognition order 0070",
+     "source": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited",
+     "assets_handled": null
+    },
+    {
+     "entity": "Nest Exchange Limited (formerly Nest Services Limited)",
+     "register": "fsra",
+     "reference": "Recognition order 0072",
+     "source": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-services-limited",
+     "assets_handled": null
+    },
+    {
+     "entity": "Nest Trading Limited",
+     "register": "fsra",
+     "reference": "FSP 260000",
+     "source": "https://www.adgm.com/public-registers/fsra/firms/financial-firms/nest-trading-limited-260000",
+     "assets_handled": null
+    },
+    {
+     "entity": "Binance (AD) Limited",
+     "register": "fsra",
+     "reference": "FSP 220058",
+     "source": "https://adgm.com/public-registers/fsra/fsf/binance-ad-limited",
+     "assets_handled": null
+    },
+    {
+     "entity": "Binance FZE",
+     "register": "vara",
+     "reference": "VL/24/04/001 · CMA-VASP-1101010-0013",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Binance Japan株式会社",
+     "register": "jfsa",
+     "reference": "Kanto Finance Bureau No. 00031",
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "assets_handled": {
+      "list": [
+       "BTC",
+       "ETH",
+       "XRP",
+       "BCH",
+       "LTC",
+       "ETC",
+       "ADA",
+       "DOT",
+       "BNB",
+       "BAT",
+       "ENJ",
+       "IOST",
+       "QTUM",
+       "XLM",
+       "XTZ",
+       "POL",
+       "SAND",
+       "DAI",
+       "ALGO",
+       "ASTR",
+       "ATOM",
+       "AVAX",
+       "AXS",
+       "CHZ",
+       "DOGE",
+       "JASMY",
+       "LINK",
+       "ONT",
+       "SHIB",
+       "SOL",
+       "TRX",
+       "ZIL",
+       "LSK",
+       "APE",
+       "RENDER",
+       "GALA",
+       "MANA",
+       "IMX",
+       "GRT",
+       "HBAR",
+       "KAIA",
+       "A",
+       "OP",
+       "ARB",
+       "NEAR",
+       "SUI",
+       "WBTC",
+       "FIL",
+       "MASK",
+       "CYBER",
+       "APT",
+       "THETA",
+       "NEO",
+       "GRAM",
+       "SEI",
+       "PEPE",
+       "IOTX",
+       "NEIRO",
+       "LPT",
+       "SKY",
+       "TRUMP",
+       "FET",
+       "TAO",
+       "MEME",
+       "TRB",
+       "GIGGLE"
+      ],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     }
+    }
+   ]
+  },
+  {
+   "id": "coinbase",
+   "name": "Coinbase",
+   "licences": [
+    {
+     "entity": "Coinbase Luxembourg S.A.",
+     "register": "esma",
+     "reference": "LEI 984500F14CA4571AAC11",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Coinbase, Inc.",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    },
+    {
+     "entity": "Coinbase Custody Trust Company, LLC",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    },
+    {
+     "entity": "Coinbase Clearing LLC",
+     "register": "cftc",
+     "reference": "Commission order",
+     "source": "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations/64361",
+     "assets_handled": null
+    },
+    {
+     "entity": "Coinbase株式会社",
+     "register": "jfsa",
+     "reference": "Kanto Finance Bureau No. 00028",
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "assets_handled": {
+      "list": [],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bybit",
+   "name": "Bybit",
+   "licences": [
+    {
+     "entity": "Bybit EU GmbH",
+     "register": "esma",
+     "reference": "LEI 5299005V5GBSN2A4C303",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bybit Fintech FZE (Bybit)",
+     "register": "vara",
+     "reference": "VL/26/10/003 · CMA-VASP-1000000-0006",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Spark Fintech Limited (platform: Bybit)",
+     "register": "sfc",
+     "reference": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "okx",
+   "name": "OKX",
+   "licences": [
+    {
+     "entity": "OKX Europe Limited",
+     "register": "esma",
+     "reference": "LEI 54930069NLWEIGLHXU42",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "OKX Middle East Fintech FZE",
+     "register": "vara",
+     "reference": "VL/23/12/003 · CMA-VASP-1001010-0008",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "OKX Hong Kong FinTech Company Limited",
+     "register": "sfc",
+     "reference": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "kraken",
+   "name": "Kraken (Payward)",
+   "licences": [
+    {
+     "entity": "Payward Global Solutions Limited",
+     "register": "esma",
+     "reference": "LEI 9845003D98SCC2851458",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Payward Europe Solutions Limited",
+     "register": "esma",
+     "reference": "LEI 254900641D8KNHUZYX24",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Payward FZCO",
+     "register": "vara",
+     "reference": "VL/26/10/002 · CMA-VASP-0101000-0067",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Payward MENA Holdings Limited",
+     "register": "fsra",
+     "reference": "FSP 190008",
+     "source": "https://adgm.com/public-registers/fsra/fsf/payward-mena-holdings-limited",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "robinhood",
+   "name": "Robinhood",
+   "licences": [
+    {
+     "entity": "Robinhood Europe UAB",
+     "register": "esma",
+     "reference": "LEI 254900GTP4UXQO1UMI36",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Robinhood MENA Limited",
+     "register": "dfsa",
+     "reference": "F012264",
+     "source": "https://www.dfsa.ae/public-register",
+     "assets_handled": null
+    },
+    {
+     "entity": "Robinhood Crypto, LLC",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "cryptocom",
+   "name": "Crypto.com",
+   "licences": [
+    {
+     "entity": "Foris DAX MT Limited",
+     "register": "esma",
+     "reference": "LEI 2549005CVR5HH70FDO07",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Foris DAX Middle East FZE (Crypto.com)",
+     "register": "vara",
+     "reference": "VL/23/10/003 · CMA-VASP-1101010-0012",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/foris-dax-middle-east-fze-cryptocom/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Foris DAX HK Limited (platform: Crypto.com)",
+     "register": "sfc",
+     "reference": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "bullish",
+   "name": "Bullish",
+   "licences": [
+    {
+     "entity": "Bullish Europe GmbH",
+     "register": "esma",
+     "reference": "LEI 2549008CBASK5Q680X12",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bullish HK Markets Limited",
+     "register": "sfc",
+     "reference": "CE BUQ956",
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bullish US Operations LLC",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "hashkey",
+   "name": "HashKey",
+   "licences": [
+    {
+     "entity": "Hash Blockchain Limited (HashKey Exchange)",
+     "register": "sfc",
+     "reference": "CE BPL992",
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    },
+    {
+     "entity": "Hashkey MENA FZE (HashKey)",
+     "register": "vara",
+     "reference": "VL/25/03/002 · CMA-VASP-1100000-0029",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "HashKey Japan株式会社",
+     "register": "jfsa",
+     "reference": "Kanto Finance Bureau No. 00027",
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "assets_handled": {
+      "list": [
+       "BTC",
+       "ETH"
+      ],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gate",
+   "name": "Gate",
+   "licences": [
+    {
+     "entity": "Gate Technology Limited",
+     "register": "esma",
+     "reference": "LEI 984500D6A0F945BB5A15",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Gate Technology FZE",
+     "register": "vara",
+     "reference": "VL/25/04/007 · CMA-VASP-1000000-0033",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Gate Japan株式会社",
+     "register": "jfsa",
+     "reference": "Kanto Finance Bureau No. 00018",
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "assets_handled": {
+      "list": [],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     }
+    },
+    {
+     "entity": "Gate Digital Limited (platform: Gate.HK)",
+     "register": "sfc",
+     "reference": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "bitpanda",
+   "name": "Bitpanda",
+   "licences": [
+    {
+     "entity": "Bitpanda GmbH",
+     "register": "esma",
+     "reference": "LEI 5493007WZ7IFULIL8G21",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bitpanda Asset Management GmbH",
+     "register": "esma",
+     "reference": "LEI 9845005X9B7N610K0093",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "BP23 CA Limited",
+     "register": "esma",
+     "reference": "LEI 984500DEID7B03J77118",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bitpanda Broker MENA FZCO",
+     "register": "vara",
+     "reference": "VL/25/03/001 · CMA-VASP-0100000-0027",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bitpanda Custody MENA FZCO",
+     "register": "vara",
+     "reference": "VL/25/04/006 · CMA-VASP-0010000-0035",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "deribit",
+   "name": "Deribit",
+   "licences": [
+    {
+     "entity": "Deribit FZE",
+     "register": "vara",
+     "reference": "VL/23/12/002 · CMA-VASP-1000000-0017",
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "licences": [
+    {
+     "entity": "Gemini Intergalactic EU Ltd",
+     "register": "esma",
+     "reference": "LEI 2138002QAMX8PPKSO715",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Gemini Trust Company, LLC",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "bitstamp",
+   "name": "Bitstamp",
+   "licences": [
+    {
+     "entity": "Bitstamp Europe S.A.",
+     "register": "esma",
+     "reference": "LEI 549300XIBGTJ0PLIEO72",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    },
+    {
+     "entity": "Bitstamp USA, Inc.",
+     "register": "nydfs",
+     "reference": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "bitget",
+   "name": "Bitget",
+   "licences": []
+  },
+  {
+   "id": "kucoin",
+   "name": "KuCoin",
+   "licences": [
+    {
+     "entity": "KuCoin EU Exchange GmbH",
+     "register": "esma",
+     "reference": "LEI 529900B4G0EGK7Z9KT45",
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "assets_handled": null
+    }
+   ]
+  },
+  {
+   "id": "mexc",
+   "name": "MEXC",
+   "licences": []
+  }
+ ]
+}
