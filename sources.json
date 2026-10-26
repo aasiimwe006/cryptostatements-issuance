@@ -1471,7 +1471,10 @@
      "source_pages": [
       "https://assets.adgm.com/download/assets/AFRT+List+Feb+2026.pdf/c1b34426b88e11f0912ade26907f67ec",
       "https://www.adgm.com/media/announcements/adgm-fsra-finalises-regulatory-framework-for-the-staking-of-virtual-assets",
-      "https://www.adgm.com/media/announcements/adgm-fsra-invites-industry-feedback-on-proposed-defi-risk-management-guidance"
+      "https://www.adgm.com/media/announcements/adgm-fsra-invites-industry-feedback-on-proposed-defi-risk-management-guidance",
+      "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited",
+      "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-services-limited",
+      "https://www.adgm.com/public-registers/fsra/firms/financial-firms/nest-trading-limited-260000"
      ],
      "records": [
       {
@@ -1491,6 +1494,12 @@
        "date": "OCT 06 2026",
        "title": "ADGM FSRA · CONSULTATION PAPER 5 OF 2026 · DEFI RISK MANAGEMENT GUIDANCE",
        "source": "https://www.adgm.com/media/announcements/adgm-fsra-invites-industry-feedback-on-proposed-defi-risk-management-guidance"
+      },
+      {
+       "id": "VERIFY-296",
+       "date": "DEC 08 2025",
+       "title": "ADGM FSRA · BINANCE.COM GLOBAL PLATFORM APPROVED THROUGH THREE NEST ENTITIES",
+       "source": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited"
       }
      ],
      "watch": {
@@ -1586,8 +1595,8 @@
  "counts": {
   "regions": 7,
   "authorities": 39,
-  "records": 123,
-  "source_pages": 123,
+  "records": 124,
+  "source_pages": 126,
   "watch": {
    "manual": 23,
    "feeds": 9,
