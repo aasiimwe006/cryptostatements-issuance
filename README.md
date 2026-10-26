@@ -32,3 +32,14 @@ From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21c
 `bstocks.json` is the record side: the issuer's weekly ADGM filing of certificates outstanding per ticker, daily `totalSupply()` on BNB Chain for tokens whose address the issuer group has published, the supply rebuilt at each Friday 23:59:59 UTC, and the comparison of the two (`tools/bstocks.mjs`). The shares at the custodian are not checked; no periodic independent attestation of them is published.
 
 `bstocks_prices.json` is market context, kept apart: the daily candles of each bStock that trades on Binance Spot against USDT, as the exchange records them, one row per completed UTC day (`[date, open, high, low, close, quote volume in USDT, trades]`), backfilled from a pair's first day and appended daily (`tools/bstocks_prices.mjs`). It lists the disclosed tickers with no Spot pair and the day a new pair is first seen. It is not a valuation and is not compared with the US share price.
+
+## Exchange Register re-read (r219)
+
+`exchanges.json` is the Exchange Register as the site publishes it (copied here from the site build).
+`tools/registers.mjs` runs nightly in the daily workflow and checks every licence row against the
+regulator's own page: the ESMA MiCA CASP file (LEI and name), VARA (reference and name), SFC and NYDFS
+(name) and each FSRA, DFSA or CFTC firm page (name). It writes `registers.json`: the last day each row
+was found, and `missing_since` for a row not found. Nothing is removed or relabelled automatically;
+rows not found and new MiCA providers naming a tracked exchange are listed under `review` for a person
+to check. The Japan FSA list is a PDF and is read by hand. Update `exchanges.json` whenever the site's
+register changes.
