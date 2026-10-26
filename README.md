@@ -35,11 +35,11 @@ From r153, XAU₮ is also read on BNB Smart Chain (key `XAUT:BSC`, address 0x21c
 
 ## Exchange Register re-read (r219)
 
-`exchanges.json` is the Exchange Register as the site publishes it (copied here from the site build).
+`registers_watch.json` lists the rows to re-read (register, entity, reference, source), generated from the site's register. The Exchange Register's full data file is held for the API (r224).
 `tools/registers.mjs` runs nightly in the daily workflow and checks every licence row against the
 regulator's own page: the ESMA MiCA CASP file (LEI and name), VARA (reference and name), SFC and NYDFS
 (name) and each FSRA, DFSA or CFTC firm page (name). It writes `registers.json`: the last day each row
 was found, and `missing_since` for a row not found. Nothing is removed or relabelled automatically;
 rows not found and new MiCA providers naming a tracked exchange are listed under `review` for a person
-to check. The Japan FSA list is a PDF and is read by hand. Update `exchanges.json` whenever the site's
+to check. The Japan FSA list is read from the FSA's Excel edition (registration number, name and the assets it lists). Update `registers_watch.json` whenever the site's
 register changes.
