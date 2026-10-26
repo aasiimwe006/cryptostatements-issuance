@@ -1,7 +1,7 @@
 /* registers.mjs — CRYPTO STATEMENTS · nightly re-read of the regulators' registers behind the Exchange
    Register (r219, reviewer redesign step 5)
 
-   Reads exchanges.json (the register as the site publishes it) and, for every licence row, checks that the
+   Reads registers_watch.json (the rows to re-read, generated from the site's register; r224) and, for every licence row, checks that the
    regulator's own page still shows it:
      esma   ESMA interim MiCA CASP file (CSV): the row's LEI and entity name, parsed exactly; also lists any
             new CASP whose name carries a tracked exchange's name, for review (never added automatically)
@@ -11,7 +11,10 @@
      fsra / dfsa / cftc   the row's own firm page: the entity name
    Entity names are matched without a trailing bracket (a brand or former name CS adds); a bracket inside
    a legal name, as in Binance (AD) Limited, is kept.
-     jfsa   not re-read here: the FSA list is a PDF with no text layer this job can read; read by hand
+     jfsa   Japan FSA list of registered crypto-asset exchange service providers, read from the FSA's Excel
+            edition (kasoutuka.xlsx, unzipped and read here without dependencies): the registration number
+            and the entity name; for rows carrying the assets the register lists, each ticker is checked too
+            (a ticker no longer found is flagged; additions are not detected, so the list is re-read by hand)
    Writes registers.json: per register the HTTP result and a fingerprint of the page text (so a change in the
    register is visible even when no tracked row moved), and per row the last date it was found and, if it
    was not found, the date it went missing. A row not found is never removed or relabelled by this job: it is
@@ -19,8 +22,10 @@
    REGISTERS_FIXTURES=dir (tests only): read pages from local files instead of the network.          */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-const SRC = 'exchanges.json', OUT = 'registers.json';
+import zlib from 'node:zlib';
+const SRC = 'registers_watch.json', OUT = 'registers.json';
 const ESMA_CSV = ['https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv'];
+const JFSA_XLSX = 'https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.xlsx';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const host = u => { try { return new URL(u).host; } catch (e) { return '?'; } };
 const FIX = process.env.REGISTERS_FIXTURES || '';
@@ -30,8 +35,32 @@ async function get(url) {
   if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
   return { status: r.status, text: await r.text() };
 }
+async function getBuf(url) {
+  if (FIX) { const f = FIX + '/' + encodeURIComponent(url); if (!fs.existsSync(f)) throw new Error('no fixture for ' + host(url)); return fs.readFileSync(f); }
+  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-registers/1.0 (+https://github.com/aasiimwe006/cryptostatements-issuance)' } });
+  if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
+  return Buffer.from(await r.arrayBuffer());
+}
+/* Minimal reader for an .xlsx (a zip of XML files): central directory, stored or deflated entries. Returns
+   the text of the shared strings and every worksheet, joined, which is all a presence check needs. */
+function xlsxText(buf) {
+  let e = buf.length - 22; while (e >= 0 && buf.readUInt32LE(e) !== 0x06054b50) e--;
+  if (e < 0) throw new Error('not a zip file');
+  const n = buf.readUInt16LE(e + 10); let p = buf.readUInt32LE(e + 16); const files = {};
+  for (let i = 0; i < n; i++) {
+    if (buf.readUInt32LE(p) !== 0x02014b50) throw new Error('bad zip directory');
+    const method = buf.readUInt16LE(p + 10), csize = buf.readUInt32LE(p + 20), nl = buf.readUInt16LE(p + 28), xl = buf.readUInt16LE(p + 30), cl = buf.readUInt16LE(p + 32), off = buf.readUInt32LE(p + 42);
+    const name = buf.slice(p + 46, p + 46 + nl).toString('utf8');
+    if (/^xl\/(sharedStrings|worksheets\/sheet\d+)\.xml$/.test(name)) {
+      const ln = buf.readUInt16LE(off + 26), lx = buf.readUInt16LE(off + 28), data = buf.slice(off + 30 + ln + lx, off + 30 + ln + lx + csize);
+      files[name] = (method === 8 ? zlib.inflateRawSync(data) : data).toString('utf8'); }
+    p += 46 + nl + xl + cl; }
+  const strs = (files['xl/sharedStrings.xml'] || '').split(/<\/si>/).map(si => (si.match(/<t[^>]*>([\s\S]*?)<\/t>/g) || []).map(t => t.replace(/<[^>]+>/g, '')).join(''));
+  const sheets = Object.keys(files).filter(k => k.includes('worksheets')).sort().map(k => files[k].replace(/<c [^>]*t="s"[^>]*>\s*<v>(\d+)<\/v>/g, (m, i) => ' ' + (strs[+i] || '') + ' ').replace(/<is>[\s\S]*?<\/is>/g, m => ' ' + m.replace(/<[^>]+>/g, '') + ' '));
+  return strs.join(' ') + ' ' + sheets.join(' ');
+}
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '’', lsquo: '‘', ndash: '–', mdash: '—' };
-const norm = t => String(t).replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ')
+const norm = t => String(t).normalize('NFKC').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ')
   .replace(/&(#x?[0-9a-f]+|\w+);/gi, (m, e) => e[0] === '#' ? String.fromCodePoint(e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : +e.slice(1)) : (ENT[e.toLowerCase()] ?? m))
   .replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
 const has = (text, s) => !!s && text.includes(norm(s));
@@ -66,11 +95,15 @@ async function main() {
   if (doc.exchanges.some(x => x.licences.some(r => r.register === 'esma'))) {
     for (const u of ESMA_CSV) { const p = await page('esma', u); if (p.ok) { esma = csv(p.raw); out.registers['esma|' + u].rows = esma.length; break; } }
   }
+  let jfsa;
   const brand = doc.exchanges.map(x => ({ id: x.id, re: new RegExp('\\b' + x.name.replace(/\s*\(.*\)/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i') }));
   for (const x of doc.exchanges) for (const r of x.licences) {
     const key = x.id + '|' + r.register + '|' + r.entity, was = prev.rows[key] || {};
     let found = null, how = '';
-    if (r.register === 'jfsa') { how = 'not re-read (PDF)'; }
+    if (r.register === 'jfsa') { if (jfsa === undefined) { jfsa = null; try { const t = norm(xlsxText(await getBuf(JFSA_XLSX))); jfsa = t; out.registers['jfsa|' + JFSA_XLSX] = { register: 'jfsa', host: host(JFSA_XLSX), ok: true, fp: fingerprint(t), changed: ((prev.registers['jfsa|' + JFSA_XLSX] || {}).fp || null) ? prev.registers['jfsa|' + JFSA_XLSX].fp !== fingerprint(t) : null, read: now.toISOString() }; } catch (e) { out.registers['jfsa|' + JFSA_XLSX] = { register: 'jfsa', host: host(JFSA_XLSX), ok: false, error: e.message, read: now.toISOString() }; console.error('   jfsa', e.message); } }
+      if (jfsa) { const num = ((r.reference || '').match(/No\.\s*(\d+)/) || [])[1];
+        found = has(jfsa, r.entity) && (!num || jfsa.includes('第' + num + '号') || jfsa.includes(num)); how = 'registration number and name in the FSA list (Excel)';
+        if (found && r.assets_handled && r.assets_handled.list.length) { const gone = r.assets_handled.list.filter(a => !new RegExp('(^|[^a-z0-9])' + a.toLowerCase() + '([^a-z0-9]|$)').test(jfsa)); if (gone.length) out.review.push({ key, note: 'assets listed by CS no longer found in the FSA list: ' + gone.join(', ') + '; re-read the list' }); } } }
     else if (r.register === 'esma') { if (esma) { const lei = (r.reference || '').replace(/^LEI\s*/, ''); found = esma.some(c => c.ae_lei === lei && norm(c.ae_lei_name) === norm(r.entity) && !c.ac_authorisationEndDate); how = 'LEI and name in the CASP file'; } }
     else { const url = ['vara', 'sfc', 'nydfs'].includes(r.register) ? doc.registers[r.register].url : r.source;
       const p = await page(r.register, url);
