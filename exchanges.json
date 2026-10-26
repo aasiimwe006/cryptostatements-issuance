@@ -1,0 +1,1559 @@
+{
+ "schema": "exchanges.schema.json",
+ "version": "1.0",
+ "generated": "2026-10-26T18:41:28.244Z",
+ "publisher": "CRYPTO STATEMENTS",
+ "rule": "A licence row exists only as read from the regulator’s own register (R30). Absence is stated only for registers read in full. No score, no ranking.",
+ "registers": {
+  "esma": {
+   "name": "ESMA interim MiCA register of crypto-asset service providers",
+   "regulator": "European Securities and Markets Authority, compiled from national competent authorities",
+   "jurisdiction": "European Union",
+   "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+   "read": "2026-10-26",
+   "read_in_full": true,
+   "scope": "The full CASP file (387 authorised providers, latest entry update 20 Oct 2026), downloaded from ESMA by the founder"
+  },
+  "vara": {
+   "name": "VARA public register",
+   "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+   "jurisdiction": "UAE · Dubai",
+   "url": "https://www.vara.ae/en/licenses-and-register/public-register/",
+   "read": "2026-10-26",
+   "read_in_full": true,
+   "scope": "The full list of 60 licensed VASPs, read on the date shown"
+  },
+  "sfc": {
+   "name": "SFC lists of virtual asset trading platforms",
+   "regulator": "Securities and Futures Commission (Hong Kong)",
+   "jurisdiction": "Hong Kong",
+   "url": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+   "read": "2026-10-26",
+   "read_in_full": true,
+   "scope": "Licensed platforms (13), applicants, closing-down platforms and returned or withdrawn applications; page updated 16 Oct 2026"
+  },
+  "nydfs": {
+   "name": "NYDFS regulated virtual currency entities",
+   "regulator": "New York State Department of Financial Services",
+   "jurisdiction": "United States · New York",
+   "url": "https://www.dfs.ny.gov/virtual_currency_businesses",
+   "read": "2026-10-26",
+   "read_in_full": true,
+   "scope": "The full table of 39 regulated entities (BitLicense, money transmitter licence, limited purpose trust charter)"
+  },
+  "jfsa": {
+   "name": "FSA register of crypto-asset exchange service providers",
+   "regulator": "Financial Services Agency (Japan)",
+   "jurisdiction": "Japan",
+   "url": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+   "read": "2026-10-26",
+   "read_in_full": true,
+   "scope": "The full list of 27 registered providers, as at 30 Sep 2026"
+  },
+  "fsra": {
+   "name": "ADGM FSRA public register",
+   "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+   "jurisdiction": "UAE · Abu Dhabi",
+   "url": "https://www.adgm.com/public-registers/fsra",
+   "read": "2026-10-26",
+   "read_in_full": false,
+   "scope": "Individual firm pages only: the register’s search is loaded by script and could not be read whole, so absence here proves nothing"
+  },
+  "dfsa": {
+   "name": "DFSA public register",
+   "regulator": "Dubai Financial Services Authority (DIFC)",
+   "jurisdiction": "UAE · DIFC",
+   "url": "https://www.dfsa.ae/public-register",
+   "read": "2026-10-23",
+   "read_in_full": false,
+   "scope": "Individual firm pages, read by the founder; the register was not read whole"
+  },
+  "cftc": {
+   "name": "CFTC registered clearing organizations",
+   "regulator": "Commodity Futures Trading Commission",
+   "jurisdiction": "United States",
+   "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations",
+   "read": "2026-09-29",
+   "read_in_full": false,
+   "scope": "Individual registration pages only"
+  }
+ },
+ "exchanges": [
+  {
+   "id": "binance",
+   "name": "Binance",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Nest Clearing and Custody Limited (formerly Binance (AD) Limited)",
+     "register": "fsra",
+     "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+     "place": "UAE · Abu Dhabi",
+     "state": "active",
+     "status_as_registered": "Recognised",
+     "reference": "Recognition order 0070",
+     "since": "2025-12-08",
+     "activities_as_registered": "Recognised Clearing House; custody and central securities depository",
+     "activities": [
+      "custody",
+      "clearing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited",
+     "read": "2026-10-26",
+     "record": "VERIFY-296"
+    },
+    {
+     "entity": "Nest Exchange Limited (formerly Nest Services Limited)",
+     "register": "fsra",
+     "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+     "place": "UAE · Abu Dhabi",
+     "state": "active",
+     "status_as_registered": "Recognised",
+     "reference": "Recognition order 0072",
+     "since": "2026-01-05",
+     "activities_as_registered": "Recognised Investment Exchange, operating a multilateral trading facility",
+     "activities": [
+      "platform"
+     ],
+     "assets_handled": null,
+     "source": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-services-limited",
+     "read": "2026-10-26",
+     "record": "VERIFY-296"
+    },
+    {
+     "entity": "Nest Trading Limited",
+     "register": "fsra",
+     "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+     "place": "UAE · Abu Dhabi",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "FSP 260000",
+     "since": "2026-01-05",
+     "activities_as_registered": "Broker-dealer; may not hold client money",
+     "activities": [
+      "broker"
+     ],
+     "assets_handled": null,
+     "source": "https://www.adgm.com/public-registers/fsra/firms/financial-firms/nest-trading-limited-260000",
+     "read": "2026-10-26",
+     "record": "VERIFY-296"
+    },
+    {
+     "entity": "Binance (AD) Limited",
+     "register": "fsra",
+     "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+     "place": "UAE · Abu Dhabi",
+     "state": "withdrawn",
+     "status_as_registered": "Withdrawn 2025-12-08",
+     "reference": "FSP 220058",
+     "since": "2022-11-15",
+     "activities_as_registered": "Providing custody of virtual assets; not permitted to deal with retail clients",
+     "activities": [
+      "custody"
+     ],
+     "assets_handled": null,
+     "source": "https://adgm.com/public-registers/fsra/fsf/binance-ad-limited",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Binance FZE",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/24/04/001 · CMA-VASP-1101010-0013",
+     "since": "2024-04-15",
+     "activities_as_registered": "Broker-Dealer; Management and Investment; Lending and Borrowing; Exchange (including VA derivatives trading)",
+     "activities": [
+      "platform",
+      "broker",
+      "deriv",
+      "lending",
+      "manage"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Binance Japan株式会社",
+     "register": "jfsa",
+     "regulator": "Financial Services Agency (Japan)",
+     "place": "Japan",
+     "state": "active",
+     "status_as_registered": "Registered",
+     "reference": "Kanto Finance Bureau No. 00031",
+     "since": "2022-10-14",
+     "activities_as_registered": "Crypto-asset exchange service provider",
+     "activities": [
+      "vasp"
+     ],
+     "assets_handled": {
+      "list": [
+       "BTC",
+       "ETH",
+       "XRP",
+       "BCH",
+       "LTC",
+       "ETC",
+       "ADA",
+       "DOT",
+       "BNB",
+       "BAT",
+       "ENJ",
+       "IOST",
+       "QTUM",
+       "XLM",
+       "XTZ",
+       "POL",
+       "SAND",
+       "DAI",
+       "ALGO",
+       "ASTR",
+       "ATOM",
+       "AVAX",
+       "AXS",
+       "CHZ",
+       "DOGE",
+       "JASMY",
+       "LINK",
+       "ONT",
+       "SHIB",
+       "SOL",
+       "TRX",
+       "ZIL",
+       "LSK",
+       "APE",
+       "RENDER",
+       "GALA",
+       "MANA",
+       "IMX",
+       "GRT",
+       "HBAR",
+       "KAIA",
+       "A",
+       "OP",
+       "ARB",
+       "NEAR",
+       "SUI",
+       "WBTC",
+       "FIL",
+       "MASK",
+       "CYBER",
+       "APT",
+       "THETA",
+       "NEO",
+       "GRAM",
+       "SEI",
+       "PEPE",
+       "IOTX",
+       "NEIRO",
+       "LPT",
+       "SKY",
+       "TRUMP",
+       "FET",
+       "TAO",
+       "MEME",
+       "TRB",
+       "GIGGLE"
+      ],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     },
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.binance.com/en/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "esma",
+    "sfc",
+    "nydfs"
+   ],
+   "stated_by_exchange": [],
+   "channels": [
+    {
+     "label": "Announcements",
+     "url": "https://www.binance.com/en/support/announcement"
+    },
+    {
+     "label": "Blog",
+     "url": "https://www.binance.com/en/blog"
+    },
+    {
+     "label": "@binance on X",
+     "url": "https://x.com/binance"
+    }
+   ],
+   "records": [
+    "VERIFY-039",
+    "VERIFY-035",
+    "VERIFY-045",
+    "VERIFY-021",
+    "VERIFY-215",
+    "VERIFY-216",
+    "VERIFY-296"
+   ]
+  },
+  {
+   "id": "coinbase",
+   "name": "Coinbase",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Coinbase Luxembourg S.A.",
+     "register": "esma",
+     "regulator": "Commission de Surveillance du Secteur Financier (CSSF)",
+     "place": "EU · Luxembourg",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 984500F14CA4571AAC11",
+     "since": "2025-06-20",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, placing, reception and transmission of orders, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Coinbase, Inc.",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2017-01",
+     "activities_as_registered": "Virtual currency and money transmitter licences",
+     "activities": [
+      "mt",
+      "vc"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Coinbase Custody Trust Company, LLC",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2018-10",
+     "activities_as_registered": "Limited purpose trust charter",
+     "activities": [
+      "trust"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Coinbase Clearing LLC",
+     "register": "cftc",
+     "regulator": "Commodity Futures Trading Commission",
+     "place": "United States",
+     "state": "active",
+     "status_as_registered": "Registered",
+     "reference": "Commission order",
+     "since": "2026-09-28",
+     "activities_as_registered": "Derivatives clearing organization",
+     "activities": [
+      "deriv",
+      "clearing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations/64361",
+     "read": "2026-09-29",
+     "record": "VERIFY-196"
+    },
+    {
+     "entity": "Coinbase株式会社",
+     "register": "jfsa",
+     "regulator": "Financial Services Agency (Japan)",
+     "place": "Japan",
+     "state": "active",
+     "status_as_registered": "Registered",
+     "reference": "Kanto Finance Bureau No. 00028",
+     "since": "2021-06-18",
+     "activities_as_registered": "Crypto-asset exchange service provider; the register lists no crypto-assets handled",
+     "activities": [
+      "vasp"
+     ],
+     "assets_handled": {
+      "list": [],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     },
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": {
+    "url": "https://www.sec.gov/Archives/edgar/data/0001679788/000167978826000088/coin-20260630.htm",
+    "form": "Form 10-Q",
+    "period_end": "2026-06-30",
+    "label": "quarterly report, unaudited",
+    "checked": "2026-10-26",
+    "note": "not a proof of reserves"
+   },
+   "proof_of_reserves": null,
+   "not_on": [
+    "vara",
+    "sfc"
+   ],
+   "stated_by_exchange": [],
+   "channels": [
+    {
+     "label": "Blog",
+     "url": "https://www.coinbase.com/blog"
+    },
+    {
+     "label": "Press",
+     "url": "https://www.coinbase.com/press"
+    },
+    {
+     "label": "Investor relations",
+     "url": "https://investor.coinbase.com/"
+    },
+    {
+     "label": "@coinbase on X",
+     "url": "https://x.com/coinbase"
+    },
+    {
+     "label": "SEC filings · CIK 1679788",
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001679788"
+    }
+   ],
+   "records": [
+    "VERIFY-196",
+    "VERIFY-232",
+    "VERIFY-052",
+    "VERIFY-051",
+    "VERIFY-049",
+    "VERIFY-028"
+   ]
+  },
+  {
+   "id": "bybit",
+   "name": "Bybit",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Bybit EU GmbH",
+     "register": "esma",
+     "regulator": "Austrian Financial Market Authority (FMA)",
+     "place": "EU · Austria",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 5299005V5GBSN2A4C303",
+     "since": "2025-05-28",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, placing, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "convert",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bybit Fintech FZE (Bybit)",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/26/10/003 · CMA-VASP-1000000-0006",
+     "since": "2026-10-20",
+     "activities_as_registered": "Exchange",
+     "activities": [
+      "platform"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": "VERIFY-294"
+    },
+    {
+     "entity": "Spark Fintech Limited (platform: Bybit)",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "withdrawn",
+     "status_as_registered": "Applicant, not licensed; an earlier application was withdrawn 2024-05-31",
+     "reference": null,
+     "since": "2025-06-06",
+     "activities_as_registered": "Application for a virtual asset trading platform licence",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.bybit.com/app/user/proof-of-reserve",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": [
+    "VERIFY-294",
+    "VERIFY-198"
+   ]
+  },
+  {
+   "id": "okx",
+   "name": "OKX",
+   "group": null,
+   "licences": [
+    {
+     "entity": "OKX Europe Limited",
+     "register": "esma",
+     "regulator": "Malta Financial Services Authority (MFSA)",
+     "place": "EU · Malta",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 54930069NLWEIGLHXU42",
+     "since": "2025-01-27",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, trading platform, exchange for funds, exchange for crypto-assets, order execution, placing, reception and transmission of orders, portfolio management, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "platform",
+      "convert",
+      "broker",
+      "manage",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "OKX Middle East Fintech FZE",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/23/12/003 · CMA-VASP-1001010-0008",
+     "since": "2024-09-17",
+     "activities_as_registered": "Lending and Borrowing; Management and Investment; Exchange (including VA derivatives trading); Broker-Dealer",
+     "activities": [
+      "platform",
+      "broker",
+      "deriv",
+      "lending",
+      "manage"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "OKX Hong Kong FinTech Company Limited",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "withdrawn",
+     "status_as_registered": "Withdrawn 2024-05-24",
+     "reference": null,
+     "since": "2023-11-16",
+     "activities_as_registered": "Application for a virtual asset trading platform licence",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.okx.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [
+    {
+     "text": "OKX Inc. lists money transmitter or equivalent licences in 45 US states and territories, NMLS ID 1767779, and FinCEN registration as a money services business. Not yet checked against NMLS Consumer Access.",
+     "source": "https://www.okx.com/help/us-licenses",
+     "read": "2026-10-26",
+     "as_of": "page updated 15 Sep 2026"
+    }
+   ],
+   "channels": [
+    {
+     "label": "US licences page",
+     "url": "https://www.okx.com/help/us-licenses"
+    },
+    {
+     "label": "@okx on X",
+     "url": "https://x.com/okx"
+    }
+   ],
+   "records": []
+  },
+  {
+   "id": "kraken",
+   "name": "Kraken (Payward)",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Payward Global Solutions Limited",
+     "register": "esma",
+     "regulator": "Central Bank of Ireland (CBI)",
+     "place": "EU · Ireland",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 9845003D98SCC2851458",
+     "since": "2025-06-25",
+     "activities_as_registered": "MiCA crypto-asset service provider: trading platform; passported to 2 states",
+     "activities": [
+      "platform"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Payward Europe Solutions Limited",
+     "register": "esma",
+     "regulator": "Central Bank of Ireland (CBI)",
+     "place": "EU · Ireland",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 254900641D8KNHUZYX24",
+     "since": "2025-06-25",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, placing, reception and transmission of orders, portfolio management, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "manage",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Payward FZCO",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/26/10/002 · CMA-VASP-0101000-0067",
+     "since": "2026-10-06",
+     "activities_as_registered": "Management and Investment; Broker-Dealer",
+     "activities": [
+      "broker",
+      "manage"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": "VERIFY-231"
+    },
+    {
+     "entity": "Payward MENA Holdings Limited",
+     "register": "fsra",
+     "regulator": "Financial Services Regulatory Authority (Abu Dhabi Global Market)",
+     "place": "UAE · Abu Dhabi",
+     "state": "withdrawn",
+     "status_as_registered": "Withdrawn 2025-12-19; the register lists a final notice of 17 Dec 2025 imposing a financial penalty for anti-money-laundering contraventions",
+     "reference": "FSP 190008",
+     "since": "2019-12-12",
+     "activities_as_registered": "Operating a multilateral trading facility; providing custody (virtual assets)",
+     "activities": [
+      "custody",
+      "platform"
+     ],
+     "assets_handled": null,
+     "source": "https://adgm.com/public-registers/fsra/fsf/payward-mena-holdings-limited",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.kraken.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [
+    {
+     "text": "Payward says it holds VASP registrations from the British Virgin Islands Financial Services Commission, and “more than 100 licenses and registrations” worldwide, without listing them.",
+     "source": "https://www.payward.com/press-release/payward-bvi-vasp-registrations",
+     "read": "2026-10-26",
+     "as_of": "release of 23 Jun 2026"
+    }
+   ],
+   "channels": [
+    {
+     "label": "@Payward on X",
+     "url": "https://x.com/Payward"
+    }
+   ],
+   "records": [
+    "VERIFY-231"
+   ]
+  },
+  {
+   "id": "robinhood",
+   "name": "Robinhood",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Robinhood Europe UAB",
+     "register": "esma",
+     "regulator": "Bank of Lithuania (LSC)",
+     "place": "EU · Lithuania",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 254900GTP4UXQO1UMI36",
+     "since": "2025-05-29",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, order execution, reception and transmission of orders, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Robinhood MENA Limited",
+     "register": "dfsa",
+     "regulator": "Dubai Financial Services Authority (DIFC)",
+     "place": "UAE · DIFC",
+     "state": "active",
+     "status_as_registered": "Authorised (read by the founder)",
+     "reference": "F012264",
+     "since": "2026-07-20",
+     "activities_as_registered": "Authorised Firm",
+     "activities": [],
+     "assets_handled": null,
+     "source": "https://www.dfsa.ae/public-register",
+     "read": "2026-10-23",
+     "record": "VERIFY-295"
+    },
+    {
+     "entity": "Robinhood Crypto, LLC",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2019-01",
+     "activities_as_registered": "Virtual currency and money transmitter licences",
+     "activities": [
+      "mt",
+      "vc"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": {
+    "url": "https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm",
+    "form": "Form 10-Q",
+    "period_end": "2026-06-30",
+    "label": "quarterly report, unaudited",
+    "checked": "2026-10-26",
+    "note": "not a proof of reserves"
+   },
+   "proof_of_reserves": null,
+   "not_on": [
+    "vara",
+    "sfc",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [
+    {
+     "label": "Investor press releases",
+     "url": "https://investors.robinhood.com/press-releases"
+    },
+    {
+     "label": "SEC filings · CIK 1783879",
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001783879"
+    }
+   ],
+   "records": [
+    "VERIFY-295"
+   ]
+  },
+  {
+   "id": "cryptocom",
+   "name": "Crypto.com",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Foris DAX MT Limited",
+     "register": "esma",
+     "regulator": "Malta Financial Services Authority (MFSA)",
+     "place": "EU · Malta",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 2549005CVR5HH70FDO07",
+     "since": "2025-01-27",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, reception and transmission of orders, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Foris DAX Middle East FZE (Crypto.com)",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/23/10/003 · CMA-VASP-1101010-0012",
+     "since": "2024-04-03",
+     "activities_as_registered": "Broker-Dealer; Management and Investment; Lending and Borrowing; Exchange (including VA derivatives trading)",
+     "activities": [
+      "platform",
+      "broker",
+      "deriv",
+      "lending",
+      "manage"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/foris-dax-middle-east-fze-cryptocom/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Foris DAX HK Limited (platform: Crypto.com)",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "applicant",
+     "status_as_registered": "Deemed-to-be-licensed applicant; not licensed by the SFC",
+     "reference": null,
+     "since": "2024-02-09",
+     "activities_as_registered": "Application for a virtual asset trading platform licence",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://crypto.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": "official page; the founder found its latest report out of date (26 Oct 2026)",
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "bullish",
+   "name": "Bullish",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Bullish Europe GmbH",
+     "register": "esma",
+     "regulator": "Federal Financial Supervisory Authority (BaFin)",
+     "place": "EU · Germany",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 2549008CBASK5Q680X12",
+     "since": "2025-09-04",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bullish HK Markets Limited",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "active",
+     "status_as_registered": "Licensed",
+     "reference": "CE BUQ956",
+     "since": "2025-02-18",
+     "activities_as_registered": "Licensed virtual asset trading platform",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bullish US Operations LLC",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2025-09",
+     "activities_as_registered": "Virtual currency and money transmitter licences",
+     "activities": [
+      "mt",
+      "vc"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": {
+    "url": "https://www.sec.gov/Archives/edgar/data/0001872195/000143774926027475/ex_963171.htm",
+    "form": "Form 6-K, exhibit 99.2",
+    "period_end": "2026-06-30",
+    "label": "interim financial statements under IFRS, unaudited",
+    "checked": "2026-10-26",
+    "note": "not a proof of reserves"
+   },
+   "proof_of_reserves": null,
+   "not_on": [
+    "vara",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "hashkey",
+   "name": "HashKey",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Hash Blockchain Limited (HashKey Exchange)",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "active",
+     "status_as_registered": "Licensed",
+     "reference": "CE BPL992",
+     "since": "2022-11-09",
+     "activities_as_registered": "Licensed virtual asset trading platform",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Hashkey MENA FZE (HashKey)",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/25/03/002 · CMA-VASP-1100000-0029",
+     "since": "2025-04-14",
+     "activities_as_registered": "Broker-Dealer; Exchange (including exchange-traded derivatives)",
+     "activities": [
+      "platform",
+      "broker",
+      "deriv"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "HashKey Japan株式会社",
+     "register": "jfsa",
+     "regulator": "Financial Services Agency (Japan)",
+     "place": "Japan",
+     "state": "active",
+     "status_as_registered": "Registered",
+     "reference": "Kanto Finance Bureau No. 00027",
+     "since": "2021-06-18",
+     "activities_as_registered": "Crypto-asset exchange service provider (BTC and ETH)",
+     "activities": [
+      "vasp"
+     ],
+     "assets_handled": {
+      "list": [
+       "BTC",
+       "ETH"
+      ],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     },
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "esma",
+    "nydfs"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "gate",
+   "name": "Gate",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Gate Technology Limited",
+     "register": "esma",
+     "regulator": "Malta Financial Services Authority (MFSA)",
+     "place": "EU · Malta",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 984500D6A0F945BB5A15",
+     "since": "2025-09-29",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, trading platform, exchange for funds, exchange for crypto-assets, order execution, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "platform",
+      "convert",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Gate Technology FZE",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/25/04/007 · CMA-VASP-1000000-0033",
+     "since": "2025-04-25",
+     "activities_as_registered": "Exchange",
+     "activities": [
+      "platform"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Gate Japan株式会社",
+     "register": "jfsa",
+     "regulator": "Financial Services Agency (Japan)",
+     "place": "Japan",
+     "state": "active",
+     "status_as_registered": "Registered",
+     "reference": "Kanto Finance Bureau No. 00018",
+     "since": "2019-11-27",
+     "activities_as_registered": "Crypto-asset exchange service provider; the register lists no crypto-assets handled",
+     "activities": [
+      "vasp"
+     ],
+     "assets_handled": {
+      "list": [],
+      "as_of": "2026-09-30",
+      "note": "as listed by the regulator"
+     },
+     "source": "https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Gate Digital Limited (platform: Gate.HK)",
+     "register": "sfc",
+     "regulator": "Securities and Futures Commission (Hong Kong)",
+     "place": "Hong Kong",
+     "state": "withdrawn",
+     "status_as_registered": "Withdrawn 2024-05-22",
+     "reference": null,
+     "since": "2024-02-28",
+     "activities_as_registered": "Application for a virtual asset trading platform licence",
+     "activities": [
+      "platform",
+      "vasp"
+     ],
+     "assets_handled": null,
+     "source": "https://sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.gate.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "nydfs"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "bitpanda",
+   "name": "Bitpanda",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Bitpanda GmbH",
+     "register": "esma",
+     "regulator": "Austrian Financial Market Authority (FMA)",
+     "place": "EU · Austria",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 5493007WZ7IFULIL8G21",
+     "since": "2025-04-09",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, placing, reception and transmission of orders, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bitpanda Asset Management GmbH",
+     "register": "esma",
+     "regulator": "Federal Financial Supervisory Authority (BaFin)",
+     "place": "EU · Germany",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 9845005X9B7N610K0093",
+     "since": "2025-01-24",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "convert",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "BP23 CA Limited",
+     "register": "esma",
+     "regulator": "Malta Financial Services Authority (MFSA)",
+     "place": "EU · Malta",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 984500DEID7B03J77118",
+     "since": "2025-01-27",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, reception and transmission of orders, transfer services; passported to 1 state",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bitpanda Broker MENA FZCO",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/25/03/001 · CMA-VASP-0100000-0027",
+     "since": "2025-03-19",
+     "activities_as_registered": "Broker-Dealer",
+     "activities": [
+      "broker"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bitpanda Custody MENA FZCO",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/25/04/006 · CMA-VASP-0010000-0035",
+     "since": "2025-04-25",
+     "activities_as_registered": "Custody (including custodial staking)",
+     "activities": [
+      "custody"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "deribit",
+   "name": "Deribit",
+   "group": {
+    "parent": "Coinbase",
+    "source": "https://insights.deribit.com/exchange-updates/deribit-joins-coinbase-unlocking-the-future-of-global-crypto-derivatives/",
+    "source_name": "Deribit Insights",
+    "date": "2025-08-13"
+   },
+   "licences": [
+    {
+     "entity": "Deribit FZE",
+     "register": "vara",
+     "regulator": "Virtual Assets Regulatory Authority (Dubai)",
+     "place": "UAE · Dubai",
+     "state": "active",
+     "status_as_registered": "Active",
+     "reference": "VL/23/12/002 · CMA-VASP-1000000-0017",
+     "since": "2024-11-01",
+     "activities_as_registered": "Exchange (including exchange-traded derivatives); Broker-Dealer",
+     "activities": [
+      "platform",
+      "broker",
+      "deriv"
+     ],
+     "assets_handled": null,
+     "source": "https://www.vara.ae/en/licenses-and-register/public-register/",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "esma",
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "group": null,
+   "licences": [
+    {
+     "entity": "Gemini Intergalactic EU Ltd",
+     "register": "esma",
+     "regulator": "Malta Financial Services Authority (MFSA)",
+     "place": "EU · Malta",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 2138002QAMX8PPKSO715",
+     "since": "2025-08-21",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, order execution, placing, reception and transmission of orders, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "convert",
+      "broker",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Gemini Trust Company, LLC",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2015-10",
+     "activities_as_registered": "Limited purpose trust charter",
+     "activities": [
+      "trust"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "vara",
+    "sfc",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "bitstamp",
+   "name": "Bitstamp",
+   "group": {
+    "parent": "Robinhood",
+    "source": "https://robinhood.com/us/en/newsroom/robinhood-completes-acquisition-of-bitstamp/",
+    "source_name": "Robinhood newsroom",
+    "date": "2025-06-02"
+   },
+   "licences": [
+    {
+     "entity": "Bitstamp Europe S.A.",
+     "register": "esma",
+     "regulator": "Commission de Surveillance du Secteur Financier (CSSF)",
+     "place": "EU · Luxembourg",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 549300XIBGTJ0PLIEO72",
+     "since": "2025-05-15",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, trading platform, exchange for funds, exchange for crypto-assets, order execution, reception and transmission of orders, transfer services; passported to 30 states",
+     "activities": [
+      "custody",
+      "platform",
+      "convert",
+      "broker",
+      "transfer"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    },
+    {
+     "entity": "Bitstamp USA, Inc.",
+     "register": "nydfs",
+     "regulator": "New York State Department of Financial Services",
+     "place": "United States · New York",
+     "state": "active",
+     "status_as_registered": "Regulated",
+     "reference": null,
+     "since": "2019-04",
+     "activities_as_registered": "Virtual currency licence",
+     "activities": [
+      "vc"
+     ],
+     "assets_handled": null,
+     "source": "https://www.dfs.ny.gov/virtual_currency_businesses",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "vara",
+    "sfc",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "bitget",
+   "name": "Bitget",
+   "group": null,
+   "licences": [],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.bitget.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "esma",
+    "vara",
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "kucoin",
+   "name": "KuCoin",
+   "group": null,
+   "licences": [
+    {
+     "entity": "KuCoin EU Exchange GmbH",
+     "register": "esma",
+     "regulator": "Austrian Financial Market Authority (FMA)",
+     "place": "EU · Austria",
+     "state": "active",
+     "status_as_registered": "Authorised",
+     "reference": "LEI 529900B4G0EGK7Z9KT45",
+     "since": "2025-11-27",
+     "activities_as_registered": "MiCA crypto-asset service provider: custody, exchange for funds, exchange for crypto-assets, placing, transfer services; passported to 29 states",
+     "activities": [
+      "custody",
+      "convert",
+      "transfer",
+      "placing"
+     ],
+     "assets_handled": null,
+     "source": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+     "read": "2026-10-26",
+     "record": null
+    }
+   ],
+   "financial_statements": null,
+   "proof_of_reserves": {
+    "url": "https://www.kucoin.com/proof-of-reserves",
+    "page_confirmed": "2026-10-26",
+    "note": null,
+    "label": "stated by the exchange, not verified by CS"
+   },
+   "not_on": [
+    "vara",
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  },
+  {
+   "id": "mexc",
+   "name": "MEXC",
+   "group": null,
+   "licences": [],
+   "financial_statements": null,
+   "proof_of_reserves": null,
+   "not_on": [
+    "esma",
+    "vara",
+    "sfc",
+    "nydfs",
+    "jfsa"
+   ],
+   "stated_by_exchange": [],
+   "channels": [],
+   "records": []
+  }
+ ]
+}
