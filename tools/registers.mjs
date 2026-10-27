@@ -31,16 +31,21 @@ const host = u => { try { return new URL(u).host; } catch (e) { return '?'; } };
 const FIX = process.env.REGISTERS_FIXTURES || '';
 /* Plain browser headers: several regulators refuse requests that announce themselves as a script. The job reads
    public pages only, once a night, with a pause between requests. */
+const PLAIN = { 'user-agent': 'cryptostatements-registers/1.0 (+https://github.com/aasiimwe006/cryptostatements-issuance)' };
 const HDRS = { 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36 cryptostatements-registers/1.1', 'accept': 'text/html,application/xhtml+xml,application/xml,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,*/*;q=0.8', 'accept-language': 'en-GB,en;q=0.9' };
 async function get(url) {
   if (FIX) { const f = FIX + '/' + encodeURIComponent(url); if (!fs.existsSync(f)) throw new Error('no fixture for ' + host(url)); return { status: 200, text: fs.readFileSync(f, 'utf8') }; }
-  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
+  let r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
+  /* r232: some registers refuse the browser-style request and accept the plain one (NYDFS on 27 Oct), others the
+     reverse, so a refusal is retried once with the other set. */
+  if (r.status === 403) { await sleep(1500); r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: PLAIN }); }
   if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
   return { status: r.status, text: await r.text() };
 }
 async function getBuf(url) {
   if (FIX) { const f = FIX + '/' + encodeURIComponent(url); if (!fs.existsSync(f)) throw new Error('no fixture for ' + host(url)); return fs.readFileSync(f); }
-  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
+  let r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
+  if (r.status === 403) { await sleep(1500); r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: PLAIN }); }
   if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
   return Buffer.from(await r.arrayBuffer());
 }
