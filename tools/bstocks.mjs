@@ -23,7 +23,11 @@ const PUBLIC = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain
 /* AP44 (r211): the keyed node from the BSC_RPCS secret first, then the public nodes, so a keyed-node
    outage falls back instead of failing. The key sits in the address path; only host names are logged
    or stored. */
-const KEYED = (process.env.BSC_RPCS || '').split(',').map(x => x.trim()).filter(Boolean);
+/* r231: the secret may hold the full endpoint (https://bsc-mainnet.nodereal.io/v1/<key>) or the NodeReal API key
+   alone; a bare key is turned into the NodeReal BSC mainnet endpoint. */
+const KEYED = (process.env.BSC_RPCS || '').split(',').map(x => x.trim()).filter(Boolean)
+  .map(x => /^https?:\/\//i.test(x) ? x : (/^[A-Za-z0-9_-]{16,}$/.test(x) ? 'https://bsc-mainnet.nodereal.io/v1/' + x : x));
+const safe = m => KEYED.reduce((t, k) => t.split(k).join((() => { try { return new URL(k).host; } catch (e) { return '[keyed node]'; } })()), String(m));
 const NODES = [...new Set(KEYED.concat(PUBLIC))];
 const isPublic = url => PUBLIC.includes(url);
 const ZERO = '0x' + '0'.repeat(64), TRANSFER = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
@@ -139,7 +143,7 @@ async function main() {
         const ds = today0 - d * 86400, dd = new Date(ds * 1000).toISOString().slice(0, 10);
         if (doc.flows.some(f => f.date === dd)) continue;
         try { const f = await dayFlows(url, toks, ds, latest); doc.flows.push(f); console.log('flows', dd, Object.keys(f.rows).length, 'tickers active', 'check', f.check.matched + '/' + f.check.of, f.check.note || ''); }
-        catch (e) { console.error('   flows', dd, 'not read:', e.message); if (isPublic(url)) break; }
+        catch (e) { console.error('   flows', dd, 'not read:', safe(e.message)); if (isPublic(url)) break; }
       }
       doc.flows.sort((x, y) => x.date.localeCompare(y.date));
       /* the Friday snapshot, if not yet taken and still recent enough to rebuild from logs (3 days) */
@@ -151,7 +155,7 @@ async function main() {
         console.log('snapshot', asOf, 'block', b);
       }
       break;
-    } catch (e) { last = e; console.error('  ', e.message); }
+    } catch (e) { last = e; console.error('  ', isPublic(url) ? '' : 'keyed node ' + (()=>{ try { return new URL(url).host; } catch (x) { return '(address not valid)'; } })() + ' failed:', safe(e.message)); }
   }
   if (last && !doc.readings.some(r => r.date === date)) throw last;
   /* reconcile every disclosure that has a snapshot at the same second and no reconciliation yet */
@@ -166,4 +170,5 @@ async function main() {
   doc.updated = now.toISOString();
   fs.writeFileSync(P, JSON.stringify(doc, null, 1) + '\n');
 }
-main().catch(e => { console.error('bstocks failed:', e.message); process.exit(1); });
+console.log('nodes:', NODES.map(u => { try { return new URL(u).host; } catch (e) { return '(address not valid)'; } }).join(', '));
+main().catch(e => { console.error('bstocks failed:', safe(e.message)); process.exit(1); });
