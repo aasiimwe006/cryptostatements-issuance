@@ -1,169 +1,2044 @@
-/* bstocks.mjs — CRYPTO STATEMENTS · bStocks: certificates disclosed vs tokens on chain (r185, AP39)
-
-   bStocks are certificates issued by BTech Holdings Ltd (ADGM), recorded on BNB Chain, each giving a
-   1:1 entitlement to a US share held by the custodian (Alpaca Securities LLC) in the issuer's
-   segregated account. Every week BTech Services files the number of certificates outstanding per
-   ticker on ADGM's public-disclosure page, as of Friday 23:59:59 UTC.
-
-   This script, run daily by the workflow:
-     1. reads totalSupply() on BNB Chain for every token whose address the issuer group has published
-        (bstocks.json → tokens; an address is used only with its source announcement);
-     2. on the run after each Friday, works out the supply AT Friday 23:59:59 UTC exactly: it finds the
-        last block at or before that second and subtracts the mints and burns (Transfer events from or
-        to the zero address) made since, so no archive node is needed;
-     3. compares that snapshot with the disclosure for the same as-of time, when the disclosure has been
-        added to bstocks.json, ticker by ticker.
-   What it checks: the issuer's two numbers against each other (certificates disclosed vs tokens on
-   chain). What it cannot check: the shares at the custodian. No periodic independent attestation of
-   the custodied shares is published; the output says so.
-   No dependencies (Node 20). Nodes: secret BSC_RPCS first, then public BNB Chain nodes.          */
-import fs from 'node:fs';
-const P = 'bstocks.json';
-const PUBLIC = ['https://bsc-rpc.publicnode.com', 'https://bsc-dataseed.bnbchain.org', 'https://bsc-dataseed1.defibit.io'];
-/* AP44 (r211): the keyed node from the BSC_RPCS secret first, then the public nodes, so a keyed-node
-   outage falls back instead of failing. The key sits in the address path; only host names are logged
-   or stored. */
-const KEYED = (process.env.BSC_RPCS || '').split(',').map(x => x.trim()).filter(Boolean);
-const NODES = [...new Set(KEYED.concat(PUBLIC))];
-const isPublic = url => PUBLIC.includes(url);
-const ZERO = '0x' + '0'.repeat(64), TRANSFER = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-async function call(url, method, params) {
-  const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }), signal: AbortSignal.timeout(25000) });
-  if (!r.ok) throw new Error(new URL(url).host + ' HTTP ' + r.status);
-  const j = await r.json(); if (j.error) throw new Error(new URL(url).host + ' ' + j.error.message); return j.result;
-}
-const scale = (raw, dec) => { const v = BigInt(raw), d = 10n ** BigInt(dec); return Number(v / d) + Number(v % d) / Number(d); };
-const hex = n => '0x' + n.toString(16);
-async function blockTime(url, n) { const b = await call(url, 'eth_getBlockByNumber', [hex(n), false]); return parseInt(b.timestamp, 16); }
-/* the last block whose timestamp is at or before t (seconds) */
-async function blockAtOrBefore(url, t, latest) {
-  let hi = latest, lo = Math.max(0, latest - 400000);
-  while (await blockTime(url, lo) > t) { hi = lo; lo = Math.max(0, lo - 400000); if (lo === 0) break; }
-  while (hi - lo > 1) { const mid = Math.floor((lo + hi) / 2); if (await blockTime(url, mid) <= t) lo = mid; else hi = mid; }
-  return lo;
-}
-/* net mint (mints minus burns), in raw units, in blocks (from, to] */
-async function netMint(url, contract, from, to) {
-  let net = 0n;
-  for (let a = from + 1; a <= to; a += 2000) {
-    const b = Math.min(to, a + 1999);
-    for (const topics of [[TRANSFER, ZERO], [TRANSFER, null, ZERO]]) {
-      const logs = await call(url, 'eth_getLogs', [{ address: contract, fromBlock: hex(a), toBlock: hex(b), topics }]);
-      for (const l of logs) { const v = BigInt(l.data); net += topics[1] === ZERO ? v : -v; }
-      await sleep(150);
+{
+ "about": "bStocks: certificates issued by BTech Holdings Ltd (ADGM), recorded on BNB Chain, each a 1:1 entitlement to a US share held by Alpaca Securities LLC in the issuer’s segregated custody account. disclosures = the issuer’s weekly filing of certificates outstanding per ticker (ADGM public disclosures, as of Friday 23:59:59 UTC); readings = totalSupply() on BNB Chain each day for tokens whose address the issuer group has published; snapshots = supply rebuilt at each Friday 23:59:59 UTC; reconciliations = disclosed vs on chain at the same second. The shares at the custodian are not checked: no periodic independent attestation of them is published. Primary figures only; never aggregator data.",
+ "issuer": "BTech Holdings Ltd (ADGM registration 36283), wholly owned by Binance Holdings",
+ "custodian": "Alpaca Securities LLC",
+ "chain": "BNB Smart Chain",
+ "sources": {
+  "prospectus_example": "https://www.adgm.com/globalassets/market-disclosure/content/prospectus/btech-holdings-prospectus----29-june---microsoft-bstocks_06_30_2026_08-44-42.pdf",
+  "disclosure_list": "https://www.adgm.com/financial-services-regulatory-authority/listing-authority/public-disclosures",
+  "proof_of_collateral": "https://www.binance.com/en/proof-of-collateral/bstocks",
+  "proof_of_collateral_reading": "The Proof of Collateral page lists each bStocks token with backing at 100%. Confirmed by the founder on 23 Oct 2026 that it names no third-party independent verifier: it is the issuer group’s own statement, not an attestation."
+ },
+ "tokens": {
+  "AMDB": {
+   "isin": "AE000A4AVCE0",
+   "contract": "0x75fd4cf6f8392e41e70391d60c90c0d5211603a1",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "CRCLB": {
+   "isin": "AE000A4AU3B0",
+   "contract": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "EWYB": {
+   "isin": "AE000A4AVCD2",
+   "contract": "0xbe82f76637dba2c114c41df856c2c51e522e2cb8",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "INTCB": {
+   "isin": "AE000A4AU3D6",
+   "contract": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "MSTRB": {
+   "isin": "AE000A4AU3A2",
+   "contract": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "MUB": {
+   "isin": "AE000A4AVAY2",
+   "contract": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "NVDAB": {
+   "isin": "AE000A4AVAZ9",
+   "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "SNDKB": {
+   "isin": "AE000A4AVAX4",
+   "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "SPCXB": {
+   "isin": "AE000A4AVAW6",
+   "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+   "source": "https://www.binance.com/en/support/announcement/detail/191cb96109f24c5c85362631a55a45d3",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "TSLAB": {
+   "isin": "AE000A4AU295",
+   "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "MSFTB": {
+   "isin": "AE000A4AVCW2",
+   "contract": null,
+   "source": null
+  },
+  "QQQB": {
+   "isin": "AE000A4AVFT1",
+   "contract": null,
+   "source": null
+  },
+  "METAB": {
+   "isin": "AE000A4AVFU9",
+   "contract": null,
+   "source": null
+  },
+  "LITEB": {
+   "isin": "AE000A4AVFV7",
+   "contract": null,
+   "source": null
+  },
+  "PLTRB": {
+   "isin": "AE000A4AVFW5",
+   "contract": null,
+   "source": null
+  },
+  "GOOGLB": {
+   "isin": "AE000A4AVFX3",
+   "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "QCOMB": {
+   "isin": "AE000A4AVFZ8",
+   "contract": "0x5f7a56e877b9130608bf8be962621011182fefe1",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "COINB": {
+   "isin": "AE000A4AVF19",
+   "contract": "0x585bde7c54abb5ccd7791f923d6c2187635f3952",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "SPYB": {
+   "isin": "AE000A4AU3E4",
+   "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "WDCB": {
+   "isin": "AE000A4AVMH2",
+   "contract": "0xebe29695f8047c13d36e7a790ca8c1b239ffad1c",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "GLWB": {
+   "isin": "AE000A4AVMD1",
+   "contract": "0x740e075cbbea22a082b9d6679e65e82767875b6a",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "NBISB": {
+   "isin": "AE000A4AVMG4",
+   "contract": "0xe256bc2a4f5297f8ba6f043f180a46300ecbcbb1",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "SOXLB": {
+   "isin": "AE000A4AVMJ8",
+   "contract": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "DRAMB": {
+   "isin": "AE000A4AVME9",
+   "contract": "0x93862d63fd9fd488b1328e9b47717d75e994a84b",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "CBRSB": {
+   "isin": "AE000A4AVMF6",
+   "contract": "0xe81c6bb0266cd68b4f17278531dd03ea1f12da4e",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
+  },
+  "SKHYB": {
+   "isin": "AE000A4AVMT7",
+   "contract": null,
+   "source": null
+  },
+  "ARMB": {
+   "isin": "AE000A4AVMM2",
+   "contract": null,
+   "source": null
+  },
+  "AAOIB": {
+   "isin": "AE000A4AVMN0",
+   "contract": null,
+   "source": null
+  },
+  "IBMB": {
+   "isin": "AE000A4AVMP5",
+   "contract": null,
+   "source": null
+  },
+  "RKLBB": {
+   "isin": "AE000A4AVMQ3",
+   "contract": null,
+   "source": null
+  },
+  "NOKB": {
+   "isin": "AE000A4AVMR1",
+   "contract": null,
+   "source": null
+  },
+  "TSMB": {
+   "isin": "AE000A4AVF43",
+   "contract": null,
+   "source": null
+  },
+  "BABAB": {
+   "isin": "AE000A4AVF68",
+   "contract": null,
+   "source": null
+  },
+  "AVGOB": {
+   "isin": "AE000A4AVF84",
+   "contract": null,
+   "source": null
+  },
+  "MRVLB": {
+   "isin": "AE000A4AVFY1",
+   "contract": null,
+   "source": null
+  },
+  "HOODB": {
+   "isin": "AE000A4AU3C8",
+   "contract": null,
+   "source": null
+  },
+  "KORUB": {
+   "isin": "AE000A4AV1J6",
+   "contract": null,
+   "source": null
+  },
+  "AXTIB": {
+   "isin": "AE000A4AVRH1",
+   "contract": null,
+   "source": null
+  },
+  "CRWVB": {
+   "isin": "AE000A4AVGA9",
+   "contract": null,
+   "source": null
+  },
+  "MUUB": {
+   "isin": "AE000A4AV1L2",
+   "contract": null,
+   "source": null
+  },
+  "MVLLB": {
+   "isin": "AE000A4AV1M0",
+   "contract": null,
+   "source": null
+  },
+  "SNXXB": {
+   "isin": "AE000A4AV1N8",
+   "contract": null,
+   "source": null
+  },
+  "INTWB": {
+   "isin": "AE000A4AV1P3",
+   "contract": null,
+   "source": null
+  },
+  "TQQQB": {
+   "isin": "AE000A4AV1Q1",
+   "contract": null,
+   "source": null
+  },
+  "QNTB": {
+   "isin": "AE000A4AVRP4",
+   "contract": null,
+   "source": null
+  },
+  "ORCLB": {
+   "isin": "AE000A4AVF35",
+   "contract": null,
+   "source": null
+  },
+  "AAPLB": {
+   "isin": "AE000A4AVF76",
+   "contract": null,
+   "source": null
+  },
+  "BEB": {
+   "isin": "AE000A4AVXD8",
+   "contract": null,
+   "source": null
+  },
+  "AMZNB": {
+   "isin": "AE000A4AVF50",
+   "contract": null,
+   "source": null
+  },
+  "SOXSB": {
+   "isin": "AE000A4AV541",
+   "contract": null,
+   "source": null
+  },
+  "DELLB": {
+   "isin": "AE000A4AVRQ2",
+   "contract": null,
+   "source": null
+  },
+  "FLNCB": {
+   "isin": "AE000A4AVSY4",
+   "contract": null,
+   "source": null
+  },
+  "AMATB": {
+   "isin": "AE000A4AVRR0",
+   "contract": null,
+   "source": null
+  },
+  "PYPLB": {
+   "isin": "AE000A4AV558",
+   "contract": null,
+   "source": null
+  },
+  "GSB": {
+   "isin": "AE000A4AV566",
+   "contract": null,
+   "source": null
+  },
+  "SMHB": {
+   "isin": "AE000A4AV574",
+   "contract": null,
+   "source": null
+  },
+  "BMNRB": {
+   "isin": "AE000A4AV533",
+   "contract": null,
+   "source": null
+  },
+  "SMCIB": {
+   "isin": "AE000A4AVRU4",
+   "contract": null,
+   "source": null
+  },
+  "IRENB": {
+   "isin": "AE000A4AVR23",
+   "contract": null,
+   "source": null
+  },
+  "ASMLB": {
+   "isin": "AE000A4AVRS8",
+   "contract": null,
+   "source": null
+  },
+  "NFLXB": {
+   "isin": "AE000A4AVSA4",
+   "contract": null,
+   "source": null
+  },
+  "ASTSB": {
+   "isin": "AE000A4AVRL3",
+   "contract": null,
+   "source": null
+  },
+  "COHRB": {
+   "isin": "AE000A4AVSX6",
+   "contract": null,
+   "source": null
+  },
+  "CRDOB": {
+   "isin": "AE000A4AVRK5",
+   "contract": null,
+   "source": null
+  },
+  "USARB": {
+   "isin": "AE000A4AVF92",
+   "contract": null,
+   "source": null
+  },
+  "ALABB": {
+   "isin": "AE000A4AVRW0",
+   "contract": null,
+   "source": null
+  },
+  "GMEB": {
+   "isin": "AE000A4AVSM9",
+   "contract": null,
+   "source": null
+  },
+  "DJTB": {
+   "isin": "AE000A4AWFH4",
+   "contract": "0xf2ec508422174ee564de98187db9359d318afb6b",
+   "source": "https://www.binance.com/en/support/announcement/detail/653dce6a74234b999d7a189c0fa49a80",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
+  },
+  "MRNAB": {
+   "isin": "AE000A4AWH99",
+   "contract": null,
+   "source": null
+  },
+  "STXB": {
+   "isin": "AE000A4AV582",
+   "contract": null,
+   "source": null
+  },
+  "SQQQB": {
+   "isin": "AE000A4AWH81",
+   "contract": null,
+   "source": null
+  },
+  "CRWDB": {
+   "isin": "AE000A4AVSB2",
+   "contract": null,
+   "source": null
+  },
+  "HIMSB": {
+   "isin": "AE000A4AVRX8",
+   "contract": null,
+   "source": null
+  },
+  "CRMB": {
+   "isin": "AE000A4AV590",
+   "contract": null,
+   "source": null
+  },
+  "GPROB": {
+   "isin": "AE000A4AWLQ3",
+   "contract": null,
+   "source": null
+  },
+  "RDDTB": {
+   "isin": "AE000A4AWPE0",
+   "contract": null,
+   "source": null
+  },
+  "CYPHB": {
+   "isin": "AE000A4AWNV9",
+   "contract": null,
+   "source": null
+  },
+  "AMCB": {
+   "isin": "AE000A4AWPJ9",
+   "contract": null,
+   "source": null
+  },
+  "AGPUB": {
+   "isin": "AE000A4AWPB6",
+   "contract": null,
+   "source": null
+  },
+  "PDDB": {
+   "isin": "AE000A4AXJC5",
+   "contract": null,
+   "source": null
+  },
+  "FWDIB": {
+   "isin": "AE000A4AWNW7",
+   "contract": null,
+   "source": null
+  },
+  "SHAZB": {
+   "isin": "AE000A4AWNU1",
+   "contract": null,
+   "source": null
+  },
+  "WENB": {
+   "isin": "AE000A4AWA05",
+   "contract": null,
+   "source": null
+  },
+  "ADBEB": {
+   "isin": "AE000A4AVR64",
+   "contract": null,
+   "source": null
+  },
+  "HPEB": {
+   "isin": "AE000A4AVR72",
+   "contract": null,
+   "source": null
+  },
+  "ZMB": {
+   "isin": "AE000A4AVSF3",
+   "contract": null,
+   "source": null
+  },
+  "SECZB": {
+   "isin": "AE000A4AXPZ3",
+   "contract": null,
+   "source": null
+  },
+  "USDEB": {
+   "isin": "AE000A4AXP07",
+   "contract": null,
+   "source": null
+  },
+  "JPMB": {
+   "isin": "AE000A4AVRB4",
+   "contract": null,
+   "source": null
+  },
+  "LLYB": {
+   "isin": "AE000A4AVR98",
+   "contract": null,
+   "source": null
+  },
+  "MDBB": {
+   "isin": "AE000A4AXWH7",
+   "contract": null,
+   "source": null
+  },
+  "BBB": {
+   "isin": "AE000A4AXWJ3",
+   "contract": null,
+   "source": null
+  },
+  "PENGB": {
+   "isin": "AE000A4AXWK1",
+   "contract": null,
+   "source": null
+  },
+  "UVXYB": {
+   "isin": "AE000A4AWN34",
+   "contract": null,
+   "source": null
+  }
+ },
+ "disclosures": [
+  {
+   "asOf": "2026-08-28T23:59:59Z",
+   "published": "2026-08-31",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-28-aug-2026_08_30_2026_19-03-17.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 6466.1,
+     "rie_trading": 5433.18
+    },
+    "CRCLB": {
+     "outstanding": 978092.1,
+     "rie_trading": 900043.24
+    },
+    "EWYB": {
+     "outstanding": 53063.17,
+     "rie_trading": 51814.2
+    },
+    "INTCB": {
+     "outstanding": 147556.14,
+     "rie_trading": 134722.68
+    },
+    "MSTRB": {
+     "outstanding": 362363.2,
+     "rie_trading": 346037.11
+    },
+    "MUB": {
+     "outstanding": 42920.97,
+     "rie_trading": 41239.16
+    },
+    "NVDAB": {
+     "outstanding": 56591.27,
+     "rie_trading": 29884.66
+    },
+    "SNDKB": {
+     "outstanding": 31586.64,
+     "rie_trading": 30563.57
+    },
+    "SPCXB": {
+     "outstanding": 486994.81,
+     "rie_trading": 397740.18
+    },
+    "TSLAB": {
+     "outstanding": 44902.16,
+     "rie_trading": 38128.77
+    },
+    "MSFTB": {
+     "outstanding": 5959.88,
+     "rie_trading": 4031.12
+    },
+    "QQQB": {
+     "outstanding": 41671.53,
+     "rie_trading": 22714.37
+    },
+    "METAB": {
+     "outstanding": 15164.07,
+     "rie_trading": 14094.95
+    },
+    "LITEB": {
+     "outstanding": 3682.87,
+     "rie_trading": 3249.28
+    },
+    "PLTRB": {
+     "outstanding": 6575.01,
+     "rie_trading": 5384.36
+    },
+    "GOOGLB": {
+     "outstanding": 82381.06,
+     "rie_trading": 73786.24
+    },
+    "QCOMB": {
+     "outstanding": 14353.36,
+     "rie_trading": 12973.43
+    },
+    "COINB": {
+     "outstanding": 82569.81,
+     "rie_trading": 80993.93
+    },
+    "SPYB": {
+     "outstanding": 26556.16,
+     "rie_trading": 17820.33
+    },
+    "WDCB": {
+     "outstanding": 4613.15,
+     "rie_trading": 4383.67
+    },
+    "GLWB": {
+     "outstanding": 8621.32,
+     "rie_trading": 7717.14
+    },
+    "NBISB": {
+     "outstanding": 38848.64,
+     "rie_trading": 37945.86
+    },
+    "SOXLB": {
+     "outstanding": 90131.86,
+     "rie_trading": 86840.99
+    },
+    "DRAMB": {
+     "outstanding": 319817.57,
+     "rie_trading": 299812.48
+    },
+    "CBRSB": {
+     "outstanding": 11800.55,
+     "rie_trading": 10721.01
+    },
+    "SKHYB": {
+     "outstanding": 207038.93,
+     "rie_trading": 147110.32
+    },
+    "ARMB": {
+     "outstanding": 6073.05,
+     "rie_trading": 5637.85
+    },
+    "AAOIB": {
+     "outstanding": 44095.12,
+     "rie_trading": 42182.92
+    },
+    "IBMB": {
+     "outstanding": 3748.98,
+     "rie_trading": 3255.47
+    },
+    "RKLBB": {
+     "outstanding": 20836.76,
+     "rie_trading": 19497.8
+    },
+    "NOKB": {
+     "outstanding": 177916.21,
+     "rie_trading": 153915.35
+    },
+    "TSMB": {
+     "outstanding": 9143.57,
+     "rie_trading": 7327.47
+    },
+    "BABAB": {
+     "outstanding": 26252.67,
+     "rie_trading": 19526.8
+    },
+    "AVGOB": {
+     "outstanding": 10281.24,
+     "rie_trading": 9370.44
+    },
+    "MRVLB": {
+     "outstanding": 36659.2,
+     "rie_trading": 33626.75
+    },
+    "HOODB": {
+     "outstanding": 14021.01,
+     "rie_trading": 10413.34
+    },
+    "KORUB": {
+     "outstanding": 128928.75,
+     "rie_trading": 121905.5
+    },
+    "AXTIB": {
+     "outstanding": 54715.53,
+     "rie_trading": 49694.29
+    },
+    "CRWVB": {
+     "outstanding": 11474.76,
+     "rie_trading": 10101.16
+    },
+    "MUUB": {
+     "outstanding": 53629.26,
+     "rie_trading": 44896.39
+    },
+    "MVLLB": {
+     "outstanding": 52134.08,
+     "rie_trading": 46344.29
+    },
+    "SNXXB": {
+     "outstanding": 337407.3,
+     "rie_trading": 315713.19
+    },
+    "INTWB": {
+     "outstanding": 43454.48,
+     "rie_trading": 38994.64
+    },
+    "TQQQB": {
+     "outstanding": 26558.02,
+     "rie_trading": 22661
+    },
+    "QNTB": {
+     "outstanding": 11443.8,
+     "rie_trading": 9936.26
+    },
+    "ORCLB": {
+     "outstanding": 14502.82,
+     "rie_trading": 12554.99
+    },
+    "AAPLB": {
+     "outstanding": 19145.83,
+     "rie_trading": 16373.28
+    },
+    "BEB": {
+     "outstanding": 12495.51,
+     "rie_trading": 11566.77
+    },
+    "AMZNB": {
+     "outstanding": 5758.57,
+     "rie_trading": 4876.89
+    },
+    "SOXSB": {
+     "outstanding": 20030.74,
+     "rie_trading": 12668.31
+    },
+    "DELLB": {
+     "outstanding": 1789.48,
+     "rie_trading": 1328.54
+    },
+    "FLNCB": {
+     "outstanding": 60459.41,
+     "rie_trading": 46663.04
+    },
+    "AMATB": {
+     "outstanding": 3786.71,
+     "rie_trading": 3102.74
+    },
+    "PYPLB": {
+     "outstanding": 13311.99,
+     "rie_trading": 9709.5
+    },
+    "GSB": {
+     "outstanding": 547.39,
+     "rie_trading": 356.98
+    },
+    "SMHB": {
+     "outstanding": 1790.33,
+     "rie_trading": 1439.27
+    },
+    "BMNRB": {
+     "outstanding": 180718.13,
+     "rie_trading": 173920.32
+    },
+    "SMCIB": {
+     "outstanding": 25307.47,
+     "rie_trading": 21785.38
+    },
+    "IRENB": {
+     "outstanding": 57435.24,
+     "rie_trading": 54703.4
+    },
+    "ASMLB": {
+     "outstanding": 1975.06,
+     "rie_trading": 1850.06
+    },
+    "NFLXB": {
+     "outstanding": 10803.08,
+     "rie_trading": 6477.08
+    },
+    "ASTSB": {
+     "outstanding": 17592.92,
+     "rie_trading": 15890.91
+    },
+    "COHRB": {
+     "outstanding": 12987.63,
+     "rie_trading": 12459.53
+    },
+    "CRDOB": {
+     "outstanding": 3057.43,
+     "rie_trading": 2572.89
+    },
+    "USARB": {
+     "outstanding": 48021.37,
+     "rie_trading": 41632.78
+    },
+    "ALABB": {
+     "outstanding": 2835.78,
+     "rie_trading": 2512
+    },
+    "GMEB": {
+     "outstanding": 292352.84,
+     "rie_trading": 195533.56
+    },
+    "DJTB": {
+     "outstanding": 382970,
+     "rie_trading": 295677.4
     }
+   }
+  },
+  {
+   "asOf": "2026-10-02T23:59:59Z",
+   "published": "2026-10-05",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-2-oct-2026_10_04_2026_17-54-15.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 7099.23,
+     "rie_trading": 5933.82
+    },
+    "CRCLB": {
+     "outstanding": 1661676.98,
+     "rie_trading": 1532241.38
+    },
+    "EWYB": {
+     "outstanding": 40329.39,
+     "rie_trading": 39018.51
+    },
+    "INTCB": {
+     "outstanding": 177240.52,
+     "rie_trading": 164710.54
+    },
+    "MSTRB": {
+     "outstanding": 560354.5,
+     "rie_trading": 495763.92
+    },
+    "MUB": {
+     "outstanding": 40859.19,
+     "rie_trading": 39168.07
+    },
+    "NVDAB": {
+     "outstanding": 178723.92,
+     "rie_trading": 138923.93
+    },
+    "SNDKB": {
+     "outstanding": 16180.93,
+     "rie_trading": 14615.04
+    },
+    "SPCXB": {
+     "outstanding": 532118,
+     "rie_trading": 436054.23
+    },
+    "TSLAB": {
+     "outstanding": 67332.75,
+     "rie_trading": 57222.34
+    },
+    "MSFTB": {
+     "outstanding": 5978.63,
+     "rie_trading": 3996.98
+    },
+    "QQQB": {
+     "outstanding": 78487.5,
+     "rie_trading": 47209.74
+    },
+    "METAB": {
+     "outstanding": 5238.35,
+     "rie_trading": 4170.71
+    },
+    "LITEB": {
+     "outstanding": 3984.84,
+     "rie_trading": 3373.81
+    },
+    "PLTRB": {
+     "outstanding": 10140.63,
+     "rie_trading": 8020.74
+    },
+    "GOOGLB": {
+     "outstanding": 85634.19,
+     "rie_trading": 71952.31
+    },
+    "QCOMB": {
+     "outstanding": 16621.58,
+     "rie_trading": 13572.03
+    },
+    "COINB": {
+     "outstanding": 89013.9,
+     "rie_trading": 83086.65
+    },
+    "SPYB": {
+     "outstanding": 19711.18,
+     "rie_trading": 13183.7
+    },
+    "WDCB": {
+     "outstanding": 6948.06,
+     "rie_trading": 6726.34
+    },
+    "GLWB": {
+     "outstanding": 10414.8,
+     "rie_trading": 8974.23
+    },
+    "NBISB": {
+     "outstanding": 25185.96,
+     "rie_trading": 24139.69
+    },
+    "SOXLB": {
+     "outstanding": 29207.43,
+     "rie_trading": 25464.02
+    },
+    "DRAMB": {
+     "outstanding": 371534.48,
+     "rie_trading": 345952.39
+    },
+    "CBRSB": {
+     "outstanding": 18799.03,
+     "rie_trading": 17383.91
+    },
+    "SKHYB": {
+     "outstanding": 66985.26,
+     "rie_trading": 59876.78
+    },
+    "ARMB": {
+     "outstanding": 7280.93,
+     "rie_trading": 6824.71
+    },
+    "AAOIB": {
+     "outstanding": 42502.95,
+     "rie_trading": 41241.85
+    },
+    "IBMB": {
+     "outstanding": 3665.05,
+     "rie_trading": 2855.47
+    },
+    "RKLBB": {
+     "outstanding": 35046.71,
+     "rie_trading": 32403.08
+    },
+    "NOKB": {
+     "outstanding": 203236.61,
+     "rie_trading": 179479.69
+    },
+    "TSMB": {
+     "outstanding": 9402.74,
+     "rie_trading": 6921.37
+    },
+    "BABAB": {
+     "outstanding": 81896.49,
+     "rie_trading": 52302.83
+    },
+    "AVGOB": {
+     "outstanding": 40604.63,
+     "rie_trading": 30957
+    },
+    "MRVLB": {
+     "outstanding": 30893.53,
+     "rie_trading": 28611.13
+    },
+    "HOODB": {
+     "outstanding": 47068.22,
+     "rie_trading": 40800.86
+    },
+    "KORUB": {
+     "outstanding": 51848.17,
+     "rie_trading": 43654.96
+    },
+    "AXTIB": {
+     "outstanding": 49137.28,
+     "rie_trading": 47094.47
+    },
+    "CRWVB": {
+     "outstanding": 16903.48,
+     "rie_trading": 13483.93
+    },
+    "MUUB": {
+     "outstanding": 46438.69,
+     "rie_trading": 39361.3
+    },
+    "MVLLB": {
+     "outstanding": 22096.85,
+     "rie_trading": 17800.24
+    },
+    "SNXXB": {
+     "outstanding": 211794.67,
+     "rie_trading": 189628.08
+    },
+    "INTWB": {
+     "outstanding": 58556.92,
+     "rie_trading": 54099.46
+    },
+    "TQQQB": {
+     "outstanding": 33971.77,
+     "rie_trading": 29530.93
+    },
+    "QNTB": {
+     "outstanding": 16191.65,
+     "rie_trading": 13670.41
+    },
+    "ORCLB": {
+     "outstanding": 25788.21,
+     "rie_trading": 16881.48
+    },
+    "AAPLB": {
+     "outstanding": 17514.02,
+     "rie_trading": 9436.92
+    },
+    "BEB": {
+     "outstanding": 9428.36,
+     "rie_trading": 8699.38
+    },
+    "AMZNB": {
+     "outstanding": 14795.91,
+     "rie_trading": 12671.94
+    },
+    "SOXSB": {
+     "outstanding": 140085.7,
+     "rie_trading": 129300.46
+    },
+    "DELLB": {
+     "outstanding": 1873.32,
+     "rie_trading": 1633.8
+    },
+    "FLNCB": {
+     "outstanding": 133538.61,
+     "rie_trading": 89959.74
+    },
+    "AMATB": {
+     "outstanding": 5086.65,
+     "rie_trading": 4384.47
+    },
+    "PYPLB": {
+     "outstanding": 12802.2,
+     "rie_trading": 10984.19
+    },
+    "GSB": {
+     "outstanding": 817.34,
+     "rie_trading": 721.71
+    },
+    "SMHB": {
+     "outstanding": 2228.95,
+     "rie_trading": 2033.11
+    },
+    "BMNRB": {
+     "outstanding": 373437.25,
+     "rie_trading": 351781.14
+    },
+    "SMCIB": {
+     "outstanding": 19483.83,
+     "rie_trading": 15924.13
+    },
+    "IRENB": {
+     "outstanding": 33830.91,
+     "rie_trading": 31194.16
+    },
+    "ASMLB": {
+     "outstanding": 2117.64,
+     "rie_trading": 2051.18
+    },
+    "NFLXB": {
+     "outstanding": 32086.71,
+     "rie_trading": 25152.86
+    },
+    "ASTSB": {
+     "outstanding": 23056.98,
+     "rie_trading": 21295.39
+    },
+    "COHRB": {
+     "outstanding": 10080.61,
+     "rie_trading": 9560.36
+    },
+    "CRDOB": {
+     "outstanding": 4544.78,
+     "rie_trading": 3469.89
+    },
+    "USARB": {
+     "outstanding": 69056.19,
+     "rie_trading": 62831.34
+    },
+    "ALABB": {
+     "outstanding": 1871.13,
+     "rie_trading": 1457.8
+    },
+    "GMEB": {
+     "outstanding": 273592.35,
+     "rie_trading": 190965.59
+    },
+    "DJTB": {
+     "outstanding": 187373.04,
+     "rie_trading": 100305.23
+    },
+    "MRNAB": {
+     "outstanding": 8752.3,
+     "rie_trading": 6500.15
+    },
+    "STXB": {
+     "outstanding": 654.45,
+     "rie_trading": 564.2
+    },
+    "SQQQB": {
+     "outstanding": 21967.41,
+     "rie_trading": 15117.61
+    },
+    "CRWDB": {
+     "outstanding": 2083.36,
+     "rie_trading": 1822.62
+    },
+    "HIMSB": {
+     "outstanding": 25861.1,
+     "rie_trading": 15684.66
+    },
+    "CRMB": {
+     "outstanding": 2085.38,
+     "rie_trading": 1816.07
+    },
+    "GPROB": {
+     "outstanding": 468499.67,
+     "rie_trading": 358399.74
+    },
+    "RDDTB": {
+     "outstanding": 4554.59,
+     "rie_trading": 2956.53
+    },
+    "CYPHB": {
+     "outstanding": 286213.66,
+     "rie_trading": 235714.06
+    },
+    "AMCB": {
+     "outstanding": 245311.96,
+     "rie_trading": 136669.95
+    },
+    "AGPUB": {
+     "outstanding": 189559.24,
+     "rie_trading": 158318.33
+    },
+    "PDDB": {
+     "outstanding": 26144.02,
+     "rie_trading": 21207.91
+    },
+    "FWDIB": {
+     "outstanding": 50715.03,
+     "rie_trading": 38855.47
+    },
+    "SHAZB": {
+     "outstanding": 7520.25,
+     "rie_trading": 6068.55
+    },
+    "WENB": {
+     "outstanding": 72007.22,
+     "rie_trading": 51008.7
+    },
+    "ADBEB": {
+     "outstanding": 4410.44,
+     "rie_trading": 4087.4
+    },
+    "HPEB": {
+     "outstanding": 7674.11,
+     "rie_trading": 6083.48
+    },
+    "ZMB": {
+     "outstanding": 4040.91,
+     "rie_trading": 3103.09
+    }
+   }
+  },
+  {
+   "asOf": "2026-10-09T23:59:59Z",
+   "published": "2026-10-12",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-9-oct-2026_10_10_2026_19-31-55.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 7130.53,
+     "rie_trading": 6021.91
+    },
+    "CRCLB": {
+     "outstanding": 1780321.67,
+     "rie_trading": 1635060.49
+    },
+    "EWYB": {
+     "outstanding": 41299.67,
+     "rie_trading": 39740.18
+    },
+    "INTCB": {
+     "outstanding": 221794.05,
+     "rie_trading": 210685.4
+    },
+    "MSTRB": {
+     "outstanding": 646746.82,
+     "rie_trading": 577866.82
+    },
+    "MUB": {
+     "outstanding": 41643.92,
+     "rie_trading": 40191.5
+    },
+    "NVDAB": {
+     "outstanding": 201231.05,
+     "rie_trading": 150270.23
+    },
+    "SNDKB": {
+     "outstanding": 18833.65,
+     "rie_trading": 17522.32
+    },
+    "SPCXB": {
+     "outstanding": 531204.37,
+     "rie_trading": 435698.68
+    },
+    "TSLAB": {
+     "outstanding": 57822.71,
+     "rie_trading": 48709.8
+    },
+    "MSFTB": {
+     "outstanding": 7192.95,
+     "rie_trading": 5245.49
+    },
+    "QQQB": {
+     "outstanding": 86599.2,
+     "rie_trading": 44936.96
+    },
+    "METAB": {
+     "outstanding": 6474.08,
+     "rie_trading": 5577.37
+    },
+    "LITEB": {
+     "outstanding": 3658.42,
+     "rie_trading": 3089.66
+    },
+    "PLTRB": {
+     "outstanding": 10542.06,
+     "rie_trading": 8530.96
+    },
+    "GOOGLB": {
+     "outstanding": 98330.18,
+     "rie_trading": 84804.65
+    },
+    "QCOMB": {
+     "outstanding": 16581.06,
+     "rie_trading": 13600.25
+    },
+    "COINB": {
+     "outstanding": 108518.18,
+     "rie_trading": 102199.03
+    },
+    "SPYB": {
+     "outstanding": 20967.87,
+     "rie_trading": 14569.83
+    },
+    "WDCB": {
+     "outstanding": 7811.34,
+     "rie_trading": 7590.37
+    },
+    "GLWB": {
+     "outstanding": 11891.38,
+     "rie_trading": 10452.63
+    },
+    "NBISB": {
+     "outstanding": 27349.69,
+     "rie_trading": 26273.5
+    },
+    "SOXLB": {
+     "outstanding": 47763.05,
+     "rie_trading": 44402.13
+    },
+    "DRAMB": {
+     "outstanding": 380183.18,
+     "rie_trading": 366051.05
+    },
+    "CBRSB": {
+     "outstanding": 32006.52,
+     "rie_trading": 30414.51
+    },
+    "SKHYB": {
+     "outstanding": 98114.78,
+     "rie_trading": 87176.42
+    },
+    "ARMB": {
+     "outstanding": 7205.56,
+     "rie_trading": 6750.61
+    },
+    "AAOIB": {
+     "outstanding": 48624.61,
+     "rie_trading": 47090.35
+    },
+    "IBMB": {
+     "outstanding": 4012.34,
+     "rie_trading": 3236.52
+    },
+    "RKLBB": {
+     "outstanding": 51382.18,
+     "rie_trading": 48766.42
+    },
+    "NOKB": {
+     "outstanding": 215453.3,
+     "rie_trading": 192327.03
+    },
+    "TSMB": {
+     "outstanding": 12459.89,
+     "rie_trading": 10000.09
+    },
+    "BABAB": {
+     "outstanding": 85321.71,
+     "rie_trading": 58287.7
+    },
+    "AVGOB": {
+     "outstanding": 42100.67,
+     "rie_trading": 32213.96
+    },
+    "MRVLB": {
+     "outstanding": 29001.77,
+     "rie_trading": 26979.11
+    },
+    "HOODB": {
+     "outstanding": 51278.25,
+     "rie_trading": 44982.25
+    },
+    "KORUB": {
+     "outstanding": 274670.09,
+     "rie_trading": 266542.25
+    },
+    "AXTIB": {
+     "outstanding": 51565.05,
+     "rie_trading": 49612
+    },
+    "CRWVB": {
+     "outstanding": 22011.65,
+     "rie_trading": 18592.89
+    },
+    "MUUB": {
+     "outstanding": 47047.63,
+     "rie_trading": 39975.29
+    },
+    "MVLLB": {
+     "outstanding": 23843.58,
+     "rie_trading": 19550.37
+    },
+    "SNXXB": {
+     "outstanding": 332060.41,
+     "rie_trading": 308703.03
+    },
+    "INTWB": {
+     "outstanding": 89673.07,
+     "rie_trading": 85116.08
+    },
+    "TQQQB": {
+     "outstanding": 77488.59,
+     "rie_trading": 73023.92
+    },
+    "QNTB": {
+     "outstanding": 18308.63,
+     "rie_trading": 15572
+    },
+    "ORCLB": {
+     "outstanding": 28178.22,
+     "rie_trading": 19228.96
+    },
+    "AAPLB": {
+     "outstanding": 15510.23,
+     "rie_trading": 8047.91
+    },
+    "BEB": {
+     "outstanding": 9431.53,
+     "rie_trading": 8713.41
+    },
+    "AMZNB": {
+     "outstanding": 17161.58,
+     "rie_trading": 14612.32
+    },
+    "SOXSB": {
+     "outstanding": 163334.28,
+     "rie_trading": 153313.49
+    },
+    "DELLB": {
+     "outstanding": 1890.5,
+     "rie_trading": 1649.86
+    },
+    "FLNCB": {
+     "outstanding": 143045.03,
+     "rie_trading": 101964.69
+    },
+    "AMATB": {
+     "outstanding": 4818.3,
+     "rie_trading": 4115.9
+    },
+    "PYPLB": {
+     "outstanding": 13063.42,
+     "rie_trading": 11244.8
+    },
+    "GSB": {
+     "outstanding": 964.52,
+     "rie_trading": 868.92
+    },
+    "SMHB": {
+     "outstanding": 2274.14,
+     "rie_trading": 2077.87
+    },
+    "BMNRB": {
+     "outstanding": 400106.54,
+     "rie_trading": 377723.77
+    },
+    "SMCIB": {
+     "outstanding": 18561.7,
+     "rie_trading": 15003.03
+    },
+    "IRENB": {
+     "outstanding": 72571.57,
+     "rie_trading": 69326.89
+    },
+    "ASMLB": {
+     "outstanding": 533.8,
+     "rie_trading": 467.34
+    },
+    "NFLXB": {
+     "outstanding": 32841.96,
+     "rie_trading": 26301.64
+    },
+    "ASTSB": {
+     "outstanding": 29600.68,
+     "rie_trading": 27859.77
+    },
+    "COHRB": {
+     "outstanding": 10451.82,
+     "rie_trading": 9618.94
+    },
+    "CRDOB": {
+     "outstanding": 3397.35,
+     "rie_trading": 2324.87
+    },
+    "USARB": {
+     "outstanding": 86153.54,
+     "rie_trading": 77532.7
+    },
+    "ALABB": {
+     "outstanding": 1957.99,
+     "rie_trading": 1544.9
+    },
+    "GMEB": {
+     "outstanding": 271041.75,
+     "rie_trading": 189934.43
+    },
+    "DJTB": {
+     "outstanding": 194242.76,
+     "rie_trading": 100343.64
+    },
+    "MRNAB": {
+     "outstanding": 9468.58,
+     "rie_trading": 7041.66
+    },
+    "STXB": {
+     "outstanding": 1183.5,
+     "rie_trading": 1090.82
+    },
+    "SQQQB": {
+     "outstanding": 32367.68,
+     "rie_trading": 25699.12
+    },
+    "CRWDB": {
+     "outstanding": 2046.4,
+     "rie_trading": 1785.77
+    },
+    "HIMSB": {
+     "outstanding": 25689.6,
+     "rie_trading": 15611.23
+    },
+    "CRMB": {
+     "outstanding": 2305.6,
+     "rie_trading": 2036.13
+    },
+    "GPROB": {
+     "outstanding": 724039.26,
+     "rie_trading": 613886.54
+    },
+    "RDDTB": {
+     "outstanding": 3828.75,
+     "rie_trading": 2268.43
+    },
+    "CYPHB": {
+     "outstanding": 291569.53,
+     "rie_trading": 240896.86
+    },
+    "AMCB": {
+     "outstanding": 229622.46,
+     "rie_trading": 124981.62
+    },
+    "AGPUB": {
+     "outstanding": 282263.71,
+     "rie_trading": 258051.55
+    },
+    "PDDB": {
+     "outstanding": 30199.25,
+     "rie_trading": 24927.87
+    },
+    "FWDIB": {
+     "outstanding": 73897.53,
+     "rie_trading": 61893.21
+    },
+    "SHAZB": {
+     "outstanding": 14208.9,
+     "rie_trading": 12737.6
+    },
+    "WENB": {
+     "outstanding": 75634.88,
+     "rie_trading": 54107.66
+    },
+    "ADBEB": {
+     "outstanding": 4555.49,
+     "rie_trading": 4191.35
+    },
+    "HPEB": {
+     "outstanding": 6547.61,
+     "rie_trading": 4960.3
+    },
+    "ZMB": {
+     "outstanding": 4281.16,
+     "rie_trading": 3343.88
+    },
+    "SECZB": {
+     "outstanding": 53257.47,
+     "rie_trading": 44719.13
+    },
+    "USDEB": {
+     "outstanding": 37729.18,
+     "rie_trading": 30318.49
+    },
+    "JPMB": {
+     "outstanding": 2182.79,
+     "rie_trading": 1823.54
+    },
+    "LLYB": {
+     "outstanding": 1047.1,
+     "rie_trading": 825.46
+    }
+   },
+   "note": "The as-of line was read without a clock time; BTech’s filings are as of 23:59:59 UTC"
+  },
+  {
+   "asOf": "2026-10-16T23:59:59Z",
+   "published": "2026-10-19",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-16-oct-2026_10_18_2026_22-20-17.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 15565.86,
+     "rie_trading": 14457.23
+    },
+    "CRCLB": {
+     "outstanding": 1797887.8,
+     "rie_trading": 1639012.26
+    },
+    "EWYB": {
+     "outstanding": 66117.8,
+     "rie_trading": 63255.42
+    },
+    "INTCB": {
+     "outstanding": 553626.18,
+     "rie_trading": 541719.6
+    },
+    "MSTRB": {
+     "outstanding": 690686.05,
+     "rie_trading": 622596.88
+    },
+    "MUB": {
+     "outstanding": 61206.33,
+     "rie_trading": 59247.24
+    },
+    "NVDAB": {
+     "outstanding": 200518.77,
+     "rie_trading": 137333.48
+    },
+    "SNDKB": {
+     "outstanding": 50601.41,
+     "rie_trading": 49261.16
+    },
+    "SPCXB": {
+     "outstanding": 948344.65,
+     "rie_trading": 847577.14
+    },
+    "TSLAB": {
+     "outstanding": 90106.39,
+     "rie_trading": 76114.34
+    },
+    "MSFTB": {
+     "outstanding": 7826.55,
+     "rie_trading": 6011.12
+    },
+    "QQQB": {
+     "outstanding": 131876.28,
+     "rie_trading": 85200.05
+    },
+    "METAB": {
+     "outstanding": 6824.77,
+     "rie_trading": 5907.8
+    },
+    "LITEB": {
+     "outstanding": 4343.62,
+     "rie_trading": 3776.56
+    },
+    "PLTRB": {
+     "outstanding": 12118.92,
+     "rie_trading": 10231.73
+    },
+    "GOOGLB": {
+     "outstanding": 102406.29,
+     "rie_trading": 89116.43
+    },
+    "QCOMB": {
+     "outstanding": 15430.11,
+     "rie_trading": 12449.58
+    },
+    "COINB": {
+     "outstanding": 114746.96,
+     "rie_trading": 108523.61
+    },
+    "SPYB": {
+     "outstanding": 22687.97,
+     "rie_trading": 15885.08
+    },
+    "WDCB": {
+     "outstanding": 8170.89,
+     "rie_trading": 7821.97
+    },
+    "GLWB": {
+     "outstanding": 13916.45,
+     "rie_trading": 12496.54
+    },
+    "NBISB": {
+     "outstanding": 37694.65,
+     "rie_trading": 36573.43
+    },
+    "SOXLB": {
+     "outstanding": 426865.04,
+     "rie_trading": 412901.21
+    },
+    "DRAMB": {
+     "outstanding": 394089.53,
+     "rie_trading": 378970.55
+    },
+    "CBRSB": {
+     "outstanding": 36140.03,
+     "rie_trading": 34564.28
+    },
+    "SKHYB": {
+     "outstanding": 150043.27,
+     "rie_trading": 133788.82
+    },
+    "ARMB": {
+     "outstanding": 8607.6,
+     "rie_trading": 8152.88
+    },
+    "AAOIB": {
+     "outstanding": 95846.1,
+     "rie_trading": 94451.75
+    },
+    "IBMB": {
+     "outstanding": 3820.53,
+     "rie_trading": 3038.91
+    },
+    "RKLBB": {
+     "outstanding": 169153.36,
+     "rie_trading": 164624.25
+    },
+    "NOKB": {
+     "outstanding": 224312.39,
+     "rie_trading": 200408
+    },
+    "TSMB": {
+     "outstanding": 17756.82,
+     "rie_trading": 15224.98
+    },
+    "BABAB": {
+     "outstanding": 76885.56,
+     "rie_trading": 51489.64
+    },
+    "AVGOB": {
+     "outstanding": 55961.54,
+     "rie_trading": 46616.13
+    },
+    "MRVLB": {
+     "outstanding": 33344.61,
+     "rie_trading": 31240.21
+    },
+    "HOODB": {
+     "outstanding": 56143.38,
+     "rie_trading": 49542.34
+    },
+    "KORUB": {
+     "outstanding": 1832382.65,
+     "rie_trading": 1816671.07
+    },
+    "AXTIB": {
+     "outstanding": 57438.23,
+     "rie_trading": 55511.97
+    },
+    "CRWVB": {
+     "outstanding": 24078.48,
+     "rie_trading": 19866.58
+    },
+    "MUUB": {
+     "outstanding": 569996.52,
+     "rie_trading": 562932.27
+    },
+    "MVLLB": {
+     "outstanding": 26733.14,
+     "rie_trading": 22008.86
+    },
+    "SNXXB": {
+     "outstanding": 602964.21,
+     "rie_trading": 577746.39
+    },
+    "INTWB": {
+     "outstanding": 160121.74,
+     "rie_trading": 155570.12
+    },
+    "TQQQB": {
+     "outstanding": 315538.09,
+     "rie_trading": 309117.13
+    },
+    "QNTB": {
+     "outstanding": 18739.16,
+     "rie_trading": 16121.67
+    },
+    "ORCLB": {
+     "outstanding": 29163.12,
+     "rie_trading": 20251.31
+    },
+    "AAPLB": {
+     "outstanding": 16039.32,
+     "rie_trading": 8984.05
+    },
+    "BEB": {
+     "outstanding": 9308.72,
+     "rie_trading": 8594.19
+    },
+    "AMZNB": {
+     "outstanding": 16379.03,
+     "rie_trading": 14217
+    },
+    "SOXSB": {
+     "outstanding": 31421.15,
+     "rie_trading": 23090.83
+    },
+    "DELLB": {
+     "outstanding": 2411.33,
+     "rie_trading": 2170.75
+    },
+    "FLNCB": {
+     "outstanding": 147863.41,
+     "rie_trading": 105046.78
+    },
+    "AMATB": {
+     "outstanding": 22746.6,
+     "rie_trading": 22047.3
+    },
+    "PYPLB": {
+     "outstanding": 15443.88,
+     "rie_trading": 13625.57
+    },
+    "GSB": {
+     "outstanding": 966.1,
+     "rie_trading": 870.58
+    },
+    "SMHB": {
+     "outstanding": 2573.1,
+     "rie_trading": 2386.96
+    },
+    "BMNRB": {
+     "outstanding": 448229.98,
+     "rie_trading": 422805.54
+    },
+    "SMCIB": {
+     "outstanding": 19200.99,
+     "rie_trading": 15666.96
+    },
+    "IRENB": {
+     "outstanding": 125669.02,
+     "rie_trading": 121942.83
+    },
+    "ASMLB": {
+     "outstanding": 628.46,
+     "rie_trading": 561.99
+    },
+    "NFLXB": {
+     "outstanding": 27295.73,
+     "rie_trading": 20783.84
+    },
+    "ASTSB": {
+     "outstanding": 42386.58,
+     "rie_trading": 40438.73
+    },
+    "COHRB": {
+     "outstanding": 39739.28,
+     "rie_trading": 39122.16
+    },
+    "CRDOB": {
+     "outstanding": 3675.94,
+     "rie_trading": 2601.12
+    },
+    "USARB": {
+     "outstanding": 103416.46,
+     "rie_trading": 85993.41
+    },
+    "ALABB": {
+     "outstanding": 2254.27,
+     "rie_trading": 1840.18
+    },
+    "GMEB": {
+     "outstanding": 271143.72,
+     "rie_trading": 190238.03
+    },
+    "DJTB": {
+     "outstanding": 201169.47,
+     "rie_trading": 102885.35
+    },
+    "MRNAB": {
+     "outstanding": 10153.09,
+     "rie_trading": 7881.29
+    },
+    "STXB": {
+     "outstanding": 1082.16,
+     "rie_trading": 967.16
+    },
+    "SQQQB": {
+     "outstanding": 17599.98,
+     "rie_trading": 10999.54
+    },
+    "CRWDB": {
+     "outstanding": 2205.02,
+     "rie_trading": 1944.56
+    },
+    "HIMSB": {
+     "outstanding": 25114.12,
+     "rie_trading": 15460.31
+    },
+    "CRMB": {
+     "outstanding": 2300.97,
+     "rie_trading": 2031.68
+    },
+    "GPROB": {
+     "outstanding": 453965,
+     "rie_trading": 343597.8
+    },
+    "RDDTB": {
+     "outstanding": 3644.17,
+     "rie_trading": 2066.56
+    },
+    "CYPHB": {
+     "outstanding": 327111.42,
+     "rie_trading": 275642.03
+    },
+    "AMCB": {
+     "outstanding": 226752.57,
+     "rie_trading": 121790.41
+    },
+    "AGPUB": {
+     "outstanding": 431610.87,
+     "rie_trading": 407288.06
+    },
+    "PDDB": {
+     "outstanding": 21797.21,
+     "rie_trading": 14130.68
+    },
+    "FWDIB": {
+     "outstanding": 75517.26,
+     "rie_trading": 63500.65
+    },
+    "SHAZB": {
+     "outstanding": 21802.15,
+     "rie_trading": 20331.48
+    },
+    "WENB": {
+     "outstanding": 77736.53,
+     "rie_trading": 58009.2
+    },
+    "ADBEB": {
+     "outstanding": 4629.97,
+     "rie_trading": 4265.89
+    },
+    "HPEB": {
+     "outstanding": 7443.61,
+     "rie_trading": 5824.99
+    },
+    "ZMB": {
+     "outstanding": 4431.81,
+     "rie_trading": 3494.97
+    },
+    "SECZB": {
+     "outstanding": 122026.02,
+     "rie_trading": 113140.04
+    },
+    "USDEB": {
+     "outstanding": 33653.69,
+     "rie_trading": 25796.43
+    },
+    "JPMB": {
+     "outstanding": 2121.34,
+     "rie_trading": 1762.34
+    },
+    "LLYB": {
+     "outstanding": 1049.78,
+     "rie_trading": 862.1
+    },
+    "MDBB": {
+     "outstanding": 2013,
+     "rie_trading": 1790.6
+    },
+    "BBB": {
+     "outstanding": 94583.61,
+     "rie_trading": 82553.85
+    },
+    "PENGB": {
+     "outstanding": 7670.83,
+     "rie_trading": 6277.83
+    },
+    "UVXYB": {
+     "outstanding": 26896.36,
+     "rie_trading": 20665.75
+    }
+   },
+   "note": "94 rows, confirmed by the founder’s own count on 23 Oct 2026; ADGM’s listing page shows 95, which the PDF does not bear out."
   }
-  return net;
+ ],
+ "readings": [
+  {
+   "date": "2026-10-24",
+   "block": 129423794,
+   "time": "2026-10-24T01:12:41Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.33441409,
+    "CRCLB": 1820605.57760258,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 75017.41018456,
+    "NVDAB": 213620.47016593,
+    "SNDKB": 68882.7698941,
+    "SPCXB": 1028885.21323141,
+    "TSLAB": 67997.552532,
+    "GOOGLB": 115787.38372488,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739145.14729596,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  },
+  {
+   "date": "2026-10-25",
+   "block": 129614364,
+   "time": "2026-10-25T01:02:18Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22444.0715942,
+    "CRCLB": 1820147.1069887,
+    "EWYB": 62984.25946011,
+    "INTCB": 592830.60740279,
+    "MSTRB": 753220.85596079,
+    "MUB": 75009.98019715,
+    "NVDAB": 213712.80632998,
+    "SNDKB": 68827.07747164,
+    "SPCXB": 1029226.91288263,
+    "TSLAB": 68020.63651659,
+    "GOOGLB": 115794.4120302,
+    "QCOMB": 14895.02883299,
+    "COINB": 117951.20368412,
+    "SPYB": 22963.36762731,
+    "WDCB": 7535.33901899,
+    "GLWB": 13609.28006206,
+    "NBISB": 76198.2389085,
+    "SOXLB": 736772.50082766,
+    "DRAMB": 416327.30986823,
+    "CBRSB": 49647.6984423,
+    "DJTB": 208998.65441609
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "block": 129808171,
+   "time": "2026-10-26T01:17:30Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22461.71224079,
+    "CRCLB": 1822237.8251525,
+    "EWYB": 63017.95746994,
+    "INTCB": 593547.92915588,
+    "MSTRB": 755941.28512873,
+    "MUB": 75062.30865115,
+    "NVDAB": 214549.58531415,
+    "SNDKB": 69362.6081631,
+    "SPCXB": 1031497.63425303,
+    "TSLAB": 68190.86939208,
+    "GOOGLB": 115937.69048976,
+    "QCOMB": 14921.73129892,
+    "COINB": 118220.15732861,
+    "SPYB": 23305.54156697,
+    "WDCB": 7535.33901899,
+    "GLWB": 13632.70062626,
+    "NBISB": 76205.63247685,
+    "SOXLB": 741962.25113383,
+    "DRAMB": 416728.99320917,
+    "CBRSB": 49677.36493494,
+    "DJTB": 209470.16791609
+   }
+  }
+ ],
+ "snapshots": [
+  {
+   "asOf": "2026-10-23T23:59:59Z",
+   "block": 129414101,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.16547658,
+    "CRCLB": 1820585.45452633,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 74734.03429682,
+    "NVDAB": 213618.92532218,
+    "SNDKB": 68711.2310851,
+    "SPCXB": 1028655.77773498,
+    "TSLAB": 67997.35435964,
+    "GOOGLB": 115771.49673339,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739144.14773771,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  }
+ ],
+ "reconciliations": [],
+ "updated": "2026-10-26T01:17:31.223Z"
 }
-/* AP44 (r211): one UTC day of mints and burns for every published token, with an exact check.
-   Blocks: the first after 00:00:00 and the last at or before 23:59:59. Logs in groups of 10 addresses
-   (some nodes refuse more) and windows that halve on refusal. Check: totalSupply at the day's last block
-   minus totalSupply just before its first block must equal minted minus burned, token by token; it needs
-   a node that answers for past blocks, and says so when none does. */
-async function dayFlows(url, toks, dayStart, latest) {
-  const b0 = (await blockAtOrBefore(url, dayStart - 1, latest)) + 1, b1 = await blockAtOrBefore(url, dayStart + 86399, latest);
-  const addr = toks.map(([, t]) => t.contract.toLowerCase()), acc = {};
-  toks.forEach(([k]) => { acc[k] = { minted: 0n, burned: 0n, mints: 0, burns: 0 }; });
-  const groups = []; for (let i = 0; i < addr.length; i += 10) groups.push(addr.slice(i, i + 10));
-  let a = b0, step = 5000;
-  while (a <= b1) {
-    const b = Math.min(b1, a + step - 1);
-    try {
-      const got = [];
-      for (const g of groups) for (const topics of [[TRANSFER, ZERO], [TRANSFER, null, ZERO]]) {
-        const logs = await call(url, 'eth_getLogs', [{ address: g, fromBlock: hex(a), toBlock: hex(b), topics }]);
-        for (const l of logs) got.push([l, topics[1] === ZERO]);
-        await sleep(120);
-      }
-      for (const [l, mint] of got) { const i = addr.indexOf(String(l.address).toLowerCase()); if (i < 0) continue; const x = acc[toks[i][0]], v = BigInt(l.data);
-        if (mint) { x.minted += v; x.mints++; } else { x.burned += v; x.burns++; } }
-      a = b + 1;
-    } catch (e) { if (step > 500) { step = Math.max(500, Math.floor(step / 2)); continue; } throw e; }
-  }
-  const rows = {}, check = { method: 'totalSupply at the last block minus totalSupply before the first block, against minted minus burned', matched: 0, of: 0, diffs: {} };
-  let checkable = true;
-  for (const [k, t] of toks) {
-    const x = acc[k], net = x.minted - x.burned;
-    if (x.mints || x.burns) rows[k] = { minted: scale(x.minted, t.decimals), burned: scale(x.burned, t.decimals), mints: x.mints, burns: x.burns, net: scale(net < 0n ? -net : net, t.decimals) * (net < 0n ? -1 : 1) };
-    if (!checkable) continue;
-    try {
-      const s1 = BigInt(await call(url, 'eth_call', [{ to: t.contract, data: '0x18160ddd' }, hex(b1)]));
-      const s0 = BigInt(await call(url, 'eth_call', [{ to: t.contract, data: '0x18160ddd' }, hex(b0 - 1)]));
-      check.of++; if (s1 - s0 === net) check.matched++; else check.diffs[k] = scale(((s1 - s0) - net) < 0n ? -((s1 - s0) - net) : (s1 - s0) - net, t.decimals);
-      await sleep(80);
-    } catch (e) { checkable = false; check.note = 'not checked: the node did not answer for past blocks (' + e.message.slice(0, 80) + ')'; }
-  }
-  return { date: new Date(dayStart * 1000).toISOString().slice(0, 10), fromBlock: b0, toBlock: b1, node: new URL(url).host, tokens: toks.length, rows, check };
-}
-/* AP44 (r211): the same supply read from a public node at the same block, so no figure rests on one provider. */
-async function crossCheck(toks, block, raw, primary) {
-  for (const url of PUBLIC) { if (url === primary) continue;
-    try { let matched = 0; const diffs = {};
-      for (const [k, t] of toks) { const v = BigInt(await call(url, 'eth_call', [{ to: t.contract, data: '0x18160ddd' }, hex(block)])); if (v === raw[k]) matched++; else diffs[k] = scale(v > raw[k] ? v - raw[k] : raw[k] - v, t.decimals); await sleep(80); }
-      return { node: new URL(url).host, block, matched, of: toks.length, diffs };
-    } catch (e) { /* try the next public node */ }
-  }
-  return { block, note: 'no public node answered for this block' };
-}
-function lastFriday(now) { /* the most recent Friday 23:59:59 UTC strictly before now */
-  const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 23, 59, 59));
-  while (d.getUTCDay() !== 5 || d >= now) d.setUTCDate(d.getUTCDate() - 1);
-  return d;
-}
-async function main() {
-  const doc = JSON.parse(fs.readFileSync(P, 'utf8'));
-  const toks = Object.entries(doc.tokens).filter(([, t]) => t.contract);
-  const now = process.env.BSTOCKS_NOW ? new Date(process.env.BSTOCKS_NOW) : new Date(), date = now.toISOString().slice(0, 10);   /* BSTOCKS_NOW: tests only */
-  doc.readings = doc.readings || []; doc.snapshots = doc.snapshots || []; doc.reconciliations = doc.reconciliations || [];
-  let last = null;
-  for (const url of NODES) {
-    try {
-      const latest = parseInt(await call(url, 'eth_blockNumber', []), 16), lt = await blockTime(url, latest);
-      const raw = {}, values = {};
-      for (const [k, t] of toks) {
-        if (t.decimals == null) t.decimals = Number(BigInt(await call(url, 'eth_call', [{ to: t.contract, data: '0x313ce567' }, hex(latest)])));
-        raw[k] = BigInt(await call(url, 'eth_call', [{ to: t.contract, data: '0x18160ddd' }, hex(latest)]));
-        values[k] = scale(raw[k], t.decimals); await sleep(150);
-      }
-      if (!doc.readings.some(r => r.date === date)) {
-        const rd = { date, block: latest, time: new Date(lt * 1000).toISOString().replace('.000Z', 'Z'), node: new URL(url).host, values };
-        if (!isPublic(url)) { try { rd.crosscheck = await crossCheck(toks, latest, raw, url); } catch (e) { rd.crosscheck = { note: 'cross-check failed' }; } }
-        doc.readings.push(rd);
-      }
-      /* AP44 (r211): full-day flows for the previous UTC day, and up to 7 days back on the first run or 3 after a gap */
-      doc.flows = doc.flows || [];
-      const today0 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) / 1000);
-      const back = doc.flows.length ? 3 : 7;
-      for (let d = back; d >= 1; d--) {
-        const ds = today0 - d * 86400, dd = new Date(ds * 1000).toISOString().slice(0, 10);
-        if (doc.flows.some(f => f.date === dd)) continue;
-        try { const f = await dayFlows(url, toks, ds, latest); doc.flows.push(f); console.log('flows', dd, Object.keys(f.rows).length, 'tickers active', 'check', f.check.matched + '/' + f.check.of, f.check.note || ''); }
-        catch (e) { console.error('   flows', dd, 'not read:', e.message); if (isPublic(url)) break; }
-      }
-      doc.flows.sort((x, y) => x.date.localeCompare(y.date));
-      /* the Friday snapshot, if not yet taken and still recent enough to rebuild from logs (3 days) */
-      const fri = lastFriday(now), asOf = fri.toISOString().replace('.000Z', 'Z');
-      if (!doc.snapshots.some(s => s.asOf === asOf) && now - fri < 3 * 864e5) {
-        const b = await blockAtOrBefore(url, Math.floor(fri / 1000), latest), sv = {};
-        for (const [k, t] of toks) sv[k] = scale(raw[k] - await netMint(url, t.contract, b, latest), t.decimals);
-        doc.snapshots.push({ asOf, block: b, method: 'supply at the latest block minus mints plus burns since the as-of block', node: new URL(url).host, values: sv });
-        console.log('snapshot', asOf, 'block', b);
-      }
-      break;
-    } catch (e) { last = e; console.error('  ', e.message); }
-  }
-  if (last && !doc.readings.some(r => r.date === date)) throw last;
-  /* reconcile every disclosure that has a snapshot at the same second and no reconciliation yet */
-  for (const d of doc.disclosures) {
-    const s = doc.snapshots.find(x => x.asOf === d.asOf);
-    if (!s || doc.reconciliations.some(r => r.asOf === d.asOf)) continue;
-    const rows = {};
-    for (const k of Object.keys(s.values)) { const dis = d.rows[k] ? d.rows[k].outstanding : null; rows[k] = { disclosed: dis, onchain: s.values[k], difference: dis == null ? null : Number((s.values[k] - dis).toFixed(8)) }; }
-    doc.reconciliations.push({ asOf: d.asOf, block: s.block, disclosure: d.src, rows, note: 'Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published.' });
-    console.log('reconciled', d.asOf);
-  }
-  doc.updated = now.toISOString();
-  fs.writeFileSync(P, JSON.stringify(doc, null, 1) + '\n');
-}
-main().catch(e => { console.error('bstocks failed:', e.message); process.exit(1); });
