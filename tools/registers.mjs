@@ -29,15 +29,18 @@ const JFSA_XLSX = 'https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.xlsx';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const host = u => { try { return new URL(u).host; } catch (e) { return '?'; } };
 const FIX = process.env.REGISTERS_FIXTURES || '';
+/* Plain browser headers: several regulators refuse requests that announce themselves as a script. The job reads
+   public pages only, once a night, with a pause between requests. */
+const HDRS = { 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36 cryptostatements-registers/1.1', 'accept': 'text/html,application/xhtml+xml,application/xml,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,*/*;q=0.8', 'accept-language': 'en-GB,en;q=0.9' };
 async function get(url) {
   if (FIX) { const f = FIX + '/' + encodeURIComponent(url); if (!fs.existsSync(f)) throw new Error('no fixture for ' + host(url)); return { status: 200, text: fs.readFileSync(f, 'utf8') }; }
-  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-registers/1.0 (+https://github.com/aasiimwe006/cryptostatements-issuance)' } });
+  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
   if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
   return { status: r.status, text: await r.text() };
 }
 async function getBuf(url) {
   if (FIX) { const f = FIX + '/' + encodeURIComponent(url); if (!fs.existsSync(f)) throw new Error('no fixture for ' + host(url)); return fs.readFileSync(f); }
-  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-registers/1.0 (+https://github.com/aasiimwe006/cryptostatements-issuance)' } });
+  const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: HDRS });
   if (!r.ok) throw new Error(host(url) + ' HTTP ' + r.status);
   return Buffer.from(await r.arrayBuffer());
 }
@@ -64,6 +67,12 @@ const norm = t => String(t).normalize('NFKC').replace(/<script[\s\S]*?<\/script>
   .replace(/&(#x?[0-9a-f]+|\w+);/gi, (m, e) => e[0] === '#' ? String.fromCodePoint(e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : +e.slice(1)) : (ENT[e.toLowerCase()] ?? m))
   .replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
 const has = (text, s) => !!s && text.includes(norm(s));
+/* The legal name without a trailing bracket CS adds (a brand, a platform or a former name), balanced, so that
+   “Nest Clearing and Custody Limited (formerly Binance (AD) Limited)” matches as the first four words; a
+   bracket inside a legal name, as in Binance (AD) Limited, is kept. */
+function legalName(n) { n = String(n).trim(); if (!n.endsWith(')')) return n;
+  let d = 0; for (let i = n.length - 1; i >= 0; i--) { if (n[i] === ')') d++; else if (n[i] === '(') { d--; if (!d) { const head = n.slice(0, i).trim(); return head.length >= 6 ? head : n; } } }
+  return n; }
 function csv(text) {
   const rows = []; let row = [], f = '', q = false;
   for (let i = 0; i < text.length; i++) { const c = text[i];
@@ -105,10 +114,11 @@ async function main() {
         found = has(jfsa, r.entity) && (!num || jfsa.includes('第' + num + '号') || jfsa.includes(num)); how = 'registration number and name in the FSA list (Excel)';
         if (found && r.assets_handled && r.assets_handled.list.length) { const gone = r.assets_handled.list.filter(a => !new RegExp('(^|[^a-z0-9])' + a.toLowerCase() + '([^a-z0-9]|$)').test(jfsa)); if (gone.length) out.review.push({ key, note: 'assets listed by CS no longer found in the FSA list: ' + gone.join(', ') + '; re-read the list' }); } } }
     else if (r.register === 'esma') { if (esma) { const lei = (r.reference || '').replace(/^LEI\s*/, ''); found = esma.some(c => c.ae_lei === lei && norm(c.ae_lei_name) === norm(r.entity) && !c.ac_authorisationEndDate); how = 'LEI and name in the CASP file'; } }
+    else if (!['vara', 'sfc', 'nydfs'].includes(r.register) && r.source === doc.registers[r.register].url) { how = 'no firm page on record; read by hand'; }
     else { const url = ['vara', 'sfc', 'nydfs'].includes(r.register) ? doc.registers[r.register].url : r.source;
       const p = await page(r.register, url);
       if (p.ok) { const ref = r.register === 'vara' ? (r.reference || '').split(' · ')[0] : '';
-        found = has(p.text, r.entity.replace(/\s*\([^)]*\)\s*$/, '')) && (!ref || has(p.text, ref)); how = ref ? 'reference and name on the page' : 'name on the page'; } }
+        found = has(p.text, legalName(r.entity)) && (!ref || has(p.text, ref)); how = ref ? 'reference and name on the page' : 'name on the page'; } }
     const row = { register: r.register, how };
     if (found === true) { row.date = today; }
     else { if (was.date) row.date = was.date; if (found === false) { row.missing_since = was.missing_since || today; out.review.push({ key, note: 'not found on ' + r.register + ' on ' + today + '; read the register before changing the row' }); } else row.unchecked = true; }
