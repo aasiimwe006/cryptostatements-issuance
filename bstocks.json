@@ -2143,6 +2143,42 @@
     "of": 21,
     "diffs": {}
    }
+  },
+  {
+   "date": "2026-10-31",
+   "block": 130768733,
+   "time": "2026-10-31T01:25:46Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130768733,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
   }
  ],
  "snapshots": [
@@ -2174,10 +2210,39 @@
     "CBRSB": 49595.4292083,
     "DJTB": 208998.65441609
    }
+  },
+  {
+   "asOf": "2026-10-30T23:59:59Z",
+   "block": 130757300,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   }
   }
  ],
  "reconciliations": [],
- "updated": "2026-10-30T01:27:14.636Z",
+ "updated": "2026-10-31T01:25:46.897Z",
  "flows": [
   {
    "date": "2026-10-20",
@@ -3757,6 +3822,20 @@
      "net": 978.26668348
     }
    },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "fromBlock": 130565343,
+   "toBlock": 130757300,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {},
    "check": {
     "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
     "matched": 21,
