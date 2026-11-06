@@ -33,9 +33,12 @@ jobs:
         with:
           node-version: '20'
       - name: Read the contract events
+        # The hand-run inputs reach the script as environment values, never pasted into the shell line (2026-11-06).
         env:
           ISSUANCE_RPCS: ${{ secrets.ISSUANCE_RPCS }}
-        run: node tools/issuance.mjs "${{ inputs.date }}" "${{ inputs.days || '1' }}"
+          IN_DATE: ${{ inputs.date }}
+          IN_DAYS: ${{ inputs.days || '1' }}
+        run: node tools/issuance.mjs "$IN_DATE" "$IN_DAYS"
       - name: Read today's supply (r147)
         if: always()
         env:
