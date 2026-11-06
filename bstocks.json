@@ -3295,8 +3295,235 @@
    }
   }
  ],
- "reconciliations": [],
- "updated": "2026-11-06T08:24:55.407Z",
+ "reconciliations": [
+  {
+   "asOf": "2026-10-23T23:59:59Z",
+   "block": 129414101,
+   "disclosure": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-23-oct-2026_10_25_2026_17-26-16.pdf",
+   "rows": {
+    "AMDB": {
+     "disclosed": 22423.49,
+     "onchain": 22443.16547658,
+     "difference": 19.67547658
+    },
+    "CRCLB": {
+     "disclosed": 1815324.86,
+     "onchain": 1820585.45452633,
+     "difference": 5260.59452633
+    },
+    "EWYB": {
+     "disclosed": 62681.7,
+     "onchain": 62984.26040511,
+     "difference": 302.56040511
+    },
+    "INTCB": {
+     "disclosed": 592627.16,
+     "onchain": 593387.32778764,
+     "difference": 760.16778764
+    },
+    "MSTRB": {
+     "disclosed": 725005.15,
+     "onchain": 753540.76710356,
+     "difference": 28535.61710356
+    },
+    "MUB": {
+     "disclosed": 74745.73,
+     "onchain": 74734.03429682,
+     "difference": -11.69570318
+    },
+    "NVDAB": {
+     "disclosed": 213785.15,
+     "onchain": 213618.92532218,
+     "difference": -166.22467782
+    },
+    "SNDKB": {
+     "disclosed": 68698.78,
+     "onchain": 68711.2310851,
+     "difference": 12.4510851
+    },
+    "SPCXB": {
+     "disclosed": 1027525.05,
+     "onchain": 1028655.77773498,
+     "difference": 1130.72773498
+    },
+    "TSLAB": {
+     "disclosed": 67602.23,
+     "onchain": 67997.35435964,
+     "difference": 395.12435964
+    },
+    "GOOGLB": {
+     "disclosed": 115835.57,
+     "onchain": 115771.49673339,
+     "difference": -64.07326661
+    },
+    "QCOMB": {
+     "disclosed": 14762.15,
+     "onchain": 14895.02883299,
+     "difference": 132.87883299
+    },
+    "COINB": {
+     "disclosed": 117203.84,
+     "onchain": 117949.94788112,
+     "difference": 746.10788112
+    },
+    "SPYB": {
+     "disclosed": 22998.63,
+     "onchain": 22965.54267446,
+     "difference": -33.08732554
+    },
+    "WDCB": {
+     "disclosed": 7472.69,
+     "onchain": 7535.33901899,
+     "difference": 62.64901899
+    },
+    "GLWB": {
+     "disclosed": 13393.53,
+     "onchain": 13601.98282142,
+     "difference": 208.45282142
+    },
+    "NBISB": {
+     "disclosed": 76068.59,
+     "onchain": 76196.59023004,
+     "difference": 128.00023004
+    },
+    "SOXLB": {
+     "disclosed": 736718.76,
+     "onchain": 739144.14773771,
+     "difference": 2425.38773771
+    },
+    "DRAMB": {
+     "disclosed": 415769.56,
+     "onchain": 416325.62448697,
+     "difference": 556.06448697
+    },
+    "CBRSB": {
+     "disclosed": 49595.43,
+     "onchain": 49595.4292083,
+     "difference": -0.0007917
+    },
+    "DJTB": {
+     "disclosed": 208389.95,
+     "onchain": 208998.65441609,
+     "difference": 608.70441609
+    }
+   },
+   "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
+  },
+  {
+   "asOf": "2026-10-30T23:59:59Z",
+   "block": 130757300,
+   "disclosure": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-30-oct-2026_11_01_2026_16-05-02.pdf",
+   "rows": {
+    "AMDB": {
+     "disclosed": 15195.45,
+     "onchain": 20584.97043179,
+     "difference": 5389.52043179
+    },
+    "CRCLB": {
+     "disclosed": 2100722.78,
+     "onchain": 2013615.50681185,
+     "difference": -87107.27318815
+    },
+    "EWYB": {
+     "disclosed": 60160.53,
+     "onchain": 68506.49022212,
+     "difference": 8345.96022212
+    },
+    "INTCB": {
+     "disclosed": 814748,
+     "onchain": 598102.52646827,
+     "difference": -216645.47353173
+    },
+    "MSTRB": {
+     "disclosed": 786757.98,
+     "onchain": 758043.67028109,
+     "difference": -28714.30971891
+    },
+    "MUB": {
+     "disclosed": 66935.86,
+     "onchain": 69404.19876946,
+     "difference": 2468.33876946
+    },
+    "NVDAB": {
+     "disclosed": 180240.37,
+     "onchain": 214405.99353835,
+     "difference": 34165.62353835
+    },
+    "SNDKB": {
+     "disclosed": 77798.44,
+     "onchain": 66641.15910834,
+     "difference": -11157.28089166
+    },
+    "SPCXB": {
+     "disclosed": 1322925.13,
+     "onchain": 1270026.05045019,
+     "difference": -52899.07954981
+    },
+    "TSLAB": {
+     "disclosed": 48531.73,
+     "onchain": 59212.24260125,
+     "difference": 10680.51260125
+    },
+    "GOOGLB": {
+     "disclosed": 357464.54,
+     "onchain": 373187.08807011,
+     "difference": 15722.54807011
+    },
+    "QCOMB": {
+     "disclosed": 12917.67,
+     "onchain": 14670.42989077,
+     "difference": 1752.75989077
+    },
+    "COINB": {
+     "disclosed": 122362.73,
+     "onchain": 124682.84885607,
+     "difference": 2320.11885607
+    },
+    "SPYB": {
+     "disclosed": 24795.78,
+     "onchain": 25172.21280688,
+     "difference": 376.43280688
+    },
+    "WDCB": {
+     "disclosed": 6371.9,
+     "onchain": 7160.16826894,
+     "difference": 788.26826894
+    },
+    "GLWB": {
+     "disclosed": 12704.49,
+     "onchain": 14428.28350591,
+     "difference": 1723.79350591
+    },
+    "NBISB": {
+     "disclosed": 76145.35,
+     "onchain": 82190.68905269,
+     "difference": 6045.33905269
+    },
+    "SOXLB": {
+     "disclosed": 449192.94,
+     "onchain": 376447.3412637,
+     "difference": -72745.5987363
+    },
+    "DRAMB": {
+     "disclosed": 395205.23,
+     "onchain": 404899.47125902,
+     "difference": 9694.24125902
+    },
+    "CBRSB": {
+     "disclosed": 47050.08,
+     "onchain": 49761.05003031,
+     "difference": 2710.97003031
+    },
+    "DJTB": {
+     "disclosed": 208749.76,
+     "onchain": 211097.9388533,
+     "difference": 2348.1788533
+    }
+   },
+   "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
+  }
+ ],
+ "updated": "2026-11-06T13:19:22.749Z",
  "flows": [
   {
    "date": "2026-10-20",
