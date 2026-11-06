@@ -27,12 +27,52 @@ function ishares(text, asset) {
   const qty = num(row[iq]), mv = num(row[iv]); if (!(qty > 0) || !(shares > 0)) throw new Error('unreadable figures');
   return { date, shares, qty, mv };
 }
+/* r283 · the other issuers, each checked by hand in a browser on 6 Nov 2026 before its reader was written. */
+const mdy = s => { const m = String(s || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? `${m[3]}-${m[1]}-${m[2]}` : null; };
+const htmlLines = h => h.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, '\n').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').split('\n').map(x => x.trim()).filter(Boolean);
+const after = (L, label, from = 0) => { const i = L.indexOf(label, from); return i < 0 ? null : L[i + 1]; };
+/* The labelled block that carries a date within its next lines (a menu item with the same words carries none). */
+const anchor = (L, label) => L.findIndex((x, i) => x === label && mdy(L.slice(i, i + 4).join(' ')));
+/* ARK's holdings CSV: one line per holding, the bitcoin quantity rounded to whole coins by ARK; no shares-outstanding field. */
+function arkCsv(text, ticker) {
+  const L = text.split(/\r?\n/), H = csvLine(L[0]).map(x => x.toLowerCase()), r = L.slice(1).map(csvLine).find(x => x[H.indexOf('ticker')] === ticker);
+  if (!r) throw new Error('no ' + ticker + ' line'); const date = mdy(r[H.indexOf('date')]), qty = num(r[H.indexOf('shares')]), mv = num(String(r[H.indexOf('market value ($)')]).replace('$', ''));
+  if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: null, qty, mv, rounded: true };
+}
+/* Grayscale fund pages: "Key Fund Information / As of MM/DD/YYYY", then label and value pairs. */
+function grayscale(html, label) {
+  const L = htmlLines(html), k = anchor(L, 'Key Fund Information'); if (k < 0) throw new Error('no dated Key Fund Information');
+  const date = mdy(L.slice(k, k + 4).join(' ')), qty = num(after(L, label, k)), shares = num(after(L, 'SHARES OUTSTANDING', k)), mv = num(String(after(L, 'ASSETS UNDER MANAGEMENT (NON-GAAP)', k) || '').replace('$', ''));
+  if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: shares || null, qty, mv: mv || null };
+}
+/* Bitwise's BITB page: "Fund Holdings / Data as of MM/DD/YYYY", the holding row after the header row; "Fund Details" for shares. */
+function bitwise(html) {
+  const L = htmlLines(html), h = anchor(L, 'Fund Holdings'); if (h < 0) throw new Error('no dated Fund Holdings');
+  const date = mdy(L.slice(h, h + 4).join(' ')), row = L.indexOf('BITCOIN', h), qty = num(after(L, 'Bitcoin in Trust', row)), mv = num(String(after(L, 'Market Value', row) || '').replace('$', ''));
+  const d = anchor(L, 'Fund Details'), shares = d >= 0 ? num(after(L, 'Shares Outstanding', d)) : null;
+  if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: shares || null, qty, mv: mv || null };
+}
 const FUNDS = [
   { id: 'IBIT', name: 'iShares Bitcoin Trust ETF', issuer: 'BlackRock (iShares)', asset: 'BTC',
-    url: 'https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'BTC') }
+    url: 'https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'BTC') },
+  { id: 'GBTC', name: 'Grayscale Bitcoin Trust ETF', issuer: 'Grayscale', asset: 'BTC', url: 'https://etfs.grayscale.com/gbtc', parse: t => grayscale(t, 'TOTAL BITCOIN IN FUND') },
+  { id: 'BTC', name: 'Grayscale Bitcoin Mini Trust ETF', issuer: 'Grayscale', asset: 'BTC', url: 'https://etfs.grayscale.com/btc', parse: t => grayscale(t, 'TOTAL BITCOIN IN FUND') },
+  { id: 'ARKB', name: 'ARK 21Shares Bitcoin ETF', issuer: 'ARK Invest and 21Shares', asset: 'BTC',
+    url: 'https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_21SHARES_BITCOIN_ETF_ARKB_HOLDINGS.csv', parse: t => arkCsv(t, 'BTC') },
+  { id: 'BITB', name: 'Bitwise Bitcoin ETF', issuer: 'Bitwise', asset: 'BTC', url: 'https://bitbetf.com/', parse: bitwise },
+  { id: 'ETHA', name: 'iShares Ethereum Trust ETF', issuer: 'BlackRock (iShares)', asset: 'ETH',
+    url: 'https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'ETH') },
+  { id: 'ETHE', name: 'Grayscale Ethereum Staking ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/ethe', parse: t => grayscale(t, 'TOTAL ETHER IN FUND'), staking: true },
+  { id: 'ETH', name: 'Grayscale Ethereum Mini Trust ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/eth', parse: t => grayscale(t, 'TOTAL ETHER IN FUND') }
 ];
+/* Not added: Fidelity (FBTC, FETH). Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
+   quote page, but the page loads it through a token-protected research API (a direct request is refused, 403),
+   and the fund has no public holdings file. No reader is written for it; nothing is scraped around a login wall. */
 async function main() {
-  const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : null;
+  /* A stored file that does not parse is never overwritten: that would lose the history it holds. */
+  let prev = null;
+  if (fs.existsSync(OUT)) { try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')); }
+    catch (e) { console.error(OUT + ' does not parse (' + e.message + '); left untouched, nothing written today. Restore it from git history.'); return; } }
   const doc = { about: 'Spot crypto ETF holdings as each issuer publishes them in its own holdings file: as-of date, shares outstanding, quantity held and market value, one row per as-of date, appended and never altered. A flow is the change in quantity between rows. Context for CRYPTO STATEMENTS figure cards, kept apart from the record. Written by tools/etf.mjs.',
     updated: new Date().toISOString(), funds: (prev && prev.funds) || {} };
   for (const F of FUNDS) {
@@ -44,7 +84,7 @@ async function main() {
       if (!held.some(h => h.date === x.date)) { held.push(x); console.log(F.id, x.date, x.qty, F.asset, 'held,', x.shares, 'shares'); } else console.log(F.id, x.date, 'already held');
       held.sort((a, b) => a.date.localeCompare(b.date));
     } catch (e) { console.error(F.id, e.message); }
-    doc.funds[F.id] = { name: F.name, issuer: F.issuer, asset: F.asset, src: F.url, rows: held };
+    doc.funds[F.id] = { name: F.name, issuer: F.issuer, asset: F.asset, src: F.url, staking: !!F.staking, rows: held };
   }
   fs.writeFileSync(OUT, JSON.stringify(doc) + '\n');
   console.log('etf.json written:', Object.entries(doc.funds).map(([k, v]) => k + ' ' + v.rows.length).join(', '));
