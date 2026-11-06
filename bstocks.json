@@ -1,838 +1,5577 @@
 {
- "asOf": "2026-10-23T23:59:59Z",
- "published": "2026-10-26",
- "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-23-oct-2026_10_25_2026_17-26-16.pdf",
- "reporting_entity": "BTech Services Limited",
- "rows": {
+ "about": "bStocks: certificates issued by BTech Holdings Ltd (ADGM), recorded on BNB Chain, each a 1:1 entitlement to a US share held by Alpaca Securities LLC in the issuer’s segregated custody account. disclosures = the issuer’s weekly filing of certificates outstanding per ticker (ADGM public disclosures, as of Friday 23:59:59 UTC); readings = totalSupply() on BNB Chain each day for tokens whose address the issuer group has published; snapshots = supply rebuilt at each Friday 23:59:59 UTC; reconciliations = disclosed vs on chain at the same second. The shares at the custodian are not checked: no periodic independent attestation of them is published. Primary figures only; never aggregator data.",
+ "issuer": "BTech Holdings Ltd (ADGM registration 36283), wholly owned by Binance Holdings",
+ "custodian": "Alpaca Securities LLC",
+ "chain": "BNB Smart Chain",
+ "sources": {
+  "prospectus_example": "https://www.adgm.com/globalassets/market-disclosure/content/prospectus/btech-holdings-prospectus----29-june---microsoft-bstocks_06_30_2026_08-44-42.pdf",
+  "disclosure_list": "https://www.adgm.com/financial-services-regulatory-authority/listing-authority/public-disclosures",
+  "proof_of_collateral": "https://www.binance.com/en/proof-of-collateral/bstocks",
+  "proof_of_collateral_reading": "The Proof of Collateral page lists each bStocks token with backing at 100%. Confirmed by the founder on 23 Oct 2026 that it names no third-party independent verifier: it is the issuer group’s own statement, not an attestation."
+ },
+ "tokens": {
   "AMDB": {
-   "outstanding": 22423.49,
-   "rie_trading": 21306.92
+   "isin": "AE000A4AVCE0",
+   "contract": "0x75fd4cf6f8392e41e70391d60c90c0d5211603a1",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "CRCLB": {
-   "outstanding": 1815324.86,
-   "rie_trading": 1653557.3
+   "isin": "AE000A4AU3B0",
+   "contract": "0x80f3d493ebce97e343c53d29a137942416b4ffc0",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "EWYB": {
-   "outstanding": 62681.7,
-   "rie_trading": 58961.2
+   "isin": "AE000A4AVCD2",
+   "contract": "0xbe82f76637dba2c114c41df856c2c51e522e2cb8",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "INTCB": {
-   "outstanding": 592627.16,
-   "rie_trading": 580094.04
+   "isin": "AE000A4AU3D6",
+   "contract": "0xe614e2fc6c787035ff51f452e8e826bfd32d5283",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "MSTRB": {
-   "outstanding": 725005.15,
-   "rie_trading": 654885.3
+   "isin": "AE000A4AU3A2",
+   "contract": "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14",
+   "source": "https://www.binance.com/en/support/announcement/detail/d1343e10bc2648cd8302c83a5b1223a9",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MUB": {
-   "outstanding": 74745.73,
-   "rie_trading": 72749.74
+   "isin": "AE000A4AVAY2",
+   "contract": "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "NVDAB": {
-   "outstanding": 213785.15,
-   "rie_trading": 137567.8
+   "isin": "AE000A4AVAZ9",
+   "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "SNDKB": {
-   "outstanding": 68698.78,
-   "rie_trading": 67207.58
+   "isin": "AE000A4AVAX4",
+   "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "SPCXB": {
-   "outstanding": 1027525.05,
-   "rie_trading": 922292.15
+   "isin": "AE000A4AVAW6",
+   "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+   "source": "https://www.binance.com/en/support/announcement/detail/191cb96109f24c5c85362631a55a45d3",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "TSLAB": {
-   "outstanding": 67602.23,
-   "rie_trading": 55838.59
+   "isin": "AE000A4AU295",
+   "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+   "source": "https://www.binance.com/en/support/announcement/detail/5646e3f9ea6b4c989cb76aa18bd99245",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MSFTB": {
-   "outstanding": 7712.79,
-   "rie_trading": 5870.78
+   "isin": "AE000A4AVCW2",
+   "contract": null,
+   "source": null
   },
   "QQQB": {
-   "outstanding": 132422.38,
-   "rie_trading": 82144.25
+   "isin": "AE000A4AVFT1",
+   "contract": null,
+   "source": null
   },
   "METAB": {
-   "outstanding": 9526.09,
-   "rie_trading": 8401
+   "isin": "AE000A4AVFU9",
+   "contract": null,
+   "source": null
   },
   "LITEB": {
-   "outstanding": 6537.19,
-   "rie_trading": 5972.13
+   "isin": "AE000A4AVFV7",
+   "contract": null,
+   "source": null
   },
   "PLTRB": {
-   "outstanding": 15200.17,
-   "rie_trading": 13082.16
+   "isin": "AE000A4AVFW5",
+   "contract": null,
+   "source": null
   },
   "GOOGLB": {
-   "outstanding": 115835.57,
-   "rie_trading": 99066.98
+   "isin": "AE000A4AVFX3",
+   "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "QCOMB": {
-   "outstanding": 14762.15,
-   "rie_trading": 11780.59
+   "isin": "AE000A4AVFZ8",
+   "contract": "0x5f7a56e877b9130608bf8be962621011182fefe1",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "COINB": {
-   "outstanding": 117203.84,
-   "rie_trading": 110791.49
+   "isin": "AE000A4AVF19",
+   "contract": "0x585bde7c54abb5ccd7791f923d6c2187635f3952",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SPYB": {
-   "outstanding": 22998.63,
-   "rie_trading": 15696.18
+   "isin": "AE000A4AU3E4",
+   "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "WDCB": {
-   "outstanding": 7472.69,
-   "rie_trading": 7123.47
+   "isin": "AE000A4AVMH2",
+   "contract": "0xebe29695f8047c13d36e7a790ca8c1b239ffad1c",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "GLWB": {
-   "outstanding": 13393.53,
-   "rie_trading": 11983.67
+   "isin": "AE000A4AVMD1",
+   "contract": "0x740e075cbbea22a082b9d6679e65e82767875b6a",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "NBISB": {
-   "outstanding": 76068.59,
-   "rie_trading": 74689.27
+   "isin": "AE000A4AVMG4",
+   "contract": "0xe256bc2a4f5297f8ba6f043f180a46300ecbcbb1",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SOXLB": {
-   "outstanding": 736718.76,
-   "rie_trading": 713551.83
+   "isin": "AE000A4AVMJ8",
+   "contract": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "DRAMB": {
-   "outstanding": 415769.56,
-   "rie_trading": 400072.66
+   "isin": "AE000A4AVME9",
+   "contract": "0x93862d63fd9fd488b1328e9b47717d75e994a84b",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "CBRSB": {
-   "outstanding": 49595.43,
-   "rie_trading": 48018.55
+   "isin": "AE000A4AVMF6",
+   "contract": "0xe81c6bb0266cd68b4f17278531dd03ea1f12da4e",
+   "source": "https://www.binance.com/en/support/announcement/detail/6a55706a042c4a7ebedc2a0899744088",
+   "source_kind": "issuer",
+   "decimals": 18
   },
   "SKHYB": {
-   "outstanding": 183617.02,
-   "rie_trading": 160325.56
+   "isin": "AE000A4AVMT7",
+   "contract": null,
+   "source": null
   },
   "ARMB": {
-   "outstanding": 8424.59,
-   "rie_trading": 7977.71
+   "isin": "AE000A4AVMM2",
+   "contract": null,
+   "source": null
   },
   "AAOIB": {
-   "outstanding": 100052.34,
-   "rie_trading": 98162.78
+   "isin": "AE000A4AVMN0",
+   "contract": null,
+   "source": null
   },
   "IBMB": {
-   "outstanding": 3676.72,
-   "rie_trading": 2890.37
+   "isin": "AE000A4AVMP5",
+   "contract": null,
+   "source": null
   },
   "RKLBB": {
-   "outstanding": 167908.69,
-   "rie_trading": 163381.42
+   "isin": "AE000A4AVMQ3",
+   "contract": null,
+   "source": null
   },
   "NOKB": {
-   "outstanding": 284489.17,
-   "rie_trading": 259188.63
+   "isin": "AE000A4AVMR1",
+   "contract": null,
+   "source": null
   },
   "TSMB": {
-   "outstanding": 22230.6,
-   "rie_trading": 17112.3
+   "isin": "AE000A4AVF43",
+   "contract": null,
+   "source": null
   },
   "BABAB": {
-   "outstanding": 85990.22,
-   "rie_trading": 54914.79
+   "isin": "AE000A4AVF68",
+   "contract": null,
+   "source": null
   },
   "AVGOB": {
-   "outstanding": 55065.56,
-   "rie_trading": 45577.75
+   "isin": "AE000A4AVF84",
+   "contract": null,
+   "source": null
   },
   "MRVLB": {
-   "outstanding": 34766.9,
-   "rie_trading": 32352.49
+   "isin": "AE000A4AVFY1",
+   "contract": null,
+   "source": null
   },
   "HOODB": {
-   "outstanding": 56790.15,
-   "rie_trading": 49962.45
+   "isin": "AE000A4AU3C8",
+   "contract": null,
+   "source": null
   },
   "KORUB": {
-   "outstanding": 1607778.15,
-   "rie_trading": 1592031.51
+   "isin": "AE000A4AV1J6",
+   "contract": null,
+   "source": null
   },
   "AXTIB": {
-   "outstanding": 56294.25,
-   "rie_trading": 54365.69
+   "isin": "AE000A4AVRH1",
+   "contract": null,
+   "source": null
   },
   "CRWVB": {
-   "outstanding": 36499.96,
-   "rie_trading": 32103.35
+   "isin": "AE000A4AVGA9",
+   "contract": null,
+   "source": null
   },
   "MUUB": {
-   "outstanding": 583113.08,
-   "rie_trading": 576056.02
+   "isin": "AE000A4AV1L2",
+   "contract": null,
+   "source": null
   },
   "MVLLB": {
-   "outstanding": 26553.65,
-   "rie_trading": 22277.3
+   "isin": "AE000A4AV1M0",
+   "contract": null,
+   "source": null
   },
   "SNXXB": {
-   "outstanding": 932654.52,
-   "rie_trading": 897577.92
+   "isin": "AE000A4AV1N8",
+   "contract": null,
+   "source": null
   },
   "INTWB": {
-   "outstanding": 203344.31,
-   "rie_trading": 198797.6
+   "isin": "AE000A4AV1P3",
+   "contract": null,
+   "source": null
   },
   "TQQQB": {
-   "outstanding": 228931.46,
-   "rie_trading": 221261.69
+   "isin": "AE000A4AV1Q1",
+   "contract": null,
+   "source": null
   },
   "QNTB": {
-   "outstanding": 19578.23,
-   "rie_trading": 16867.07
+   "isin": "AE000A4AVRP4",
+   "contract": null,
+   "source": null
   },
   "ORCLB": {
-   "outstanding": 41837.35,
-   "rie_trading": 28281.65
+   "isin": "AE000A4AVF35",
+   "contract": null,
+   "source": null
   },
   "AAPLB": {
-   "outstanding": 15445.77,
-   "rie_trading": 8007.15
+   "isin": "AE000A4AVF76",
+   "contract": null,
+   "source": null
   },
   "BEB": {
-   "outstanding": 22954.02,
-   "rie_trading": 22240.22
+   "isin": "AE000A4AVXD8",
+   "contract": null,
+   "source": null
   },
   "AMZNB": {
-   "outstanding": 13140.01,
-   "rie_trading": 10881.22
+   "isin": "AE000A4AVF50",
+   "contract": null,
+   "source": null
   },
   "SOXSB": {
-   "outstanding": 37373.94,
-   "rie_trading": 29296.45
+   "isin": "AE000A4AV541",
+   "contract": null,
+   "source": null
   },
   "DELLB": {
-   "outstanding": 2235.97,
-   "rie_trading": 1994.31
+   "isin": "AE000A4AVRQ2",
+   "contract": null,
+   "source": null
   },
   "FLNCB": {
-   "outstanding": 158155.55,
-   "rie_trading": 114315.98
+   "isin": "AE000A4AVSY4",
+   "contract": null,
+   "source": null
   },
   "AMATB": {
-   "outstanding": 22971.09,
-   "rie_trading": 22273.2
+   "isin": "AE000A4AVRR0",
+   "contract": null,
+   "source": null
   },
   "PYPLB": {
-   "outstanding": 16380.7,
-   "rie_trading": 14548
+   "isin": "AE000A4AV558",
+   "contract": null,
+   "source": null
   },
   "GSB": {
-   "outstanding": 1017.25,
-   "rie_trading": 921.77
+   "isin": "AE000A4AV566",
+   "contract": null,
+   "source": null
   },
   "SMHB": {
-   "outstanding": 3049.81,
-   "rie_trading": 2864.33
+   "isin": "AE000A4AV574",
+   "contract": null,
+   "source": null
   },
   "BMNRB": {
-   "outstanding": 456013.16,
-   "rie_trading": 433913.58
+   "isin": "AE000A4AV533",
+   "contract": null,
+   "source": null
   },
   "SMCIB": {
-   "outstanding": 28926.07,
-   "rie_trading": 25394.53
+   "isin": "AE000A4AVRU4",
+   "contract": null,
+   "source": null
   },
   "IRENB": {
-   "outstanding": 143647.76,
-   "rie_trading": 139850.07
+   "isin": "AE000A4AVR23",
+   "contract": null,
+   "source": null
   },
   "ASMLB": {
-   "outstanding": 752.55,
-   "rie_trading": 676.1
+   "isin": "AE000A4AVRS8",
+   "contract": null,
+   "source": null
   },
   "NFLXB": {
-   "outstanding": 31070.62,
-   "rie_trading": 24994.72
+   "isin": "AE000A4AVSA4",
+   "contract": null,
+   "source": null
   },
   "ASTSB": {
-   "outstanding": 45714.03,
-   "rie_trading": 43767.57
+   "isin": "AE000A4AVRL3",
+   "contract": null,
+   "source": null
   },
   "COHRB": {
-   "outstanding": 39867.82,
-   "rie_trading": 39250.94
+   "isin": "AE000A4AVSX6",
+   "contract": null,
+   "source": null
   },
   "CRDOB": {
-   "outstanding": 3971.76,
-   "rie_trading": 2896.94
+   "isin": "AE000A4AVRK5",
+   "contract": null,
+   "source": null
   },
   "USARB": {
-   "outstanding": 114479.27,
-   "rie_trading": 94933.19
+   "isin": "AE000A4AVF92",
+   "contract": null,
+   "source": null
   },
   "ALABB": {
-   "outstanding": 2231.39,
-   "rie_trading": 1817.42
+   "isin": "AE000A4AVRW0",
+   "contract": null,
+   "source": null
   },
   "GMEB": {
-   "outstanding": 272400.03,
-   "rie_trading": 190069.08
+   "isin": "AE000A4AVSM9",
+   "contract": null,
+   "source": null
   },
   "DJTB": {
-   "outstanding": 208389.95,
-   "rie_trading": 106922.12
+   "isin": "AE000A4AWFH4",
+   "contract": "0xf2ec508422174ee564de98187db9359d318afb6b",
+   "source": "https://www.binance.com/en/support/announcement/detail/653dce6a74234b999d7a189c0fa49a80",
+   "source_kind": "issuer",
+   "confirmed_note": "Founder-supplied BscScan address confirmed by the issuer group’s announcement on 23 Oct 2026",
+   "decimals": 18
   },
   "MRNAB": {
-   "outstanding": 9955.52,
-   "rie_trading": 7667.38
+   "isin": "AE000A4AWH99",
+   "contract": null,
+   "source": null
   },
   "STXB": {
-   "outstanding": 944.13,
-   "rie_trading": 829.18
+   "isin": "AE000A4AV582",
+   "contract": null,
+   "source": null
   },
   "SQQQB": {
-   "outstanding": 17782.34,
-   "rie_trading": 11344.5
+   "isin": "AE000A4AWH81",
+   "contract": null,
+   "source": null
   },
   "CRWDB": {
-   "outstanding": 3063.09,
-   "rie_trading": 2802.9
+   "isin": "AE000A4AVSB2",
+   "contract": null,
+   "source": null
   },
   "HIMSB": {
-   "outstanding": 25753.66,
-   "rie_trading": 16157.04
+   "isin": "AE000A4AVRX8",
+   "contract": null,
+   "source": null
   },
   "CRMB": {
-   "outstanding": 2207.05,
-   "rie_trading": 1938.81
-  },
-  "BNCB": {
-   "outstanding": 6396045.85,
-   "rie_trading": 4065408.82
+   "isin": "AE000A4AV590",
+   "contract": null,
+   "source": null
   },
   "GPROB": {
-   "outstanding": 467299.82,
-   "rie_trading": 356960.62
+   "isin": "AE000A4AWLQ3",
+   "contract": null,
+   "source": null
   },
   "RDDTB": {
-   "outstanding": 3835.92,
-   "rie_trading": 2249.56
+   "isin": "AE000A4AWPE0",
+   "contract": null,
+   "source": null
   },
   "CYPHB": {
-   "outstanding": 298609.2,
-   "rie_trading": 248990.04
+   "isin": "AE000A4AWNV9",
+   "contract": null,
+   "source": null
   },
   "AMCB": {
-   "outstanding": 223163.57,
-   "rie_trading": 118256.18
+   "isin": "AE000A4AWPJ9",
+   "contract": null,
+   "source": null
   },
   "AGPUB": {
-   "outstanding": 472812.9,
-   "rie_trading": 448211.53
+   "isin": "AE000A4AWPB6",
+   "contract": null,
+   "source": null
   },
   "PDDB": {
-   "outstanding": 25575.66,
-   "rie_trading": 17380.31
+   "isin": "AE000A4AXJC5",
+   "contract": null,
+   "source": null
   },
   "FWDIB": {
-   "outstanding": 81614.35,
-   "rie_trading": 69614.43
+   "isin": "AE000A4AWNW7",
+   "contract": null,
+   "source": null
   },
   "SHAZB": {
-   "outstanding": 23561.47,
-   "rie_trading": 22071.62
+   "isin": "AE000A4AWNU1",
+   "contract": null,
+   "source": null
   },
   "WENB": {
-   "outstanding": 74596.44,
-   "rie_trading": 53840.63
+   "isin": "AE000A4AWA05",
+   "contract": null,
+   "source": null
   },
   "ADBEB": {
-   "outstanding": 3590.24,
-   "rie_trading": 3219.36
+   "isin": "AE000A4AVR64",
+   "contract": null,
+   "source": null
   },
   "HPEB": {
-   "outstanding": 6203.12,
-   "rie_trading": 4565.28
+   "isin": "AE000A4AVR72",
+   "contract": null,
+   "source": null
   },
   "ZMB": {
-   "outstanding": 4051.26,
-   "rie_trading": 3114.57
+   "isin": "AE000A4AVSF3",
+   "contract": null,
+   "source": null
   },
   "SECZB": {
-   "outstanding": 145808.87,
-   "rie_trading": 129800.41
+   "isin": "AE000A4AXPZ3",
+   "contract": null,
+   "source": null
   },
   "USDEB": {
-   "outstanding": 43435.94,
-   "rie_trading": 35450.9
+   "isin": "AE000A4AXP07",
+   "contract": null,
+   "source": null
   },
   "JPMB": {
-   "outstanding": 1515.51,
-   "rie_trading": 1190.79
+   "isin": "AE000A4AVRB4",
+   "contract": null,
+   "source": null
   },
   "LLYB": {
-   "outstanding": 616.18,
-   "rie_trading": 432.69
+   "isin": "AE000A4AVR98",
+   "contract": null,
+   "source": null
   },
   "MDBB": {
-   "outstanding": 1019.6,
-   "rie_trading": 797.31
+   "isin": "AE000A4AXWH7",
+   "contract": null,
+   "source": null
   },
   "BBB": {
-   "outstanding": 162001.47,
-   "rie_trading": 150827.05
+   "isin": "AE000A4AXWJ3",
+   "contract": null,
+   "source": null
   },
   "PENGB": {
-   "outstanding": 8894.71,
-   "rie_trading": 6777.46
+   "isin": "AE000A4AXWK1",
+   "contract": null,
+   "source": null
   },
   "UVXYB": {
-   "outstanding": 23522.1,
-   "rie_trading": 17302.08
-  },
-  "KSTRB": {
-   "outstanding": 24621.77,
-   "rie_trading": 15466.73
-  },
-  "BOTB": {
-   "outstanding": 16833.03,
-   "rie_trading": 11895.26
-  },
-  "TMFB": {
-   "outstanding": 13982.97,
-   "rie_trading": 9673.79
-  },
-  "VSTB": {
-   "outstanding": 3149.91,
-   "rie_trading": 2314.21
-  },
-  "BRKBB": {
-   "outstanding": 1021.43,
-   "rie_trading": 691.61
+   "isin": "AE000A4AWN34",
+   "contract": null,
+   "source": null
   }
  },
- "note": "100 rows; new since 16 Oct: BNCB, KSTRB, BOTB, TMFB, VSTB, BRKBB"
-},
-{
- "asOf": "2026-10-30T23:59:59Z",
- "published": "2026-11-02",
- "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-30-oct-2026_11_01_2026_16-05-02.pdf",
- "reporting_entity": "BTech Services Limited",
- "note": "105 rows; new since 23 Oct: BSPB, SKDDB, SKUUB, GEVB, APPB",
- "rows": {
-  "AMDB": {
-   "outstanding": 15195.45,
-   "rie_trading": 13981.41
-  },
-  "CRCLB": {
-   "outstanding": 2100722.78,
-   "rie_trading": 1929328.34
-  },
-  "EWYB": {
-   "outstanding": 60160.53,
-   "rie_trading": 57130.48
-  },
-  "INTCB": {
-   "outstanding": 814748,
-   "rie_trading": 804165.22
-  },
-  "MSTRB": {
-   "outstanding": 786757.98,
-   "rie_trading": 717173.89
-  },
-  "MUB": {
-   "outstanding": 66935.86,
-   "rie_trading": 65181.81
-  },
-  "NVDAB": {
-   "outstanding": 180240.37,
-   "rie_trading": 106645.76
-  },
-  "SNDKB": {
-   "outstanding": 77798.44,
-   "rie_trading": 76062.02
-  },
-  "SPCXB": {
-   "outstanding": 1322925.13,
-   "rie_trading": 1213422.48
-  },
-  "TSLAB": {
-   "outstanding": 48531.73,
-   "rie_trading": 38727.05
-  },
-  "MSFTB": {
-   "outstanding": 4870.71,
-   "rie_trading": 3060.75
-  },
-  "QQQB": {
-   "outstanding": 148507.68,
-   "rie_trading": 88724.27
-  },
-  "METAB": {
-   "outstanding": 10767.79,
-   "rie_trading": 9604.36
-  },
-  "LITEB": {
-   "outstanding": 4068.04,
-   "rie_trading": 3494.8
-  },
-  "PLTRB": {
-   "outstanding": 12463.7,
-   "rie_trading": 10351.23
-  },
-  "GOOGLB": {
-   "outstanding": 357464.54,
-   "rie_trading": 328072.22
-  },
-  "QCOMB": {
-   "outstanding": 12917.67,
-   "rie_trading": 9936.98
-  },
-  "COINB": {
-   "outstanding": 122362.73,
-   "rie_trading": 115870.49
-  },
-  "SPYB": {
-   "outstanding": 24795.78,
-   "rie_trading": 17510.71
-  },
-  "WDCB": {
-   "outstanding": 6371.9,
-   "rie_trading": 5995.37
-  },
-  "GLWB": {
-   "outstanding": 12704.49,
-   "rie_trading": 11295.02
-  },
-  "NBISB": {
-   "outstanding": 76145.35,
-   "rie_trading": 75060.69
-  },
-  "SOXLB": {
-   "outstanding": 449192.94,
-   "rie_trading": 429572.95
-  },
-  "DRAMB": {
-   "outstanding": 395205.23,
-   "rie_trading": 379360.69
-  },
-  "CBRSB": {
-   "outstanding": 47050.08,
-   "rie_trading": 45473.5
-  },
-  "SKHYB": {
-   "outstanding": 131233.89,
-   "rie_trading": 109629.51
-  },
-  "ARMB": {
-   "outstanding": 7160.66,
-   "rie_trading": 6714.83
-  },
-  "AAOIB": {
-   "outstanding": 96502.91,
-   "rie_trading": 94674.52
-  },
-  "IBMB": {
-   "outstanding": 3416.89,
-   "rie_trading": 2626.79
-  },
-  "RKLBB": {
-   "outstanding": 149822.49,
-   "rie_trading": 145088.81
-  },
-  "NOKB": {
-   "outstanding": 239645.17,
-   "rie_trading": 215912.15
-  },
-  "TSMB": {
-   "outstanding": 19490.23,
-   "rie_trading": 14477.96
-  },
-  "BABAB": {
-   "outstanding": 88889.66,
-   "rie_trading": 56529.83
-  },
-  "AVGOB": {
-   "outstanding": 29738.17,
-   "rie_trading": 20246.47
-  },
-  "MRVLB": {
-   "outstanding": 37665.34,
-   "rie_trading": 35406.09
-  },
-  "HOODB": {
-   "outstanding": 57871.59,
-   "rie_trading": 50818.01
-  },
-  "KORUB": {
-   "outstanding": 1235504.89,
-   "rie_trading": 1219920.71
-  },
-  "AXTIB": {
-   "outstanding": 49952.54,
-   "rie_trading": 48028.19
-  },
-  "CRWVB": {
-   "outstanding": 40724.53,
-   "rie_trading": 30054.06
-  },
-  "MUUB": {
-   "outstanding": 72135.04,
-   "rie_trading": 65082.97
-  },
-  "MVLLB": {
-   "outstanding": 69780.76,
-   "rie_trading": 65532.36
-  },
-  "SNXXB": {
-   "outstanding": 1041423.85,
-   "rie_trading": 1007119.31
-  },
-  "INTWB": {
-   "outstanding": 1052786.42,
-   "rie_trading": 1048430.39
-  },
-  "TQQQB": {
-   "outstanding": 195096.67,
-   "rie_trading": 187652.31
-  },
-  "QNTB": {
-   "outstanding": 20084.06,
-   "rie_trading": 17360.16
-  },
-  "ORCLB": {
-   "outstanding": 41681.25,
-   "rie_trading": 28016.53
-  },
-  "AAPLB": {
-   "outstanding": 14960.95,
-   "rie_trading": 7728.6
-  },
-  "BEB": {
-   "outstanding": 18606.35,
-   "rie_trading": 17895.55
-  },
-  "AMZNB": {
-   "outstanding": 17905.48,
-   "rie_trading": 15531.54
-  },
-  "SOXSB": {
-   "outstanding": 25047.51,
-   "rie_trading": 16797.76
-  },
-  "DELLB": {
-   "outstanding": 2157.8,
-   "rie_trading": 1917.02
-  },
-  "FLNCB": {
-   "outstanding": 151279.88,
-   "rie_trading": 108339.38
-  },
-  "AMATB": {
-   "outstanding": 4231.01,
-   "rie_trading": 3543.46
-  },
-  "PYPLB": {
-   "outstanding": 14602.83,
-   "rie_trading": 12770.68
-  },
-  "GSB": {
-   "outstanding": 921.49,
-   "rie_trading": 826.04
-  },
-  "SMHB": {
-   "outstanding": 3416.64,
-   "rie_trading": 3221.61
-  },
-  "BMNRB": {
-   "outstanding": 423211.21,
-   "rie_trading": 401175.67
-  },
-  "SMCIB": {
-   "outstanding": 35235.09,
-   "rie_trading": 31698.43
-  },
-  "IRENB": {
-   "outstanding": 122025.1,
-   "rie_trading": 118205.07
-  },
-  "ASMLB": {
-   "outstanding": 645.03,
-   "rie_trading": 568.57
-  },
-  "NFLXB": {
-   "outstanding": 38590.45,
-   "rie_trading": 32347.14
-  },
-  "ASTSB": {
-   "outstanding": 41851.12,
-   "rie_trading": 38849.05
-  },
-  "COHRB": {
-   "outstanding": 38328.47,
-   "rie_trading": 37711.65
-  },
-  "CRDOB": {
-   "outstanding": 3656.78,
-   "rie_trading": 2582.17
-  },
-  "USARB": {
-   "outstanding": 113177.86,
-   "rie_trading": 93627.68
-  },
-  "ALABB": {
-   "outstanding": 2480.28,
-   "rie_trading": 2066.47
-  },
-  "GMEB": {
-   "outstanding": 273431.92,
-   "rie_trading": 189727.02
-  },
-  "DJTB": {
-   "outstanding": 208749.76,
-   "rie_trading": 106712.94
-  },
-  "MRNAB": {
-   "outstanding": 8617.91,
-   "rie_trading": 6346.79
-  },
-  "STXB": {
-   "outstanding": 888.78,
-   "rie_trading": 773.92
-  },
-  "SQQQB": {
-   "outstanding": 17532.57,
-   "rie_trading": 11086.03
-  },
-  "CRWDB": {
-   "outstanding": 2706.52,
-   "rie_trading": 2446.47
-  },
-  "HIMSB": {
-   "outstanding": 25285.42,
-   "rie_trading": 15869.93
-  },
-  "CRMB": {
-   "outstanding": 2254.81,
-   "rie_trading": 1986.6
-  },
-  "BNCB": {
-   "outstanding": 7337898.85,
-   "rie_trading": 4548755.1
-  },
-  "GPROB": {
-   "outstanding": 499755.16,
-   "rie_trading": 389326.71
-  },
-  "RDDTB": {
-   "outstanding": 5519.2,
-   "rie_trading": 3925.02
-  },
-  "CYPHB": {
-   "outstanding": 285108.5,
-   "rie_trading": 235377.72
-  },
-  "AMCB": {
-   "outstanding": 222448.73,
-   "rie_trading": 117435.73
-  },
-  "AGPUB": {
-   "outstanding": 255421.69,
-   "rie_trading": 231429.76
-  },
-  "PDDB": {
-   "outstanding": 25636.97,
-   "rie_trading": 17506.5
-  },
-  "FWDIB": {
-   "outstanding": 77554.8,
-   "rie_trading": 65563.15
-  },
-  "SHAZB": {
-   "outstanding": 18466.47,
-   "rie_trading": 16977.62
-  },
-  "WENB": {
-   "outstanding": 79718.47,
-   "rie_trading": 60581.83
-  },
-  "ADBEB": {
-   "outstanding": 3442.29,
-   "rie_trading": 3071.44
-  },
-  "HPEB": {
-   "outstanding": 6014.35,
-   "rie_trading": 4376.93
-  },
-  "ZMB": {
-   "outstanding": 4115.41,
-   "rie_trading": 3178.83
-  },
-  "SECZB": {
-   "outstanding": 134645.28,
-   "rie_trading": 118638.53
-  },
-  "USDEB": {
-   "outstanding": 68555.52,
-   "rie_trading": 60596.7
-  },
-  "JPMB": {
-   "outstanding": 1432.26,
-   "rie_trading": 1107.59
-  },
-  "LLYB": {
-   "outstanding": 597.81,
-   "rie_trading": 400.93
-  },
-  "MDBB": {
-   "outstanding": 1017.5,
-   "rie_trading": 795.01
-  },
-  "BBB": {
-   "outstanding": 161282.96,
-   "rie_trading": 150129.59
-  },
-  "PENGB": {
-   "outstanding": 8792,
-   "rie_trading": 6512.4
-  },
-  "UVXYB": {
-   "outstanding": 23486.86,
-   "rie_trading": 17267.54
-  },
-  "KSTRB": {
-   "outstanding": 49883.12,
-   "rie_trading": 40796.92
-  },
-  "BOTB": {
-   "outstanding": 17517.75,
-   "rie_trading": 12651.83
-  },
-  "TMFB": {
-   "outstanding": 14190.69,
-   "rie_trading": 9881.59
-  },
-  "VSTB": {
-   "outstanding": 3612.71,
-   "rie_trading": 2776.01
-  },
-  "BRKBB": {
-   "outstanding": 1014.31,
-   "rie_trading": 685.65
-  },
-  "BSPB": {
-   "outstanding": 8195.91,
-   "rie_trading": 5915.36
-  },
-  "SKDDB": {
-   "outstanding": 32884.12,
-   "rie_trading": 23803.46
-  },
-  "SKUUB": {
-   "outstanding": 24436.82,
-   "rie_trading": 17693.1
-  },
-  "GEVB": {
-   "outstanding": 548.37,
-   "rie_trading": 419.59
-  },
-  "APPB": {
-   "outstanding": 1804.22,
-   "rie_trading": 1397.45
+ "disclosures": [
+  {
+   "asOf": "2026-08-28T23:59:59Z",
+   "published": "2026-08-31",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-28-aug-2026_08_30_2026_19-03-17.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 6466.1,
+     "rie_trading": 5433.18
+    },
+    "CRCLB": {
+     "outstanding": 978092.1,
+     "rie_trading": 900043.24
+    },
+    "EWYB": {
+     "outstanding": 53063.17,
+     "rie_trading": 51814.2
+    },
+    "INTCB": {
+     "outstanding": 147556.14,
+     "rie_trading": 134722.68
+    },
+    "MSTRB": {
+     "outstanding": 362363.2,
+     "rie_trading": 346037.11
+    },
+    "MUB": {
+     "outstanding": 42920.97,
+     "rie_trading": 41239.16
+    },
+    "NVDAB": {
+     "outstanding": 56591.27,
+     "rie_trading": 29884.66
+    },
+    "SNDKB": {
+     "outstanding": 31586.64,
+     "rie_trading": 30563.57
+    },
+    "SPCXB": {
+     "outstanding": 486994.81,
+     "rie_trading": 397740.18
+    },
+    "TSLAB": {
+     "outstanding": 44902.16,
+     "rie_trading": 38128.77
+    },
+    "MSFTB": {
+     "outstanding": 5959.88,
+     "rie_trading": 4031.12
+    },
+    "QQQB": {
+     "outstanding": 41671.53,
+     "rie_trading": 22714.37
+    },
+    "METAB": {
+     "outstanding": 15164.07,
+     "rie_trading": 14094.95
+    },
+    "LITEB": {
+     "outstanding": 3682.87,
+     "rie_trading": 3249.28
+    },
+    "PLTRB": {
+     "outstanding": 6575.01,
+     "rie_trading": 5384.36
+    },
+    "GOOGLB": {
+     "outstanding": 82381.06,
+     "rie_trading": 73786.24
+    },
+    "QCOMB": {
+     "outstanding": 14353.36,
+     "rie_trading": 12973.43
+    },
+    "COINB": {
+     "outstanding": 82569.81,
+     "rie_trading": 80993.93
+    },
+    "SPYB": {
+     "outstanding": 26556.16,
+     "rie_trading": 17820.33
+    },
+    "WDCB": {
+     "outstanding": 4613.15,
+     "rie_trading": 4383.67
+    },
+    "GLWB": {
+     "outstanding": 8621.32,
+     "rie_trading": 7717.14
+    },
+    "NBISB": {
+     "outstanding": 38848.64,
+     "rie_trading": 37945.86
+    },
+    "SOXLB": {
+     "outstanding": 90131.86,
+     "rie_trading": 86840.99
+    },
+    "DRAMB": {
+     "outstanding": 319817.57,
+     "rie_trading": 299812.48
+    },
+    "CBRSB": {
+     "outstanding": 11800.55,
+     "rie_trading": 10721.01
+    },
+    "SKHYB": {
+     "outstanding": 207038.93,
+     "rie_trading": 147110.32
+    },
+    "ARMB": {
+     "outstanding": 6073.05,
+     "rie_trading": 5637.85
+    },
+    "AAOIB": {
+     "outstanding": 44095.12,
+     "rie_trading": 42182.92
+    },
+    "IBMB": {
+     "outstanding": 3748.98,
+     "rie_trading": 3255.47
+    },
+    "RKLBB": {
+     "outstanding": 20836.76,
+     "rie_trading": 19497.8
+    },
+    "NOKB": {
+     "outstanding": 177916.21,
+     "rie_trading": 153915.35
+    },
+    "TSMB": {
+     "outstanding": 9143.57,
+     "rie_trading": 7327.47
+    },
+    "BABAB": {
+     "outstanding": 26252.67,
+     "rie_trading": 19526.8
+    },
+    "AVGOB": {
+     "outstanding": 10281.24,
+     "rie_trading": 9370.44
+    },
+    "MRVLB": {
+     "outstanding": 36659.2,
+     "rie_trading": 33626.75
+    },
+    "HOODB": {
+     "outstanding": 14021.01,
+     "rie_trading": 10413.34
+    },
+    "KORUB": {
+     "outstanding": 128928.75,
+     "rie_trading": 121905.5
+    },
+    "AXTIB": {
+     "outstanding": 54715.53,
+     "rie_trading": 49694.29
+    },
+    "CRWVB": {
+     "outstanding": 11474.76,
+     "rie_trading": 10101.16
+    },
+    "MUUB": {
+     "outstanding": 53629.26,
+     "rie_trading": 44896.39
+    },
+    "MVLLB": {
+     "outstanding": 52134.08,
+     "rie_trading": 46344.29
+    },
+    "SNXXB": {
+     "outstanding": 337407.3,
+     "rie_trading": 315713.19
+    },
+    "INTWB": {
+     "outstanding": 43454.48,
+     "rie_trading": 38994.64
+    },
+    "TQQQB": {
+     "outstanding": 26558.02,
+     "rie_trading": 22661
+    },
+    "QNTB": {
+     "outstanding": 11443.8,
+     "rie_trading": 9936.26
+    },
+    "ORCLB": {
+     "outstanding": 14502.82,
+     "rie_trading": 12554.99
+    },
+    "AAPLB": {
+     "outstanding": 19145.83,
+     "rie_trading": 16373.28
+    },
+    "BEB": {
+     "outstanding": 12495.51,
+     "rie_trading": 11566.77
+    },
+    "AMZNB": {
+     "outstanding": 5758.57,
+     "rie_trading": 4876.89
+    },
+    "SOXSB": {
+     "outstanding": 20030.74,
+     "rie_trading": 12668.31
+    },
+    "DELLB": {
+     "outstanding": 1789.48,
+     "rie_trading": 1328.54
+    },
+    "FLNCB": {
+     "outstanding": 60459.41,
+     "rie_trading": 46663.04
+    },
+    "AMATB": {
+     "outstanding": 3786.71,
+     "rie_trading": 3102.74
+    },
+    "PYPLB": {
+     "outstanding": 13311.99,
+     "rie_trading": 9709.5
+    },
+    "GSB": {
+     "outstanding": 547.39,
+     "rie_trading": 356.98
+    },
+    "SMHB": {
+     "outstanding": 1790.33,
+     "rie_trading": 1439.27
+    },
+    "BMNRB": {
+     "outstanding": 180718.13,
+     "rie_trading": 173920.32
+    },
+    "SMCIB": {
+     "outstanding": 25307.47,
+     "rie_trading": 21785.38
+    },
+    "IRENB": {
+     "outstanding": 57435.24,
+     "rie_trading": 54703.4
+    },
+    "ASMLB": {
+     "outstanding": 1975.06,
+     "rie_trading": 1850.06
+    },
+    "NFLXB": {
+     "outstanding": 10803.08,
+     "rie_trading": 6477.08
+    },
+    "ASTSB": {
+     "outstanding": 17592.92,
+     "rie_trading": 15890.91
+    },
+    "COHRB": {
+     "outstanding": 12987.63,
+     "rie_trading": 12459.53
+    },
+    "CRDOB": {
+     "outstanding": 3057.43,
+     "rie_trading": 2572.89
+    },
+    "USARB": {
+     "outstanding": 48021.37,
+     "rie_trading": 41632.78
+    },
+    "ALABB": {
+     "outstanding": 2835.78,
+     "rie_trading": 2512
+    },
+    "GMEB": {
+     "outstanding": 292352.84,
+     "rie_trading": 195533.56
+    },
+    "DJTB": {
+     "outstanding": 382970,
+     "rie_trading": 295677.4
+    }
+   }
+  },
+  {
+   "asOf": "2026-10-02T23:59:59Z",
+   "published": "2026-10-05",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-2-oct-2026_10_04_2026_17-54-15.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 7099.23,
+     "rie_trading": 5933.82
+    },
+    "CRCLB": {
+     "outstanding": 1661676.98,
+     "rie_trading": 1532241.38
+    },
+    "EWYB": {
+     "outstanding": 40329.39,
+     "rie_trading": 39018.51
+    },
+    "INTCB": {
+     "outstanding": 177240.52,
+     "rie_trading": 164710.54
+    },
+    "MSTRB": {
+     "outstanding": 560354.5,
+     "rie_trading": 495763.92
+    },
+    "MUB": {
+     "outstanding": 40859.19,
+     "rie_trading": 39168.07
+    },
+    "NVDAB": {
+     "outstanding": 178723.92,
+     "rie_trading": 138923.93
+    },
+    "SNDKB": {
+     "outstanding": 16180.93,
+     "rie_trading": 14615.04
+    },
+    "SPCXB": {
+     "outstanding": 532118,
+     "rie_trading": 436054.23
+    },
+    "TSLAB": {
+     "outstanding": 67332.75,
+     "rie_trading": 57222.34
+    },
+    "MSFTB": {
+     "outstanding": 5978.63,
+     "rie_trading": 3996.98
+    },
+    "QQQB": {
+     "outstanding": 78487.5,
+     "rie_trading": 47209.74
+    },
+    "METAB": {
+     "outstanding": 5238.35,
+     "rie_trading": 4170.71
+    },
+    "LITEB": {
+     "outstanding": 3984.84,
+     "rie_trading": 3373.81
+    },
+    "PLTRB": {
+     "outstanding": 10140.63,
+     "rie_trading": 8020.74
+    },
+    "GOOGLB": {
+     "outstanding": 85634.19,
+     "rie_trading": 71952.31
+    },
+    "QCOMB": {
+     "outstanding": 16621.58,
+     "rie_trading": 13572.03
+    },
+    "COINB": {
+     "outstanding": 89013.9,
+     "rie_trading": 83086.65
+    },
+    "SPYB": {
+     "outstanding": 19711.18,
+     "rie_trading": 13183.7
+    },
+    "WDCB": {
+     "outstanding": 6948.06,
+     "rie_trading": 6726.34
+    },
+    "GLWB": {
+     "outstanding": 10414.8,
+     "rie_trading": 8974.23
+    },
+    "NBISB": {
+     "outstanding": 25185.96,
+     "rie_trading": 24139.69
+    },
+    "SOXLB": {
+     "outstanding": 29207.43,
+     "rie_trading": 25464.02
+    },
+    "DRAMB": {
+     "outstanding": 371534.48,
+     "rie_trading": 345952.39
+    },
+    "CBRSB": {
+     "outstanding": 18799.03,
+     "rie_trading": 17383.91
+    },
+    "SKHYB": {
+     "outstanding": 66985.26,
+     "rie_trading": 59876.78
+    },
+    "ARMB": {
+     "outstanding": 7280.93,
+     "rie_trading": 6824.71
+    },
+    "AAOIB": {
+     "outstanding": 42502.95,
+     "rie_trading": 41241.85
+    },
+    "IBMB": {
+     "outstanding": 3665.05,
+     "rie_trading": 2855.47
+    },
+    "RKLBB": {
+     "outstanding": 35046.71,
+     "rie_trading": 32403.08
+    },
+    "NOKB": {
+     "outstanding": 203236.61,
+     "rie_trading": 179479.69
+    },
+    "TSMB": {
+     "outstanding": 9402.74,
+     "rie_trading": 6921.37
+    },
+    "BABAB": {
+     "outstanding": 81896.49,
+     "rie_trading": 52302.83
+    },
+    "AVGOB": {
+     "outstanding": 40604.63,
+     "rie_trading": 30957
+    },
+    "MRVLB": {
+     "outstanding": 30893.53,
+     "rie_trading": 28611.13
+    },
+    "HOODB": {
+     "outstanding": 47068.22,
+     "rie_trading": 40800.86
+    },
+    "KORUB": {
+     "outstanding": 51848.17,
+     "rie_trading": 43654.96
+    },
+    "AXTIB": {
+     "outstanding": 49137.28,
+     "rie_trading": 47094.47
+    },
+    "CRWVB": {
+     "outstanding": 16903.48,
+     "rie_trading": 13483.93
+    },
+    "MUUB": {
+     "outstanding": 46438.69,
+     "rie_trading": 39361.3
+    },
+    "MVLLB": {
+     "outstanding": 22096.85,
+     "rie_trading": 17800.24
+    },
+    "SNXXB": {
+     "outstanding": 211794.67,
+     "rie_trading": 189628.08
+    },
+    "INTWB": {
+     "outstanding": 58556.92,
+     "rie_trading": 54099.46
+    },
+    "TQQQB": {
+     "outstanding": 33971.77,
+     "rie_trading": 29530.93
+    },
+    "QNTB": {
+     "outstanding": 16191.65,
+     "rie_trading": 13670.41
+    },
+    "ORCLB": {
+     "outstanding": 25788.21,
+     "rie_trading": 16881.48
+    },
+    "AAPLB": {
+     "outstanding": 17514.02,
+     "rie_trading": 9436.92
+    },
+    "BEB": {
+     "outstanding": 9428.36,
+     "rie_trading": 8699.38
+    },
+    "AMZNB": {
+     "outstanding": 14795.91,
+     "rie_trading": 12671.94
+    },
+    "SOXSB": {
+     "outstanding": 140085.7,
+     "rie_trading": 129300.46
+    },
+    "DELLB": {
+     "outstanding": 1873.32,
+     "rie_trading": 1633.8
+    },
+    "FLNCB": {
+     "outstanding": 133538.61,
+     "rie_trading": 89959.74
+    },
+    "AMATB": {
+     "outstanding": 5086.65,
+     "rie_trading": 4384.47
+    },
+    "PYPLB": {
+     "outstanding": 12802.2,
+     "rie_trading": 10984.19
+    },
+    "GSB": {
+     "outstanding": 817.34,
+     "rie_trading": 721.71
+    },
+    "SMHB": {
+     "outstanding": 2228.95,
+     "rie_trading": 2033.11
+    },
+    "BMNRB": {
+     "outstanding": 373437.25,
+     "rie_trading": 351781.14
+    },
+    "SMCIB": {
+     "outstanding": 19483.83,
+     "rie_trading": 15924.13
+    },
+    "IRENB": {
+     "outstanding": 33830.91,
+     "rie_trading": 31194.16
+    },
+    "ASMLB": {
+     "outstanding": 2117.64,
+     "rie_trading": 2051.18
+    },
+    "NFLXB": {
+     "outstanding": 32086.71,
+     "rie_trading": 25152.86
+    },
+    "ASTSB": {
+     "outstanding": 23056.98,
+     "rie_trading": 21295.39
+    },
+    "COHRB": {
+     "outstanding": 10080.61,
+     "rie_trading": 9560.36
+    },
+    "CRDOB": {
+     "outstanding": 4544.78,
+     "rie_trading": 3469.89
+    },
+    "USARB": {
+     "outstanding": 69056.19,
+     "rie_trading": 62831.34
+    },
+    "ALABB": {
+     "outstanding": 1871.13,
+     "rie_trading": 1457.8
+    },
+    "GMEB": {
+     "outstanding": 273592.35,
+     "rie_trading": 190965.59
+    },
+    "DJTB": {
+     "outstanding": 187373.04,
+     "rie_trading": 100305.23
+    },
+    "MRNAB": {
+     "outstanding": 8752.3,
+     "rie_trading": 6500.15
+    },
+    "STXB": {
+     "outstanding": 654.45,
+     "rie_trading": 564.2
+    },
+    "SQQQB": {
+     "outstanding": 21967.41,
+     "rie_trading": 15117.61
+    },
+    "CRWDB": {
+     "outstanding": 2083.36,
+     "rie_trading": 1822.62
+    },
+    "HIMSB": {
+     "outstanding": 25861.1,
+     "rie_trading": 15684.66
+    },
+    "CRMB": {
+     "outstanding": 2085.38,
+     "rie_trading": 1816.07
+    },
+    "GPROB": {
+     "outstanding": 468499.67,
+     "rie_trading": 358399.74
+    },
+    "RDDTB": {
+     "outstanding": 4554.59,
+     "rie_trading": 2956.53
+    },
+    "CYPHB": {
+     "outstanding": 286213.66,
+     "rie_trading": 235714.06
+    },
+    "AMCB": {
+     "outstanding": 245311.96,
+     "rie_trading": 136669.95
+    },
+    "AGPUB": {
+     "outstanding": 189559.24,
+     "rie_trading": 158318.33
+    },
+    "PDDB": {
+     "outstanding": 26144.02,
+     "rie_trading": 21207.91
+    },
+    "FWDIB": {
+     "outstanding": 50715.03,
+     "rie_trading": 38855.47
+    },
+    "SHAZB": {
+     "outstanding": 7520.25,
+     "rie_trading": 6068.55
+    },
+    "WENB": {
+     "outstanding": 72007.22,
+     "rie_trading": 51008.7
+    },
+    "ADBEB": {
+     "outstanding": 4410.44,
+     "rie_trading": 4087.4
+    },
+    "HPEB": {
+     "outstanding": 7674.11,
+     "rie_trading": 6083.48
+    },
+    "ZMB": {
+     "outstanding": 4040.91,
+     "rie_trading": 3103.09
+    }
+   }
+  },
+  {
+   "asOf": "2026-10-09T23:59:59Z",
+   "published": "2026-10-12",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-9-oct-2026_10_10_2026_19-31-55.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 7130.53,
+     "rie_trading": 6021.91
+    },
+    "CRCLB": {
+     "outstanding": 1780321.67,
+     "rie_trading": 1635060.49
+    },
+    "EWYB": {
+     "outstanding": 41299.67,
+     "rie_trading": 39740.18
+    },
+    "INTCB": {
+     "outstanding": 221794.05,
+     "rie_trading": 210685.4
+    },
+    "MSTRB": {
+     "outstanding": 646746.82,
+     "rie_trading": 577866.82
+    },
+    "MUB": {
+     "outstanding": 41643.92,
+     "rie_trading": 40191.5
+    },
+    "NVDAB": {
+     "outstanding": 201231.05,
+     "rie_trading": 150270.23
+    },
+    "SNDKB": {
+     "outstanding": 18833.65,
+     "rie_trading": 17522.32
+    },
+    "SPCXB": {
+     "outstanding": 531204.37,
+     "rie_trading": 435698.68
+    },
+    "TSLAB": {
+     "outstanding": 57822.71,
+     "rie_trading": 48709.8
+    },
+    "MSFTB": {
+     "outstanding": 7192.95,
+     "rie_trading": 5245.49
+    },
+    "QQQB": {
+     "outstanding": 86599.2,
+     "rie_trading": 44936.96
+    },
+    "METAB": {
+     "outstanding": 6474.08,
+     "rie_trading": 5577.37
+    },
+    "LITEB": {
+     "outstanding": 3658.42,
+     "rie_trading": 3089.66
+    },
+    "PLTRB": {
+     "outstanding": 10542.06,
+     "rie_trading": 8530.96
+    },
+    "GOOGLB": {
+     "outstanding": 98330.18,
+     "rie_trading": 84804.65
+    },
+    "QCOMB": {
+     "outstanding": 16581.06,
+     "rie_trading": 13600.25
+    },
+    "COINB": {
+     "outstanding": 108518.18,
+     "rie_trading": 102199.03
+    },
+    "SPYB": {
+     "outstanding": 20967.87,
+     "rie_trading": 14569.83
+    },
+    "WDCB": {
+     "outstanding": 7811.34,
+     "rie_trading": 7590.37
+    },
+    "GLWB": {
+     "outstanding": 11891.38,
+     "rie_trading": 10452.63
+    },
+    "NBISB": {
+     "outstanding": 27349.69,
+     "rie_trading": 26273.5
+    },
+    "SOXLB": {
+     "outstanding": 47763.05,
+     "rie_trading": 44402.13
+    },
+    "DRAMB": {
+     "outstanding": 380183.18,
+     "rie_trading": 366051.05
+    },
+    "CBRSB": {
+     "outstanding": 32006.52,
+     "rie_trading": 30414.51
+    },
+    "SKHYB": {
+     "outstanding": 98114.78,
+     "rie_trading": 87176.42
+    },
+    "ARMB": {
+     "outstanding": 7205.56,
+     "rie_trading": 6750.61
+    },
+    "AAOIB": {
+     "outstanding": 48624.61,
+     "rie_trading": 47090.35
+    },
+    "IBMB": {
+     "outstanding": 4012.34,
+     "rie_trading": 3236.52
+    },
+    "RKLBB": {
+     "outstanding": 51382.18,
+     "rie_trading": 48766.42
+    },
+    "NOKB": {
+     "outstanding": 215453.3,
+     "rie_trading": 192327.03
+    },
+    "TSMB": {
+     "outstanding": 12459.89,
+     "rie_trading": 10000.09
+    },
+    "BABAB": {
+     "outstanding": 85321.71,
+     "rie_trading": 58287.7
+    },
+    "AVGOB": {
+     "outstanding": 42100.67,
+     "rie_trading": 32213.96
+    },
+    "MRVLB": {
+     "outstanding": 29001.77,
+     "rie_trading": 26979.11
+    },
+    "HOODB": {
+     "outstanding": 51278.25,
+     "rie_trading": 44982.25
+    },
+    "KORUB": {
+     "outstanding": 274670.09,
+     "rie_trading": 266542.25
+    },
+    "AXTIB": {
+     "outstanding": 51565.05,
+     "rie_trading": 49612
+    },
+    "CRWVB": {
+     "outstanding": 22011.65,
+     "rie_trading": 18592.89
+    },
+    "MUUB": {
+     "outstanding": 47047.63,
+     "rie_trading": 39975.29
+    },
+    "MVLLB": {
+     "outstanding": 23843.58,
+     "rie_trading": 19550.37
+    },
+    "SNXXB": {
+     "outstanding": 332060.41,
+     "rie_trading": 308703.03
+    },
+    "INTWB": {
+     "outstanding": 89673.07,
+     "rie_trading": 85116.08
+    },
+    "TQQQB": {
+     "outstanding": 77488.59,
+     "rie_trading": 73023.92
+    },
+    "QNTB": {
+     "outstanding": 18308.63,
+     "rie_trading": 15572
+    },
+    "ORCLB": {
+     "outstanding": 28178.22,
+     "rie_trading": 19228.96
+    },
+    "AAPLB": {
+     "outstanding": 15510.23,
+     "rie_trading": 8047.91
+    },
+    "BEB": {
+     "outstanding": 9431.53,
+     "rie_trading": 8713.41
+    },
+    "AMZNB": {
+     "outstanding": 17161.58,
+     "rie_trading": 14612.32
+    },
+    "SOXSB": {
+     "outstanding": 163334.28,
+     "rie_trading": 153313.49
+    },
+    "DELLB": {
+     "outstanding": 1890.5,
+     "rie_trading": 1649.86
+    },
+    "FLNCB": {
+     "outstanding": 143045.03,
+     "rie_trading": 101964.69
+    },
+    "AMATB": {
+     "outstanding": 4818.3,
+     "rie_trading": 4115.9
+    },
+    "PYPLB": {
+     "outstanding": 13063.42,
+     "rie_trading": 11244.8
+    },
+    "GSB": {
+     "outstanding": 964.52,
+     "rie_trading": 868.92
+    },
+    "SMHB": {
+     "outstanding": 2274.14,
+     "rie_trading": 2077.87
+    },
+    "BMNRB": {
+     "outstanding": 400106.54,
+     "rie_trading": 377723.77
+    },
+    "SMCIB": {
+     "outstanding": 18561.7,
+     "rie_trading": 15003.03
+    },
+    "IRENB": {
+     "outstanding": 72571.57,
+     "rie_trading": 69326.89
+    },
+    "ASMLB": {
+     "outstanding": 533.8,
+     "rie_trading": 467.34
+    },
+    "NFLXB": {
+     "outstanding": 32841.96,
+     "rie_trading": 26301.64
+    },
+    "ASTSB": {
+     "outstanding": 29600.68,
+     "rie_trading": 27859.77
+    },
+    "COHRB": {
+     "outstanding": 10451.82,
+     "rie_trading": 9618.94
+    },
+    "CRDOB": {
+     "outstanding": 3397.35,
+     "rie_trading": 2324.87
+    },
+    "USARB": {
+     "outstanding": 86153.54,
+     "rie_trading": 77532.7
+    },
+    "ALABB": {
+     "outstanding": 1957.99,
+     "rie_trading": 1544.9
+    },
+    "GMEB": {
+     "outstanding": 271041.75,
+     "rie_trading": 189934.43
+    },
+    "DJTB": {
+     "outstanding": 194242.76,
+     "rie_trading": 100343.64
+    },
+    "MRNAB": {
+     "outstanding": 9468.58,
+     "rie_trading": 7041.66
+    },
+    "STXB": {
+     "outstanding": 1183.5,
+     "rie_trading": 1090.82
+    },
+    "SQQQB": {
+     "outstanding": 32367.68,
+     "rie_trading": 25699.12
+    },
+    "CRWDB": {
+     "outstanding": 2046.4,
+     "rie_trading": 1785.77
+    },
+    "HIMSB": {
+     "outstanding": 25689.6,
+     "rie_trading": 15611.23
+    },
+    "CRMB": {
+     "outstanding": 2305.6,
+     "rie_trading": 2036.13
+    },
+    "GPROB": {
+     "outstanding": 724039.26,
+     "rie_trading": 613886.54
+    },
+    "RDDTB": {
+     "outstanding": 3828.75,
+     "rie_trading": 2268.43
+    },
+    "CYPHB": {
+     "outstanding": 291569.53,
+     "rie_trading": 240896.86
+    },
+    "AMCB": {
+     "outstanding": 229622.46,
+     "rie_trading": 124981.62
+    },
+    "AGPUB": {
+     "outstanding": 282263.71,
+     "rie_trading": 258051.55
+    },
+    "PDDB": {
+     "outstanding": 30199.25,
+     "rie_trading": 24927.87
+    },
+    "FWDIB": {
+     "outstanding": 73897.53,
+     "rie_trading": 61893.21
+    },
+    "SHAZB": {
+     "outstanding": 14208.9,
+     "rie_trading": 12737.6
+    },
+    "WENB": {
+     "outstanding": 75634.88,
+     "rie_trading": 54107.66
+    },
+    "ADBEB": {
+     "outstanding": 4555.49,
+     "rie_trading": 4191.35
+    },
+    "HPEB": {
+     "outstanding": 6547.61,
+     "rie_trading": 4960.3
+    },
+    "ZMB": {
+     "outstanding": 4281.16,
+     "rie_trading": 3343.88
+    },
+    "SECZB": {
+     "outstanding": 53257.47,
+     "rie_trading": 44719.13
+    },
+    "USDEB": {
+     "outstanding": 37729.18,
+     "rie_trading": 30318.49
+    },
+    "JPMB": {
+     "outstanding": 2182.79,
+     "rie_trading": 1823.54
+    },
+    "LLYB": {
+     "outstanding": 1047.1,
+     "rie_trading": 825.46
+    }
+   },
+   "note": "The as-of line was read without a clock time; BTech’s filings are as of 23:59:59 UTC"
+  },
+  {
+   "asOf": "2026-10-16T23:59:59Z",
+   "published": "2026-10-19",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-16-oct-2026_10_18_2026_22-20-17.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 15565.86,
+     "rie_trading": 14457.23
+    },
+    "CRCLB": {
+     "outstanding": 1797887.8,
+     "rie_trading": 1639012.26
+    },
+    "EWYB": {
+     "outstanding": 66117.8,
+     "rie_trading": 63255.42
+    },
+    "INTCB": {
+     "outstanding": 553626.18,
+     "rie_trading": 541719.6
+    },
+    "MSTRB": {
+     "outstanding": 690686.05,
+     "rie_trading": 622596.88
+    },
+    "MUB": {
+     "outstanding": 61206.33,
+     "rie_trading": 59247.24
+    },
+    "NVDAB": {
+     "outstanding": 200518.77,
+     "rie_trading": 137333.48
+    },
+    "SNDKB": {
+     "outstanding": 50601.41,
+     "rie_trading": 49261.16
+    },
+    "SPCXB": {
+     "outstanding": 948344.65,
+     "rie_trading": 847577.14
+    },
+    "TSLAB": {
+     "outstanding": 90106.39,
+     "rie_trading": 76114.34
+    },
+    "MSFTB": {
+     "outstanding": 7826.55,
+     "rie_trading": 6011.12
+    },
+    "QQQB": {
+     "outstanding": 131876.28,
+     "rie_trading": 85200.05
+    },
+    "METAB": {
+     "outstanding": 6824.77,
+     "rie_trading": 5907.8
+    },
+    "LITEB": {
+     "outstanding": 4343.62,
+     "rie_trading": 3776.56
+    },
+    "PLTRB": {
+     "outstanding": 12118.92,
+     "rie_trading": 10231.73
+    },
+    "GOOGLB": {
+     "outstanding": 102406.29,
+     "rie_trading": 89116.43
+    },
+    "QCOMB": {
+     "outstanding": 15430.11,
+     "rie_trading": 12449.58
+    },
+    "COINB": {
+     "outstanding": 114746.96,
+     "rie_trading": 108523.61
+    },
+    "SPYB": {
+     "outstanding": 22687.97,
+     "rie_trading": 15885.08
+    },
+    "WDCB": {
+     "outstanding": 8170.89,
+     "rie_trading": 7821.97
+    },
+    "GLWB": {
+     "outstanding": 13916.45,
+     "rie_trading": 12496.54
+    },
+    "NBISB": {
+     "outstanding": 37694.65,
+     "rie_trading": 36573.43
+    },
+    "SOXLB": {
+     "outstanding": 426865.04,
+     "rie_trading": 412901.21
+    },
+    "DRAMB": {
+     "outstanding": 394089.53,
+     "rie_trading": 378970.55
+    },
+    "CBRSB": {
+     "outstanding": 36140.03,
+     "rie_trading": 34564.28
+    },
+    "SKHYB": {
+     "outstanding": 150043.27,
+     "rie_trading": 133788.82
+    },
+    "ARMB": {
+     "outstanding": 8607.6,
+     "rie_trading": 8152.88
+    },
+    "AAOIB": {
+     "outstanding": 95846.1,
+     "rie_trading": 94451.75
+    },
+    "IBMB": {
+     "outstanding": 3820.53,
+     "rie_trading": 3038.91
+    },
+    "RKLBB": {
+     "outstanding": 169153.36,
+     "rie_trading": 164624.25
+    },
+    "NOKB": {
+     "outstanding": 224312.39,
+     "rie_trading": 200408
+    },
+    "TSMB": {
+     "outstanding": 17756.82,
+     "rie_trading": 15224.98
+    },
+    "BABAB": {
+     "outstanding": 76885.56,
+     "rie_trading": 51489.64
+    },
+    "AVGOB": {
+     "outstanding": 55961.54,
+     "rie_trading": 46616.13
+    },
+    "MRVLB": {
+     "outstanding": 33344.61,
+     "rie_trading": 31240.21
+    },
+    "HOODB": {
+     "outstanding": 56143.38,
+     "rie_trading": 49542.34
+    },
+    "KORUB": {
+     "outstanding": 1832382.65,
+     "rie_trading": 1816671.07
+    },
+    "AXTIB": {
+     "outstanding": 57438.23,
+     "rie_trading": 55511.97
+    },
+    "CRWVB": {
+     "outstanding": 24078.48,
+     "rie_trading": 19866.58
+    },
+    "MUUB": {
+     "outstanding": 569996.52,
+     "rie_trading": 562932.27
+    },
+    "MVLLB": {
+     "outstanding": 26733.14,
+     "rie_trading": 22008.86
+    },
+    "SNXXB": {
+     "outstanding": 602964.21,
+     "rie_trading": 577746.39
+    },
+    "INTWB": {
+     "outstanding": 160121.74,
+     "rie_trading": 155570.12
+    },
+    "TQQQB": {
+     "outstanding": 315538.09,
+     "rie_trading": 309117.13
+    },
+    "QNTB": {
+     "outstanding": 18739.16,
+     "rie_trading": 16121.67
+    },
+    "ORCLB": {
+     "outstanding": 29163.12,
+     "rie_trading": 20251.31
+    },
+    "AAPLB": {
+     "outstanding": 16039.32,
+     "rie_trading": 8984.05
+    },
+    "BEB": {
+     "outstanding": 9308.72,
+     "rie_trading": 8594.19
+    },
+    "AMZNB": {
+     "outstanding": 16379.03,
+     "rie_trading": 14217
+    },
+    "SOXSB": {
+     "outstanding": 31421.15,
+     "rie_trading": 23090.83
+    },
+    "DELLB": {
+     "outstanding": 2411.33,
+     "rie_trading": 2170.75
+    },
+    "FLNCB": {
+     "outstanding": 147863.41,
+     "rie_trading": 105046.78
+    },
+    "AMATB": {
+     "outstanding": 22746.6,
+     "rie_trading": 22047.3
+    },
+    "PYPLB": {
+     "outstanding": 15443.88,
+     "rie_trading": 13625.57
+    },
+    "GSB": {
+     "outstanding": 966.1,
+     "rie_trading": 870.58
+    },
+    "SMHB": {
+     "outstanding": 2573.1,
+     "rie_trading": 2386.96
+    },
+    "BMNRB": {
+     "outstanding": 448229.98,
+     "rie_trading": 422805.54
+    },
+    "SMCIB": {
+     "outstanding": 19200.99,
+     "rie_trading": 15666.96
+    },
+    "IRENB": {
+     "outstanding": 125669.02,
+     "rie_trading": 121942.83
+    },
+    "ASMLB": {
+     "outstanding": 628.46,
+     "rie_trading": 561.99
+    },
+    "NFLXB": {
+     "outstanding": 27295.73,
+     "rie_trading": 20783.84
+    },
+    "ASTSB": {
+     "outstanding": 42386.58,
+     "rie_trading": 40438.73
+    },
+    "COHRB": {
+     "outstanding": 39739.28,
+     "rie_trading": 39122.16
+    },
+    "CRDOB": {
+     "outstanding": 3675.94,
+     "rie_trading": 2601.12
+    },
+    "USARB": {
+     "outstanding": 103416.46,
+     "rie_trading": 85993.41
+    },
+    "ALABB": {
+     "outstanding": 2254.27,
+     "rie_trading": 1840.18
+    },
+    "GMEB": {
+     "outstanding": 271143.72,
+     "rie_trading": 190238.03
+    },
+    "DJTB": {
+     "outstanding": 201169.47,
+     "rie_trading": 102885.35
+    },
+    "MRNAB": {
+     "outstanding": 10153.09,
+     "rie_trading": 7881.29
+    },
+    "STXB": {
+     "outstanding": 1082.16,
+     "rie_trading": 967.16
+    },
+    "SQQQB": {
+     "outstanding": 17599.98,
+     "rie_trading": 10999.54
+    },
+    "CRWDB": {
+     "outstanding": 2205.02,
+     "rie_trading": 1944.56
+    },
+    "HIMSB": {
+     "outstanding": 25114.12,
+     "rie_trading": 15460.31
+    },
+    "CRMB": {
+     "outstanding": 2300.97,
+     "rie_trading": 2031.68
+    },
+    "GPROB": {
+     "outstanding": 453965,
+     "rie_trading": 343597.8
+    },
+    "RDDTB": {
+     "outstanding": 3644.17,
+     "rie_trading": 2066.56
+    },
+    "CYPHB": {
+     "outstanding": 327111.42,
+     "rie_trading": 275642.03
+    },
+    "AMCB": {
+     "outstanding": 226752.57,
+     "rie_trading": 121790.41
+    },
+    "AGPUB": {
+     "outstanding": 431610.87,
+     "rie_trading": 407288.06
+    },
+    "PDDB": {
+     "outstanding": 21797.21,
+     "rie_trading": 14130.68
+    },
+    "FWDIB": {
+     "outstanding": 75517.26,
+     "rie_trading": 63500.65
+    },
+    "SHAZB": {
+     "outstanding": 21802.15,
+     "rie_trading": 20331.48
+    },
+    "WENB": {
+     "outstanding": 77736.53,
+     "rie_trading": 58009.2
+    },
+    "ADBEB": {
+     "outstanding": 4629.97,
+     "rie_trading": 4265.89
+    },
+    "HPEB": {
+     "outstanding": 7443.61,
+     "rie_trading": 5824.99
+    },
+    "ZMB": {
+     "outstanding": 4431.81,
+     "rie_trading": 3494.97
+    },
+    "SECZB": {
+     "outstanding": 122026.02,
+     "rie_trading": 113140.04
+    },
+    "USDEB": {
+     "outstanding": 33653.69,
+     "rie_trading": 25796.43
+    },
+    "JPMB": {
+     "outstanding": 2121.34,
+     "rie_trading": 1762.34
+    },
+    "LLYB": {
+     "outstanding": 1049.78,
+     "rie_trading": 862.1
+    },
+    "MDBB": {
+     "outstanding": 2013,
+     "rie_trading": 1790.6
+    },
+    "BBB": {
+     "outstanding": 94583.61,
+     "rie_trading": 82553.85
+    },
+    "PENGB": {
+     "outstanding": 7670.83,
+     "rie_trading": 6277.83
+    },
+    "UVXYB": {
+     "outstanding": 26896.36,
+     "rie_trading": 20665.75
+    }
+   },
+   "note": "94 rows, confirmed by the founder’s own count on 23 Oct 2026; ADGM’s listing page shows 95, which the PDF does not bear out."
+  },
+  {
+   "asOf": "2026-10-23T23:59:59Z",
+   "published": "2026-10-26",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-23-oct-2026_10_25_2026_17-26-16.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "rows": {
+    "AMDB": {
+     "outstanding": 22423.49,
+     "rie_trading": 21306.92
+    },
+    "CRCLB": {
+     "outstanding": 1815324.86,
+     "rie_trading": 1653557.3
+    },
+    "EWYB": {
+     "outstanding": 62681.7,
+     "rie_trading": 58961.2
+    },
+    "INTCB": {
+     "outstanding": 592627.16,
+     "rie_trading": 580094.04
+    },
+    "MSTRB": {
+     "outstanding": 725005.15,
+     "rie_trading": 654885.3
+    },
+    "MUB": {
+     "outstanding": 74745.73,
+     "rie_trading": 72749.74
+    },
+    "NVDAB": {
+     "outstanding": 213785.15,
+     "rie_trading": 137567.8
+    },
+    "SNDKB": {
+     "outstanding": 68698.78,
+     "rie_trading": 67207.58
+    },
+    "SPCXB": {
+     "outstanding": 1027525.05,
+     "rie_trading": 922292.15
+    },
+    "TSLAB": {
+     "outstanding": 67602.23,
+     "rie_trading": 55838.59
+    },
+    "MSFTB": {
+     "outstanding": 7712.79,
+     "rie_trading": 5870.78
+    },
+    "QQQB": {
+     "outstanding": 132422.38,
+     "rie_trading": 82144.25
+    },
+    "METAB": {
+     "outstanding": 9526.09,
+     "rie_trading": 8401
+    },
+    "LITEB": {
+     "outstanding": 6537.19,
+     "rie_trading": 5972.13
+    },
+    "PLTRB": {
+     "outstanding": 15200.17,
+     "rie_trading": 13082.16
+    },
+    "GOOGLB": {
+     "outstanding": 115835.57,
+     "rie_trading": 99066.98
+    },
+    "QCOMB": {
+     "outstanding": 14762.15,
+     "rie_trading": 11780.59
+    },
+    "COINB": {
+     "outstanding": 117203.84,
+     "rie_trading": 110791.49
+    },
+    "SPYB": {
+     "outstanding": 22998.63,
+     "rie_trading": 15696.18
+    },
+    "WDCB": {
+     "outstanding": 7472.69,
+     "rie_trading": 7123.47
+    },
+    "GLWB": {
+     "outstanding": 13393.53,
+     "rie_trading": 11983.67
+    },
+    "NBISB": {
+     "outstanding": 76068.59,
+     "rie_trading": 74689.27
+    },
+    "SOXLB": {
+     "outstanding": 736718.76,
+     "rie_trading": 713551.83
+    },
+    "DRAMB": {
+     "outstanding": 415769.56,
+     "rie_trading": 400072.66
+    },
+    "CBRSB": {
+     "outstanding": 49595.43,
+     "rie_trading": 48018.55
+    },
+    "SKHYB": {
+     "outstanding": 183617.02,
+     "rie_trading": 160325.56
+    },
+    "ARMB": {
+     "outstanding": 8424.59,
+     "rie_trading": 7977.71
+    },
+    "AAOIB": {
+     "outstanding": 100052.34,
+     "rie_trading": 98162.78
+    },
+    "IBMB": {
+     "outstanding": 3676.72,
+     "rie_trading": 2890.37
+    },
+    "RKLBB": {
+     "outstanding": 167908.69,
+     "rie_trading": 163381.42
+    },
+    "NOKB": {
+     "outstanding": 284489.17,
+     "rie_trading": 259188.63
+    },
+    "TSMB": {
+     "outstanding": 22230.6,
+     "rie_trading": 17112.3
+    },
+    "BABAB": {
+     "outstanding": 85990.22,
+     "rie_trading": 54914.79
+    },
+    "AVGOB": {
+     "outstanding": 55065.56,
+     "rie_trading": 45577.75
+    },
+    "MRVLB": {
+     "outstanding": 34766.9,
+     "rie_trading": 32352.49
+    },
+    "HOODB": {
+     "outstanding": 56790.15,
+     "rie_trading": 49962.45
+    },
+    "KORUB": {
+     "outstanding": 1607778.15,
+     "rie_trading": 1592031.51
+    },
+    "AXTIB": {
+     "outstanding": 56294.25,
+     "rie_trading": 54365.69
+    },
+    "CRWVB": {
+     "outstanding": 36499.96,
+     "rie_trading": 32103.35
+    },
+    "MUUB": {
+     "outstanding": 583113.08,
+     "rie_trading": 576056.02
+    },
+    "MVLLB": {
+     "outstanding": 26553.65,
+     "rie_trading": 22277.3
+    },
+    "SNXXB": {
+     "outstanding": 932654.52,
+     "rie_trading": 897577.92
+    },
+    "INTWB": {
+     "outstanding": 203344.31,
+     "rie_trading": 198797.6
+    },
+    "TQQQB": {
+     "outstanding": 228931.46,
+     "rie_trading": 221261.69
+    },
+    "QNTB": {
+     "outstanding": 19578.23,
+     "rie_trading": 16867.07
+    },
+    "ORCLB": {
+     "outstanding": 41837.35,
+     "rie_trading": 28281.65
+    },
+    "AAPLB": {
+     "outstanding": 15445.77,
+     "rie_trading": 8007.15
+    },
+    "BEB": {
+     "outstanding": 22954.02,
+     "rie_trading": 22240.22
+    },
+    "AMZNB": {
+     "outstanding": 13140.01,
+     "rie_trading": 10881.22
+    },
+    "SOXSB": {
+     "outstanding": 37373.94,
+     "rie_trading": 29296.45
+    },
+    "DELLB": {
+     "outstanding": 2235.97,
+     "rie_trading": 1994.31
+    },
+    "FLNCB": {
+     "outstanding": 158155.55,
+     "rie_trading": 114315.98
+    },
+    "AMATB": {
+     "outstanding": 22971.09,
+     "rie_trading": 22273.2
+    },
+    "PYPLB": {
+     "outstanding": 16380.7,
+     "rie_trading": 14548
+    },
+    "GSB": {
+     "outstanding": 1017.25,
+     "rie_trading": 921.77
+    },
+    "SMHB": {
+     "outstanding": 3049.81,
+     "rie_trading": 2864.33
+    },
+    "BMNRB": {
+     "outstanding": 456013.16,
+     "rie_trading": 433913.58
+    },
+    "SMCIB": {
+     "outstanding": 28926.07,
+     "rie_trading": 25394.53
+    },
+    "IRENB": {
+     "outstanding": 143647.76,
+     "rie_trading": 139850.07
+    },
+    "ASMLB": {
+     "outstanding": 752.55,
+     "rie_trading": 676.1
+    },
+    "NFLXB": {
+     "outstanding": 31070.62,
+     "rie_trading": 24994.72
+    },
+    "ASTSB": {
+     "outstanding": 45714.03,
+     "rie_trading": 43767.57
+    },
+    "COHRB": {
+     "outstanding": 39867.82,
+     "rie_trading": 39250.94
+    },
+    "CRDOB": {
+     "outstanding": 3971.76,
+     "rie_trading": 2896.94
+    },
+    "USARB": {
+     "outstanding": 114479.27,
+     "rie_trading": 94933.19
+    },
+    "ALABB": {
+     "outstanding": 2231.39,
+     "rie_trading": 1817.42
+    },
+    "GMEB": {
+     "outstanding": 272400.03,
+     "rie_trading": 190069.08
+    },
+    "DJTB": {
+     "outstanding": 208389.95,
+     "rie_trading": 106922.12
+    },
+    "MRNAB": {
+     "outstanding": 9955.52,
+     "rie_trading": 7667.38
+    },
+    "STXB": {
+     "outstanding": 944.13,
+     "rie_trading": 829.18
+    },
+    "SQQQB": {
+     "outstanding": 17782.34,
+     "rie_trading": 11344.5
+    },
+    "CRWDB": {
+     "outstanding": 3063.09,
+     "rie_trading": 2802.9
+    },
+    "HIMSB": {
+     "outstanding": 25753.66,
+     "rie_trading": 16157.04
+    },
+    "CRMB": {
+     "outstanding": 2207.05,
+     "rie_trading": 1938.81
+    },
+    "BNCB": {
+     "outstanding": 6396045.85,
+     "rie_trading": 4065408.82
+    },
+    "GPROB": {
+     "outstanding": 467299.82,
+     "rie_trading": 356960.62
+    },
+    "RDDTB": {
+     "outstanding": 3835.92,
+     "rie_trading": 2249.56
+    },
+    "CYPHB": {
+     "outstanding": 298609.2,
+     "rie_trading": 248990.04
+    },
+    "AMCB": {
+     "outstanding": 223163.57,
+     "rie_trading": 118256.18
+    },
+    "AGPUB": {
+     "outstanding": 472812.9,
+     "rie_trading": 448211.53
+    },
+    "PDDB": {
+     "outstanding": 25575.66,
+     "rie_trading": 17380.31
+    },
+    "FWDIB": {
+     "outstanding": 81614.35,
+     "rie_trading": 69614.43
+    },
+    "SHAZB": {
+     "outstanding": 23561.47,
+     "rie_trading": 22071.62
+    },
+    "WENB": {
+     "outstanding": 74596.44,
+     "rie_trading": 53840.63
+    },
+    "ADBEB": {
+     "outstanding": 3590.24,
+     "rie_trading": 3219.36
+    },
+    "HPEB": {
+     "outstanding": 6203.12,
+     "rie_trading": 4565.28
+    },
+    "ZMB": {
+     "outstanding": 4051.26,
+     "rie_trading": 3114.57
+    },
+    "SECZB": {
+     "outstanding": 145808.87,
+     "rie_trading": 129800.41
+    },
+    "USDEB": {
+     "outstanding": 43435.94,
+     "rie_trading": 35450.9
+    },
+    "JPMB": {
+     "outstanding": 1515.51,
+     "rie_trading": 1190.79
+    },
+    "LLYB": {
+     "outstanding": 616.18,
+     "rie_trading": 432.69
+    },
+    "MDBB": {
+     "outstanding": 1019.6,
+     "rie_trading": 797.31
+    },
+    "BBB": {
+     "outstanding": 162001.47,
+     "rie_trading": 150827.05
+    },
+    "PENGB": {
+     "outstanding": 8894.71,
+     "rie_trading": 6777.46
+    },
+    "UVXYB": {
+     "outstanding": 23522.1,
+     "rie_trading": 17302.08
+    },
+    "KSTRB": {
+     "outstanding": 24621.77,
+     "rie_trading": 15466.73
+    },
+    "BOTB": {
+     "outstanding": 16833.03,
+     "rie_trading": 11895.26
+    },
+    "TMFB": {
+     "outstanding": 13982.97,
+     "rie_trading": 9673.79
+    },
+    "VSTB": {
+     "outstanding": 3149.91,
+     "rie_trading": 2314.21
+    },
+    "BRKBB": {
+     "outstanding": 1021.43,
+     "rie_trading": 691.61
+    }
+   },
+   "note": "100 rows; new since 16 Oct: BNCB, KSTRB, BOTB, TMFB, VSTB, BRKBB"
+  },
+  {
+   "asOf": "2026-10-30T23:59:59Z",
+   "published": "2026-11-02",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-30-oct-2026_11_01_2026_16-05-02.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "note": "105 rows; new since 23 Oct: BSPB, SKDDB, SKUUB, GEVB, APPB",
+   "rows": {
+    "AMDB": {
+     "outstanding": 15195.45,
+     "rie_trading": 13981.41
+    },
+    "CRCLB": {
+     "outstanding": 2100722.78,
+     "rie_trading": 1929328.34
+    },
+    "EWYB": {
+     "outstanding": 60160.53,
+     "rie_trading": 57130.48
+    },
+    "INTCB": {
+     "outstanding": 814748,
+     "rie_trading": 804165.22
+    },
+    "MSTRB": {
+     "outstanding": 786757.98,
+     "rie_trading": 717173.89
+    },
+    "MUB": {
+     "outstanding": 66935.86,
+     "rie_trading": 65181.81
+    },
+    "NVDAB": {
+     "outstanding": 180240.37,
+     "rie_trading": 106645.76
+    },
+    "SNDKB": {
+     "outstanding": 77798.44,
+     "rie_trading": 76062.02
+    },
+    "SPCXB": {
+     "outstanding": 1322925.13,
+     "rie_trading": 1213422.48
+    },
+    "TSLAB": {
+     "outstanding": 48531.73,
+     "rie_trading": 38727.05
+    },
+    "MSFTB": {
+     "outstanding": 4870.71,
+     "rie_trading": 3060.75
+    },
+    "QQQB": {
+     "outstanding": 148507.68,
+     "rie_trading": 88724.27
+    },
+    "METAB": {
+     "outstanding": 10767.79,
+     "rie_trading": 9604.36
+    },
+    "LITEB": {
+     "outstanding": 4068.04,
+     "rie_trading": 3494.8
+    },
+    "PLTRB": {
+     "outstanding": 12463.7,
+     "rie_trading": 10351.23
+    },
+    "GOOGLB": {
+     "outstanding": 357464.54,
+     "rie_trading": 328072.22
+    },
+    "QCOMB": {
+     "outstanding": 12917.67,
+     "rie_trading": 9936.98
+    },
+    "COINB": {
+     "outstanding": 122362.73,
+     "rie_trading": 115870.49
+    },
+    "SPYB": {
+     "outstanding": 24795.78,
+     "rie_trading": 17510.71
+    },
+    "WDCB": {
+     "outstanding": 6371.9,
+     "rie_trading": 5995.37
+    },
+    "GLWB": {
+     "outstanding": 12704.49,
+     "rie_trading": 11295.02
+    },
+    "NBISB": {
+     "outstanding": 76145.35,
+     "rie_trading": 75060.69
+    },
+    "SOXLB": {
+     "outstanding": 449192.94,
+     "rie_trading": 429572.95
+    },
+    "DRAMB": {
+     "outstanding": 395205.23,
+     "rie_trading": 379360.69
+    },
+    "CBRSB": {
+     "outstanding": 47050.08,
+     "rie_trading": 45473.5
+    },
+    "SKHYB": {
+     "outstanding": 131233.89,
+     "rie_trading": 109629.51
+    },
+    "ARMB": {
+     "outstanding": 7160.66,
+     "rie_trading": 6714.83
+    },
+    "AAOIB": {
+     "outstanding": 96502.91,
+     "rie_trading": 94674.52
+    },
+    "IBMB": {
+     "outstanding": 3416.89,
+     "rie_trading": 2626.79
+    },
+    "RKLBB": {
+     "outstanding": 149822.49,
+     "rie_trading": 145088.81
+    },
+    "NOKB": {
+     "outstanding": 239645.17,
+     "rie_trading": 215912.15
+    },
+    "TSMB": {
+     "outstanding": 19490.23,
+     "rie_trading": 14477.96
+    },
+    "BABAB": {
+     "outstanding": 88889.66,
+     "rie_trading": 56529.83
+    },
+    "AVGOB": {
+     "outstanding": 29738.17,
+     "rie_trading": 20246.47
+    },
+    "MRVLB": {
+     "outstanding": 37665.34,
+     "rie_trading": 35406.09
+    },
+    "HOODB": {
+     "outstanding": 57871.59,
+     "rie_trading": 50818.01
+    },
+    "KORUB": {
+     "outstanding": 1235504.89,
+     "rie_trading": 1219920.71
+    },
+    "AXTIB": {
+     "outstanding": 49952.54,
+     "rie_trading": 48028.19
+    },
+    "CRWVB": {
+     "outstanding": 40724.53,
+     "rie_trading": 30054.06
+    },
+    "MUUB": {
+     "outstanding": 72135.04,
+     "rie_trading": 65082.97
+    },
+    "MVLLB": {
+     "outstanding": 69780.76,
+     "rie_trading": 65532.36
+    },
+    "SNXXB": {
+     "outstanding": 1041423.85,
+     "rie_trading": 1007119.31
+    },
+    "INTWB": {
+     "outstanding": 1052786.42,
+     "rie_trading": 1048430.39
+    },
+    "TQQQB": {
+     "outstanding": 195096.67,
+     "rie_trading": 187652.31
+    },
+    "QNTB": {
+     "outstanding": 20084.06,
+     "rie_trading": 17360.16
+    },
+    "ORCLB": {
+     "outstanding": 41681.25,
+     "rie_trading": 28016.53
+    },
+    "AAPLB": {
+     "outstanding": 14960.95,
+     "rie_trading": 7728.6
+    },
+    "BEB": {
+     "outstanding": 18606.35,
+     "rie_trading": 17895.55
+    },
+    "AMZNB": {
+     "outstanding": 17905.48,
+     "rie_trading": 15531.54
+    },
+    "SOXSB": {
+     "outstanding": 25047.51,
+     "rie_trading": 16797.76
+    },
+    "DELLB": {
+     "outstanding": 2157.8,
+     "rie_trading": 1917.02
+    },
+    "FLNCB": {
+     "outstanding": 151279.88,
+     "rie_trading": 108339.38
+    },
+    "AMATB": {
+     "outstanding": 4231.01,
+     "rie_trading": 3543.46
+    },
+    "PYPLB": {
+     "outstanding": 14602.83,
+     "rie_trading": 12770.68
+    },
+    "GSB": {
+     "outstanding": 921.49,
+     "rie_trading": 826.04
+    },
+    "SMHB": {
+     "outstanding": 3416.64,
+     "rie_trading": 3221.61
+    },
+    "BMNRB": {
+     "outstanding": 423211.21,
+     "rie_trading": 401175.67
+    },
+    "SMCIB": {
+     "outstanding": 35235.09,
+     "rie_trading": 31698.43
+    },
+    "IRENB": {
+     "outstanding": 122025.1,
+     "rie_trading": 118205.07
+    },
+    "ASMLB": {
+     "outstanding": 645.03,
+     "rie_trading": 568.57
+    },
+    "NFLXB": {
+     "outstanding": 38590.45,
+     "rie_trading": 32347.14
+    },
+    "ASTSB": {
+     "outstanding": 41851.12,
+     "rie_trading": 38849.05
+    },
+    "COHRB": {
+     "outstanding": 38328.47,
+     "rie_trading": 37711.65
+    },
+    "CRDOB": {
+     "outstanding": 3656.78,
+     "rie_trading": 2582.17
+    },
+    "USARB": {
+     "outstanding": 113177.86,
+     "rie_trading": 93627.68
+    },
+    "ALABB": {
+     "outstanding": 2480.28,
+     "rie_trading": 2066.47
+    },
+    "GMEB": {
+     "outstanding": 273431.92,
+     "rie_trading": 189727.02
+    },
+    "DJTB": {
+     "outstanding": 208749.76,
+     "rie_trading": 106712.94
+    },
+    "MRNAB": {
+     "outstanding": 8617.91,
+     "rie_trading": 6346.79
+    },
+    "STXB": {
+     "outstanding": 888.78,
+     "rie_trading": 773.92
+    },
+    "SQQQB": {
+     "outstanding": 17532.57,
+     "rie_trading": 11086.03
+    },
+    "CRWDB": {
+     "outstanding": 2706.52,
+     "rie_trading": 2446.47
+    },
+    "HIMSB": {
+     "outstanding": 25285.42,
+     "rie_trading": 15869.93
+    },
+    "CRMB": {
+     "outstanding": 2254.81,
+     "rie_trading": 1986.6
+    },
+    "BNCB": {
+     "outstanding": 7337898.85,
+     "rie_trading": 4548755.1
+    },
+    "GPROB": {
+     "outstanding": 499755.16,
+     "rie_trading": 389326.71
+    },
+    "RDDTB": {
+     "outstanding": 5519.2,
+     "rie_trading": 3925.02
+    },
+    "CYPHB": {
+     "outstanding": 285108.5,
+     "rie_trading": 235377.72
+    },
+    "AMCB": {
+     "outstanding": 222448.73,
+     "rie_trading": 117435.73
+    },
+    "AGPUB": {
+     "outstanding": 255421.69,
+     "rie_trading": 231429.76
+    },
+    "PDDB": {
+     "outstanding": 25636.97,
+     "rie_trading": 17506.5
+    },
+    "FWDIB": {
+     "outstanding": 77554.8,
+     "rie_trading": 65563.15
+    },
+    "SHAZB": {
+     "outstanding": 18466.47,
+     "rie_trading": 16977.62
+    },
+    "WENB": {
+     "outstanding": 79718.47,
+     "rie_trading": 60581.83
+    },
+    "ADBEB": {
+     "outstanding": 3442.29,
+     "rie_trading": 3071.44
+    },
+    "HPEB": {
+     "outstanding": 6014.35,
+     "rie_trading": 4376.93
+    },
+    "ZMB": {
+     "outstanding": 4115.41,
+     "rie_trading": 3178.83
+    },
+    "SECZB": {
+     "outstanding": 134645.28,
+     "rie_trading": 118638.53
+    },
+    "USDEB": {
+     "outstanding": 68555.52,
+     "rie_trading": 60596.7
+    },
+    "JPMB": {
+     "outstanding": 1432.26,
+     "rie_trading": 1107.59
+    },
+    "LLYB": {
+     "outstanding": 597.81,
+     "rie_trading": 400.93
+    },
+    "MDBB": {
+     "outstanding": 1017.5,
+     "rie_trading": 795.01
+    },
+    "BBB": {
+     "outstanding": 161282.96,
+     "rie_trading": 150129.59
+    },
+    "PENGB": {
+     "outstanding": 8792,
+     "rie_trading": 6512.4
+    },
+    "UVXYB": {
+     "outstanding": 23486.86,
+     "rie_trading": 17267.54
+    },
+    "KSTRB": {
+     "outstanding": 49883.12,
+     "rie_trading": 40796.92
+    },
+    "BOTB": {
+     "outstanding": 17517.75,
+     "rie_trading": 12651.83
+    },
+    "TMFB": {
+     "outstanding": 14190.69,
+     "rie_trading": 9881.59
+    },
+    "VSTB": {
+     "outstanding": 3612.71,
+     "rie_trading": 2776.01
+    },
+    "BRKBB": {
+     "outstanding": 1014.31,
+     "rie_trading": 685.65
+    },
+    "BSPB": {
+     "outstanding": 8195.91,
+     "rie_trading": 5915.36
+    },
+    "SKDDB": {
+     "outstanding": 32884.12,
+     "rie_trading": 23803.46
+    },
+    "SKUUB": {
+     "outstanding": 24436.82,
+     "rie_trading": 17693.1
+    },
+    "GEVB": {
+     "outstanding": 548.37,
+     "rie_trading": 419.59
+    },
+    "APPB": {
+     "outstanding": 1804.22,
+     "rie_trading": 1397.45
+    }
+   }
   }
- }
+ ],
+ "readings": [
+  {
+   "date": "2026-10-24",
+   "block": 129423794,
+   "time": "2026-10-24T01:12:41Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.33441409,
+    "CRCLB": 1820605.57760258,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 75017.41018456,
+    "NVDAB": 213620.47016593,
+    "SNDKB": 68882.7698941,
+    "SPCXB": 1028885.21323141,
+    "TSLAB": 67997.552532,
+    "GOOGLB": 115787.38372488,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739145.14729596,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  },
+  {
+   "date": "2026-10-25",
+   "block": 129614364,
+   "time": "2026-10-25T01:02:18Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22444.0715942,
+    "CRCLB": 1820147.1069887,
+    "EWYB": 62984.25946011,
+    "INTCB": 592830.60740279,
+    "MSTRB": 753220.85596079,
+    "MUB": 75009.98019715,
+    "NVDAB": 213712.80632998,
+    "SNDKB": 68827.07747164,
+    "SPCXB": 1029226.91288263,
+    "TSLAB": 68020.63651659,
+    "GOOGLB": 115794.4120302,
+    "QCOMB": 14895.02883299,
+    "COINB": 117951.20368412,
+    "SPYB": 22963.36762731,
+    "WDCB": 7535.33901899,
+    "GLWB": 13609.28006206,
+    "NBISB": 76198.2389085,
+    "SOXLB": 736772.50082766,
+    "DRAMB": 416327.30986823,
+    "CBRSB": 49647.6984423,
+    "DJTB": 208998.65441609
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "block": 129808171,
+   "time": "2026-10-26T01:17:30Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22461.71224079,
+    "CRCLB": 1822237.8251525,
+    "EWYB": 63017.95746994,
+    "INTCB": 593547.92915588,
+    "MSTRB": 755941.28512873,
+    "MUB": 75062.30865115,
+    "NVDAB": 214549.58531415,
+    "SNDKB": 69362.6081631,
+    "SPCXB": 1031497.63425303,
+    "TSLAB": 68190.86939208,
+    "GOOGLB": 115937.69048976,
+    "QCOMB": 14921.73129892,
+    "COINB": 118220.15732861,
+    "SPYB": 23305.54156697,
+    "WDCB": 7535.33901899,
+    "GLWB": 13632.70062626,
+    "NBISB": 76205.63247685,
+    "SOXLB": 741962.25113383,
+    "DRAMB": 416728.99320917,
+    "CBRSB": 49677.36493494,
+    "DJTB": 209470.16791609
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "block": 130060287,
+   "time": "2026-10-27T08:49:34Z",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 23276.27986607,
+    "CRCLB": 1917737.29037953,
+    "EWYB": 62026.62288701,
+    "INTCB": 623681.81620487,
+    "MSTRB": 742011.61314049,
+    "MUB": 73793.74857088,
+    "NVDAB": 216127.79308862,
+    "SNDKB": 74067.66874913,
+    "SPCXB": 1120751.20541474,
+    "TSLAB": 60752.8713123,
+    "GOOGLB": 135934.05167295,
+    "QCOMB": 14970.45152142,
+    "COINB": 121656.32713762,
+    "SPYB": 28741.74445641,
+    "WDCB": 7363.36240925,
+    "GLWB": 13808.39386942,
+    "NBISB": 86736.71508173,
+    "SOXLB": 860363.01193159,
+    "DRAMB": 417869.65481336,
+    "CBRSB": 49173.82487864,
+    "DJTB": 211531.58524889
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "block": 130193038,
+   "time": "2026-10-28T01:25:44Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 22684.46393546,
+    "CRCLB": 1948684.54308258,
+    "EWYB": 67353.20808151,
+    "INTCB": 616877.19907584,
+    "MSTRB": 748145.81950743,
+    "MUB": 72475.69490848,
+    "NVDAB": 210612.00087248,
+    "SNDKB": 74171.90188983,
+    "SPCXB": 1144972.6080539,
+    "TSLAB": 58670.69778731,
+    "GOOGLB": 145926.07058219,
+    "QCOMB": 14706.88372119,
+    "COINB": 122436.54759004,
+    "SPYB": 24285.57638833,
+    "WDCB": 7239.19654362,
+    "GLWB": 14040.82604982,
+    "NBISB": 87340.10178762,
+    "SOXLB": 582406.08044989,
+    "DRAMB": 408217.24160869,
+    "CBRSB": 50882.2101412,
+    "DJTB": 209356.47137753
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130193038,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "block": 130384726,
+   "time": "2026-10-29T01:24:27Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20019.89398177,
+    "CRCLB": 1980534.32446142,
+    "EWYB": 62819.38373491,
+    "INTCB": 593725.1029418,
+    "MSTRB": 749514.42135797,
+    "MUB": 68345.94404303,
+    "NVDAB": 206605.24989198,
+    "SNDKB": 65252.79465738,
+    "SPCXB": 1207395.37915551,
+    "TSLAB": 57793.83565693,
+    "GOOGLB": 198657.16059956,
+    "QCOMB": 14474.89792383,
+    "COINB": 124265.05500117,
+    "SPYB": 25004.00610809,
+    "WDCB": 7033.41886847,
+    "GLWB": 14344.57528347,
+    "NBISB": 79303.35671341,
+    "SOXLB": 334030.79902649,
+    "DRAMB": 403199.30733074,
+    "CBRSB": 48773.88420836,
+    "DJTB": 210119.67216982
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130384726,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "block": 130576971,
+   "time": "2026-10-30T01:27:14Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130576971,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "block": 130768733,
+   "time": "2026-10-31T01:25:46Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130768733,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-01",
+   "block": 130961584,
+   "time": "2026-11-01T01:32:34Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 130961584,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "block": 131192875,
+   "time": "2026-11-02T06:27:42Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 131192875,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "block": 131389145,
+   "time": "2026-11-03T07:00:08Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 24317.16755895,
+    "CRCLB": 2122447.35783751,
+    "EWYB": 69371.87902759,
+    "INTCB": 937297.94948867,
+    "MSTRB": 851367.60529359,
+    "MUB": 84181.49168335,
+    "NVDAB": 244518.9993324,
+    "SNDKB": 88602.36236218,
+    "SPCXB": 1406979.86472693,
+    "TSLAB": 60799.17506824,
+    "GOOGLB": 413255.22758749,
+    "QCOMB": 14872.2750786,
+    "COINB": 134096.56028097,
+    "SPYB": 34536.65535533,
+    "WDCB": 7176.49082778,
+    "GLWB": 15075.43760588,
+    "NBISB": 90712.77621537,
+    "SOXLB": 674869.68312516,
+    "DRAMB": 440826.10139357,
+    "CBRSB": 53569.14155377,
+    "DJTB": 215611.03536657
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 131389145,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "block": 131578824,
+   "time": "2026-11-04T06:43:00Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 23131.41163653,
+    "CRCLB": 2156477.25503737,
+    "EWYB": 75896.79786477,
+    "INTCB": 1378115.78335215,
+    "MSTRB": 875526.10062392,
+    "MUB": 90511.05971038,
+    "NVDAB": 236328.61609395,
+    "SNDKB": 100183.28273581,
+    "SPCXB": 1451505.64099604,
+    "TSLAB": 66547.55046732,
+    "GOOGLB": 452598.62026137,
+    "QCOMB": 15031.10184641,
+    "COINB": 135724.23506425,
+    "SPYB": 31286.11877979,
+    "WDCB": 7230.12645656,
+    "GLWB": 16300.94172311,
+    "NBISB": 88887.4774407,
+    "SOXLB": 731415.2174026,
+    "DRAMB": 461228.96287112,
+    "CBRSB": 55517.10521397,
+    "DJTB": 219652.01571173
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 131578824,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "block": 131773359,
+   "time": "2026-11-05T07:02:28Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 24464.84457472,
+    "CRCLB": 2136079.7186448,
+    "EWYB": 76553.03990052,
+    "INTCB": 1214657.75831712,
+    "MSTRB": 877050.75922713,
+    "MUB": 83281.1359762,
+    "NVDAB": 220924.109898,
+    "SNDKB": 108662.91532013,
+    "SPCXB": 1479964.41672322,
+    "TSLAB": 55261.02932579,
+    "GOOGLB": 417367.9829441,
+    "QCOMB": 15994.73666385,
+    "COINB": 133745.69788348,
+    "SPYB": 31182.23267061,
+    "WDCB": 7116.14354806,
+    "GLWB": 17135.74243661,
+    "NBISB": 89427.96211811,
+    "SOXLB": 951897.24221989,
+    "DRAMB": 428588.12202728,
+    "CBRSB": 57261.70647983,
+    "DJTB": 204530.99204544
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 131773359,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-06",
+   "block": 131965157,
+   "time": "2026-11-06T07:01:18Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 14829.6716089,
+    "CRCLB": 2196711.52428168,
+    "EWYB": 76336.09020927,
+    "INTCB": 1220987.54152458,
+    "MSTRB": 867000.26468174,
+    "MUB": 93561.82311656,
+    "NVDAB": 260162.51528996,
+    "SNDKB": 115394.41643518,
+    "SPCXB": 1571644.08371587,
+    "TSLAB": 60708.16554581,
+    "GOOGLB": 427947.158863,
+    "QCOMB": 15544.13213502,
+    "COINB": 126127.58957338,
+    "SPYB": 31141.45948402,
+    "WDCB": 6323.30990547,
+    "GLWB": 17062.13911478,
+    "NBISB": 69296.04340606,
+    "SOXLB": 1208787.65318255,
+    "DRAMB": 450893.57609579,
+    "CBRSB": 57730.67528167,
+    "DJTB": 212504.00594226
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 131965157,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  }
+ ],
+ "snapshots": [
+  {
+   "asOf": "2026-10-23T23:59:59Z",
+   "block": 129414101,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-rpc.publicnode.com",
+   "values": {
+    "AMDB": 22443.16547658,
+    "CRCLB": 1820585.45452633,
+    "EWYB": 62984.26040511,
+    "INTCB": 593387.32778764,
+    "MSTRB": 753540.76710356,
+    "MUB": 74734.03429682,
+    "NVDAB": 213618.92532218,
+    "SNDKB": 68711.2310851,
+    "SPCXB": 1028655.77773498,
+    "TSLAB": 67997.35435964,
+    "GOOGLB": 115771.49673339,
+    "QCOMB": 14895.02883299,
+    "COINB": 117949.94788112,
+    "SPYB": 22965.54267446,
+    "WDCB": 7535.33901899,
+    "GLWB": 13601.98282142,
+    "NBISB": 76196.59023004,
+    "SOXLB": 739144.14773771,
+    "DRAMB": 416325.62448697,
+    "CBRSB": 49595.4292083,
+    "DJTB": 208998.65441609
+   }
+  },
+  {
+   "asOf": "2026-10-30T23:59:59Z",
+   "block": 130757300,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 20584.97043179,
+    "CRCLB": 2013615.50681185,
+    "EWYB": 68506.49022212,
+    "INTCB": 598102.52646827,
+    "MSTRB": 758043.67028109,
+    "MUB": 69404.19876946,
+    "NVDAB": 214405.99353835,
+    "SNDKB": 66641.15910834,
+    "SPCXB": 1270026.05045019,
+    "TSLAB": 59212.24260125,
+    "GOOGLB": 373187.08807011,
+    "QCOMB": 14670.42989077,
+    "COINB": 124682.84885607,
+    "SPYB": 25172.21280688,
+    "WDCB": 7160.16826894,
+    "GLWB": 14428.28350591,
+    "NBISB": 82190.68905269,
+    "SOXLB": 376447.3412637,
+    "DRAMB": 404899.47125902,
+    "CBRSB": 49761.05003031,
+    "DJTB": 211097.9388533
+   }
+  }
+ ],
+ "reconciliations": [],
+ "updated": "2026-11-06T08:24:55.407Z",
+ "flows": [
+  {
+   "date": "2026-10-20",
+   "fromBlock": 128646423,
+   "toBlock": 128838304,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 697.38130107,
+     "burned": 114.2353255,
+     "mints": 35,
+     "burns": 1,
+     "net": 583.14597557
+    },
+    "CRCLB": {
+     "minted": 37310.8102648,
+     "burned": 52252.54201315,
+     "mints": 165,
+     "burns": 1,
+     "net": -14941.73174835
+    },
+    "EWYB": {
+     "minted": 2131.79734299,
+     "burned": 304.41867932,
+     "mints": 26,
+     "burns": 1,
+     "net": 1827.37866367
+    },
+    "INTCB": {
+     "minted": 16151.00564752,
+     "burned": 6063.60580028,
+     "mints": 110,
+     "burns": 1,
+     "net": 10087.39984724
+    },
+    "MSTRB": {
+     "minted": 16438.4009884,
+     "burned": 21403.53912168,
+     "mints": 102,
+     "burns": 1,
+     "net": -4965.13813328
+    },
+    "MUB": {
+     "minted": 902.99668161,
+     "burned": 785.00458871,
+     "mints": 78,
+     "burns": 1,
+     "net": 117.9920929
+    },
+    "NVDAB": {
+     "minted": 6652.08456095,
+     "burned": 11276.52877207,
+     "mints": 131,
+     "burns": 1,
+     "net": -4624.44421112
+    },
+    "SNDKB": {
+     "minted": 5026.97749817,
+     "burned": 968.63935399,
+     "mints": 181,
+     "burns": 1,
+     "net": 4058.33814418
+    },
+    "SPCXB": {
+     "minted": 19198.22714424,
+     "burned": 30668.41313737,
+     "mints": 191,
+     "burns": 1,
+     "net": -11470.18599313
+    },
+    "TSLAB": {
+     "minted": 1451.41927425,
+     "burned": 0,
+     "mints": 81,
+     "burns": 0,
+     "net": 1451.41927425
+    },
+    "GOOGLB": {
+     "minted": 3015.80278754,
+     "burned": 461.83633121,
+     "mints": 82,
+     "burns": 1,
+     "net": 2553.96645633
+    },
+    "QCOMB": {
+     "minted": 99.62100944,
+     "burned": 389.81806014,
+     "mints": 7,
+     "burns": 1,
+     "net": -290.1970507
+    },
+    "COINB": {
+     "minted": 812.77728093,
+     "burned": 403.57426522,
+     "mints": 41,
+     "burns": 1,
+     "net": 409.20301571
+    },
+    "SPYB": {
+     "minted": 137.31623689,
+     "burned": 87.91601829,
+     "mints": 21,
+     "burns": 1,
+     "net": 49.4002186
+    },
+    "WDCB": {
+     "minted": 164.52128276,
+     "burned": 266.18939615,
+     "mints": 16,
+     "burns": 1,
+     "net": -101.66811339
+    },
+    "GLWB": {
+     "minted": 660.31371583,
+     "burned": 415.88012661,
+     "mints": 55,
+     "burns": 1,
+     "net": 244.43358922
+    },
+    "NBISB": {
+     "minted": 61312.0875305,
+     "burned": 0,
+     "mints": 132,
+     "burns": 0,
+     "net": 61312.0875305
+    },
+    "SOXLB": {
+     "minted": 25152.10239605,
+     "burned": 16016.85696754,
+     "mints": 112,
+     "burns": 1,
+     "net": 9135.24542851
+    },
+    "DRAMB": {
+     "minted": 14361.51274117,
+     "burned": 3220.4419209,
+     "mints": 41,
+     "burns": 1,
+     "net": 11141.07082027
+    },
+    "CBRSB": {
+     "minted": 4050.87006236,
+     "burned": 950.24784084,
+     "mints": 108,
+     "burns": 1,
+     "net": 3100.62222152
+    },
+    "DJTB": {
+     "minted": 3798.27767875,
+     "burned": 2825.34556628,
+     "mints": 13,
+     "burns": 1,
+     "net": 972.93211247
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "fromBlock": 128838305,
+   "toBlock": 129030232,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 693.47987916,
+     "burned": 1552.78791923,
+     "mints": 46,
+     "burns": 1,
+     "net": -859.30804007
+    },
+    "CRCLB": {
+     "minted": 19277.23749959,
+     "burned": 0,
+     "mints": 86,
+     "burns": 0,
+     "net": 19277.23749959
+    },
+    "EWYB": {
+     "minted": 830.52655379,
+     "burned": 2978.13374352,
+     "mints": 11,
+     "burns": 1,
+     "net": -2147.60718973
+    },
+    "INTCB": {
+     "minted": 13802.15594649,
+     "burned": 21307.64991442,
+     "mints": 105,
+     "burns": 1,
+     "net": -7505.49396793
+    },
+    "MSTRB": {
+     "minted": 43584.66269167,
+     "burned": 28124.38866031,
+     "mints": 105,
+     "burns": 1,
+     "net": 15460.27403136
+    },
+    "MUB": {
+     "minted": 954.96942382,
+     "burned": 2096.02644435,
+     "mints": 73,
+     "burns": 1,
+     "net": -1141.05702053
+    },
+    "NVDAB": {
+     "minted": 7454.02978414,
+     "burned": 7638.00851231,
+     "mints": 127,
+     "burns": 1,
+     "net": -183.97872817
+    },
+    "SNDKB": {
+     "minted": 4040.83285878,
+     "burned": 3741.33273264,
+     "mints": 104,
+     "burns": 1,
+     "net": 299.50012614
+    },
+    "SPCXB": {
+     "minted": 72122.9370466,
+     "burned": 0,
+     "mints": 217,
+     "burns": 0,
+     "net": 72122.9370466
+    },
+    "TSLAB": {
+     "minted": 881.53123246,
+     "burned": 25254.49606646,
+     "mints": 97,
+     "burns": 2,
+     "net": -24372.964834
+    },
+    "GOOGLB": {
+     "minted": 5707.16823049,
+     "burned": 267.58672478,
+     "mints": 108,
+     "burns": 1,
+     "net": 5439.58150571
+    },
+    "QCOMB": {
+     "minted": 246.84325613,
+     "burned": 358.44775808,
+     "mints": 10,
+     "burns": 1,
+     "net": -111.60450195
+    },
+    "COINB": {
+     "minted": 519.68278323,
+     "burned": 854.63616702,
+     "mints": 20,
+     "burns": 1,
+     "net": -334.95338379
+    },
+    "SPYB": {
+     "minted": 90.94267993,
+     "burned": 70.57258641,
+     "mints": 22,
+     "burns": 1,
+     "net": 20.37009352
+    },
+    "WDCB": {
+     "minted": 215.88186015,
+     "burned": 276.11053402,
+     "mints": 16,
+     "burns": 1,
+     "net": -60.22867387
+    },
+    "GLWB": {
+     "minted": 93.6863838,
+     "burned": 549.04776192,
+     "mints": 21,
+     "burns": 1,
+     "net": -455.36137812
+    },
+    "NBISB": {
+     "minted": 8866.85029428,
+     "burned": 45938.11672121,
+     "mints": 111,
+     "burns": 2,
+     "net": -37071.26642693
+    },
+    "SOXLB": {
+     "minted": 9093.90040731,
+     "burned": 0,
+     "mints": 89,
+     "burns": 0,
+     "net": 9093.90040731
+    },
+    "DRAMB": {
+     "minted": 5511.05756908,
+     "burned": 3585.38298983,
+     "mints": 36,
+     "burns": 1,
+     "net": 1925.67457925
+    },
+    "CBRSB": {
+     "minted": 5956.36685677,
+     "burned": 1653.71159073,
+     "mints": 111,
+     "burns": 1,
+     "net": 4302.65526604
+    },
+    "DJTB": {
+     "minted": 2089.42100773,
+     "burned": 1836.58307764,
+     "mints": 11,
+     "burns": 1,
+     "net": 252.83793009
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-22",
+   "fromBlock": 129030233,
+   "toBlock": 129222151,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 5144.69562637,
+     "burned": 2537.40300086,
+     "mints": 112,
+     "burns": 1,
+     "net": 2607.29262551
+    },
+    "CRCLB": {
+     "minted": 25732.64920248,
+     "burned": 110211.73362495,
+     "mints": 114,
+     "burns": 2,
+     "net": -84479.08442247
+    },
+    "EWYB": {
+     "minted": 1587.76309934,
+     "burned": 314.16947734,
+     "mints": 37,
+     "burns": 1,
+     "net": 1273.593622
+    },
+    "INTCB": {
+     "minted": 40446.84045231,
+     "burned": 13241.1583457,
+     "mints": 132,
+     "burns": 1,
+     "net": 27205.68210661
+    },
+    "MSTRB": {
+     "minted": 36718.05240714,
+     "burned": 19400.48728737,
+     "mints": 94,
+     "burns": 1,
+     "net": 17317.56511977
+    },
+    "MUB": {
+     "minted": 4879.61920721,
+     "burned": 1408.37989662,
+     "mints": 153,
+     "burns": 1,
+     "net": 3471.23931059
+    },
+    "NVDAB": {
+     "minted": 23923.19462863,
+     "burned": 6952.7178174,
+     "mints": 173,
+     "burns": 1,
+     "net": 16970.47681123
+    },
+    "SNDKB": {
+     "minted": 16803.4212146,
+     "burned": 560.89704723,
+     "mints": 257,
+     "burns": 1,
+     "net": 16242.52416737
+    },
+    "SPCXB": {
+     "minted": 89753.11185293,
+     "burned": 84912.09948694,
+     "mints": 252,
+     "burns": 2,
+     "net": 4841.01236599
+    },
+    "TSLAB": {
+     "minted": 5578.19802069,
+     "burned": 6549.90593146,
+     "mints": 162,
+     "burns": 1,
+     "net": -971.70791077
+    },
+    "GOOGLB": {
+     "minted": 4542.83065415,
+     "burned": 5089.14052351,
+     "mints": 116,
+     "burns": 1,
+     "net": -546.30986936
+    },
+    "QCOMB": {
+     "minted": 127.31137882,
+     "burned": 468.38523295,
+     "mints": 9,
+     "burns": 1,
+     "net": -341.07385413
+    },
+    "COINB": {
+     "minted": 522.38521095,
+     "burned": 437.26944393,
+     "mints": 22,
+     "burns": 1,
+     "net": 85.11576702
+    },
+    "SPYB": {
+     "minted": 335.85328432,
+     "burned": 65.99654239,
+     "mints": 37,
+     "burns": 1,
+     "net": 269.85674193
+    },
+    "WDCB": {
+     "minted": 327.02652786,
+     "burned": 82.86624212,
+     "mints": 36,
+     "burns": 1,
+     "net": 244.16028574
+    },
+    "GLWB": {
+     "minted": 318.27537673,
+     "burned": 572.42883531,
+     "mints": 18,
+     "burns": 1,
+     "net": -254.15345858
+    },
+    "NBISB": {
+     "minted": 5024.90604007,
+     "burned": 1677.24057719,
+     "mints": 127,
+     "burns": 1,
+     "net": 3347.66546288
+    },
+    "SOXLB": {
+     "minted": 276989.60384802,
+     "burned": 113870.64749642,
+     "mints": 270,
+     "burns": 2,
+     "net": 163118.9563516
+    },
+    "DRAMB": {
+     "minted": 11862.48522014,
+     "burned": 15195.59231173,
+     "mints": 38,
+     "burns": 1,
+     "net": -3333.10709159
+    },
+    "CBRSB": {
+     "minted": 3269.74602682,
+     "burned": 521.74688305,
+     "mints": 89,
+     "burns": 1,
+     "net": 2747.99914377
+    },
+    "DJTB": {
+     "minted": 5815.26100773,
+     "burned": 3689.03575253,
+     "mints": 18,
+     "burns": 1,
+     "net": 2126.2252552
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "fromBlock": 129222152,
+   "toBlock": 129414101,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 6718.02541912,
+     "burned": 191.25501397,
+     "mints": 196,
+     "burns": 1,
+     "net": 6526.77040515
+    },
+    "CRCLB": {
+     "minted": 97394.53861805,
+     "burned": 29520.52490868,
+     "mints": 183,
+     "burns": 1,
+     "net": 67874.01370937
+    },
+    "EWYB": {
+     "minted": 1703.7567116,
+     "burned": 796.29197145,
+     "mints": 34,
+     "burns": 1,
+     "net": 907.46474015
+    },
+    "INTCB": {
+     "minted": 29480.30619304,
+     "burned": 3324.0364397,
+     "mints": 149,
+     "burns": 1,
+     "net": 26156.26975334
+    },
+    "MSTRB": {
+     "minted": 14303.27850681,
+     "burned": 8648.16386952,
+     "mints": 142,
+     "burns": 1,
+     "net": 5655.11463729
+    },
+    "MUB": {
+     "minted": 12841.11609003,
+     "burned": 1001.37964573,
+     "mints": 170,
+     "burns": 1,
+     "net": 11839.7364443
+    },
+    "NVDAB": {
+     "minted": 14793.2421315,
+     "burned": 7724.39380848,
+     "mints": 184,
+     "burns": 1,
+     "net": 7068.84832302
+    },
+    "SNDKB": {
+     "minted": 8399.10903826,
+     "burned": 3091.81554292,
+     "mints": 214,
+     "burns": 1,
+     "net": 5307.29349534
+    },
+    "SPCXB": {
+     "minted": 44812.93978294,
+     "burned": 9944.06720907,
+     "mints": 250,
+     "burns": 1,
+     "net": 34868.87257387
+    },
+    "TSLAB": {
+     "minted": 2735.38612558,
+     "burned": 2539.44726757,
+     "mints": 133,
+     "burns": 1,
+     "net": 195.93885801
+    },
+    "GOOGLB": {
+     "minted": 5401.77167095,
+     "burned": 615.68232377,
+     "mints": 117,
+     "burns": 1,
+     "net": 4786.08934718
+    },
+    "QCOMB": {
+     "minted": 427.45943993,
+     "burned": 140.10696622,
+     "mints": 16,
+     "burns": 1,
+     "net": 287.35247371
+    },
+    "COINB": {
+     "minted": 2137.98664433,
+     "burned": 421.35108242,
+     "mints": 81,
+     "burns": 1,
+     "net": 1716.63556191
+    },
+    "SPYB": {
+     "minted": 269.37492381,
+     "burned": 140.24299745,
+     "mints": 46,
+     "burns": 1,
+     "net": 129.13192636
+    },
+    "WDCB": {
+     "minted": 928.77772432,
+     "burned": 342.95284671,
+     "mints": 62,
+     "burns": 1,
+     "net": 585.82487761
+    },
+    "GLWB": {
+     "minted": 1315.8213732,
+     "burned": 272.45318143,
+     "mints": 63,
+     "burns": 1,
+     "net": 1043.36819177
+    },
+    "NBISB": {
+     "minted": 6727.59832324,
+     "burned": 2005.71031945,
+     "mints": 139,
+     "burns": 1,
+     "net": 4721.88800379
+    },
+    "SOXLB": {
+     "minted": 183474.89651587,
+     "burned": 10752.28646957,
+     "mints": 259,
+     "burns": 1,
+     "net": 172722.6100463
+    },
+    "DRAMB": {
+     "minted": 16614.71144984,
+     "burned": 7335.75963431,
+     "mints": 68,
+     "burns": 1,
+     "net": 9278.95181553
+    },
+    "CBRSB": {
+     "minted": 4030.00623373,
+     "burned": 2557.65026175,
+     "mints": 104,
+     "burns": 1,
+     "net": 1472.35597198
+    },
+    "DJTB": {
+     "minted": 4701.54475815,
+     "burned": 4230.78,
+     "mints": 27,
+     "burns": 1,
+     "net": 470.76475815
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-24",
+   "fromBlock": 129414102,
+   "toBlock": 129606056,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 1.07396162,
+     "burned": 0.172559,
+     "mints": 4,
+     "burns": 1,
+     "net": 0.90140262
+    },
+    "CRCLB": {
+     "minted": 2361.56622679,
+     "burned": 2864.42456442,
+     "mints": 28,
+     "burns": 1,
+     "net": -502.85833763
+    },
+    "EWYB": {
+     "minted": 0,
+     "burned": 0.000945,
+     "mints": 0,
+     "burns": 1,
+     "net": -0.000945
+    },
+    "INTCB": {
+     "minted": 192.45099712,
+     "burned": 749.17138197,
+     "mints": 12,
+     "burns": 1,
+     "net": -556.72038485
+    },
+    "MSTRB": {
+     "minted": 606.07933505,
+     "burned": 925.99047782,
+     "mints": 18,
+     "burns": 1,
+     "net": -319.91114277
+    },
+    "MUB": {
+     "minted": 286.10522584,
+     "burned": 10.15932551,
+     "mints": 17,
+     "burns": 1,
+     "net": 275.94590033
+    },
+    "NVDAB": {
+     "minted": 1168.67787327,
+     "burned": 1118.79086876,
+     "mints": 52,
+     "burns": 1,
+     "net": 49.88700451
+    },
+    "SNDKB": {
+     "minted": 200.03780858,
+     "burned": 84.19142204,
+     "mints": 15,
+     "burns": 1,
+     "net": 115.84638654
+    },
+    "SPCXB": {
+     "minted": 1369.88411958,
+     "burned": 802.75145879,
+     "mints": 81,
+     "burns": 1,
+     "net": 567.13266079
+    },
+    "TSLAB": {
+     "minted": 40.82541039,
+     "burned": 17.76411583,
+     "mints": 35,
+     "burns": 1,
+     "net": 23.06129456
+    },
+    "GOOGLB": {
+     "minted": 43.51805992,
+     "burned": 20.60276311,
+     "mints": 15,
+     "burns": 1,
+     "net": 22.91529681
+    },
+    "COINB": {
+     "minted": 1.255803,
+     "burned": 0,
+     "mints": 1,
+     "burns": 0,
+     "net": 1.255803
+    },
+    "SPYB": {
+     "minted": 0.18480832,
+     "burned": 2.35985547,
+     "mints": 4,
+     "burns": 1,
+     "net": -2.17504715
+    },
+    "GLWB": {
+     "minted": 7.3463408,
+     "burned": 0.04910016,
+     "mints": 1,
+     "burns": 1,
+     "net": 7.29724064
+    },
+    "NBISB": {
+     "minted": 12.197261,
+     "burned": 10.54858254,
+     "mints": 2,
+     "burns": 1,
+     "net": 1.64867846
+    },
+    "SOXLB": {
+     "minted": 33.49895238,
+     "burned": 2405.14586243,
+     "mints": 10,
+     "burns": 1,
+     "net": -2371.64691005
+    },
+    "DRAMB": {
+     "minted": 505.41,
+     "burned": 503.72461874,
+     "mints": 3,
+     "burns": 1,
+     "net": 1.68538126
+    },
+    "CBRSB": {
+     "minted": 52.269234,
+     "burned": 0,
+     "mints": 2,
+     "burns": 0,
+     "net": 52.269234
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-25",
+   "fromBlock": 129606057,
+   "toBlock": 129797837,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 0.07702415,
+     "burned": 0.02093376,
+     "mints": 5,
+     "burns": 1,
+     "net": 0.05609039
+    },
+    "CRCLB": {
+     "minted": 1114.84014806,
+     "burned": 756.52855417,
+     "mints": 10,
+     "burns": 1,
+     "net": 358.31159389
+    },
+    "EWYB": {
+     "minted": 0,
+     "burned": 0.36661904,
+     "mints": 0,
+     "burns": 1,
+     "net": -0.36661904
+    },
+    "INTCB": {
+     "minted": 761.43547639,
+     "burned": 85.51093472,
+     "mints": 12,
+     "burns": 1,
+     "net": 675.92454167
+    },
+    "MSTRB": {
+     "minted": 2883.43365878,
+     "burned": 203.81385962,
+     "mints": 9,
+     "burns": 1,
+     "net": 2679.61979916
+    },
+    "MUB": {
+     "minted": 35.19695665,
+     "burned": 6.4830493,
+     "mints": 9,
+     "burns": 1,
+     "net": 28.71390735
+    },
+    "NVDAB": {
+     "minted": 119.08186294,
+     "burned": 112.48704473,
+     "mints": 46,
+     "burns": 1,
+     "net": 6.59481821
+    },
+    "SNDKB": {
+     "minted": 0.80271032,
+     "burned": 4.29577123,
+     "mints": 4,
+     "burns": 1,
+     "net": -3.49306091
+    },
+    "SPCXB": {
+     "minted": 731.70304018,
+     "burned": 629.46008711,
+     "mints": 68,
+     "burns": 1,
+     "net": 102.24295307
+    },
+    "TSLAB": {
+     "minted": 76.03553054,
+     "burned": 3.7615211,
+     "mints": 41,
+     "burns": 1,
+     "net": 72.27400944
+    },
+    "GOOGLB": {
+     "minted": 4.3989114,
+     "burned": 6.77995966,
+     "mints": 8,
+     "burns": 1,
+     "net": -2.38104826
+    },
+    "QCOMB": {
+     "minted": 0.0627579,
+     "burned": 0,
+     "mints": 1,
+     "burns": 0,
+     "net": 0.0627579
+    },
+    "COINB": {
+     "minted": 0,
+     "burned": 5.01711895,
+     "mints": 0,
+     "burns": 1,
+     "net": -5.01711895
+    },
+    "SPYB": {
+     "minted": 10.78070721,
+     "burned": 0.6792412,
+     "mints": 6,
+     "burns": 1,
+     "net": 10.10146601
+    },
+    "GLWB": {
+     "minted": 0.31844363,
+     "burned": 0.04800952,
+     "mints": 2,
+     "burns": 1,
+     "net": 0.27043411
+    },
+    "NBISB": {
+     "minted": 0,
+     "burned": 61.83010874,
+     "mints": 0,
+     "burns": 1,
+     "net": -61.83010874
+    },
+    "SOXLB": {
+     "minted": 30.66666784,
+     "burned": 25.33648938,
+     "mints": 7,
+     "burns": 1,
+     "net": 5.33017846
+    },
+    "DRAMB": {
+     "minted": 0.16695734,
+     "burned": 0.16784853,
+     "mints": 1,
+     "burns": 1,
+     "net": -0.00089119
+    },
+    "CBRSB": {
+     "minted": 21.66631578,
+     "burned": 0,
+     "mints": 3,
+     "burns": 0,
+     "net": 21.66631578
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "fromBlock": 129797838,
+   "toBlock": 129989706,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 972.66880618,
+     "burned": 320.05255863,
+     "mints": 103,
+     "burns": 1,
+     "net": 652.61624755
+    },
+    "CRCLB": {
+     "minted": 96160.72609648,
+     "burned": 11274.8653006,
+     "mints": 177,
+     "burns": 1,
+     "net": 84885.86079588
+    },
+    "EWYB": {
+     "minted": 1236.16360963,
+     "burned": 2334.68052891,
+     "mints": 31,
+     "burns": 1,
+     "net": -1098.51691928
+    },
+    "INTCB": {
+     "minted": 24877.94155059,
+     "burned": 6233.6753037,
+     "mints": 146,
+     "burns": 1,
+     "net": 18644.26624689
+    },
+    "MSTRB": {
+     "minted": 5411.53655866,
+     "burned": 21581.08619588,
+     "mints": 93,
+     "burns": 1,
+     "net": -16169.54963722
+    },
+    "MUB": {
+     "minted": 1338.04811705,
+     "burned": 2751.98444447,
+     "mints": 100,
+     "burns": 1,
+     "net": -1413.93632742
+    },
+    "NVDAB": {
+     "minted": 7327.57863113,
+     "burned": 5865.27690766,
+     "mints": 171,
+     "burns": 1,
+     "net": 1462.30172347
+    },
+    "SNDKB": {
+     "minted": 5519.88779787,
+     "burned": 1069.65203158,
+     "mints": 234,
+     "burns": 1,
+     "net": 4450.23576629
+    },
+    "SPCXB": {
+     "minted": 86807.16924349,
+     "burned": 3171.41732973,
+     "mints": 265,
+     "burns": 1,
+     "net": 83635.75191376
+    },
+    "TSLAB": {
+     "minted": 2363.8955038,
+     "burned": 10132.59000106,
+     "mints": 113,
+     "burns": 1,
+     "net": -7768.69449726
+    },
+    "GOOGLB": {
+     "minted": 14419.65281151,
+     "burned": 351.7879257,
+     "mints": 195,
+     "burns": 1,
+     "net": 14067.86488581
+    },
+    "QCOMB": {
+     "minted": 517.3661636,
+     "burned": 746.52436518,
+     "mints": 93,
+     "burns": 1,
+     "net": -229.15820158
+    },
+    "COINB": {
+     "minted": 5184.40023221,
+     "burned": 1627.53914993,
+     "mints": 110,
+     "burns": 1,
+     "net": 3556.86108228
+    },
+    "SPYB": {
+     "minted": 1138.11078499,
+     "burned": 102.67729658,
+     "mints": 54,
+     "burns": 1,
+     "net": 1035.43348841
+    },
+    "WDCB": {
+     "minted": 149.39565726,
+     "burned": 344.68202259,
+     "mints": 61,
+     "burns": 1,
+     "net": -195.28636533
+    },
+    "GLWB": {
+     "minted": 521.26602569,
+     "burned": 552.99515172,
+     "mints": 53,
+     "burns": 1,
+     "net": -31.72912603
+    },
+    "NBISB": {
+     "minted": 11410.7608468,
+     "burned": 4495.75866157,
+     "mints": 184,
+     "burns": 1,
+     "net": 6915.00218523
+    },
+    "SOXLB": {
+     "minted": 119998.91298795,
+     "burned": 30713.53293666,
+     "mints": 214,
+     "burns": 1,
+     "net": 89285.38005129
+    },
+    "DRAMB": {
+     "minted": 4048.60269012,
+     "burned": 3603.4695275,
+     "mints": 54,
+     "burns": 1,
+     "net": 445.13316262
+    },
+    "CBRSB": {
+     "minted": 847.01370353,
+     "burned": 1806.3791696,
+     "mints": 97,
+     "burns": 1,
+     "net": -959.36546607
+    },
+    "DJTB": {
+     "minted": 7512.20542476,
+     "burned": 6974.26459196,
+     "mints": 34,
+     "burns": 1,
+     "net": 537.9408328
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "fromBlock": 129989707,
+   "toBlock": 130181609,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 1013.36241976,
+     "burned": 1435.24027365,
+     "mints": 87,
+     "burns": 1,
+     "net": -421.87785389
+    },
+    "CRCLB": {
+     "minted": 49985.31037621,
+     "burned": 6969.53249763,
+     "mints": 181,
+     "burns": 1,
+     "net": 43015.77787858
+    },
+    "EWYB": {
+     "minted": 6292.47185582,
+     "burned": 1047.94884612,
+     "mints": 72,
+     "burns": 1,
+     "net": 5244.5230097
+    },
+    "INTCB": {
+     "minted": 16303.0932878,
+     "burned": 11578.88939563,
+     "mints": 112,
+     "burns": 1,
+     "net": 4724.20389217
+    },
+    "MSTRB": {
+     "minted": 15343.63081547,
+     "burned": 7112.85175315,
+     "mints": 132,
+     "burns": 1,
+     "net": 8230.77906232
+    },
+    "MUB": {
+     "minted": 1315.62801511,
+     "burned": 2889.38838369,
+     "mints": 95,
+     "burns": 1,
+     "net": -1573.76036858
+    },
+    "NVDAB": {
+     "minted": 2997.52116987,
+     "burned": 8237.34835529,
+     "mints": 113,
+     "burns": 1,
+     "net": -5239.82718542
+    },
+    "SNDKB": {
+     "minted": 2548.68411763,
+     "burned": 1715.46614756,
+     "mints": 185,
+     "burns": 1,
+     "net": 833.21797007
+    },
+    "SPCXB": {
+     "minted": 34638.36042517,
+     "burned": 4746.05494729,
+     "mints": 226,
+     "burns": 1,
+     "net": 29892.30547788
+    },
+    "TSLAB": {
+     "minted": 2343.54122941,
+     "burned": 3997.18336463,
+     "mints": 128,
+     "burns": 1,
+     "net": -1653.64213522
+    },
+    "GOOGLB": {
+     "minted": 17193.92316707,
+     "burned": 1419.29219739,
+     "mints": 227,
+     "burns": 1,
+     "net": 15774.63096968
+    },
+    "QCOMB": {
+     "minted": 578.40963155,
+     "burned": 579.99398415,
+     "mints": 73,
+     "burns": 1,
+     "net": -1.5843525999999999
+    },
+    "COINB": {
+     "minted": 2089.87579063,
+     "burned": 1175.87839208,
+     "mints": 70,
+     "burns": 1,
+     "net": 913.99739855
+    },
+    "SPYB": {
+     "minted": 4980.65900827,
+     "burned": 4759.19297584,
+     "mints": 31,
+     "burns": 1,
+     "net": 221.46603243
+    },
+    "WDCB": {
+     "minted": 231.07667004,
+     "burned": 341.11171495,
+     "mints": 54,
+     "burns": 1,
+     "net": -110.03504491
+    },
+    "GLWB": {
+     "minted": 717.10040785,
+     "burned": 1065.90026551,
+     "mints": 50,
+     "burns": 1,
+     "net": -348.79985766
+    },
+    "NBISB": {
+     "minted": 8450.90571949,
+     "burned": 4199.43703043,
+     "mints": 129,
+     "burns": 1,
+     "net": 4251.46868906
+    },
+    "SOXLB": {
+     "minted": 44304.70744851,
+     "burned": 0,
+     "mints": 143,
+     "burns": 0,
+     "net": 44304.70744851
+    },
+    "DRAMB": {
+     "minted": 2085.96295787,
+     "burned": 17584.44353053,
+     "mints": 40,
+     "burns": 1,
+     "net": -15498.48057266
+    },
+    "CBRSB": {
+     "minted": 4421.84168837,
+     "burned": 2261.85483918,
+     "mints": 98,
+     "burns": 1,
+     "net": 2159.98684919
+    },
+    "DJTB": {
+     "minted": 4661.65100695,
+     "burned": 5295.65487831,
+     "mints": 25,
+     "burns": 1,
+     "net": -634.00387136
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "fromBlock": 130181610,
+   "toBlock": 130373470,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 298.91105916,
+     "burned": 2953.87844064,
+     "mints": 47,
+     "burns": 1,
+     "net": -2654.96738148
+    },
+    "CRCLB": {
+     "minted": 40207.92611471,
+     "burned": 8147.42946317,
+     "mints": 139,
+     "burns": 1,
+     "net": 32060.49665154
+    },
+    "EWYB": {
+     "minted": 784.64380835,
+     "burned": 5111.51711606,
+     "mints": 29,
+     "burns": 1,
+     "net": -4326.87330771
+    },
+    "INTCB": {
+     "minted": 4144.1986817,
+     "burned": 27976.10068942,
+     "mints": 64,
+     "burns": 1,
+     "net": -23831.90200772
+    },
+    "MSTRB": {
+     "minted": 14287.67091373,
+     "burned": 12734.95474081,
+     "mints": 105,
+     "burns": 1,
+     "net": 1552.71617292
+    },
+    "MUB": {
+     "minted": 1620.04398101,
+     "burned": 5486.02279705,
+     "mints": 90,
+     "burns": 1,
+     "net": -3865.97881604
+    },
+    "NVDAB": {
+     "minted": 8717.64248002,
+     "burned": 12016.00275734,
+     "mints": 129,
+     "burns": 1,
+     "net": -3298.36027732
+    },
+    "SNDKB": {
+     "minted": 1261.26170479,
+     "burned": 10140.12058197,
+     "mints": 125,
+     "burns": 1,
+     "net": -8878.85887718
+    },
+    "SPCXB": {
+     "minted": 71054.76409685,
+     "burned": 8135.64157235,
+     "mints": 244,
+     "burns": 1,
+     "net": 62919.1225245
+    },
+    "TSLAB": {
+     "minted": 2355.40521529,
+     "burned": 3261.51252312,
+     "mints": 122,
+     "burns": 1,
+     "net": -906.10730783
+    },
+    "GOOGLB": {
+     "minted": 43517.09699695,
+     "burned": 1785.18672817,
+     "mints": 226,
+     "burns": 1,
+     "net": 41731.91026878
+    },
+    "QCOMB": {
+     "minted": 254.56816299,
+     "burned": 448.00411624,
+     "mints": 32,
+     "burns": 1,
+     "net": -193.43595325
+    },
+    "COINB": {
+     "minted": 2231.52109511,
+     "burned": 386.00862978,
+     "mints": 64,
+     "burns": 1,
+     "net": 1845.51246533
+    },
+    "SPYB": {
+     "minted": 816.29689956,
+     "burned": 42.66942709,
+     "mints": 60,
+     "burns": 1,
+     "net": 773.62747247
+    },
+    "WDCB": {
+     "minted": 184.12655953,
+     "burned": 380.72529981,
+     "mints": 29,
+     "burns": 1,
+     "net": -196.59874028
+    },
+    "GLWB": {
+     "minted": 2112.72290429,
+     "burned": 997.1691333,
+     "mints": 41,
+     "burns": 1,
+     "net": 1115.55377099
+    },
+    "NBISB": {
+     "minted": 1145.23922278,
+     "burned": 9145.01218342,
+     "mints": 52,
+     "burns": 1,
+     "net": -7999.77296064
+    },
+    "SOXLB": {
+     "minted": 8624.12758492,
+     "burned": 545091.27150783,
+     "mints": 51,
+     "burns": 2,
+     "net": -536467.14392291
+    },
+    "DRAMB": {
+     "minted": 12250.24043602,
+     "burned": 10478.90000151,
+     "mints": 39,
+     "burns": 1,
+     "net": 1771.34043451
+    },
+    "CBRSB": {
+     "minted": 1437.14595185,
+     "burned": 3594.24788469,
+     "mints": 62,
+     "burns": 1,
+     "net": -2157.10193284
+    },
+    "DJTB": {
+     "minted": 3051.63692435,
+     "burned": 1834.55613206,
+     "mints": 17,
+     "burns": 1,
+     "net": 1217.08079229
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "fromBlock": 130373471,
+   "toBlock": 130565342,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 565.07645002,
+     "burned": 0,
+     "mints": 33,
+     "burns": 0,
+     "net": 565.07645002
+    },
+    "CRCLB": {
+     "minted": 33212.46370326,
+     "burned": 0,
+     "mints": 116,
+     "burns": 0,
+     "net": 33212.46370326
+    },
+    "EWYB": {
+     "minted": 5703.46459834,
+     "burned": 0,
+     "mints": 44,
+     "burns": 0,
+     "net": 5703.46459834
+    },
+    "INTCB": {
+     "minted": 5059.42639247,
+     "burned": 0,
+     "mints": 56,
+     "burns": 0,
+     "net": 5059.42639247
+    },
+    "MSTRB": {
+     "minted": 8529.24892312,
+     "burned": 0,
+     "mints": 74,
+     "burns": 0,
+     "net": 8529.24892312
+    },
+    "MUB": {
+     "minted": 1219.180177,
+     "burned": 0,
+     "mints": 93,
+     "burns": 0,
+     "net": 1219.180177
+    },
+    "NVDAB": {
+     "minted": 7806.47213272,
+     "burned": 0,
+     "mints": 132,
+     "burns": 0,
+     "net": 7806.47213272
+    },
+    "SNDKB": {
+     "minted": 1412.97983843,
+     "burned": 0,
+     "mints": 145,
+     "burns": 0,
+     "net": 1412.97983843
+    },
+    "SPCXB": {
+     "minted": 64253.71718521,
+     "burned": 0,
+     "mints": 245,
+     "burns": 0,
+     "net": 64253.71718521
+    },
+    "TSLAB": {
+     "minted": 1447.99687792,
+     "burned": 0,
+     "mints": 91,
+     "burns": 0,
+     "net": 1447.99687792
+    },
+    "GOOGLB": {
+     "minted": 185820.6509639,
+     "burned": 0,
+     "mints": 256,
+     "burns": 0,
+     "net": 185820.6509639
+    },
+    "QCOMB": {
+     "minted": 199.51680731,
+     "burned": 0,
+     "mints": 8,
+     "burns": 0,
+     "net": 199.51680731
+    },
+    "COINB": {
+     "minted": 420.29134474,
+     "burned": 0,
+     "mints": 19,
+     "burns": 0,
+     "net": 420.29134474
+    },
+    "SPYB": {
+     "minted": 168.21672025,
+     "burned": 0,
+     "mints": 31,
+     "burns": 0,
+     "net": 168.21672025
+    },
+    "WDCB": {
+     "minted": 126.74940047,
+     "burned": 0,
+     "mints": 18,
+     "burns": 0,
+     "net": 126.74940047
+    },
+    "GLWB": {
+     "minted": 83.70822244,
+     "burned": 0,
+     "mints": 8,
+     "burns": 0,
+     "net": 83.70822244
+    },
+    "NBISB": {
+     "minted": 2887.58233928,
+     "burned": 0,
+     "mints": 76,
+     "burns": 0,
+     "net": 2887.58233928
+    },
+    "SOXLB": {
+     "minted": 42546.56668069,
+     "burned": 0,
+     "mints": 90,
+     "burns": 0,
+     "net": 42546.56668069
+    },
+    "DRAMB": {
+     "minted": 1854.16925751,
+     "burned": 0,
+     "mints": 20,
+     "burns": 0,
+     "net": 1854.16925751
+    },
+    "CBRSB": {
+     "minted": 1048.16582195,
+     "burned": 0,
+     "mints": 30,
+     "burns": 0,
+     "net": 1048.16582195
+    },
+    "DJTB": {
+     "minted": 978.26668348,
+     "burned": 0,
+     "mints": 4,
+     "burns": 0,
+     "net": 978.26668348
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "fromBlock": 130565343,
+   "toBlock": 130757300,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {},
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "fromBlock": 130757301,
+   "toBlock": 130949245,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {},
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-01",
+   "fromBlock": 130949246,
+   "toBlock": 131141194,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {},
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "fromBlock": 131141195,
+   "toBlock": 131333147,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 3490.62893184,
+     "burned": 0,
+     "mints": 112,
+     "burns": 0,
+     "net": 3490.62893184
+    },
+    "CRCLB": {
+     "minted": 107851.74219411,
+     "burned": 13598.78138776,
+     "mints": 268,
+     "burns": 1,
+     "net": 94252.96080635
+    },
+    "EWYB": {
+     "minted": 292.55074274,
+     "burned": 0,
+     "mints": 16,
+     "burns": 0,
+     "net": 292.55074274
+    },
+    "INTCB": {
+     "minted": 290864.86437659,
+     "burned": 0,
+     "mints": 440,
+     "burns": 0,
+     "net": 290864.86437659
+    },
+    "MSTRB": {
+     "minted": 84186.80704826,
+     "burned": 0,
+     "mints": 371,
+     "burns": 0,
+     "net": 84186.80704826
+    },
+    "MUB": {
+     "minted": 14291.1280203,
+     "burned": 0,
+     "mints": 303,
+     "burns": 0,
+     "net": 14291.1280203
+    },
+    "NVDAB": {
+     "minted": 30293.18936761,
+     "burned": 4140.33221099,
+     "mints": 345,
+     "burns": 1,
+     "net": 26152.85715662
+    },
+    "SNDKB": {
+     "minted": 20222.61367578,
+     "burned": 1499.983289,
+     "mints": 346,
+     "burns": 2,
+     "net": 18722.63038678
+    },
+    "SPCXB": {
+     "minted": 133869.90361228,
+     "burned": 15730.52112385,
+     "mints": 498,
+     "burns": 1,
+     "net": 118139.38248843
+    },
+    "TSLAB": {
+     "minted": 4439.7211082,
+     "burned": 4045.17431627,
+     "mints": 211,
+     "burns": 1,
+     "net": 394.54679193
+    },
+    "GOOGLB": {
+     "minted": 41691.53223028,
+     "burned": 5904.88040141,
+     "mints": 325,
+     "burns": 1,
+     "net": 35786.65182887
+    },
+    "QCOMB": {
+     "minted": 206.43487647,
+     "burned": 33.30661098,
+     "mints": 18,
+     "burns": 1,
+     "net": 173.12826549
+    },
+    "COINB": {
+     "minted": 9103.45516562,
+     "burned": 0,
+     "mints": 157,
+     "burns": 0,
+     "net": 9103.45516562
+    },
+    "SPYB": {
+     "minted": 2409.8940301,
+     "burned": 0,
+     "mints": 119,
+     "burns": 0,
+     "net": 2409.8940301
+    },
+    "WDCB": {
+     "minted": 52.45919983,
+     "burned": 38.57609276,
+     "mints": 18,
+     "burns": 1,
+     "net": 13.88310707
+    },
+    "GLWB": {
+     "minted": 529.1320844,
+     "burned": 0,
+     "mints": 40,
+     "burns": 0,
+     "net": 529.1320844
+    },
+    "NBISB": {
+     "minted": 7937.8503289,
+     "burned": 0,
+     "mints": 155,
+     "burns": 0,
+     "net": 7937.8503289
+    },
+    "SOXLB": {
+     "minted": 260100.87976232,
+     "burned": 0,
+     "mints": 314,
+     "burns": 0,
+     "net": 260100.87976232
+    },
+    "DRAMB": {
+     "minted": 29291.50162597,
+     "burned": 0,
+     "mints": 151,
+     "burns": 0,
+     "net": 29291.50162597
+    },
+    "CBRSB": {
+     "minted": 2982.34582521,
+     "burned": 0,
+     "mints": 91,
+     "burns": 0,
+     "net": 2982.34582521
+    },
+    "DJTB": {
+     "minted": 4357.09051327,
+     "burned": 0,
+     "mints": 21,
+     "burns": 0,
+     "net": 4357.09051327
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "fromBlock": 131333148,
+   "toBlock": 131525096,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 668.98280785,
+     "burned": 2363.71321172,
+     "mints": 51,
+     "burns": 1,
+     "net": -1694.73040387
+    },
+    "CRCLB": {
+     "minted": 147987.72024528,
+     "burned": 111615.86113,
+     "mints": 220,
+     "burns": 5,
+     "net": 36371.85911528
+    },
+    "EWYB": {
+     "minted": 6966.12510936,
+     "burned": 476.8387216,
+     "mints": 26,
+     "burns": 1,
+     "net": 6489.28638776
+    },
+    "INTCB": {
+     "minted": 566145.37152657,
+     "burned": 83710.84887906,
+     "mints": 329,
+     "burns": 5,
+     "net": 482434.52264751
+    },
+    "MSTRB": {
+     "minted": 91733.32292946,
+     "burned": 66019.63826326,
+     "mints": 199,
+     "burns": 5,
+     "net": 25713.6846662
+    },
+    "MUB": {
+     "minted": 5370.89874414,
+     "burned": 2026.11592784,
+     "mints": 142,
+     "burns": 1,
+     "net": 3344.7828163
+    },
+    "NVDAB": {
+     "minted": 20097.44699405,
+     "burned": 27054.77134729,
+     "mints": 276,
+     "burns": 4,
+     "net": -6957.32435324
+    },
+    "SNDKB": {
+     "minted": 17458.27560437,
+     "burned": 7751.04469316,
+     "mints": 295,
+     "burns": 4,
+     "net": 9707.23091121
+    },
+    "SPCXB": {
+     "minted": 98513.25971657,
+     "burned": 46450.57558937,
+     "mints": 330,
+     "burns": 5,
+     "net": 52062.6841272
+    },
+    "TSLAB": {
+     "minted": 4921.36747639,
+     "burned": 1273.94436067,
+     "mints": 158,
+     "burns": 1,
+     "net": 3647.42311572
+    },
+    "GOOGLB": {
+     "minted": 37596.43088271,
+     "burned": 5459.02680784,
+     "mints": 259,
+     "burns": 1,
+     "net": 32137.40407487
+    },
+    "QCOMB": {
+     "minted": 203.87854783,
+     "burned": 22.78033698,
+     "mints": 23,
+     "burns": 1,
+     "net": 181.09821085
+    },
+    "COINB": {
+     "minted": 3114.97770738,
+     "burned": 1988.70458342,
+     "mints": 83,
+     "burns": 1,
+     "net": 1126.27312396
+    },
+    "SPYB": {
+     "minted": 8789.62128843,
+     "burned": 6576.78885052,
+     "mints": 125,
+     "burns": 1,
+     "net": 2212.83243791
+    },
+    "WDCB": {
+     "minted": 97.77018429,
+     "burned": 73.38056387,
+     "mints": 10,
+     "burns": 1,
+     "net": 24.38962042
+    },
+    "GLWB": {
+     "minted": 215.7526594,
+     "burned": 386.51407742,
+     "mints": 17,
+     "burns": 1,
+     "net": -170.76141802
+    },
+    "NBISB": {
+     "minted": 4906.17086706,
+     "burned": 6975.96247882,
+     "mints": 133,
+     "burns": 2,
+     "net": -2069.79161176
+    },
+    "SOXLB": {
+     "minted": 231035.66044757,
+     "burned": 176297.8884679,
+     "mints": 278,
+     "burns": 6,
+     "net": 54737.77197967
+    },
+    "DRAMB": {
+     "minted": 17186.70146545,
+     "burned": 1754.71147932,
+     "mints": 107,
+     "burns": 1,
+     "net": 15431.98998613
+    },
+    "CBRSB": {
+     "minted": 2648.5000178,
+     "burned": 1029.86247963,
+     "mints": 66,
+     "burns": 1,
+     "net": 1618.63753817
+    },
+    "DJTB": {
+     "minted": 4587.74737189,
+     "burned": 511.76102673,
+     "mints": 20,
+     "burns": 1,
+     "net": 4075.98634516
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "fromBlock": 131525097,
+   "toBlock": 131717050,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 2891.61196333,
+     "burned": 853.93844863,
+     "mints": 103,
+     "burns": 1,
+     "net": 2037.6735147
+    },
+    "CRCLB": {
+     "minted": 30817.41870753,
+     "burned": 41900.83188857,
+     "mints": 159,
+     "burns": 1,
+     "net": -11083.41318104
+    },
+    "EWYB": {
+     "minted": 632.86657483,
+     "burned": 124.35451219,
+     "mints": 14,
+     "burns": 1,
+     "net": 508.51206264
+    },
+    "INTCB": {
+     "minted": 135813.62884701,
+     "burned": 18089.5331925,
+     "mints": 206,
+     "burns": 1,
+     "net": 117724.09565451
+    },
+    "MSTRB": {
+     "minted": 24190.76734249,
+     "burned": 18876.32279747,
+     "mints": 172,
+     "burns": 1,
+     "net": 5314.44454502
+    },
+    "MUB": {
+     "minted": 10377.49924464,
+     "burned": 0,
+     "mints": 196,
+     "burns": 0,
+     "net": 10377.49924464
+    },
+    "NVDAB": {
+     "minted": 13726.74152411,
+     "burned": 5910.33794619,
+     "mints": 169,
+     "burns": 1,
+     "net": 7816.40357792
+    },
+    "SNDKB": {
+     "minted": 11036.68322235,
+     "burned": 4482.45943797,
+     "mints": 228,
+     "burns": 1,
+     "net": 6554.22378438
+    },
+    "SPCXB": {
+     "minted": 56895.14915677,
+     "burned": 26274.01835118,
+     "mints": 222,
+     "burns": 1,
+     "net": 30621.13080559
+    },
+    "TSLAB": {
+     "minted": 6888.66490659,
+     "burned": 4257.02805392,
+     "mints": 185,
+     "burns": 1,
+     "net": 2631.63685267
+    },
+    "GOOGLB": {
+     "minted": 42521.58516805,
+     "burned": 0,
+     "mints": 168,
+     "burns": 0,
+     "net": 42521.58516805
+    },
+    "QCOMB": {
+     "minted": 1177.3550008,
+     "burned": 210.26333434,
+     "mints": 42,
+     "burns": 1,
+     "net": 967.09166646
+    },
+    "COINB": {
+     "minted": 1643.9366572,
+     "burned": 2846.18969301,
+     "mints": 48,
+     "burns": 1,
+     "net": -1202.25303581
+    },
+    "SPYB": {
+     "minted": 1718.72169437,
+     "burned": 552.79805769,
+     "mints": 80,
+     "burns": 1,
+     "net": 1165.92363668
+    },
+    "WDCB": {
+     "minted": 69.26647451,
+     "burned": 161.6158341,
+     "mints": 14,
+     "burns": 1,
+     "net": -92.34935959
+    },
+    "GLWB": {
+     "minted": 1587.94749076,
+     "burned": 0,
+     "mints": 16,
+     "burns": 0,
+     "net": 1587.94749076
+    },
+    "NBISB": {
+     "minted": 3289.93816012,
+     "burned": 2396.33605244,
+     "mints": 113,
+     "burns": 1,
+     "net": 893.60210768
+    },
+    "SOXLB": {
+     "minted": 132339.9764426,
+     "burned": 39411.45345418,
+     "mints": 231,
+     "burns": 1,
+     "net": 92928.52298842
+    },
+    "DRAMB": {
+     "minted": 13042.6347365,
+     "burned": 25877.66285766,
+     "mints": 21,
+     "burns": 1,
+     "net": -12835.02812116
+    },
+    "CBRSB": {
+     "minted": 2416.22079019,
+     "burned": 997.10153987,
+     "mints": 81,
+     "burns": 1,
+     "net": 1419.11925032
+    },
+    "DJTB": {
+     "minted": 11647.58371092,
+     "burned": 24746.94251989,
+     "mints": 10,
+     "burns": 1,
+     "net": -13099.35880897
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "fromBlock": 131717051,
+   "toBlock": 131908996,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 1391.67294362,
+     "burned": 11297.10233978,
+     "mints": 84,
+     "burns": 6,
+     "net": -9905.42939616
+    },
+    "CRCLB": {
+     "minted": 81386.33612518,
+     "burned": 19206.31147635,
+     "mints": 142,
+     "burns": 1,
+     "net": 62180.02464883
+    },
+    "EWYB": {
+     "minted": 2278.78409644,
+     "burned": 2984.21949824,
+     "mints": 48,
+     "burns": 5,
+     "net": -705.4354018
+    },
+    "INTCB": {
+     "minted": 41687.31878011,
+     "burned": 322441.8690611,
+     "mints": 193,
+     "burns": 2,
+     "net": -280754.55028099
+    },
+    "MSTRB": {
+     "minted": 29619.23447495,
+     "burned": 37387.2658067,
+     "mints": 171,
+     "burns": 2,
+     "net": -7768.03133175
+    },
+    "MUB": {
+     "minted": 13037.29422187,
+     "burned": 19381.03997648,
+     "mints": 224,
+     "burns": 7,
+     "net": -6343.74575461
+    },
+    "NVDAB": {
+     "minted": 39674.01105912,
+     "burned": 39131.23625963,
+     "mints": 212,
+     "burns": 2,
+     "net": 542.77479949
+    },
+    "SNDKB": {
+     "minted": 15883.30779789,
+     "burned": 2514.27772733,
+     "mints": 264,
+     "burns": 1,
+     "net": 13369.03007056
+    },
+    "SPCXB": {
+     "minted": 123511.91163823,
+     "burned": 31024.98471763,
+     "mints": 231,
+     "burns": 1,
+     "net": 92486.9269206
+    },
+    "TSLAB": {
+     "minted": 8613.67643044,
+     "burned": 15424.48790747,
+     "mints": 170,
+     "burns": 5,
+     "net": -6810.81147703
+    },
+    "GOOGLB": {
+     "minted": 12138.23426558,
+     "burned": 72941.34463014,
+     "mints": 147,
+     "burns": 5,
+     "net": -60803.11036456
+    },
+    "QCOMB": {
+     "minted": 1074.89890255,
+     "burned": 1758.53464229,
+     "mints": 24,
+     "burns": 3,
+     "net": -683.63573974
+    },
+    "COINB": {
+     "minted": 1977.78061047,
+     "burned": 10079.82358759,
+     "mints": 31,
+     "burns": 6,
+     "net": -8102.04297712
+    },
+    "SPYB": {
+     "minted": 2872.23741245,
+     "burned": 3452.07434737,
+     "mints": 109,
+     "burns": 6,
+     "net": -579.83693492
+    },
+    "WDCB": {
+     "minted": 155.75032042,
+     "burned": 938.53205179,
+     "mints": 24,
+     "burns": 4,
+     "net": -782.78173137
+    },
+    "GLWB": {
+     "minted": 1647.93717243,
+     "burned": 986.16018374,
+     "mints": 24,
+     "burns": 1,
+     "net": 661.77698869
+    },
+    "NBISB": {
+     "minted": 2784.99027543,
+     "burned": 23009.56085619,
+     "mints": 99,
+     "burns": 4,
+     "net": -20224.57058076
+    },
+    "SOXLB": {
+     "minted": 412407.40565309,
+     "burned": 18496.22644473,
+     "mints": 264,
+     "burns": 1,
+     "net": 393911.17920836
+    },
+    "DRAMB": {
+     "minted": 45882.8621308,
+     "burned": 35423.31876546,
+     "mints": 115,
+     "burns": 6,
+     "net": 10459.54336534
+    },
+    "CBRSB": {
+     "minted": 2469.31253054,
+     "burned": 1370.53786684,
+     "mints": 64,
+     "burns": 1,
+     "net": 1098.7746637
+    },
+    "DJTB": {
+     "minted": 15663.15941889,
+     "burned": 11981.81037939,
+     "mints": 23,
+     "burns": 4,
+     "net": 3681.3490395
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  }
+ ]
 }
