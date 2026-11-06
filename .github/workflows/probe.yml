@@ -1,0 +1,19 @@
+name: One-off Grayscale spreadsheet test
+# r285 · Run by hand once (Actions → this workflow → Run workflow). Fetches each Grayscale "product performance"
+# spreadsheet linked from the fund pages and prints what it holds, to see whether it carries bitcoin or ether held
+# with a date. Writes nothing, commits nothing; read the result in the run log, then the workflow can be deleted.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Read Grayscale's spreadsheets once
+        run: node tools/gs_probe.mjs
