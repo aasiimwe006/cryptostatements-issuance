@@ -2,7 +2,7 @@ name: Daily issuance archive
 # Every day at 00:23 UTC: reads the previous UTC day's mint, burn, freeze, wipe and pause
 # events from the USDC, USDT, PAXG, EURC and PYUSD contracts on Ethereum, uploads the day file
 # to that month's release (issuance-YYYY-MM), reads each token's supply into supply.json (r147),
-# reads bStocks supply on BNB Chain into bstocks.json (r185), bStocks daily closes from Binance Spot into bstocks_prices.json (r196) and re-reads the regulators' registers behind the Exchange Register into registers.json (r219), writes stablecoin supply history and the daily market snapshot into market.json (r276), appends market-linked signals to signals.json and the CFTC's weekly CME positioning to cot.json and US Treasury yields to macro.json (r281), and commits index.json, supply.json, bstocks.json, bstocks_prices.json, registers.json, market.json, signals.json, cot.json and macro.json, which GitHub Pages serves to the CRYPTO STATEMENTS
+# reads bStocks supply on BNB Chain into bstocks.json (r185), bStocks daily closes from Binance Spot into bstocks_prices.json (r196) and re-reads the regulators' registers behind the Exchange Register into registers.json (r219), writes stablecoin supply history and the daily market snapshot into market.json (r276), appends market-linked signals to signals.json and the CFTC's weekly CME positioning to cot.json and US Treasury yields to macro.json (r281), spot ETF holdings from the issuers' own files to etf.json (r282), and commits index.json, supply.json, bstocks.json, bstocks_prices.json, registers.json, market.json, signals.json, cot.json, macro.json and etf.json, which GitHub Pages serves to the CRYPTO STATEMENTS
 # Reserve Monitor. No Netlify deploy is involved. Run by hand to
 # backfill (date YYYY-MM-DD or DD-MM-YYYY, up to 31 days).
 on:
@@ -67,6 +67,9 @@ jobs:
       - name: US Treasury yields for macro records (r281)
         if: always()
         run: node tools/macro.mjs
+      - name: Spot ETF holdings from the issuers' own files (r282)
+        if: always()
+        run: node tools/etf.mjs
       - name: Upload each day to its month's release
         if: always()
         env:
@@ -94,6 +97,7 @@ jobs:
           if [ -f signals.json ]; then git add signals.json; fi
           if [ -f cot.json ]; then git add cot.json; fi
           if [ -f macro.json ]; then git add macro.json; fi
+          if [ -f etf.json ]; then git add etf.json; fi
           if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
           git commit -m "Index: $(node -e "const i=require('./index.json');console.log(i.days[i.days.length-1].date+' · '+i.days.length+' days')")"
           git pull --rebase
