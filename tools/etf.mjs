@@ -12,6 +12,7 @@
    issuers are added one at a time, each with its own parser, once its file has been checked by hand.
    No dependencies (Node 20).                                                                          */
 import fs from 'node:fs';
+import zlib from 'node:zlib';
 const OUT = 'etf.json';
 const num = s => +String(s || '').replace(/[",\s]/g, '');
 const MONTHS = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
@@ -52,18 +53,61 @@ function bitwise(html) {
   const d = anchor(L, 'Fund Details'), shares = d >= 0 ? num(after(L, 'Shares Outstanding', d)) : null;
   if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: shares || null, qty, mv: mv || null };
 }
+/* r286 · Grayscale's published spreadsheets. Its fund pages refuse the job, but each page links a "product performance"
+   workbook on Amazon S3 that opens freely (tested 6 Nov 2026). Sheet "Daily Performance": one row per business day with
+   shares outstanding, NAV per share and AUM; sheet "Holdings": the asset per share, for the latest date only. The file
+   never prints the quantity held, so for the Holdings date the job computes it as shares outstanding x asset per share,
+   both Grayscale's own figures, and marks the row computed (by the founder's decision of 6 Nov 2026). It matched the
+   fund pages within the rounding of the per-share figure on all four funds. Earlier days carry shares, NAV and AUM
+   only: the change in shares outstanding is Grayscale's own record of creations and redemptions, and is never turned
+   into bitcoin with a per-share figure from another day. Rows are kept from 2024-01-01 (GBTC's conversion to an ETF). */
+function unzip(buf) {
+  let e = -1; for (let i = buf.length - 22; i >= 0; i--) if (buf.readUInt32LE(i) === 0x06054b50) { e = i; break; }
+  if (e < 0) throw new Error('not an xlsx file');
+  const n = buf.readUInt16LE(e + 10); let p = buf.readUInt32LE(e + 16); const out = {};
+  for (let k = 0; k < n; k++) {
+    const comp = buf.readUInt16LE(p + 10), csz = buf.readUInt32LE(p + 20), fl = buf.readUInt16LE(p + 28), xl = buf.readUInt16LE(p + 30), cl = buf.readUInt16LE(p + 32), lho = buf.readUInt32LE(p + 42);
+    const name = buf.toString('utf8', p + 46, p + 46 + fl), lfl = buf.readUInt16LE(lho + 26), lxl = buf.readUInt16LE(lho + 28);
+    const data = buf.subarray(lho + 30 + lfl + lxl, lho + 30 + lfl + lxl + csz);
+    out[name] = comp === 8 ? zlib.inflateRawSync(data).toString('utf8') : data.toString('utf8'); p += 46 + fl + xl + cl;
+  }
+  return out;
+}
+const xdec = s => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+function xlsxSheets(buf) {
+  const Z = unzip(buf), S = [...(Z['xl/sharedStrings.xml'] || '').matchAll(/<si>([\s\S]*?)<\/si>/g)].map(m => xdec([...m[1].matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map(x => x[1]).join('')));
+  const names = [...(Z['xl/workbook.xml'] || '').matchAll(/<sheet [^>]*name="([^"]+)"/g)].map(m => xdec(m[1])), out = {};
+  names.forEach((nm, i) => { const xml = Z['xl/worksheets/sheet' + (i + 1) + '.xml'] || '';
+    out[nm] = [...xml.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)].map(m => { const r = {};
+      for (const c of m[1].matchAll(/<c r="([A-Z]+)\d+"([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) { const t = (c[2].match(/t="(\w+)"/) || [])[1], v = ((c[3] || '').match(/<v>([\s\S]*?)<\/v>/) || [])[1], is = ((c[3] || '').match(/<t[^>]*>([\s\S]*?)<\/t>/) || [])[1];
+        r[c[1]] = t === 's' ? S[+v] : t === 'inlineStr' ? xdec(is || '') : v; } return r; }); });
+  return out;
+}
+function grayscaleXlsx(buf, asset) {
+  const W = xlsxSheets(buf), D = W['Daily Performance'], H = W['Holdings']; if (!D || !D.length || !H || !H.length) throw new Error('sheets not found');
+  const col = (rows, label) => Object.keys(rows[0]).find(k => rows[0][k] === label);
+  const cd = col(D, 'Date'), cs = col(D, 'Shares Outstanding'), cn = col(D, 'NAV Per Share'), ca = col(D, 'AUM');
+  if (!cd || !cs) throw new Error('Daily Performance columns not found');
+  const hr = H.slice(1).find(r => r[col(H, 'Name')] === asset); if (!hr) throw new Error('no ' + asset + ' in Holdings');
+  const hDate = hr[col(H, 'Date')], aps = num(hr[col(H, 'Asset/Share')]);
+  return D.slice(1).filter(r => /^\d{4}-\d{2}-\d{2}$/.test(r[cd] || '') && r[cd] >= '2024-01-01' && num(r[cs]) > 0).map(r => {
+    const row = { date: r[cd], shares: num(r[cs]), nav: r[cn] != null ? num(r[cn]) : null, mv: r[ca] != null ? num(r[ca]) : null };
+    if (r[cd] === hDate && aps > 0) Object.assign(row, { aps, qty: Math.round(row.shares * aps * 1e4) / 1e4, computed: true });
+    return row; });
+}
+const GS3 = 'https://reporting-prod-20231113144948145500000003.s3.us-east-1.amazonaws.com/product-performance/';
 const FUNDS = [
   { id: 'IBIT', name: 'iShares Bitcoin Trust ETF', issuer: 'BlackRock (iShares)', asset: 'BTC',
     url: 'https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'BTC') },
-  { id: 'GBTC', name: 'Grayscale Bitcoin Trust ETF', issuer: 'Grayscale', asset: 'BTC', url: 'https://etfs.grayscale.com/gbtc', parse: t => grayscale(t, 'TOTAL BITCOIN IN FUND') },
-  { id: 'BTC', name: 'Grayscale Bitcoin Mini Trust ETF', issuer: 'Grayscale', asset: 'BTC', url: 'https://etfs.grayscale.com/btc', parse: t => grayscale(t, 'TOTAL BITCOIN IN FUND') },
+  { id: 'GBTC', name: 'Grayscale Bitcoin Trust ETF', issuer: 'Grayscale', asset: 'BTC', page: 'https://etfs.grayscale.com/gbtc', url: GS3 + '672e88c7-dac6-4fcd-9069-18eef01a2c73.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'BTC') },
+  { id: 'BTC', name: 'Grayscale Bitcoin Mini Trust ETF', issuer: 'Grayscale', asset: 'BTC', page: 'https://etfs.grayscale.com/btc', url: GS3 + '9ba286d6-3067-4153-b430-81d9d7a25696.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'BTC') },
   { id: 'ARKB', name: 'ARK 21Shares Bitcoin ETF', issuer: 'ARK Invest and 21Shares', asset: 'BTC',
     url: 'https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_21SHARES_BITCOIN_ETF_ARKB_HOLDINGS.csv', parse: t => arkCsv(t, 'BTC') },
   { id: 'BITB', name: 'Bitwise Bitcoin ETF', issuer: 'Bitwise', asset: 'BTC', url: 'https://bitbetf.com/', parse: bitwise },
   { id: 'ETHA', name: 'iShares Ethereum Trust ETF', issuer: 'BlackRock (iShares)', asset: 'ETH',
     url: 'https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'ETH') },
-  { id: 'ETHE', name: 'Grayscale Ethereum Staking ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/ethe', parse: t => grayscale(t, 'TOTAL ETHER IN FUND'), staking: true },
-  { id: 'ETH', name: 'Grayscale Ethereum Mini Trust ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/eth', parse: t => grayscale(t, 'TOTAL ETHER IN FUND') }
+  { id: 'ETHE', name: 'Grayscale Ethereum Staking ETF', issuer: 'Grayscale', asset: 'ETH', page: 'https://etfs.grayscale.com/ethe', url: GS3 + '585fdb73-c55c-40cd-bb35-e1b532d72e70.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'ETH'), staking: true },
+  { id: 'ETH', name: 'Grayscale Ethereum Staking Mini ETF', issuer: 'Grayscale', asset: 'ETH', page: 'https://etfs.grayscale.com/eth', url: GS3 + '52edbb6f-93e8-4b73-85f6-6b347706bc2a.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'ETH'), staking: true }
 ];
 /* Fidelity (FBTC, FETH) has no reader. Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
    quote page, but the page loads it through a token-protected research API (a direct request is refused, 403),
@@ -72,20 +116,24 @@ const FUNDS = [
    (a scheduled check, like bStocks) and commits it to etf_hand.json; this job copies those rows in, each marked
    as read by hand, so they are never mistaken for a file the job fetched. */
 const HAND = 'etf_hand.json';
-/* r284 · one request at a time per host, a pause between requests to the same host, and a polite retry when a host
-   says "too many requests" (Grayscale answered 429 to four pages in a row on 6 Nov 2026). */
-const sleep = ms => new Promise(r => setTimeout(r, ms)), lastHit = {};
-async function politeGet(url) {
+/* r284 · one request at a time per host, a pause between requests to the same host, and one polite retry when a host
+   says "too many requests". r285 · a host that still refuses is not asked again in the same run: Grayscale answered
+   429 to every request from the runner on 6 Nov 2026, even paced and retried, which is a refusal, not a rate. The job
+   does not disguise itself as a browser to get past it; Grayscale's funds are then read by hand in the weekly check. */
+const sleep = ms => new Promise(r => setTimeout(r, ms)), lastHit = {}, refused = {};
+async function politeGet(url, binary) {
   const host = new URL(url).host;
-  for (let i = 0; i < 3; i++) {
+  if (refused[host]) throw new Error('skipped: ' + host + ' refused this run');
+  for (let i = 0; i < 2; i++) {
     const wait = (lastHit[host] || 0) + 4000 - Date.now(); if (wait > 0) await sleep(wait);
     lastHit[host] = Date.now();
     const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily holdings copy)', accept: 'text/csv,text/html,text/plain,*/*' } });
-    if (r.status === 429 && i < 2) { const ra = +(r.headers.get('retry-after') || 0); const ms = Math.min(120000, Math.max(15000, ra * 1000)) * (i + 1); console.error('  ' + host + ' 429, waiting ' + Math.round(ms / 1000) + ' s'); await sleep(ms); continue; }
+    if (r.status === 429 && i < 1) { const ra = +(r.headers.get('retry-after') || 0); const ms = Math.min(120000, Math.max(15000, ra * 1000)) * (i + 1); console.error('  ' + host + ' 429, waiting ' + Math.round(ms / 1000) + ' s'); await sleep(ms); continue; }
+    if (r.status === 429) { refused[host] = true; throw new Error('HTTP 429 after a retry; ' + host + ' not asked again this run'); }
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.text();
+    return binary ? Buffer.from(await r.arrayBuffer()) : r.text();
   }
-  throw new Error('HTTP 429 after retries');
+  refused[host] = true; throw new Error('HTTP 429 after a retry; ' + host + ' not asked again this run');
 }
 async function main() {
   /* A stored file that does not parse is never overwritten: that would lose the history it holds. */
@@ -97,11 +145,18 @@ async function main() {
   for (const F of FUNDS) {
     const held = (doc.funds[F.id] && doc.funds[F.id].rows) || [];
     try {
-      const x = F.parse(await politeGet(F.url));
-      if (!held.some(h => h.date === x.date)) { held.push(x); console.log(F.id, x.date, x.qty, F.asset, 'held,', x.shares, 'shares'); } else console.log(F.id, x.date, 'already held');
+      const got = F.parse(await politeGet(F.url, F.binary)), list = Array.isArray(got) ? got : [got]; let added = 0;
+      for (const x of list) {
+        const i = held.findIndex(h => h.date === x.date);
+        if (i < 0) { held.push(x); added++; }
+        else if (x.qty && !held[i].qty) { held[i] = Object.assign({}, held[i], x); added++; }   // the day's per-share figure arrives on a later run: fill, never overwrite a stored quantity
+        else if (held[i].hand && !held[i].file) { held[i] = Object.assign({}, x, { handCheck: held[i].qty }); added++; } // a hand reading superseded by the issuer's file keeps its figure as a cross-check
+      }
+      const L = list.find(x => x.qty) || list[0];
+      console.log(F.id, list.length > 1 ? list.length + ' days in file, ' + added + ' new or filled; ' : '', L.date, L.qty != null ? L.qty + ' ' + F.asset + (L.computed ? ' (computed: shares x per share)' : '') : '', L.shares ? L.shares + ' shares' : '');
       held.sort((a, b) => a.date.localeCompare(b.date));
     } catch (e) { console.error(F.id, e.message); }
-    doc.funds[F.id] = { name: F.name, issuer: F.issuer, asset: F.asset, src: F.url, staking: !!F.staking, rows: held };
+    doc.funds[F.id] = { name: F.name, issuer: F.issuer, asset: F.asset, src: F.url, page: F.page || null, computed: !!F.binary, staking: !!F.staking, rows: held };
   }
   /* Hand-read rows (Fidelity), committed by the founder to etf_hand.json: {funds:{FBTC:{name,issuer,asset,src,rows:[{date,qty,read,by}]}}}.
      Copied in as they are; a row already held for that date is not replaced. */
@@ -109,9 +164,13 @@ async function main() {
     try { const H = JSON.parse(fs.readFileSync(HAND, 'utf8'));
       for (const [id, f] of Object.entries(H.funds || {})) {
         const held = (doc.funds[id] && doc.funds[id].rows) || [];
-        for (const r of f.rows || []) if (r.date && r.qty > 0 && !held.some(h => h.date === r.date)) { held.push(Object.assign({ hand: true }, r)); console.log(id, r.date, r.qty, 'read by hand'); }
+        for (const r of f.rows || []) { if (!(r.date && r.qty > 0)) continue; const i = held.findIndex(h => h.date === r.date);
+          if (i < 0) { held.push(Object.assign({ hand: true }, r)); console.log(id, r.date, r.qty, 'read by hand'); }
+          else if (!held[i].hand && held[i].handCheck == null) { held[i] = Object.assign({}, held[i], { handCheck: r.qty }); console.log(id, r.date, 'hand reading kept as a cross-check:', r.qty, 'against', held[i].qty); } }
         held.sort((a, b) => a.date.localeCompare(b.date));
-        doc.funds[id] = { name: f.name, issuer: f.issuer, asset: f.asset, src: f.src, hand: true, weekly: true, rows: held };
+        const auto = FUNDS.find(x => x.id === id);   // a fund with a reader keeps its own description; only Fidelity is hand-only
+        doc.funds[id] = auto ? Object.assign(doc.funds[id] || { name: auto.name, issuer: auto.issuer, asset: auto.asset, src: auto.url, staking: !!auto.staking }, { rows: held })
+                             : { name: f.name, issuer: f.issuer, asset: f.asset, src: f.src, hand: true, weekly: true, rows: held };
       }
     } catch (e) { console.error(HAND, 'not read:', e.message); }
   }
