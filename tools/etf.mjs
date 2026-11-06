@@ -65,9 +65,28 @@ const FUNDS = [
   { id: 'ETHE', name: 'Grayscale Ethereum Staking ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/ethe', parse: t => grayscale(t, 'TOTAL ETHER IN FUND'), staking: true },
   { id: 'ETH', name: 'Grayscale Ethereum Mini Trust ETF', issuer: 'Grayscale', asset: 'ETH', url: 'https://etfs.grayscale.com/eth', parse: t => grayscale(t, 'TOTAL ETHER IN FUND') }
 ];
-/* Not added: Fidelity (FBTC, FETH). Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
+/* Fidelity (FBTC, FETH) has no reader. Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
    quote page, but the page loads it through a token-protected research API (a direct request is refused, 403),
-   and the fund has no public holdings file. No reader is written for it; nothing is scraped around a login wall. */
+   Fidelity publishes no holdings file, and its SEC filings carry bitcoin held only once a year (10-K). Nothing is
+   scraped around a login wall. Instead the founder reads the figure from Fidelity's own quote page each week
+   (a scheduled check, like bStocks) and commits it to etf_hand.json; this job copies those rows in, each marked
+   as read by hand, so they are never mistaken for a file the job fetched. */
+const HAND = 'etf_hand.json';
+/* r284 · one request at a time per host, a pause between requests to the same host, and a polite retry when a host
+   says "too many requests" (Grayscale answered 429 to four pages in a row on 6 Nov 2026). */
+const sleep = ms => new Promise(r => setTimeout(r, ms)), lastHit = {};
+async function politeGet(url) {
+  const host = new URL(url).host;
+  for (let i = 0; i < 3; i++) {
+    const wait = (lastHit[host] || 0) + 4000 - Date.now(); if (wait > 0) await sleep(wait);
+    lastHit[host] = Date.now();
+    const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily holdings copy)', accept: 'text/csv,text/html,text/plain,*/*' } });
+    if (r.status === 429 && i < 2) { const ra = +(r.headers.get('retry-after') || 0); const ms = Math.min(120000, Math.max(15000, ra * 1000)) * (i + 1); console.error('  ' + host + ' 429, waiting ' + Math.round(ms / 1000) + ' s'); await sleep(ms); continue; }
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.text();
+  }
+  throw new Error('HTTP 429 after retries');
+}
 async function main() {
   /* A stored file that does not parse is never overwritten: that would lose the history it holds. */
   let prev = null;
@@ -78,13 +97,23 @@ async function main() {
   for (const F of FUNDS) {
     const held = (doc.funds[F.id] && doc.funds[F.id].rows) || [];
     try {
-      const r = await fetch(F.url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-issuance (GitHub Actions)', accept: 'text/csv,text/plain,*/*' } });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const x = F.parse(await r.text());
+      const x = F.parse(await politeGet(F.url));
       if (!held.some(h => h.date === x.date)) { held.push(x); console.log(F.id, x.date, x.qty, F.asset, 'held,', x.shares, 'shares'); } else console.log(F.id, x.date, 'already held');
       held.sort((a, b) => a.date.localeCompare(b.date));
     } catch (e) { console.error(F.id, e.message); }
     doc.funds[F.id] = { name: F.name, issuer: F.issuer, asset: F.asset, src: F.url, staking: !!F.staking, rows: held };
+  }
+  /* Hand-read rows (Fidelity), committed by the founder to etf_hand.json: {funds:{FBTC:{name,issuer,asset,src,rows:[{date,qty,read,by}]}}}.
+     Copied in as they are; a row already held for that date is not replaced. */
+  if (fs.existsSync(HAND)) {
+    try { const H = JSON.parse(fs.readFileSync(HAND, 'utf8'));
+      for (const [id, f] of Object.entries(H.funds || {})) {
+        const held = (doc.funds[id] && doc.funds[id].rows) || [];
+        for (const r of f.rows || []) if (r.date && r.qty > 0 && !held.some(h => h.date === r.date)) { held.push(Object.assign({ hand: true }, r)); console.log(id, r.date, r.qty, 'read by hand'); }
+        held.sort((a, b) => a.date.localeCompare(b.date));
+        doc.funds[id] = { name: f.name, issuer: f.issuer, asset: f.asset, src: f.src, hand: true, weekly: true, rows: held };
+      }
+    } catch (e) { console.error(HAND, 'not read:', e.message); }
   }
   fs.writeFileSync(OUT, JSON.stringify(doc) + '\n');
   console.log('etf.json written:', Object.entries(doc.funds).map(([k, v]) => k + ' ' + v.rows.length).join(', '));
