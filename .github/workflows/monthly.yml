@@ -27,10 +27,13 @@ jobs:
         with:
           node-version: '20'
       - name: Download the month's day files
+        # The hand-run month reaches the shell as an environment value and must look like YYYY-MM (2026-11-06).
         env:
           GH_TOKEN: ${{ github.token }}
+          IN_MONTH: ${{ inputs.month }}
         run: |
-          M="${{ inputs.month }}"; [ -n "$M" ] || M=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%Y-%m)
+          M="$IN_MONTH"; [ -n "$M" ] || M=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%Y-%m)
+          [[ "$M" =~ ^[0-9]{4}-[0-9]{2}$ ]] || { echo "month must be YYYY-MM"; exit 1; }
           echo "M=$M" >> "$GITHUB_ENV"; mkdir -p work
           gh release download "issuance-$M" -p "$M-??.json" -D work
           ls work | wc -l
