@@ -156,19 +156,26 @@ const HAND = 'etf_hand.json';
    429 to every request from the runner on 6 Nov 2026, even paced and retried, which is a refusal, not a rate. The job
    does not disguise itself as a browser to get past it; Grayscale's funds are then read by hand in the weekly check. */
 const sleep = ms => new Promise(r => setTimeout(r, ms)), lastHit = {}, refused = {};
+/* r288 · VanEck's holdings download timed out at 30 s from the runner on 7 Nov 2026 (HODL, ETHV): it is given 75 s. */
+const SLOW = { 'www.vaneck.com': 75000 };
 async function politeGet(url, binary) {
   const host = new URL(url).host;
   if (refused[host]) throw new Error('skipped: ' + host + ' refused this run');
   for (let i = 0; i < 2; i++) {
     const wait = (lastHit[host] || 0) + 4000 - Date.now(); if (wait > 0) await sleep(wait);
     lastHit[host] = Date.now();
-    const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily holdings copy)', accept: 'text/csv,text/html,text/plain,*/*' } });
+    let r;
+    try { r = await fetch(url, { signal: AbortSignal.timeout(SLOW[host] || 30000), headers: { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily holdings copy)', accept: 'text/csv,text/html,text/plain,*/*' } }); }
+    catch (e) { /* r288 · a host that does not answer in time is asked once more after 20 s; if it is silent again, it is not asked again this run */
+      if (i < 1 && /abort|timeout/i.test(e.name + ' ' + e.message)) { console.error('  ' + host + ' no answer in ' + Math.round((SLOW[host] || 30000) / 1000) + ' s, asking once more in 20 s'); await sleep(20000); continue; }
+      refused[host] = true; throw new Error('no answer after a retry (' + e.message + '); ' + host + ' not asked again this run'); }
+    if (r.status === 403) { refused[host] = true; throw new Error('HTTP 403: ' + host + ' refuses the runner; not asked again this run, and not disguised'); }
     if (r.status === 429 && i < 1) { const ra = +(r.headers.get('retry-after') || 0); const ms = Math.min(120000, Math.max(15000, ra * 1000)) * (i + 1); console.error('  ' + host + ' 429, waiting ' + Math.round(ms / 1000) + ' s'); await sleep(ms); continue; }
     if (r.status === 429) { refused[host] = true; throw new Error('HTTP 429 after a retry; ' + host + ' not asked again this run'); }
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return binary ? Buffer.from(await r.arrayBuffer()) : r.text();
   }
-  refused[host] = true; throw new Error('HTTP 429 after a retry; ' + host + ' not asked again this run');
+  refused[host] = true; throw new Error('no answer after a retry; ' + host + ' not asked again this run');
 }
 async function main() {
   /* A stored file that does not parse is never overwritten: that would lose the history it holds. */
