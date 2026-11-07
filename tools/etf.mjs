@@ -47,9 +47,9 @@ function grayscale(html, label) {
   if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: shares || null, qty, mv: mv || null };
 }
 /* Bitwise's BITB page: "Fund Holdings / Data as of MM/DD/YYYY", the holding row after the header row; "Fund Details" for shares. */
-function bitwise(html) {
+function bitwise(html, rowName = 'BITCOIN', qtyLabel = 'Bitcoin in Trust') {
   const L = htmlLines(html), h = anchor(L, 'Fund Holdings'); if (h < 0) throw new Error('no dated Fund Holdings');
-  const date = mdy(L.slice(h, h + 4).join(' ')), row = L.indexOf('BITCOIN', h), qty = num(after(L, 'Bitcoin in Trust', row)), mv = num(String(after(L, 'Market Value', row) || '').replace('$', ''));
+  const date = mdy(L.slice(h, h + 4).join(' ')), row = L.indexOf(rowName, h), qty = num(after(L, qtyLabel, row)), mv = num(String(after(L, 'Market Value', row) || '').replace('$', ''));
   const d = anchor(L, 'Fund Details'), shares = d >= 0 ? num(after(L, 'Shares Outstanding', d)) : null;
   if (!date || !(qty > 0)) throw new Error('unreadable figures'); return { date, shares: shares || null, qty, mv: mv || null };
 }
@@ -75,11 +75,12 @@ function unzip(buf) {
 }
 const xdec = s => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
 function xlsxSheets(buf) {
-  const Z = unzip(buf), S = [...(Z['xl/sharedStrings.xml'] || '').matchAll(/<si>([\s\S]*?)<\/si>/g)].map(m => xdec([...m[1].matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map(x => x[1]).join('')));
-  const names = [...(Z['xl/workbook.xml'] || '').matchAll(/<sheet [^>]*name="([^"]+)"/g)].map(m => xdec(m[1])), out = {};
+  /* tags may carry a namespace prefix (VanEck writes <x:row>, <x:c>, <x:t>) */
+  const Z = unzip(buf), S = [...(Z['xl/sharedStrings.xml'] || '').matchAll(/<(?:\w+:)?si>([\s\S]*?)<\/(?:\w+:)?si>/g)].map(m => xdec([...m[1].matchAll(/<(?:\w+:)?t(?:\s[^>]*)?>([\s\S]*?)<\/(?:\w+:)?t>/g)].map(x => x[1]).join('')));
+  const names = [...(Z['xl/workbook.xml'] || '').matchAll(/<(?:\w+:)?sheet [^>]*name="([^"]+)"/g)].map(m => xdec(m[1])), out = {};
   names.forEach((nm, i) => { const xml = Z['xl/worksheets/sheet' + (i + 1) + '.xml'] || '';
-    out[nm] = [...xml.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)].map(m => { const r = {};
-      for (const c of m[1].matchAll(/<c r="([A-Z]+)\d+"([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) { const t = (c[2].match(/t="(\w+)"/) || [])[1], v = ((c[3] || '').match(/<v>([\s\S]*?)<\/v>/) || [])[1], is = ((c[3] || '').match(/<t[^>]*>([\s\S]*?)<\/t>/) || [])[1];
+    out[nm] = [...xml.matchAll(/<(?:\w+:)?row[^>]*>([\s\S]*?)<\/(?:\w+:)?row>/g)].map(m => { const r = {};
+      for (const c of m[1].matchAll(/<(?:\w+:)?c r="([A-Z]+)\d+"([^>]*?)(?:\/>|>([\s\S]*?)<\/(?:\w+:)?c>)/g)) { const t = (c[2].match(/t="(\w+)"/) || [])[1], v = ((c[3] || '').match(/<(?:\w+:)?v>([\s\S]*?)<\/(?:\w+:)?v>/) || [])[1], is = ((c[3] || '').match(/<(?:\w+:)?t(?:\s[^>]*)?>([\s\S]*?)<\/(?:\w+:)?t>/) || [])[1];
         r[c[1]] = t === 's' ? S[+v] : t === 'inlineStr' ? xdec(is || '') : v; } return r; }); });
   return out;
 }
@@ -95,6 +96,29 @@ function grayscaleXlsx(buf, asset) {
     if (r[cd] === hDate && aps > 0) Object.assign(row, { aps, qty: Math.round(row.shares * aps * 1e4) / 1e4, computed: true });
     return row; });
 }
+/* r287 · the smaller issuers, each checked by hand in the founder's browser on 7 Nov 2026 before its reader was written. */
+/* VanEck's daily holdings workbook (the "Download XLS" link on the fund's Holdings tab): "Daily Holdings (%)  MM/DD/YYYY",
+   then Number | Holding Name | Shares | Market Value; VanEck rounds the coin quantity to whole coins. */
+function vaneckXlsx(buf, holding) {
+  const W = xlsxSheets(buf), R = Object.values(W)[0] || [], cells = r => Object.values(r).map(v => String(v ?? '').trim());
+  const date = mdy(R.map(cells).flat().find(v => /Daily Holdings/i.test(v)) || ''); if (!date) throw new Error('no holdings date');
+  const hi = R.findIndex(r => cells(r).includes('Holding Name')); if (hi < 0) throw new Error('no header');
+  const H = R[hi], k = lab => Object.keys(H).find(c => String(H[c]).trim() === lab), row = R.slice(hi + 1).find(r => String(r[k('Holding Name')] || '').trim() === holding);
+  if (!row) throw new Error('no ' + holding + ' line'); const qty = num(row[k('Shares')]), mv = num(String(row[k('Market Value (US$)')] || '').replace('$', ''));
+  if (!(qty > 0)) throw new Error('unreadable figures'); return { date, shares: null, qty, mv: mv || null, rounded: true };
+}
+/* Invesco's fund pages load holdings from its open, unauthenticated data service (no key or token): units and market value per holding. */
+function invescoJson(text, name) {
+  const j = JSON.parse(text), h = (j.holdings || []).find(x => x.issuerName === name); if (!h) throw new Error('no ' + name);
+  const date = String(j.effectiveBusinessDate || j.effectiveDate || '').slice(0, 10); if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !(h.units > 0)) throw new Error('unreadable figures');
+  return { date, shares: null, qty: +h.units, mv: h.marketValueBase || null };
+}
+/* WisdomTree's fund page loads holdings from its open JSON (no key): one row per holding with shares and market value. */
+function wisdomtreeJson(text, ticker) {
+  const h = JSON.parse(text).find(x => x.securityTicker === ticker); if (!h) throw new Error('no ' + ticker);
+  const date = String(h.dt || '').slice(0, 10); if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !(h.shares > 0)) throw new Error('unreadable figures');
+  return { date, shares: null, qty: +h.shares, mv: h.marketValueBase || null };
+}
 const GS3 = 'https://reporting-prod-20231113144948145500000003.s3.us-east-1.amazonaws.com/product-performance/';
 const FUNDS = [
   { id: 'IBIT', name: 'iShares Bitcoin Trust ETF', issuer: 'BlackRock (iShares)', asset: 'BTC',
@@ -104,12 +128,23 @@ const FUNDS = [
   { id: 'ARKB', name: 'ARK 21Shares Bitcoin ETF', issuer: 'ARK Invest and 21Shares', asset: 'BTC',
     url: 'https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_21SHARES_BITCOIN_ETF_ARKB_HOLDINGS.csv', parse: t => arkCsv(t, 'BTC') },
   { id: 'BITB', name: 'Bitwise Bitcoin ETF', issuer: 'Bitwise', asset: 'BTC', url: 'https://bitbetf.com/', parse: bitwise },
+  { id: 'HODL', name: 'VanEck Bitcoin ETF', issuer: 'VanEck', asset: 'BTC', url: 'https://www.vaneck.com/us/en/investments/bitcoin-etf-hodl/downloads/holdings/', binary: true, parse: b => vaneckXlsx(b, 'Bitcoin') },
+  { id: 'BTCO', name: 'Invesco Galaxy Bitcoin ETF', issuer: 'Invesco and Galaxy', asset: 'BTC', page: 'https://www.invesco.com/us/en/financial-products/etfs/invesco-galaxy-bitcoin-etf.html',
+    url: 'https://dng-api.invesco.com/cache/v1/accounts/en_US/shareclasses/46091J101/holdings/fund?idType=cusip&productType=ETF', parse: t => invescoJson(t, 'PHYSICAL BITCOIN') },
+  { id: 'BTCW', name: 'WisdomTree Bitcoin Fund', issuer: 'WisdomTree', asset: 'BTC', page: 'https://www.wisdomtree.com/us/products/crypto/btcw', url: 'https://www.wisdomtree.com/api/fund-holdings/48684713', parse: t => wisdomtreeJson(t, 'BTC') },
   { id: 'ETHA', name: 'iShares Ethereum Trust ETF', issuer: 'BlackRock (iShares)', asset: 'ETH',
     url: 'https://www.ishares.com/us/products/337614/ishares-ethereum-trust-etf/latest-holdings.csv', parse: t => ishares(t, 'ETH') },
   { id: 'ETHE', name: 'Grayscale Ethereum Staking ETF', issuer: 'Grayscale', asset: 'ETH', page: 'https://etfs.grayscale.com/ethe', url: GS3 + '585fdb73-c55c-40cd-bb35-e1b532d72e70.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'ETH'), staking: true },
+  { id: 'ETHW', name: 'Bitwise Ethereum ETF', issuer: 'Bitwise', asset: 'ETH', url: 'https://ethwetf.com/', parse: t => bitwise(t, 'ETHEREUM', 'ETH in Trust') },
+  { id: 'ETHV', name: 'VanEck Ethereum ETF', issuer: 'VanEck', asset: 'ETH', url: 'https://www.vaneck.com/us/en/investments/ethereum-etf-ethv/downloads/holdings/', binary: true, parse: b => vaneckXlsx(b, 'Ether') },
+  { id: 'QETH', name: 'Invesco Galaxy Ethereum ETF', issuer: 'Invesco and Galaxy', asset: 'ETH', page: 'https://www.invesco.com/us/en/financial-products/etfs/invesco-galaxy-ethereum-etf.html',
+    url: 'https://dng-api.invesco.com/cache/v1/accounts/en_US/shareclasses/46148D107/holdings/fund?idType=cusip&productType=ETF', parse: t => invescoJson(t, 'PHYSICAL ETHER') },
   { id: 'ETH', name: 'Grayscale Ethereum Staking Mini ETF', issuer: 'Grayscale', asset: 'ETH', page: 'https://etfs.grayscale.com/eth', url: GS3 + '52edbb6f-93e8-4b73-85f6-6b347706bc2a.xlsx', binary: true, parse: b => grayscaleXlsx(b, 'ETH'), staking: true }
 ];
-/* Fidelity (FBTC, FETH) has no reader. Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
+/* No reader, read by hand weekly instead (checked 7 Nov 2026): Franklin (EZBC, EZET), whose figures load through an API
+   that refuses a direct request (403); CoinShares (BRRR), whose holdings come from an API called with a key embedded in
+   its page, which the job does not copy; 21Shares (TETH), whose holdings file is generated in the browser.
+   Fidelity (FBTC, FETH) has no reader. Checked 6 Nov 2026: the figure ("Total bitcoin in fund") is on Fidelity's
    quote page, but the page loads it through a token-protected research API (a direct request is refused, 403),
    Fidelity publishes no holdings file, and its SEC filings carry bitcoin held only once a year (10-K). Nothing is
    scraped around a login wall. Instead the founder reads the figure from Fidelity's own quote page each week
