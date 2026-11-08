@@ -82,6 +82,12 @@ jobs:
       - name: The bitcoin network, hash rate, difficulty and fees (r302)
         if: always()
         run: node tools/network.mjs
+      - name: BlackRock BUIDL shares outstanding by chain (r305, AP78)
+        if: always()
+        env:
+          ISSUANCE_RPCS: ${{ secrets.ISSUANCE_RPCS }}
+          BSC_RPCS: ${{ secrets.BSC_RPCS }}
+        run: node tools/buidl.mjs
       - name: Market Structure labels, one row per day (r289, struct-v2 from r294)
         if: always()
         run: node tools/structure.mjs
@@ -117,6 +123,7 @@ jobs:
           if [ -f chain.json ]; then git add chain.json; fi
           if [ -f leverage.json ]; then git add leverage.json; fi
           if [ -f network.json ]; then git add network.json; fi
+          if [ -f buidl.json ]; then git add buidl.json; fi
           if [ -f structure.json ]; then git add structure.json; fi
           if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
           git commit -m "Index: $(node -e "const i=require('./index.json');console.log(i.days[i.days.length-1].date+' · '+i.days.length+' days')")"
