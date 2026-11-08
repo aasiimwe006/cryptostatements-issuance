@@ -52,6 +52,27 @@ async function stables(prev) {
   }
   return out;
 }
+/* r300 · the dollar value of all stablecoins by peg currency (USD, EUR, the rest), daily, from the same DefiLlama
+   total; and a daily copy of supply by chain (DefiLlama publishes only the current split, so each run appends
+   that day's row; a day held is not overwritten). */
+async function pegs(prev) {
+  try { const j = await get('https://stablecoins.llama.fi/stablecoincharts/all'), today = iso(NOW), o = { USD: [], EUR: [], other: [] };
+    for (const x of j || []) { const d = iso(+x.date * 1000); if (d >= today) continue; const u = x.totalCirculatingUSD || {}; let oth = 0;
+      for (const [k, v] of Object.entries(u)) if (k !== 'peggedUSD' && k !== 'peggedEUR') oth += +v || 0;
+      if (u.peggedUSD != null) o.USD.push([d, Math.round(+u.peggedUSD)]); if (u.peggedEUR != null) o.EUR.push([d, Math.round(+u.peggedEUR)]); o.other.push([d, Math.round(oth)]); }
+    for (const k in o) o[k] = o[k].slice(-KEEP); console.log('pegs', o.EUR.length, 'days, euro last', (o.EUR[o.EUR.length - 1] || []).join(' ')); return o;
+  } catch (e) { console.error('pegs', e.message); return prev || null; }
+}
+async function chains(prev) {
+  const held = (prev && prev.days) || [], day = iso(NOW);
+  if (held.some(r => r.date === day)) return prev;
+  try { const j = await get('https://stablecoins.llama.fi/stablecoinchains');
+    const R = (j || []).map(c => [c.name, Math.round(Object.values(c.totalCirculatingUSD || {}).reduce((a, b) => a + (+b || 0), 0))]).filter(r => r[1] > 0).sort((a, b) => b[1] - a[1]);
+    const top = R.slice(0, 12), rest = R.slice(12).reduce((a, r) => a + r[1], 0);
+    held.push({ date: day, read: new Date(NOW).toISOString(), rows: top, other: rest, chains: R.length });
+    console.log('chains', day, top.slice(0, 3).map(r => r.join(' ')).join(', ')); return { about: 'Stablecoin supply by chain, USD value, DefiLlama /stablecoinchains, one row per UTC day as read (the twelve largest chains and the rest summed).', days: held.slice(-KEEP) };
+  } catch (e) { console.error('chains', e.message); return prev || null; }
+}
 async function close(sym, day) {
   const start = Date.parse(day + 'T00:00:00Z');
   for (const h of BIN) { try { const k = await get(h + '/api/v3/klines?symbol=' + sym + '&interval=1d&startTime=' + start + '&limit=1');
@@ -65,6 +86,8 @@ async function main() {
   const doc = { about: 'Market context for CRYPTO STATEMENTS figure cards, kept apart from the record. Stablecoin supply from DefiLlama (an aggregator, labelled as such on the site); daily snapshots of the market figures the site shows, appended and never altered. Written by tools/market.mjs.',
     updated: new Date(NOW).toISOString(), stablecoins: {}, snapshots: (prev && prev.snapshots) || [] };
   doc.stablecoins = await stables(prev && prev.stablecoins);
+  doc.stablePegs = await pegs(prev && prev.stablePegs);
+  doc.stableChains = await chains(prev && prev.stableChains);
   /* snapshot the completed UTC days not yet held, at most the last 7 (a missed run is caught up) */
   const held = new Set(doc.snapshots.map(s => s.date)), days = [];
   for (let i = 7; i >= 1; i--) { const d = iso(NOW - i * DAY); if (!held.has(d)) days.push(d); }

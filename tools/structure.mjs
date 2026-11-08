@@ -8,7 +8,8 @@
    a change entry is appended (rule "structure"), which the platform's alert ledger records like any other
    market alert. The labels describe what each figure did over its window; they are not combined into a
    verdict and are not a forecast, a score or a signal. A pillar whose file cannot be read is logged as null.
-   struct-v2 (8 Nov 2026) adds three money pillars from liquidity.json (dollar liquidity, the dollar, policy rates).
+   struct-v2 (8 Nov 2026) adds three money pillars from liquidity.json (dollar liquidity, the dollar, policy rates);
+   r300 adds stablecoin concentration and money supply (US M2) and shows the Bank of Japan beside the Fed and the ECB.
    The pillars computed from the record itself (policy climate, rules in the pipeline, regulated stablecoins) and
    institutional ownership (which needs the platform's disclosures) are computed on the page and not logged here.
    No dependencies (Node 20). STRUCT_NOW: tests only.                                                        */
@@ -19,8 +20,10 @@ const today = new Date(NOW).toISOString().slice(0, 10);
 const RULES = {
   'Dollar liquidity': 'Net liquidity (Fed total assets - overnight reverse repo - Treasury General Account, Fed H.4.1 via FRED), each Wednesday: change over four weeks. Expanding at +1.0% or more, contracting at -1.0% or less, otherwise flat.',
   Dollar: "The Fed's nominal broad US dollar index (H.10 via FRED): change over 21 business days. Strengthening at +1.5% or more, weakening at -1.5% or less, otherwise steady.",
-  'Policy rates': "The Fed's target range upper limit against 90 days earlier: cutting, raising or on hold.",
+  'Policy rates': "The Fed's target range upper limit against 90 days earlier: cutting, raising or on hold. The ECB deposit rate and the Bank of Japan's basic loan rate are shown beside it, each against 90 days earlier; they do not set the label.",
+  'Money supply': 'US M2 (Fed H.6 via FRED, monthly, seasonally adjusted): change over the latest three months. Expanding at +0.5% or more, contracting at -0.5% or less, otherwise flat.',
   Liquidity: 'Total stablecoin supply across all chains (DefiLlama, market.json): change over 30 days. Contracting at -1.0% or less, expanding at +1.0% or more, otherwise flat.',
+  'Stablecoin concentration': 'USDT and USDC together as a share of all stablecoin supply (DefiLlama, market.json) against 90 days earlier: concentrating at +1.0 point or more, dispersing at -1.0 point or less, otherwise steady.',
   Leverage: 'CME bitcoin futures open interest (CFTC Commitments of Traders, Tuesday positions): change over the last four reports. Falling at -10% or less, rising at +10% or more, otherwise steady.',
   Positioning: "Asset managers' net position in CME bitcoin futures against four reports earlier; a change smaller than 2% of open interest is unchanged.",
   Funding: 'Perpetual funding on BTCUSDT and ETHUSDT (sig-v1 alert rule). Extreme if the rule fired in the 7 days before signals.json was written, otherwise inside its band.',
@@ -98,13 +101,19 @@ function dollar(Lq) { const D = Lq && Lq.series && Lq.series.DTWEXBGS; if (!D ||
   return { label: c >= 1.5 ? 'Strengthening' : c <= -1.5 ? 'Weakening' : 'Steady', dir: c >= 1.5 ? 1 : c <= -1.5 ? -1 : 0, asof: L[0], figs: { index: L[1], chg21_pct: r1(c) } }; }
 function policy(Lq) { const U = Lq && Lq.series && Lq.series.DFEDTARU; if (!U || !U.length) return null; const L = U[U.length - 1], P = U.filter(r => Date.parse(r[0]) <= Date.parse(L[0]) - 90 * DAY).pop() || U[0], d = Math.round((L[1] - P[1]) * 100);
   return { label: 'Fed ' + (d < 0 ? 'cutting' : d > 0 ? 'raising' : 'on hold'), dir: d > 0 ? 1 : d < 0 ? -1 : 0, asof: L[0], figs: { upper: L[1], chg90_bp: d } }; }
+function concentration(M) { const St = M && M.stablecoins, T = St && St.total && St.total.series, U = St && St.USDT && St.USDT.series, C = St && St.USDC && St.USDC.series;
+  if (!T || !U || !C || T.length <= 91) return null; const at = (z, d) => { const r = z.filter(x => x[0] <= d).pop(); return r ? r[1] : null; }, L = T[T.length - 1][0], P = T[T.length - 91][0];
+  const sh = d => { const t = at(T, d), u = at(U, d), c = at(C, d); return t && u != null && c != null ? 100 * (u + c) / t : null; }, a = sh(L), b = sh(P); if (a == null || b == null) return null; const d = a - b;
+  return { label: d >= 1 ? 'Concentrating' : d <= -1 ? 'Dispersing' : 'Steady', dir: d >= 1 ? 1 : d <= -1 ? -1 : 0, asof: L, figs: { usdt_usdc_pct: r1(a), chg90_pts: r1(d) } }; }
+function m2(Lq) { const S = Lq && Lq.series && Lq.series.M2SL; if (!S || S.length <= 3) return null; const L = S[S.length - 1], P = S[S.length - 4], c = pc(L[1], P[1]);
+  return { label: c >= 0.5 ? 'Expanding' : c <= -0.5 ? 'Contracting' : 'Flat', dir: c >= 0.5 ? 1 : c <= -0.5 ? -1 : 0, asof: L[0], figs: { m2_bn: L[1], chg3m_pct: r1(c) } }; }
 function main() {
   const prev = fs.existsSync(OUT) ? read(OUT) : null;
   if (fs.existsSync(OUT) && !prev) { console.error(OUT + ' does not parse; left untouched, nothing written today.'); return; }
   const doc = prev || { days: [], changes: [] };
   if (doc.days.some(d => d.date === today)) { console.log('structure.json: ' + today + ' already logged; unchanged'); return; }
   const M = read('market.json'), C = read('cot.json'), Mc = read('macro.json'), S = read('signals.json'), E = read('etf.json'), Lq = fs.existsSync('liquidity.json') ? read('liquidity.json') : null;
-  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), Liquidity: liquidity(M), Leverage: leverage(C), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
+  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), 'Money supply': m2(Lq), Liquidity: liquidity(M), 'Stablecoin concentration': concentration(M), Leverage: leverage(C), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
   const last = doc.days[doc.days.length - 1];
   if (last) for (const [k, r] of Object.entries(rows)) {
     const p = last.rows && last.rows[k];
