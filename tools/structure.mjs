@@ -9,6 +9,7 @@
    market alert. The labels describe what each figure did over its window; they are not combined into a
    verdict and are not a forecast, a score or a signal. A pillar whose file cannot be read is logged as null.
    struct-v2 (8 Nov 2026) adds three money pillars from liquidity.json (dollar liquidity, the dollar, policy rates);
+   r302 adds the bitcoin network (hash rate; net-v1).
    r301 counts named venue perpetuals in the leverage pillar (lev-v1).
    r300 adds stablecoin concentration and money supply (US M2) and shows the Bank of Japan beside the Fed and the ECB.
    The pillars computed from the record itself (policy climate, rules in the pipeline, regulated stablecoins) and
@@ -25,6 +26,7 @@ const RULES = {
   'Money supply': 'US M2 (Fed H.6 via FRED, monthly, seasonally adjusted): change over the latest three months. Expanding at +0.5% or more, contracting at -0.5% or less, otherwise flat.',
   Liquidity: 'Total stablecoin supply across all chains (DefiLlama, market.json): change over 30 days. Contracting at -1.0% or less, expanding at +1.0% or more, otherwise flat.',
   'Stablecoin concentration': 'USDT and USDC together as a share of all stablecoin supply (DefiLlama, market.json) against 90 days earlier: concentrating at +1.0 point or more, dispersing at -1.0 point or less, otherwise steady.',
+  'Bitcoin network': 'Bitcoin hash rate (mempool.space estimate), seven-day average against the seven-day average 30 days earlier: rising at +5% or more, falling at -5% or less, otherwise steady.',
   Leverage: 'Bitcoin open interest in BTC at the CFTC report date: CME futures plus named venue perpetuals (OKX, Binance where read; leverage.json), each venue line counted only if read at both dates; change over four reports. Falling at -10% or less, rising at +10% or more, otherwise steady (lev-v1 from r301; CME alone before).',
   Positioning: "Asset managers' net position in CME bitcoin futures against four reports earlier; a change smaller than 2% of open interest is unchanged.",
   Funding: 'Perpetual funding on BTCUSDT and ETHUSDT (sig-v1 alert rule). Extreme if the rule fired in the 7 days before signals.json was written, otherwise inside its band.',
@@ -113,6 +115,8 @@ function concentration(M) { const St = M && M.stablecoins, T = St && St.total &&
   if (!T || !U || !C || T.length <= 91) return null; const at = (z, d) => { const r = z.filter(x => x[0] <= d).pop(); return r ? r[1] : null; }, L = T[T.length - 1][0], P = T[T.length - 91][0];
   const sh = d => { const t = at(T, d), u = at(U, d), c = at(C, d); return t && u != null && c != null ? 100 * (u + c) / t : null; }, a = sh(L), b = sh(P); if (a == null || b == null) return null; const d = a - b;
   return { label: d >= 1 ? 'Concentrating' : d <= -1 ? 'Dispersing' : 'Steady', dir: d >= 1 ? 1 : d <= -1 ? -1 : 0, asof: L, figs: { usdt_usdc_pct: r1(a), chg90_pts: r1(d) } }; }
+function network(N) { const H = N && N.hashrate; if (!H || H.length < 37) return null; const avg = a => a.reduce((s, r) => s + r[1], 0) / a.length, a7 = avg(H.slice(-7)), b7 = avg(H.slice(-37, -30)), c = pct(a7, b7);
+  return { label: c >= 5 ? 'Rising' : c <= -5 ? 'Falling' : 'Steady', dir: c >= 5 ? 1 : c <= -5 ? -1 : 0, asof: H[H.length - 1][0], figs: { hashrate_ehs_7d: r1(a7), chg30_pct: r1(c) } }; }
 function m2(Lq) { const S = Lq && Lq.series && Lq.series.M2SL; if (!S || S.length <= 3) return null; const L = S[S.length - 1], P = S[S.length - 4], c = pc(L[1], P[1]);
   return { label: c >= 0.5 ? 'Expanding' : c <= -0.5 ? 'Contracting' : 'Flat', dir: c >= 0.5 ? 1 : c <= -0.5 ? -1 : 0, asof: L[0], figs: { m2_bn: L[1], chg3m_pct: r1(c) } }; }
 function main() {
@@ -120,8 +124,8 @@ function main() {
   if (fs.existsSync(OUT) && !prev) { console.error(OUT + ' does not parse; left untouched, nothing written today.'); return; }
   const doc = prev || { days: [], changes: [] };
   if (doc.days.some(d => d.date === today)) { console.log('structure.json: ' + today + ' already logged; unchanged'); return; }
-  const M = read('market.json'), C = read('cot.json'), Mc = read('macro.json'), S = read('signals.json'), E = read('etf.json'), Lq = fs.existsSync('liquidity.json') ? read('liquidity.json') : null, Lv = fs.existsSync('leverage.json') ? read('leverage.json') : null;
-  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), 'Money supply': m2(Lq), Liquidity: liquidity(M), 'Stablecoin concentration': concentration(M), Leverage: leverage(C, Lv), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
+  const M = read('market.json'), C = read('cot.json'), Mc = read('macro.json'), S = read('signals.json'), E = read('etf.json'), Lq = fs.existsSync('liquidity.json') ? read('liquidity.json') : null, Lv = fs.existsSync('leverage.json') ? read('leverage.json') : null, Nw = fs.existsSync('network.json') ? read('network.json') : null;
+  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), 'Money supply': m2(Lq), Liquidity: liquidity(M), 'Stablecoin concentration': concentration(M), Leverage: leverage(C, Lv), 'Bitcoin network': network(Nw), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
   const last = doc.days[doc.days.length - 1];
   if (last) for (const [k, r] of Object.entries(rows)) {
     const p = last.rows && last.rows[k];
