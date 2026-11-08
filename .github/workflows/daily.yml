@@ -76,6 +76,9 @@ jobs:
       - name: Bitcoin issued, from the chain's height (r294)
         if: always()
         run: node tools/chain.mjs
+      - name: Perpetual open interest by venue, OKX and Binance (r301)
+        if: always()
+        run: node tools/leverage.mjs
       - name: Market Structure labels, one row per day (r289, struct-v2 from r294)
         if: always()
         run: node tools/structure.mjs
@@ -109,6 +112,7 @@ jobs:
           if [ -f etf.json ]; then git add etf.json; fi
           if [ -f liquidity.json ]; then git add liquidity.json; fi
           if [ -f chain.json ]; then git add chain.json; fi
+          if [ -f leverage.json ]; then git add leverage.json; fi
           if [ -f structure.json ]; then git add structure.json; fi
           if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
           git commit -m "Index: $(node -e "const i=require('./index.json');console.log(i.days[i.days.length-1].date+' · '+i.days.length+' days')")"
