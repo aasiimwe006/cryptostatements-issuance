@@ -9,6 +9,7 @@
    market alert. The labels describe what each figure did over its window; they are not combined into a
    verdict and are not a forecast, a score or a signal. A pillar whose file cannot be read is logged as null.
    struct-v2 (8 Nov 2026) adds three money pillars from liquidity.json (dollar liquidity, the dollar, policy rates);
+   r301 counts named venue perpetuals in the leverage pillar (lev-v1).
    r300 adds stablecoin concentration and money supply (US M2) and shows the Bank of Japan beside the Fed and the ECB.
    The pillars computed from the record itself (policy climate, rules in the pipeline, regulated stablecoins) and
    institutional ownership (which needs the platform's disclosures) are computed on the page and not logged here.
@@ -24,7 +25,7 @@ const RULES = {
   'Money supply': 'US M2 (Fed H.6 via FRED, monthly, seasonally adjusted): change over the latest three months. Expanding at +0.5% or more, contracting at -0.5% or less, otherwise flat.',
   Liquidity: 'Total stablecoin supply across all chains (DefiLlama, market.json): change over 30 days. Contracting at -1.0% or less, expanding at +1.0% or more, otherwise flat.',
   'Stablecoin concentration': 'USDT and USDC together as a share of all stablecoin supply (DefiLlama, market.json) against 90 days earlier: concentrating at +1.0 point or more, dispersing at -1.0 point or less, otherwise steady.',
-  Leverage: 'CME bitcoin futures open interest (CFTC Commitments of Traders, Tuesday positions): change over the last four reports. Falling at -10% or less, rising at +10% or more, otherwise steady.',
+  Leverage: 'Bitcoin open interest in BTC at the CFTC report date: CME futures plus named venue perpetuals (OKX, Binance where read; leverage.json), each venue line counted only if read at both dates; change over four reports. Falling at -10% or less, rising at +10% or more, otherwise steady (lev-v1 from r301; CME alone before).',
   Positioning: "Asset managers' net position in CME bitcoin futures against four reports earlier; a change smaller than 2% of open interest is unchanged.",
   Funding: 'Perpetual funding on BTCUSDT and ETHUSDT (sig-v1 alert rule). Extreme if the rule fired in the 7 days before signals.json was written, otherwise inside its band.',
   'ETF holdings': 'Spot bitcoin ETFs summed only on dates every fund in the sum has published (no fund carried forward; a fund with no file for more than 5 days left out; ARK placed at the close its file reflects). Net change over the last five complete changes: inflow if positive, outflow if negative; no label before two complete dates.',
@@ -40,11 +41,18 @@ function liquidity(M) {
   return { label: c30 <= -1 ? 'Contracting' : c30 >= 1 ? 'Expanding' : 'Flat', dir: c30 <= -1 ? -1 : c30 >= 1 ? 1 : 0, asof: L[0],
     figs: { supply: Math.round(L[1]), chg30pct: r1(c30), chg30: Math.round(L[1] - m[1]), chg7pct: r1(pct(L[1], w[1])) } };
 }
-function leverage(C) {
+/* lev-v1 (r301): CME plus named venue perpetuals, in BTC, at the CFTC report date and four reports earlier; a venue
+   line counts only if read at both dates (a reading on the date or up to two days before). CME alone if no venue line. */
+function levParts(L, mult, V, date) { const t = Date.parse(date), out = [{ k: 'CME', v: L.oi * mult }];
+  for (const [k, x] of Object.entries(V || {})) { if (x.asset !== 'BTC') continue; const r = (x.rows || []).filter(z => Date.parse(z[0]) <= t && Date.parse(z[0]) >= t - 2 * DAY).pop(); if (r) out.push({ k, v: r[1] }); }
+  return out; }
+function leverage(C, Lv) {
   const B = C && C.markets && C.markets.btc; if (!B || !B.weeks || B.weeks.length <= 4) return null;
-  const W = B.weeks, L = W[W.length - 1], P = W[W.length - 2], Q = W[W.length - 5], c4 = pct(L.oi, Q.oi);
-  return { label: c4 <= -10 ? 'Falling' : c4 >= 10 ? 'Rising' : 'Steady', dir: c4 <= -10 ? -1 : c4 >= 10 ? 1 : 0, asof: L.date,
-    figs: { oi_contracts: L.oi, oi_btc: L.oi * B.mult, chg4pct: r1(c4), chg1pct: r1(pct(L.oi, P.oi)) } };
+  const W = B.weeks, L = W[W.length - 1], P = W[W.length - 2], Q = W[W.length - 5], c4 = pct(L.oi, Q.oi), V = Lv && Lv.venues;
+  const a = levParts(L, B.mult, V, L.date), b = levParts(Q, B.mult, V, Q.date), kb = new Set(b.map(p => p.k)), both = a.filter(p => kb.has(p.k));
+  const sa = both.reduce((s, p) => s + p.v, 0), sb = b.filter(p => both.some(q => q.k === p.k)).reduce((s, p) => s + p.v, 0), c = both.length > 1 ? pct(sa, sb) : c4;
+  return { label: c <= -10 ? 'Falling' : c >= 10 ? 'Rising' : 'Steady', dir: c <= -10 ? -1 : c >= 10 ? 1 : 0, asof: L.date,
+    figs: { oi_btc_all: Math.round(sa), venues: both.map(p => p.k), chg4pct: r1(c), cme_oi_btc: L.oi * B.mult, cme_chg4pct: r1(c4), cme_chg1pct: r1(pct(L.oi, P.oi)) } };
 }
 function positioning(C) {
   const B = C && C.markets && C.markets.btc; if (!B || !B.weeks || B.weeks.length <= 4) return null;
@@ -112,8 +120,8 @@ function main() {
   if (fs.existsSync(OUT) && !prev) { console.error(OUT + ' does not parse; left untouched, nothing written today.'); return; }
   const doc = prev || { days: [], changes: [] };
   if (doc.days.some(d => d.date === today)) { console.log('structure.json: ' + today + ' already logged; unchanged'); return; }
-  const M = read('market.json'), C = read('cot.json'), Mc = read('macro.json'), S = read('signals.json'), E = read('etf.json'), Lq = fs.existsSync('liquidity.json') ? read('liquidity.json') : null;
-  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), 'Money supply': m2(Lq), Liquidity: liquidity(M), 'Stablecoin concentration': concentration(M), Leverage: leverage(C), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
+  const M = read('market.json'), C = read('cot.json'), Mc = read('macro.json'), S = read('signals.json'), E = read('etf.json'), Lq = fs.existsSync('liquidity.json') ? read('liquidity.json') : null, Lv = fs.existsSync('leverage.json') ? read('leverage.json') : null;
+  const rows = { 'Dollar liquidity': dollarLiq(Lq), Dollar: dollar(Lq), 'Policy rates': policy(Lq), 'Money supply': m2(Lq), Liquidity: liquidity(M), 'Stablecoin concentration': concentration(M), Leverage: leverage(C, Lv), Positioning: positioning(C), Funding: funding(S), 'ETF holdings': etf(E), Rates: rates(Mc), Sentiment: sentiment(M) };
   const last = doc.days[doc.days.length - 1];
   if (last) for (const [k, r] of Object.entries(rows)) {
     const p = last.rows && last.rows[k];
