@@ -70,7 +70,13 @@ jobs:
       - name: Spot ETF holdings from the issuers' own files (r282)
         if: always()
         run: node tools/etf.mjs
-      - name: Market Structure labels, one row per day (r289, struct-v1)
+      - name: Dollar liquidity, the dollar and policy rates (r294)
+        if: always()
+        run: node tools/liquidity.mjs
+      - name: Bitcoin issued, from the chain's height (r294)
+        if: always()
+        run: node tools/chain.mjs
+      - name: Market Structure labels, one row per day (r289, struct-v2 from r294)
         if: always()
         run: node tools/structure.mjs
       - name: Upload each day to its month's release
@@ -101,6 +107,8 @@ jobs:
           if [ -f cot.json ]; then git add cot.json; fi
           if [ -f macro.json ]; then git add macro.json; fi
           if [ -f etf.json ]; then git add etf.json; fi
+          if [ -f liquidity.json ]; then git add liquidity.json; fi
+          if [ -f chain.json ]; then git add chain.json; fi
           if [ -f structure.json ]; then git add structure.json; fi
           if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
           git commit -m "Index: $(node -e "const i=require('./index.json');console.log(i.days[i.days.length-1].date+' · '+i.days.length+' days')")"
