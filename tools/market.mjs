@@ -3,7 +3,7 @@
    Market context for the figure cards on cryptostatements.ai, kept apart from the record. Run daily
    by the workflow. Writes market.json, which GitHub Pages serves to the site:
      1. stablecoins: circulating supply across all chains, one point per UTC day, for the total
-        stablecoin market and for USDT, USDC, USDS, DAI, USDe, USD1, RLUSD, PYUSD, FDUSD and EURC,
+        stablecoin market and for the thirty largest coins (list below, about 98% of the total in Nov 2026),
         from DefiLlama's public stablecoins API. The last 1,100 days are kept and refreshed each run,
         because DefiLlama revises recent days. An aggregator's count, labelled as such on the site:
         the issuer's own attested figure stays on its own card.
@@ -19,9 +19,17 @@ import fs from 'node:fs';
 const OUT = 'market.json', KEEP = 1100;
 const NOW = process.env.MARKET_NOW ? Date.parse(process.env.MARKET_NOW) : Date.now();
 const DAY = 864e5, iso = t => new Date(t).toISOString().slice(0, 10);
+/* r296: thirty coins, the largest by DefiLlama's own circulating count on 8 Nov 2026 (about 98% of the total);
+   the rest stays in the total. [key, DefiLlama id, label, peg]. A coin pegged to another currency also keeps
+   its USD value per day (usd), so shares of the dollar total add up. */
 const STABLES = [['total', null, 'All stablecoins'], ['USDT', 1, 'Tether USDT'], ['USDC', 2, 'USD Coin'], ['USDS', 209, 'Sky Dollar USDS'],
   ['DAI', 5, 'Dai'], ['USDe', 146, 'Ethena USDe'], ['USD1', 262, 'World Liberty Financial USD1'], ['RLUSD', 250, 'Ripple USD'],
-  ['PYUSD', 120, 'PayPal USD'], ['FDUSD', 119, 'First Digital USD'], ['EURC', 50, 'EURC (euro)']];
+  ['PYUSD', 120, 'PayPal USD'], ['FDUSD', 119, 'First Digital USD'], ['EURC', 50, 'EURC (euro)', 'EUR'],
+  ['USDG', 286, 'Global Dollar USDG (Paxos)'], ['BUIDL', 173, 'BlackRock USD Institutional Digital Liquidity Fund (a tokenised fund DefiLlama counts)'],
+  ['USDf', 246, 'Falcon USD'], ['U', 336, 'United Stables U'], ['USDD', 14, 'USDD'], ['USDGO', 347, 'USDGO'], ['OUSD', 443, 'Open USD'],
+  ['GHO', 118, 'Aave GHO'], ['USDX', 214, 'USDX Money USDX'], ['A7A5', 258, 'A7A5 (Russian rouble)', 'RUB'], ['USD0', 195, 'Usual USD0'],
+  ['pUSD', 406, 'Polymarket USD'], ['TUSD', 7, 'TrueUSD'], ['YLDS', 272, 'Figure YLDS'], ['USDtb', 221, 'Ethena USDtb'],
+  ['USDN', 12, 'Neutrino USD'], ['GateUSD', 306, 'Gate USD (GUSD)'], ['SoFiUSD', 430, 'SoFiUSD'], ['apxUSD', 354, 'apxUSD'], ['M', 213, 'M by M0']];
 const PAIRS = { btc: 'BTCUSDT', eth: 'ETHUSDT', sol: 'SOLUSDT', xrp: 'XRPUSDT', bnb: 'BNBUSDT', paxg: 'PAXGUSDT' };
 const BIN = ['https://data-api.binance.vision', 'https://api.binance.com'];
 async function get(url) { const r = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { 'accept': 'application/json' } });
@@ -29,14 +37,16 @@ async function get(url) { const r = await fetch(url, { signal: AbortSignal.timeo
 function sumPegged(o) { return o ? Object.values(o).reduce((s, v) => s + (+v || 0), 0) : null; }
 async function stables(prev) {
   const out = {};
-  for (const [k, id, label] of STABLES) {
+  for (const [k, id, label, peg] of STABLES) {
     try {
       const j = await get('https://stablecoins.llama.fi/stablecoincharts/all' + (id ? '?stablecoin=' + id : ''));
       const today = iso(NOW);
       const s = (j || []).map(x => [iso(+x.date * 1000), id ? sumPegged(x.totalCirculating) : sumPegged(x.totalCirculatingUSD)])
         .filter(([d, v]) => d < today && v != null && isFinite(v) && v > 0).slice(-KEEP).map(([d, v]) => [d, Math.round(v)]);
       if (!s.length) throw new Error('empty');
-      out[k] = { label, id, unit: k === 'EURC' ? 'EUR' : 'USD', basis: id ? 'circulating, all chains' : 'circulating USD value, all stablecoins', series: s };
+      out[k] = { label, id, unit: peg || 'USD', basis: id ? 'circulating, all chains' : 'circulating USD value, all stablecoins', series: s };
+      if (id && peg) out[k].usd = (j || []).map(x => [iso(+x.date * 1000), sumPegged(x.totalCirculatingUSD)])
+        .filter(([d, v]) => d < today && v != null && isFinite(v) && v > 0).slice(-KEEP).map(([d, v]) => [d, Math.round(v)]);
       console.log('stablecoin', k, s.length, 'days, last', s[s.length - 1].join(' '));
     } catch (e) { console.error('stablecoin', k, e.message); if (prev && prev[k]) out[k] = prev[k]; }
   }
