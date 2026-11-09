@@ -1,3 +1,138 @@
-{"about":"Spot ETF holdings read by hand from the issuer's own page where the issuer publishes no file the daily job can fetch. Each row: the as-of date the issuer prints, the quantity, the day it was read and who read it. Committed by the founder after the weekly check; copied into etf.json by tools/etf.mjs, marked as read by hand.",
-"funds":{"FBTC":{"name":"Fidelity Wise Origin Bitcoin Fund","issuer":"Fidelity","asset":"BTC","src":"https://digital.fidelity.com/prgw/digital/research/quote/dashboard/summary?symbol=FBTC",
-"rows":[{"date":"2026-11-05","qty":174156.9063,"mv":13232828358.58,"read":"2026-11-06","by":"founder, Fidelity quote page (Total bitcoin in fund, as of Nov-05-2026)"}]}}}
+{
+ "about": "Spot ETF holdings read by hand from the issuer's own page where the issuer publishes no file the daily job can fetch. Each row: the as-of date the issuer prints, the quantity, the day it was read and who read it. Committed by the founder after the weekly check; copied into etf.json by tools/etf.mjs, marked as read by hand.",
+ "funds": {
+  "FBTC": {
+   "name": "Fidelity Wise Origin Bitcoin Fund",
+   "issuer": "Fidelity",
+   "asset": "BTC",
+   "src": "https://digital.fidelity.com/prgw/digital/research/quote/dashboard/summary?symbol=FBTC",
+   "rows": [
+    {
+     "date": "2026-11-05",
+     "qty": 174156.9063,
+     "mv": 13232828358.58,
+     "read": "2026-11-06",
+     "by": "founder, Fidelity quote page (Total bitcoin in fund, as of Nov-05-2026)"
+    },
+    {
+     "date": "2026-11-06",
+     "qty": 174722.0998,
+     "read": "2026-11-09",
+     "by": "founder, Fidelity page (Total bitcoin in fund, as of Nov-06-2026)"
+    }
+   ]
+  },
+  "FETH": {
+   "name": "Fidelity Ethereum Fund",
+   "issuer": "Fidelity",
+   "asset": "ETH",
+   "src": "https://digital.fidelity.com/prgw/digital/research/quote/dashboard/summary?symbol=FETH",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 608178.3943,
+     "read": "2026-11-09",
+     "by": "founder, Fidelity page (Total ether in fund, as of Nov-06-2026)"
+    }
+   ]
+  },
+  "EZBC": {
+   "name": "Franklin Bitcoin ETF",
+   "issuer": "Franklin Templeton",
+   "asset": "BTC",
+   "src": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/39639/SINGLCLASS/franklin-bitcoin-etf/EZBC",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 5314.03,
+     "read": "2026-11-09",
+     "by": "founder, Franklin Templeton page (Bitcoin in Fund, as of 11/06/2026)"
+    }
+   ]
+  },
+  "EZET": {
+   "name": "Franklin Ethereum ETF",
+   "issuer": "Franklin Templeton",
+   "asset": "ETH",
+   "src": "https://www.franklintempleton.com/investments/options/exchange-traded-funds",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 20073.16,
+     "read": "2026-11-09",
+     "by": "founder, Franklin Templeton page (Ether in Fund, as of 11/06/2026)"
+    }
+   ]
+  },
+  "BRRR": {
+   "name": "CoinShares Bitcoin ETF",
+   "issuer": "CoinShares",
+   "asset": "BTC",
+   "src": "https://coinshares.com/etf/brrr/",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 5719.89,
+     "read": "2026-11-09",
+     "by": "founder, CoinShares page (BRRR Holdings, BITCOIN Shares, as of 11/06/2026)"
+    }
+   ]
+  },
+  "TETH": {
+   "name": "21Shares Core Ethereum ETF",
+   "issuer": "21Shares",
+   "asset": "ETH",
+   "src": "https://www.21shares.com/en-us/products-us/teth",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 11185.09,
+     "read": "2026-11-09",
+     "by": "founder, 21Shares page (Underlying Assets, ETHEREUM Coin Entitlement, as of Nov 6, 2026)"
+    }
+   ]
+  },
+  "HODL": {
+   "name": "VanEck Bitcoin ETF",
+   "issuer": "VanEck",
+   "asset": "BTC",
+   "src": "https://www.vaneck.com/us/en/investments/bitcoin-etf-hodl/",
+   "rows": [
+    {
+     "date": "2026-11-05",
+     "qty": 14664,
+     "read": "2026-11-09",
+     "by": "founder, VanEck page (Holdings, Bitcoin Quantity, as of 11/05/2026)"
+    }
+   ]
+  },
+  "ETHV": {
+   "name": "VanEck Ethereum ETF",
+   "issuer": "VanEck",
+   "asset": "ETH",
+   "src": "https://www.vaneck.com/us/en/investments/ethereum-etf-ethv/",
+   "rows": [
+    {
+     "date": "2026-11-05",
+     "qty": 45280,
+     "read": "2026-11-09",
+     "by": "founder, VanEck page (Holdings, Ether Quantity, as of 11/05/2026)"
+    }
+   ]
+  },
+  "BTCW": {
+   "name": "WisdomTree Bitcoin Fund",
+   "issuer": "WisdomTree",
+   "asset": "BTC",
+   "src": "https://www.wisdomtree.com/us/products/crypto/btcw",
+   "rows": [
+    {
+     "date": "2026-11-06",
+     "qty": 2006,
+     "read": "2026-11-09",
+     "by": "founder, WisdomTree page (Current portfolio, BITCOIN Shares, as of 11/6/2026)"
+    }
+   ]
+  }
+ }
+}
