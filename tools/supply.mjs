@@ -48,6 +48,31 @@ async function readOtherEvm(C){ let last=null;
       return {values,decimals,block:parseInt(bn,16),time:new Date(parseInt(blk.timestamp,16)*1000).toISOString().replace('.000Z','Z'),node:new URL(url).host}; }
     catch(e){ last=e; console.error('  '+C.label,e.message); } }
   throw last||new Error('no '+C.label+' node'); }
+/* r335 · the two largest non-EVM homes of the largest stablecoins, at the addresses their issuers publish:
+   USDT on Tron (totalSupply() of the TRC-20 contract, read through public Tron nodes) and USDC and USDT on Solana (the
+   mint's supply, getTokenSupply). Each chain is its own figure and is never added to another; a failed read never stops
+   the Ethereum reading. Like Ethereum, Tether's contract total on Tron may include tokens authorised but not yet issued. */
+const TRON={sym:'USDT:TRON',issuer:'Tether (USDT on Tron)',contract:'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',decimals:6,source:'https://tether.to/en/supported-protocols/',
+  nodes:((process.env.TRON_RPCS||'').trim()?process.env.TRON_RPCS:'https://api.trongrid.io,https://tron-rpc.publicnode.com').split(',').map(x=>x.trim()).filter(Boolean)};
+async function readTron(){ let last=null;
+  for(const base of TRON.nodes){ try{
+      const r=await fetch(base.replace(/\/$/,'')+'/wallet/triggerconstantcontract',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({owner_address:TRON.contract,contract_address:TRON.contract,function_selector:'totalSupply()',visible:true}),signal:AbortSignal.timeout(20000)});
+      if(!r.ok) throw new Error(new URL(base).host+' HTTP '+r.status); const j=await r.json(), h=j&&j.constant_result&&j.constant_result[0];
+      if(!h) throw new Error(new URL(base).host+' no result'); 
+      const b=await fetch(base.replace(/\/$/,'')+'/wallet/getnowblock',{method:'POST',signal:AbortSignal.timeout(20000)}).then(x=>x.json()).catch(()=>null), hd=b&&b.block_header&&b.block_header.raw_data;
+      return {value:scale('0x'+h,TRON.decimals),block:hd?hd.number:null,time:hd?new Date(hd.timestamp).toISOString().replace('.000Z','Z'):null,node:new URL(base).host}; }
+    catch(e){ last=e; console.error('  Tron',e.message); } }
+  throw last||new Error('no Tron node'); }
+const SOLANA={nodes:((process.env.SOLANA_RPCS||'').trim()?process.env.SOLANA_RPCS:'https://api.mainnet-beta.solana.com,https://solana-rpc.publicnode.com').split(',').map(x=>x.trim()).filter(Boolean),
+  tokens:[{sym:'USDC:SOL',issuer:'Circle (USDC on Solana)',mint:'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',source:'https://developers.circle.com/stablecoins/usdc-contract-addresses'},
+          {sym:'USDT:SOL',issuer:'Tether (USDT on Solana)',mint:'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',source:'https://tether.to/en/supported-protocols/'}]};
+async function readSolana(){ let last=null;
+  for(const url of SOLANA.nodes){ try{ const values={}; let slot=null;
+      for(const t of SOLANA.tokens){ await sleep(300); const r=await call(url,'getTokenSupply',[t.mint,{commitment:'finalized'}]);
+        if(!r||!r.value) throw new Error('no supply for '+t.sym); values[t.sym]=Number(r.value.uiAmountString); slot=r.context&&r.context.slot; }
+      return {values,slot,node:new URL(url).host}; }
+    catch(e){ last=e; console.error('  Solana',e.message); } }
+  throw last||new Error('no Solana node'); }
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function call(url,method,params){ const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method,params}),signal:AbortSignal.timeout(20000)});
   if(!r.ok) throw new Error(new URL(url).host+' HTTP '+r.status); const j=await r.json(); if(j.error) throw new Error(new URL(url).host+' '+j.error.message); return j.result; }
@@ -69,6 +94,8 @@ async function main(){
       for(const C of OTHER_EVM){ try{ const o=await readOtherEvm(C); Object.assign(values,o.values); reading[C.chain]={block:o.block,time:o.time,node:o.node};
           doc.tokens=doc.tokens.concat(C.tokens.map(t=>({...t,chain:C.chain,decimals:o.decimals[t.sym]}))); }
         catch(e){ reading[C.chain]={error:String(e.message||e)}; } }   /* another chain failing never stops the Ethereum reading */
+      try{ const t=await readTron(); values[TRON.sym]=t.value; reading.tron={block:t.block,time:t.time,node:t.node}; doc.tokens=doc.tokens.concat([{sym:TRON.sym,issuer:TRON.issuer,contract:TRON.contract,decimals:TRON.decimals,source:TRON.source,chain:'tron'}]); }catch(e){ reading.tron={error:String(e.message||e)}; }
+      try{ const o=await readSolana(); Object.assign(values,o.values); reading.solana={slot:o.slot,node:o.node}; doc.tokens=doc.tokens.concat(SOLANA.tokens.map(t=>({...t,chain:'solana'}))); }catch(e){ reading.solana={error:String(e.message||e)}; }
       try{ const x=await readXrpl(); values[XRPL.sym]=x.value; reading.xrpl={ledger:x.ledger,node:x.node}; }catch(e){ reading.xrpl={error:String(e.message||e)}; }   /* a failed XRPL read never stops the Ethereum reading */
       doc.readings.push(reading);
       doc.readings.sort((a,b)=>a.date.localeCompare(b.date)); doc.updated=new Date().toISOString();
