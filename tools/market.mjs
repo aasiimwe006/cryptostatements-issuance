@@ -73,6 +73,27 @@ async function chains(prev) {
     console.log('chains', day, top.slice(0, 3).map(r => r.join(' ')).join(', ')); return { about: 'Stablecoin supply by chain, USD value, DefiLlama /stablecoinchains, one row per UTC day as read (the twelve largest chains and the rest summed).', days: held.slice(-KEEP) };
   } catch (e) { console.error('chains', e.message); return prev || null; }
 }
+/* r329 · the whole crypto market: total market capitalisation, 24-hour volume and the bitcoin and ether shares, one row
+   per UTC day as read (no free source publishes the history, so the history starts with the first run and grows;
+   a day held is not overwritten). CoinGecko's public /global first, then CoinPaprika's /global, then Coinlore's.
+   An aggregator's estimate across thousands of coins, labelled as such on the site and never filed as a record. */
+async function global(prev) {
+  const held = (prev && prev.days) || [], day = iso(NOW);
+  if (held.some(r => r.date === day)) return prev;
+  const tries = [
+    ['CoinGecko', 'https://api.coingecko.com/api/v3/global', j => { const d = j && j.data; return d && { mcap: d.total_market_cap && d.total_market_cap.usd, vol: d.total_volume && d.total_volume.usd, btc: d.market_cap_percentage && d.market_cap_percentage.btc, eth: d.market_cap_percentage && d.market_cap_percentage.eth, coins: d.active_cryptocurrencies }; }],
+    ['CoinPaprika', 'https://api.coinpaprika.com/v1/global', d => d && { mcap: d.market_cap_usd, vol: d.volume_24h_usd, btc: d.bitcoin_dominance_percentage, eth: null, coins: d.cryptocurrencies_number }],
+    ['Coinlore', 'https://api.coinlore.net/api/global/', j => { const d = Array.isArray(j) ? j[0] : j; return d && { mcap: +d.total_mcap, vol: +d.total_volume, btc: +d.btc_d, eth: +d.eth_d, coins: d.coins_count }; }]];
+  for (const [src, url, f] of tries) {
+    try { const r = f(await get(url)); if (!r || !(+r.mcap > 0)) throw new Error('no market cap');
+      const row = { date: day, read: new Date(NOW).toISOString(), src, mcap: Math.round(+r.mcap) };
+      if (+r.vol > 0) row.vol = Math.round(+r.vol); if (+r.btc > 0) row.btc = +(+r.btc).toFixed(3); if (+r.eth > 0) row.eth = +(+r.eth).toFixed(3); if (+r.coins > 0) row.coins = +r.coins;
+      held.push(row); console.log('global', JSON.stringify(row));
+      return { about: 'The whole crypto market as an aggregator estimates it: total market capitalisation and 24-hour volume in US dollars, and the bitcoin and ether shares of the total, in percent. One row per UTC day as read; src names the aggregator. History starts with the first run.', days: held };
+    } catch (e) { console.error('global', src, e.message); }
+  }
+  return prev || null;
+}
 async function close(sym, day) {
   const start = Date.parse(day + 'T00:00:00Z');
   for (const h of BIN) { try { const k = await get(h + '/api/v3/klines?symbol=' + sym + '&interval=1d&startTime=' + start + '&limit=1');
@@ -88,6 +109,7 @@ async function main() {
   doc.stablecoins = await stables(prev && prev.stablecoins);
   doc.stablePegs = await pegs(prev && prev.stablePegs);
   doc.stableChains = await chains(prev && prev.stableChains);
+  doc.global = await global(prev && prev.global);
   /* snapshot the completed UTC days not yet held, at most the last 7 (a missed run is caught up) */
   const held = new Set(doc.snapshots.map(s => s.date)), days = [];
   for (let i = 7; i >= 1; i--) { const d = iso(NOW - i * DAY); if (!held.has(d)) days.push(d); }
