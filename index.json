@@ -4261,9 +4261,109 @@
      "unpause": 0
     }
    }
+  },
+  {
+   "date": "2026-11-13",
+   "file": "2026-11-13.json",
+   "url": "https://github.com/aasiimwe006/cryptostatements-issuance/releases/download/issuance-2026-11/2026-11-13.json",
+   "from": 26402310,
+   "to": 26409492,
+   "events": 10508,
+   "totals": {
+    "USDC": {
+     "issue": {
+      "n": 6579,
+      "sum": 923729273.8598917
+     },
+     "redeem": {
+      "n": 3779,
+      "sum": 1071871577.6268618
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "USDT": {
+     "issue": {
+      "n": 0,
+      "sum": 0
+     },
+     "redeem": {
+      "n": 0,
+      "sum": 0
+     },
+     "freeze": 4,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "PAXG": {
+     "issue": {
+      "n": 5,
+      "sum": 4.985
+     },
+     "redeem": {
+      "n": 18,
+      "sum": 1094.8006810000002
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "EURC": {
+     "issue": {
+      "n": 17,
+      "sum": 1216764.071646
+     },
+     "redeem": {
+      "n": 22,
+      "sum": 10564635.410776
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "PYUSD": {
+     "issue": {
+      "n": 57,
+      "sum": 39906057.044999
+     },
+     "redeem": {
+      "n": 14,
+      "sum": 106409014.13672201
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    },
+    "RLUSD": {
+     "issue": {
+      "n": 12,
+      "sum": 145738871.13
+     },
+     "redeem": {
+      "n": 1,
+      "sum": 410152.1525910263
+     },
+     "freeze": 0,
+     "unfreeze": 0,
+     "wipe": 0,
+     "pause": 0,
+     "unpause": 0
+    }
+   }
   }
  ],
- "updated": "2026-11-13T06:57:51.979Z",
+ "updated": "2026-11-14T06:45:07.847Z",
  "months": [
   {
    "month": "2026-09",

@@ -81,6 +81,28 @@
    "source": "https://tether.to/en/supported-protocols/",
    "chain": "bsc",
    "decimals": 6
+  },
+  {
+   "sym": "USDT:TRON",
+   "issuer": "Tether (USDT on Tron)",
+   "contract": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+   "decimals": 6,
+   "source": "https://tether.to/en/supported-protocols/",
+   "chain": "tron"
+  },
+  {
+   "sym": "USDC:SOL",
+   "issuer": "Circle (USDC on Solana)",
+   "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+   "chain": "solana"
+  },
+  {
+   "sym": "USDT:SOL",
+   "issuer": "Tether (USDT on Solana)",
+   "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+   "source": "https://tether.to/en/supported-protocols/",
+   "chain": "solana"
   }
  ],
  "readings": [
@@ -783,7 +805,47 @@
     "ledger": 108298407,
     "node": "xrplcluster.com"
    }
+  },
+  {
+   "date": "2026-11-14",
+   "block": 26411511,
+   "time": "2026-11-14T06:44:59Z",
+   "rpc": "mainnet.infura.io",
+   "values": {
+    "USDC": 44550331281.76772,
+    "USDT": 84296691994.49396,
+    "PAXG": 443198.487623,
+    "EURC": 326094686.100462,
+    "PYUSD": 1603277941.984071,
+    "XAUT": 827417.63,
+    "BUIDL:0x7712": 170275395.777549,
+    "BUIDL:0x6a9d": 239148842.7351,
+    "RLUSD": 2000534433.5428896,
+    "XAUT:BSC": 14811.614943,
+    "USDT:TRON": 94207597532.05478,
+    "USDC:SOL": 9177609847.887934,
+    "USDT:SOL": 3839903040.359061,
+    "RLUSD:XRPL": 764089627.9314865
+   },
+   "bsc": {
+    "block": 133497976,
+    "time": "2026-11-14T06:45:11Z",
+    "node": "bsc-rpc.publicnode.com"
+   },
+   "tron": {
+    "block": 87988274,
+    "time": "2026-11-14T06:45:09Z",
+    "node": "api.trongrid.io"
+   },
+   "solana": {
+    "slot": 469232086,
+    "node": "api.mainnet-beta.solana.com"
+   },
+   "xrpl": {
+    "ledger": 108319597,
+    "node": "xrplcluster.com"
+   }
   }
  ],
- "updated": "2026-11-13T06:57:58.518Z"
+ "updated": "2026-11-14T06:45:15.141Z"
 }
