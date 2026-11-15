@@ -3521,6 +3521,42 @@
     "of": 21,
     "diffs": {}
    }
+  },
+  {
+   "date": "2026-11-15",
+   "block": 133690634,
+   "time": "2026-11-15T06:50:36Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 9766.69322165,
+    "CRCLB": 2228785.52440443,
+    "EWYB": 71436.92352587,
+    "INTCB": 859618.88773108,
+    "MSTRB": 829086.24637643,
+    "MUB": 64547.15165548,
+    "NVDAB": 971606.97353281,
+    "SNDKB": 84640.97217053,
+    "SPCXB": 1226174.61148053,
+    "TSLAB": 46624.2408363,
+    "GOOGLB": 323527.12250228,
+    "QCOMB": 14228.31751037,
+    "COINB": 125494.38546698,
+    "SPYB": 34147.8417471,
+    "WDCB": 6820.13458787,
+    "GLWB": 11004.76241822,
+    "NBISB": 107800.67674844,
+    "SOXLB": 614946.00137769,
+    "DRAMB": 408264.47806562,
+    "CBRSB": 53404.96586186,
+    "DJTB": 206348.28155031
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 133690634,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
   }
  ],
  "snapshots": [
@@ -3869,7 +3905,7 @@
    "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
   }
  ],
- "updated": "2026-11-14T06:45:15.196Z",
+ "updated": "2026-11-15T06:50:36.640Z",
  "flows": [
   {
    "date": "2026-10-20",
@@ -7405,6 +7441,154 @@
      "mints": 11,
      "burns": 1,
      "net": -774.99816616
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-14",
+   "fromBlock": 133443969,
+   "toBlock": 133635906,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 493.47380177,
+     "burned": 3.67837741,
+     "mints": 16,
+     "burns": 1,
+     "net": 489.79542436
+    },
+    "CRCLB": {
+     "minted": 20231.23891991,
+     "burned": 11897.39686686,
+     "mints": 61,
+     "burns": 1,
+     "net": 8333.84205305
+    },
+    "INTCB": {
+     "minted": 4200.8271749,
+     "burned": 46070.53623515,
+     "mints": 29,
+     "burns": 2,
+     "net": -41869.70906025
+    },
+    "MSTRB": {
+     "minted": 6693.33172473,
+     "burned": 15480.86557903,
+     "mints": 47,
+     "burns": 2,
+     "net": -8787.5338543
+    },
+    "MUB": {
+     "minted": 683.22294707,
+     "burned": 912.10344029,
+     "mints": 26,
+     "burns": 1,
+     "net": -228.88049322
+    },
+    "NVDAB": {
+     "minted": 8149.34733711,
+     "burned": 121466.5727482,
+     "mints": 151,
+     "burns": 2,
+     "net": -113317.22541109
+    },
+    "SNDKB": {
+     "minted": 30.03770406,
+     "burned": 51.75795741,
+     "mints": 31,
+     "burns": 1,
+     "net": -21.72025335
+    },
+    "SPCXB": {
+     "minted": 1139.60970374,
+     "burned": 279208.17113737,
+     "mints": 77,
+     "burns": 2,
+     "net": -278068.56143363
+    },
+    "TSLAB": {
+     "minted": 281.15770158,
+     "burned": 64.36802368,
+     "mints": 45,
+     "burns": 1,
+     "net": 216.7896779
+    },
+    "GOOGLB": {
+     "minted": 4055.02796904,
+     "burned": 1031.47525411,
+     "mints": 39,
+     "burns": 1,
+     "net": 3023.55271493
+    },
+    "COINB": {
+     "minted": 1119.71254973,
+     "burned": 499.81360576,
+     "mints": 15,
+     "burns": 1,
+     "net": 619.89894397
+    },
+    "SPYB": {
+     "minted": 238.15694828,
+     "burned": 3.89428,
+     "mints": 17,
+     "burns": 1,
+     "net": 234.26266828
+    },
+    "WDCB": {
+     "minted": 0,
+     "burned": 7.66532615,
+     "mints": 0,
+     "burns": 1,
+     "net": -7.66532615
+    },
+    "GLWB": {
+     "minted": 48.95968734,
+     "burned": 749.95645448,
+     "mints": 5,
+     "burns": 1,
+     "net": -700.99676714
+    },
+    "NBISB": {
+     "minted": 1598.81105321,
+     "burned": 1.26287972,
+     "mints": 18,
+     "burns": 1,
+     "net": 1597.54817349
+    },
+    "SOXLB": {
+     "minted": 6106.98063124,
+     "burned": 56.55645681,
+     "mints": 28,
+     "burns": 1,
+     "net": 6050.42417443
+    },
+    "DRAMB": {
+     "minted": 428.88493014,
+     "burned": 6850.25974,
+     "mints": 4,
+     "burns": 1,
+     "net": -6421.37480986
+    },
+    "CBRSB": {
+     "minted": 10.04141142,
+     "burned": 0.47242011,
+     "mints": 2,
+     "burns": 1,
+     "net": 9.56899131
+    },
+    "DJTB": {
+     "minted": 487.01254163,
+     "burned": 2066.5807,
+     "mints": 5,
+     "burns": 1,
+     "net": -1579.56815837
     }
    },
    "check": {
