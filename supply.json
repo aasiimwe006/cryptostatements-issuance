@@ -925,7 +925,47 @@
     "ledger": 108362223,
     "node": "xrplcluster.com"
    }
+  },
+  {
+   "date": "2026-11-17",
+   "block": 26433476,
+   "time": "2026-11-17T08:09:23Z",
+   "rpc": "mainnet.infura.io",
+   "values": {
+    "USDC": 44306394399.15821,
+    "USDT": 84296691994.49396,
+    "PAXG": 443191.257398,
+    "EURC": 331499304.947871,
+    "PYUSD": 1458087529.568275,
+    "XAUT": 827417.63,
+    "BUIDL:0x7712": 170323988.517549,
+    "BUIDL:0x6a9d": 239223573.3651,
+    "RLUSD": 2044626435.6428895,
+    "XAUT:BSC": 14735.095405,
+    "USDT:TRON": 94207597532.05478,
+    "USDC:SOL": 9353930946.441324,
+    "USDT:SOL": 3839903036.961207,
+    "RLUSD:XRPL": 716695008.8414899
+   },
+   "bsc": {
+    "block": 134085042,
+    "time": "2026-11-17T08:09:30Z",
+    "node": "bsc-rpc.publicnode.com"
+   },
+   "tron": {
+    "block": 88076325,
+    "time": "2026-11-17T08:09:27Z",
+    "node": "api.trongrid.io"
+   },
+   "solana": {
+    "slot": 470461473,
+    "node": "api.mainnet-beta.solana.com"
+   },
+   "xrpl": {
+    "ledger": 108385083,
+    "node": "xrplcluster.com"
+   }
   }
  ],
- "updated": "2026-11-16T06:49:55.284Z"
+ "updated": "2026-11-17T08:09:33.585Z"
 }
