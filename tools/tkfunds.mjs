@@ -64,6 +64,17 @@ async function supply(c) {
   }
   return [null, null, null];
 }
+/* r365 · Stellar holders, once a week (Mondays): every account holding the asset, paged from Horizon, keeping
+   the count of accounts and the ten largest balances. Account ids are public chain data; nothing is inferred about who
+   holds them. Used only to see where the on-chain total sits when it differs from the fund's reported shares. */
+async function stellarHolders(c) {
+  const [code, iss] = c.addr.split(':'); let url = c.rpcs[0] + '/accounts?asset=' + code + ':' + iss + '&limit=200'; const all = [];
+  for (let i = 0; i < 60 && url; i++) { const j = await get(url); const R = (j._embedded && j._embedded.records) || [];
+    R.forEach(a => { const b = (a.balances || []).find(x => x.asset_code === code && x.asset_issuer === iss); if (b) all.push([a.account_id, +b.balance]); });
+    url = R.length === 200 && j._links && j._links.next ? j._links.next.href : null; }
+  all.sort((x, y) => y[1] - x[1]); const tot = all.reduce((a, x) => a + x[1], 0);
+  return { date: today, accounts: all.length, total: Math.round(tot * 100) / 100, top: all.slice(0, 10).map(x => [x[0], Math.round(x[1] * 100) / 100]) };
+}
 async function main() {
   let prev = null; if (fs.existsSync(OUT)) { try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) { console.error(OUT + ' does not parse; left untouched.'); return; } }
   const F = (prev && prev.funds) || {}; let ok = 0;
@@ -75,6 +86,8 @@ async function main() {
       const [v, host, d] = await supply(c); if (v != null && isFinite(v)) { h.rows.push([today, Math.round(v * 100) / 100, host]); h.rows = h.rows.slice(-KEEP); h.decimals = d; ok++; console.log(id, c.k, v.toLocaleString('en-US'), 'from', host); }
       H[c.k] = h;
     }
+    for (const c of f.chains) if (c.kind === 'stellar' && new Date(NOW).getUTCDay() === 1 && !(H[c.k].holders && H[c.k].holders.date === today)) {
+      try { H[c.k].holders = await stellarHolders(c); console.log(id, 'stellar holders', H[c.k].holders.accounts); } catch (e) { console.error(id, 'stellar holders', e.message); } }
     F[id] = { name: f.name, issuer: f.issuer, chains: H };
   }
   if (!ok) { console.error('no chain read; nothing written'); return; }
