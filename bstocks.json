@@ -2755,6 +2755,1325 @@
      "rie_trading": 1397.45
     }
    }
+  },
+  {
+   "asOf": "2026-11-06T23:59:59Z",
+   "published": "2026-11-09",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-6-nov-2026_11_09_2026_12-49-53.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "note": "105 rows; no new tickers since 30 Oct; listed on the ADGM disclosure platform 2026-11-09 13:19:11 (time zone not stated); whole certificates as filed; tickers split across lines in the PDF (GOOGL B, QCOM B, CRWD B) joined",
+   "rows": {
+    "AMDB": {
+     "outstanding": 14607,
+     "rie_trading": 13252
+    },
+    "CRCLB": {
+     "outstanding": 2182796,
+     "rie_trading": 2009806
+    },
+    "EWYB": {
+     "outstanding": 59852,
+     "rie_trading": 57124
+    },
+    "INTCB": {
+     "outstanding": 1225175,
+     "rie_trading": 1205440
+    },
+    "MSTRB": {
+     "outstanding": 821020,
+     "rie_trading": 743732
+    },
+    "MUB": {
+     "outstanding": 104597,
+     "rie_trading": 102639
+    },
+    "NVDAB": {
+     "outstanding": 263958,
+     "rie_trading": 181317
+    },
+    "SNDKB": {
+     "outstanding": 110839,
+     "rie_trading": 108689
+    },
+    "SPCXB": {
+     "outstanding": 1528347,
+     "rie_trading": 1409945
+    },
+    "TSLAB": {
+     "outstanding": 57144,
+     "rie_trading": 44845
+    },
+    "MSFTB": {
+     "outstanding": 5747,
+     "rie_trading": 4361
+    },
+    "QQQB": {
+     "outstanding": 181041,
+     "rie_trading": 123159
+    },
+    "METAB": {
+     "outstanding": 9008,
+     "rie_trading": 7746
+    },
+    "LITEB": {
+     "outstanding": 7742,
+     "rie_trading": 5873
+    },
+    "PLTRB": {
+     "outstanding": 12545,
+     "rie_trading": 11488
+    },
+    "GOOGLB": {
+     "outstanding": 399131,
+     "rie_trading": 369142
+    },
+    "QCOMB": {
+     "outstanding": 13986,
+     "rie_trading": 11006
+    },
+    "COINB": {
+     "outstanding": 125971,
+     "rie_trading": 118818
+    },
+    "SPYB": {
+     "outstanding": 32048,
+     "rie_trading": 24423
+    },
+    "WDCB": {
+     "outstanding": 6601,
+     "rie_trading": 6190
+    },
+    "GLWB": {
+     "outstanding": 11707,
+     "rie_trading": 10299
+    },
+    "NBISB": {
+     "outstanding": 65892,
+     "rie_trading": 64681
+    },
+    "SOXLB": {
+     "outstanding": 1301433,
+     "rie_trading": 1280293
+    },
+    "DRAMB": {
+     "outstanding": 459795,
+     "rie_trading": 447182
+    },
+    "CBRSB": {
+     "outstanding": 50493,
+     "rie_trading": 43779
+    },
+    "SKHYB": {
+     "outstanding": 151718,
+     "rie_trading": 123489
+    },
+    "ARMB": {
+     "outstanding": 7849,
+     "rie_trading": 7404
+    },
+    "AAOIB": {
+     "outstanding": 121277,
+     "rie_trading": 104411
+    },
+    "IBMB": {
+     "outstanding": 2943,
+     "rie_trading": 2275
+    },
+    "RKLBB": {
+     "outstanding": 49235,
+     "rie_trading": 44499
+    },
+    "NOKB": {
+     "outstanding": 239315,
+     "rie_trading": 214811
+    },
+    "TSMB": {
+     "outstanding": 24227,
+     "rie_trading": 19658
+    },
+    "BABAB": {
+     "outstanding": 61828,
+     "rie_trading": 40269
+    },
+    "AVGOB": {
+     "outstanding": 30395,
+     "rie_trading": 20903
+    },
+    "MRVLB": {
+     "outstanding": 55109,
+     "rie_trading": 53425
+    },
+    "HOODB": {
+     "outstanding": 61405,
+     "rie_trading": 55005
+    },
+    "KORUB": {
+     "outstanding": 2402002,
+     "rie_trading": 2384699
+    },
+    "AXTIB": {
+     "outstanding": 52038,
+     "rie_trading": 50118
+    },
+    "CRWVB": {
+     "outstanding": 83598,
+     "rie_trading": 71782
+    },
+    "MUUB": {
+     "outstanding": 123758,
+     "rie_trading": 116717
+    },
+    "MVLLB": {
+     "outstanding": 116121,
+     "rie_trading": 111542
+    },
+    "SNXXB": {
+     "outstanding": 1727498,
+     "rie_trading": 1684438
+    },
+    "INTWB": {
+     "outstanding": 1174062,
+     "rie_trading": 1162927
+    },
+    "TQQQB": {
+     "outstanding": 471705,
+     "rie_trading": 463037
+    },
+    "QNTB": {
+     "outstanding": 19286,
+     "rie_trading": 16542
+    },
+    "ORCLB": {
+     "outstanding": 49260,
+     "rie_trading": 35315
+    },
+    "AAPLB": {
+     "outstanding": 15176,
+     "rie_trading": 8553
+    },
+    "BEB": {
+     "outstanding": 23976,
+     "rie_trading": 23259
+    },
+    "AMZNB": {
+     "outstanding": 14805,
+     "rie_trading": 13037
+    },
+    "SOXSB": {
+     "outstanding": 20694,
+     "rie_trading": 18152
+    },
+    "DELLB": {
+     "outstanding": 2809,
+     "rie_trading": 2568
+    },
+    "FLNCB": {
+     "outstanding": 145057,
+     "rie_trading": 103886
+    },
+    "AMATB": {
+     "outstanding": 4121,
+     "rie_trading": 3581
+    },
+    "PYPLB": {
+     "outstanding": 14321,
+     "rie_trading": 12879
+    },
+    "GSB": {
+     "outstanding": 871,
+     "rie_trading": 775
+    },
+    "SMHB": {
+     "outstanding": 3851,
+     "rie_trading": 3622
+    },
+    "BMNRB": {
+     "outstanding": 581939,
+     "rie_trading": 561809
+    },
+    "SMCIB": {
+     "outstanding": 48709,
+     "rie_trading": 45999
+    },
+    "IRENB": {
+     "outstanding": 113912,
+     "rie_trading": 99816
+    },
+    "ASMLB": {
+     "outstanding": 669,
+     "rie_trading": 592
+    },
+    "NFLXB": {
+     "outstanding": 35062,
+     "rie_trading": 29948
+    },
+    "ASTSB": {
+     "outstanding": 42521,
+     "rie_trading": 39303
+    },
+    "COHRB": {
+     "outstanding": 9406,
+     "rie_trading": 8790
+    },
+    "CRDOB": {
+     "outstanding": 3888,
+     "rie_trading": 2814
+    },
+    "USARB": {
+     "outstanding": 114576,
+     "rie_trading": 97213
+    },
+    "ALABB": {
+     "outstanding": 2545,
+     "rie_trading": 2132
+    },
+    "GMEB": {
+     "outstanding": 263139,
+     "rie_trading": 197527
+    },
+    "DJTB": {
+     "outstanding": 209409,
+     "rie_trading": 136095
+    },
+    "MRNAB": {
+     "outstanding": 8666,
+     "rie_trading": 7155
+    },
+    "STXB": {
+     "outstanding": 944,
+     "rie_trading": 829
+    },
+    "SQQQB": {
+     "outstanding": 15105,
+     "rie_trading": 11775
+    },
+    "CRWDB": {
+     "outstanding": 2668,
+     "rie_trading": 2408
+    },
+    "HIMSB": {
+     "outstanding": 28605,
+     "rie_trading": 18990
+    },
+    "CRMB": {
+     "outstanding": 2307,
+     "rie_trading": 2039
+    },
+    "BNCB": {
+     "outstanding": 7692849,
+     "rie_trading": 4976975
+    },
+    "GPROB": {
+     "outstanding": 517688,
+     "rie_trading": 435966
+    },
+    "RDDTB": {
+     "outstanding": 5384,
+     "rie_trading": 3812
+    },
+    "CYPHB": {
+     "outstanding": 299193,
+     "rie_trading": 250009
+    },
+    "AMCB": {
+     "outstanding": 210492,
+     "rie_trading": 155661
+    },
+    "AGPUB": {
+     "outstanding": 302760,
+     "rie_trading": 279120
+    },
+    "PDDB": {
+     "outstanding": 25570,
+     "rie_trading": 18330
+    },
+    "FWDIB": {
+     "outstanding": 86348,
+     "rie_trading": 74361
+    },
+    "SHAZB": {
+     "outstanding": 19739,
+     "rie_trading": 18272
+    },
+    "WENB": {
+     "outstanding": 73183,
+     "rie_trading": 59350
+    },
+    "ADBEB": {
+     "outstanding": 3369,
+     "rie_trading": 3154
+    },
+    "HPEB": {
+     "outstanding": 6409,
+     "rie_trading": 4772
+    },
+    "ZMB": {
+     "outstanding": 4173,
+     "rie_trading": 3447
+    },
+    "SECZB": {
+     "outstanding": 141247,
+     "rie_trading": 131622
+    },
+    "USDEB": {
+     "outstanding": 73728,
+     "rie_trading": 65650
+    },
+    "JPMB": {
+     "outstanding": 1411,
+     "rie_trading": 1196
+    },
+    "LLYB": {
+     "outstanding": 566,
+     "rie_trading": 407
+    },
+    "MDBB": {
+     "outstanding": 1016,
+     "rie_trading": 793
+    },
+    "BBB": {
+     "outstanding": 64666,
+     "rie_trading": 53507
+    },
+    "PENGB": {
+     "outstanding": 9370,
+     "rie_trading": 7145
+    },
+    "UVXYB": {
+     "outstanding": 24110,
+     "rie_trading": 19402
+    },
+    "KSTRB": {
+     "outstanding": 136928,
+     "rie_trading": 128208
+    },
+    "BOTB": {
+     "outstanding": 17784,
+     "rie_trading": 12926
+    },
+    "TMFB": {
+     "outstanding": 13617,
+     "rie_trading": 10678
+    },
+    "VSTB": {
+     "outstanding": 6103,
+     "rie_trading": 5261
+    },
+    "BRKBB": {
+     "outstanding": 935,
+     "rie_trading": 647
+    },
+    "BSPB": {
+     "outstanding": 8510,
+     "rie_trading": 6729
+    },
+    "SKDDB": {
+     "outstanding": 33804,
+     "rie_trading": 24729
+    },
+    "SKUUB": {
+     "outstanding": 28214,
+     "rie_trading": 23471
+    },
+    "GEVB": {
+     "outstanding": 602,
+     "rie_trading": 504
+    },
+    "APPB": {
+     "outstanding": 1895,
+     "rie_trading": 1489
+    }
+   }
+  },
+  {
+   "asOf": "2026-11-13T23:59:59Z",
+   "published": "2026-11-16",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-13-nov-2026_11_15_2026_18-18-44.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "note": "105 rows; no new tickers since 6 Nov; listed 2026-11-16 09:12:07 (time zone not stated); whole certificates as filed; tickers split across lines in the PDF (GOOGL B, QCOM B, CRWD B) joined",
+   "rows": {
+    "AMDB": {
+     "outstanding": 9239,
+     "rie_trading": 7881
+    },
+    "CRCLB": {
+     "outstanding": 2191127,
+     "rie_trading": 2005735
+    },
+    "EWYB": {
+     "outstanding": 57718,
+     "rie_trading": 54369
+    },
+    "INTCB": {
+     "outstanding": 856889,
+     "rie_trading": 829209
+    },
+    "MSTRB": {
+     "outstanding": 790037,
+     "rie_trading": 706541
+    },
+    "MUB": {
+     "outstanding": 68845,
+     "rie_trading": 66620
+    },
+    "NVDAB": {
+     "outstanding": 931411,
+     "rie_trading": 803914
+    },
+    "SNDKB": {
+     "outstanding": 84573,
+     "rie_trading": 82467
+    },
+    "SPCXB": {
+     "outstanding": 1210122,
+     "rie_trading": 1096883
+    },
+    "TSLAB": {
+     "outstanding": 46184,
+     "rie_trading": 35687
+    },
+    "MSFTB": {
+     "outstanding": 5639,
+     "rie_trading": 4237
+    },
+    "QQQB": {
+     "outstanding": 161405,
+     "rie_trading": 103990
+    },
+    "METAB": {
+     "outstanding": 9051,
+     "rie_trading": 7725
+    },
+    "LITEB": {
+     "outstanding": 6391,
+     "rie_trading": 4522
+    },
+    "PLTRB": {
+     "outstanding": 12255,
+     "rie_trading": 11285
+    },
+    "GOOGLB": {
+     "outstanding": 314532,
+     "rie_trading": 285422
+    },
+    "QCOMB": {
+     "outstanding": 14088,
+     "rie_trading": 11058
+    },
+    "COINB": {
+     "outstanding": 123376,
+     "rie_trading": 113289
+    },
+    "SPYB": {
+     "outstanding": 32279,
+     "rie_trading": 23325
+    },
+    "WDCB": {
+     "outstanding": 6768,
+     "rie_trading": 6324
+    },
+    "GLWB": {
+     "outstanding": 11508,
+     "rie_trading": 10070
+    },
+    "NBISB": {
+     "outstanding": 104248,
+     "rie_trading": 102382
+    },
+    "SOXLB": {
+     "outstanding": 598222,
+     "rie_trading": 579334
+    },
+    "DRAMB": {
+     "outstanding": 413939,
+     "rie_trading": 399308
+    },
+    "CBRSB": {
+     "outstanding": 53498,
+     "rie_trading": 44085
+    },
+    "SKHYB": {
+     "outstanding": 152823,
+     "rie_trading": 123827
+    },
+    "ARMB": {
+     "outstanding": 7510,
+     "rie_trading": 7052
+    },
+    "AAOIB": {
+     "outstanding": 127185,
+     "rie_trading": 110501
+    },
+    "IBMB": {
+     "outstanding": 3077,
+     "rie_trading": 2407
+    },
+    "RKLBB": {
+     "outstanding": 48154,
+     "rie_trading": 43422
+    },
+    "NOKB": {
+     "outstanding": 237850,
+     "rie_trading": 213230
+    },
+    "TSMB": {
+     "outstanding": 23099,
+     "rie_trading": 18525
+    },
+    "BABAB": {
+     "outstanding": 76900,
+     "rie_trading": 44565
+    },
+    "AVGOB": {
+     "outstanding": 26810,
+     "rie_trading": 17398
+    },
+    "MRVLB": {
+     "outstanding": 54287,
+     "rie_trading": 52706
+    },
+    "HOODB": {
+     "outstanding": 66284,
+     "rie_trading": 55599
+    },
+    "KORUB": {
+     "outstanding": 1815634,
+     "rie_trading": 1785496
+    },
+    "AXTIB": {
+     "outstanding": 60088,
+     "rie_trading": 58171
+    },
+    "CRWVB": {
+     "outstanding": 67007,
+     "rie_trading": 55188
+    },
+    "MUUB": {
+     "outstanding": 130382,
+     "rie_trading": 122539
+    },
+    "MVLLB": {
+     "outstanding": 136979,
+     "rie_trading": 132419
+    },
+    "SNXXB": {
+     "outstanding": 1651278,
+     "rie_trading": 1589211
+    },
+    "INTWB": {
+     "outstanding": 733630,
+     "rie_trading": 723892
+    },
+    "TQQQB": {
+     "outstanding": 210996,
+     "rie_trading": 200023
+    },
+    "QNTB": {
+     "outstanding": 15842,
+     "rie_trading": 13096
+    },
+    "ORCLB": {
+     "outstanding": 58557,
+     "rie_trading": 36905
+    },
+    "AAPLB": {
+     "outstanding": 13669,
+     "rie_trading": 7528
+    },
+    "BEB": {
+     "outstanding": 20911,
+     "rie_trading": 20309
+    },
+    "AMZNB": {
+     "outstanding": 14189,
+     "rie_trading": 12464
+    },
+    "SOXSB": {
+     "outstanding": 134888,
+     "rie_trading": 131335
+    },
+    "DELLB": {
+     "outstanding": 2722,
+     "rie_trading": 2481
+    },
+    "FLNCB": {
+     "outstanding": 177339,
+     "rie_trading": 135628
+    },
+    "AMATB": {
+     "outstanding": 4258,
+     "rie_trading": 3717
+    },
+    "PYPLB": {
+     "outstanding": 13373,
+     "rie_trading": 11931
+    },
+    "GSB": {
+     "outstanding": 835,
+     "rie_trading": 740
+    },
+    "SMHB": {
+     "outstanding": 3519,
+     "rie_trading": 3229
+    },
+    "BMNRB": {
+     "outstanding": 458231,
+     "rie_trading": 426510
+    },
+    "SMCIB": {
+     "outstanding": 46110,
+     "rie_trading": 22884
+    },
+    "IRENB": {
+     "outstanding": 130593,
+     "rie_trading": 115328
+    },
+    "ASMLB": {
+     "outstanding": 683,
+     "rie_trading": 607
+    },
+    "NFLXB": {
+     "outstanding": 33600,
+     "rie_trading": 28453
+    },
+    "ASTSB": {
+     "outstanding": 40807,
+     "rie_trading": 37624
+    },
+    "COHRB": {
+     "outstanding": 9135,
+     "rie_trading": 8519
+    },
+    "CRDOB": {
+     "outstanding": 3850,
+     "rie_trading": 2776
+    },
+    "USARB": {
+     "outstanding": 110405,
+     "rie_trading": 93014
+    },
+    "ALABB": {
+     "outstanding": 2646,
+     "rie_trading": 2233
+    },
+    "GMEB": {
+     "outstanding": 261120,
+     "rie_trading": 197368
+    },
+    "DJTB": {
+     "outstanding": 205176,
+     "rie_trading": 131443
+    },
+    "MRNAB": {
+     "outstanding": 9494,
+     "rie_trading": 7742
+    },
+    "STXB": {
+     "outstanding": 928,
+     "rie_trading": 817
+    },
+    "SQQQB": {
+     "outstanding": 15440,
+     "rie_trading": 12186
+    },
+    "CRWDB": {
+     "outstanding": 2833,
+     "rie_trading": 2573
+    },
+    "HIMSB": {
+     "outstanding": 31150,
+     "rie_trading": 20781
+    },
+    "CRMB": {
+     "outstanding": 2404,
+     "rie_trading": 2136
+    },
+    "BNCB": {
+     "outstanding": 7851921,
+     "rie_trading": 4767070
+    },
+    "GPROB": {
+     "outstanding": 505464,
+     "rie_trading": 400927
+    },
+    "RDDTB": {
+     "outstanding": 4880,
+     "rie_trading": 3311
+    },
+    "CYPHB": {
+     "outstanding": 413806,
+     "rie_trading": 364674
+    },
+    "AMCB": {
+     "outstanding": 211599,
+     "rie_trading": 157407
+    },
+    "AGPUB": {
+     "outstanding": 420279,
+     "rie_trading": 397721
+    },
+    "PDDB": {
+     "outstanding": 30174,
+     "rie_trading": 6727
+    },
+    "FWDIB": {
+     "outstanding": 91299,
+     "rie_trading": 79299
+    },
+    "SHAZB": {
+     "outstanding": 20936,
+     "rie_trading": 19471
+    },
+    "WENB": {
+     "outstanding": 73307,
+     "rie_trading": 59761
+    },
+    "ADBEB": {
+     "outstanding": 2556,
+     "rie_trading": 2341
+    },
+    "HPEB": {
+     "outstanding": 6286,
+     "rie_trading": 4649
+    },
+    "ZMB": {
+     "outstanding": 4175,
+     "rie_trading": 3449
+    },
+    "SECZB": {
+     "outstanding": 119735,
+     "rie_trading": 109636
+    },
+    "USDEB": {
+     "outstanding": 78402,
+     "rie_trading": 70327
+    },
+    "JPMB": {
+     "outstanding": 1386,
+     "rie_trading": 1172
+    },
+    "LLYB": {
+     "outstanding": 591,
+     "rie_trading": 433
+    },
+    "MDBB": {
+     "outstanding": 1020,
+     "rie_trading": 798
+    },
+    "BBB": {
+     "outstanding": 63706,
+     "rie_trading": 52549
+    },
+    "PENGB": {
+     "outstanding": 9506,
+     "rie_trading": 6955
+    },
+    "UVXYB": {
+     "outstanding": 28018,
+     "rie_trading": 23319
+    },
+    "KSTRB": {
+     "outstanding": 148377,
+     "rie_trading": 139791
+    },
+    "BOTB": {
+     "outstanding": 22610,
+     "rie_trading": 17457
+    },
+    "TMFB": {
+     "outstanding": 14274,
+     "rie_trading": 11338
+    },
+    "VSTB": {
+     "outstanding": 7325,
+     "rie_trading": 6483
+    },
+    "BRKBB": {
+     "outstanding": 937,
+     "rie_trading": 648
+    },
+    "BSPB": {
+     "outstanding": 8701,
+     "rie_trading": 6928
+    },
+    "SKDDB": {
+     "outstanding": 32903,
+     "rie_trading": 23837
+    },
+    "SKUUB": {
+     "outstanding": 28556,
+     "rie_trading": 23814
+    },
+    "GEVB": {
+     "outstanding": 603,
+     "rie_trading": 505
+    },
+    "APPB": {
+     "outstanding": 1718,
+     "rie_trading": 1313
+    }
+   }
+  },
+  {
+   "asOf": "2026-11-20T23:59:59Z",
+   "published": "2026-11-23",
+   "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-20-nov-2026_11_23_2026_06-31-24.pdf",
+   "reporting_entity": "BTech Services Limited",
+   "note": "113 rows; new since 13 Nov: EWZB, EWZSB, NUB, MELIB, EWTB, EWJB, IWMB, ANTB; listed 2026-11-23 09:32:56 (time zone not stated); whole certificates as filed; tickers split across lines in the PDF (GOOGL B, QCOM B, CRWD B) joined",
+   "rows": {
+    "AMDB": {
+     "outstanding": 9154,
+     "rie_trading": 7467
+    },
+    "CRCLB": {
+     "outstanding": 2297513,
+     "rie_trading": 2107332
+    },
+    "EWYB": {
+     "outstanding": 75253,
+     "rie_trading": 71997
+    },
+    "INTCB": {
+     "outstanding": 816152,
+     "rie_trading": 764568
+    },
+    "MSTRB": {
+     "outstanding": 738833,
+     "rie_trading": 652046
+    },
+    "MUB": {
+     "outstanding": 111754,
+     "rie_trading": 100725
+    },
+    "NVDAB": {
+     "outstanding": 1239317,
+     "rie_trading": 1124235
+    },
+    "SNDKB": {
+     "outstanding": 70830,
+     "rie_trading": 68846
+    },
+    "SPCXB": {
+     "outstanding": 819531,
+     "rie_trading": 708090
+    },
+    "TSLAB": {
+     "outstanding": 48417,
+     "rie_trading": 37769
+    },
+    "MSFTB": {
+     "outstanding": 5465,
+     "rie_trading": 4118
+    },
+    "QQQB": {
+     "outstanding": 163858,
+     "rie_trading": 106480
+    },
+    "METAB": {
+     "outstanding": 8087,
+     "rie_trading": 7112
+    },
+    "LITEB": {
+     "outstanding": 5935,
+     "rie_trading": 4067
+    },
+    "PLTRB": {
+     "outstanding": 12461,
+     "rie_trading": 11476
+    },
+    "GOOGLB": {
+     "outstanding": 294320,
+     "rie_trading": 267225
+    },
+    "QCOMB": {
+     "outstanding": 13239,
+     "rie_trading": 10270
+    },
+    "COINB": {
+     "outstanding": 116813,
+     "rie_trading": 105052
+    },
+    "SPYB": {
+     "outstanding": 37250,
+     "rie_trading": 27711
+    },
+    "WDCB": {
+     "outstanding": 6419,
+     "rie_trading": 5986
+    },
+    "GLWB": {
+     "outstanding": 12227,
+     "rie_trading": 10782
+    },
+    "NBISB": {
+     "outstanding": 130881,
+     "rie_trading": 128301
+    },
+    "SOXLB": {
+     "outstanding": 2529020,
+     "rie_trading": 2505054
+    },
+    "DRAMB": {
+     "outstanding": 407700,
+     "rie_trading": 394750
+    },
+    "CBRSB": {
+     "outstanding": 51411,
+     "rie_trading": 42017
+    },
+    "SKHYB": {
+     "outstanding": 222179,
+     "rie_trading": 191701
+    },
+    "ARMB": {
+     "outstanding": 8766,
+     "rie_trading": 8304
+    },
+    "AAOIB": {
+     "outstanding": 137633,
+     "rie_trading": 115952
+    },
+    "IBMB": {
+     "outstanding": 3015,
+     "rie_trading": 2351
+    },
+    "RKLBB": {
+     "outstanding": 44067,
+     "rie_trading": 39308
+    },
+    "NOKB": {
+     "outstanding": 219078,
+     "rie_trading": 192901
+    },
+    "TSMB": {
+     "outstanding": 25252,
+     "rie_trading": 20516
+    },
+    "BABAB": {
+     "outstanding": 91357,
+     "rie_trading": 34127
+    },
+    "AVGOB": {
+     "outstanding": 13010,
+     "rie_trading": 10896
+    },
+    "MRVLB": {
+     "outstanding": 53337,
+     "rie_trading": 51349
+    },
+    "HOODB": {
+     "outstanding": 63680,
+     "rie_trading": 53229
+    },
+    "KORUB": {
+     "outstanding": 3262031,
+     "rie_trading": 3234158
+    },
+    "AXTIB": {
+     "outstanding": 63136,
+     "rie_trading": 61219
+    },
+    "CRWVB": {
+     "outstanding": 68477,
+     "rie_trading": 58555
+    },
+    "MUUB": {
+     "outstanding": 155523,
+     "rie_trading": 147045
+    },
+    "MVLLB": {
+     "outstanding": 157115,
+     "rie_trading": 152581
+    },
+    "SNXXB": {
+     "outstanding": 3328718,
+     "rie_trading": 3190728
+    },
+    "INTWB": {
+     "outstanding": 802455,
+     "rie_trading": 793477
+    },
+    "TQQQB": {
+     "outstanding": 269199,
+     "rie_trading": 255173
+    },
+    "QNTB": {
+     "outstanding": 14129,
+     "rie_trading": 11410
+    },
+    "ORCLB": {
+     "outstanding": 78602,
+     "rie_trading": 35068
+    },
+    "AAPLB": {
+     "outstanding": 11926,
+     "rie_trading": 6135
+    },
+    "BEB": {
+     "outstanding": 23690,
+     "rie_trading": 23089
+    },
+    "AMZNB": {
+     "outstanding": 14223,
+     "rie_trading": 12582
+    },
+    "SOXSB": {
+     "outstanding": 16447,
+     "rie_trading": 13493
+    },
+    "DELLB": {
+     "outstanding": 2472,
+     "rie_trading": 2231
+    },
+    "FLNCB": {
+     "outstanding": 180288,
+     "rie_trading": 139539
+    },
+    "AMATB": {
+     "outstanding": 4091,
+     "rie_trading": 3551
+    },
+    "PYPLB": {
+     "outstanding": 12254,
+     "rie_trading": 10819
+    },
+    "GSB": {
+     "outstanding": 835,
+     "rie_trading": 739
+    },
+    "SMHB": {
+     "outstanding": 3444,
+     "rie_trading": 3145
+    },
+    "BMNRB": {
+     "outstanding": 443874,
+     "rie_trading": 406849
+    },
+    "SMCIB": {
+     "outstanding": 48752,
+     "rie_trading": 25045
+    },
+    "IRENB": {
+     "outstanding": 251646,
+     "rie_trading": 154184
+    },
+    "ASMLB": {
+     "outstanding": 742,
+     "rie_trading": 666
+    },
+    "NFLXB": {
+     "outstanding": 28848,
+     "rie_trading": 22269
+    },
+    "ASTSB": {
+     "outstanding": 43215,
+     "rie_trading": 37877
+    },
+    "COHRB": {
+     "outstanding": 8160,
+     "rie_trading": 7542
+    },
+    "CRDOB": {
+     "outstanding": 4482,
+     "rie_trading": 3408
+    },
+    "USARB": {
+     "outstanding": 105000,
+     "rie_trading": 86202
+    },
+    "ALABB": {
+     "outstanding": 3279,
+     "rie_trading": 2866
+    },
+    "GMEB": {
+     "outstanding": 259349,
+     "rie_trading": 196982
+    },
+    "DJTB": {
+     "outstanding": 209732,
+     "rie_trading": 130637
+    },
+    "MRNAB": {
+     "outstanding": 9351,
+     "rie_trading": 7481
+    },
+    "STXB": {
+     "outstanding": 920,
+     "rie_trading": 828
+    },
+    "SQQQB": {
+     "outstanding": 15388,
+     "rie_trading": 12368
+    },
+    "CRWDB": {
+     "outstanding": 2536,
+     "rie_trading": 2276
+    },
+    "HIMSB": {
+     "outstanding": 30951,
+     "rie_trading": 20525
+    },
+    "CRMB": {
+     "outstanding": 2427,
+     "rie_trading": 2159
+    },
+    "BNCB": {
+     "outstanding": 7652286,
+     "rie_trading": 4600119
+    },
+    "GPROB": {
+     "outstanding": 429499,
+     "rie_trading": 344739
+    },
+    "RDDTB": {
+     "outstanding": 5748,
+     "rie_trading": 4179
+    },
+    "CYPHB": {
+     "outstanding": 421064,
+     "rie_trading": 371976
+    },
+    "AMCB": {
+     "outstanding": 215463,
+     "rie_trading": 153367
+    },
+    "AGPUB": {
+     "outstanding": 503954,
+     "rie_trading": 481305
+    },
+    "PDDB": {
+     "outstanding": 23362,
+     "rie_trading": 360
+    },
+    "FWDIB": {
+     "outstanding": 153057,
+     "rie_trading": 141066
+    },
+    "SHAZB": {
+     "outstanding": 28026,
+     "rie_trading": 26581
+    },
+    "WENB": {
+     "outstanding": 68392,
+     "rie_trading": 54890
+    },
+    "ADBEB": {
+     "outstanding": 2097,
+     "rie_trading": 1882
+    },
+    "HPEB": {
+     "outstanding": 8395,
+     "rie_trading": 6758
+    },
+    "ZMB": {
+     "outstanding": 4094,
+     "rie_trading": 3368
+    },
+    "SECZB": {
+     "outstanding": 121116,
+     "rie_trading": 102473
+    },
+    "USDEB": {
+     "outstanding": 80949,
+     "rie_trading": 72884
+    },
+    "JPMB": {
+     "outstanding": 1323,
+     "rie_trading": 1108
+    },
+    "LLYB": {
+     "outstanding": 555,
+     "rie_trading": 398
+    },
+    "MDBB": {
+     "outstanding": 1237,
+     "rie_trading": 1014
+    },
+    "BBB": {
+     "outstanding": 64961,
+     "rie_trading": 53817
+    },
+    "PENGB": {
+     "outstanding": 9588,
+     "rie_trading": 7186
+    },
+    "UVXYB": {
+     "outstanding": 23664,
+     "rie_trading": 18925
+    },
+    "KSTRB": {
+     "outstanding": 155420,
+     "rie_trading": 147612
+    },
+    "BOTB": {
+     "outstanding": 21229,
+     "rie_trading": 16074
+    },
+    "TMFB": {
+     "outstanding": 14053,
+     "rie_trading": 11116
+    },
+    "VSTB": {
+     "outstanding": 7296,
+     "rie_trading": 6453
+    },
+    "BRKBB": {
+     "outstanding": 943,
+     "rie_trading": 655
+    },
+    "BSPB": {
+     "outstanding": 8486,
+     "rie_trading": 6712
+    },
+    "SKDDB": {
+     "outstanding": 34721,
+     "rie_trading": 25660
+    },
+    "SKUUB": {
+     "outstanding": 34568,
+     "rie_trading": 29828
+    },
+    "GEVB": {
+     "outstanding": 540,
+     "rie_trading": 442
+    },
+    "APPB": {
+     "outstanding": 1821,
+     "rie_trading": 1416
+    },
+    "EWZB": {
+     "outstanding": 10570,
+     "rie_trading": 8046
+    },
+    "EWZSB": {
+     "outstanding": 31812,
+     "rie_trading": 24251
+    },
+    "NUB": {
+     "outstanding": 27937,
+     "rie_trading": 21159
+    },
+    "MELIB": {
+     "outstanding": 307,
+     "rie_trading": 247
+    },
+    "EWTB": {
+     "outstanding": 5177,
+     "rie_trading": 1099
+    },
+    "EWJB": {
+     "outstanding": 4692,
+     "rie_trading": 1393
+    },
+    "IWMB": {
+     "outstanding": 1256,
+     "rie_trading": 966
+    },
+    "ANTB": {
+     "outstanding": 57601,
+     "rie_trading": 38117
+    }
+   }
   }
  ],
  "readings": [
