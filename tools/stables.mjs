@@ -260,4 +260,6 @@ async function main() {
     updated: new Date(NOW).toISOString(), coins: C, tether }) + '\n');
   console.log(OUT + ' written');
 }
-main().catch(e => { console.error(e); process.exitCode = 0; });
+/* r384 · the pulse job (tools/pulse.mjs, AP104) imports the readers below; set STB_IMPORT to load them without running. */
+export { COINS, R, supply, post, get, units, rpcCall, blockAtOrAfter, sumLogs, TRANSFER, ZERO32, TETHER_FILE, TETHER_KEYS, TETHER_DEPRECATED };
+if (!process.env.STB_IMPORT) main().catch(e => { console.error(e); process.exitCode = 0; });
