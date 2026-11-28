@@ -1,0 +1,146 @@
+/* stables.mjs — CRYPTO STATEMENTS · stablecoin supply by chain, read from the issuers' own contracts (r368, AP101 step 2)
+
+   Reads the supply of USDC, USDT, PYUSD and RLUSD on each chain the issuer itself lists, once a UTC day, and keeps one
+   row per day per chain (a day held is not overwritten). Market context, kept apart from the record: the site sets the
+   on-chain total beside the issuer's own filed circulation and beside DefiLlama's chain figure, and shows any
+   difference without explaining it. Value is never computed here; supply is a count of tokens.
+
+   Addresses, each from the issuer's own page, read on 28 Nov 2026 and approved by the founder 28 Nov 2026:
+     USDC  Circle, "USDC contract addresses"  https://developers.circle.com/stablecoins/usdc-contract-addresses
+     USDT  Tether, "Supported Protocols and Integration Guidelines"  https://tether.to/en/supported-protocols/
+     PYUSD Paxos, PYUSD mainnet  https://docs.paxos.com/stablecoin/pyusd/mainnet
+     RLUSD Ripple, token addresses  https://docs.ripple.com/products/stablecoin/overview/token-addresses
+   Rule (founder, 28 Nov 2026): a chain counts only if the issuer lists it. Tether lists no USD₮ on BNB Smart Chain,
+   Arbitrum, Polygon or Base, so tokens called USDT there are not read. Chains the issuer lists but this job does not
+   read yet are named in NOT_READ and shown on the site as not read.
+
+   Readers: EVM eth_call totalSupply() and decimals(); Solana getTokenSupply; Aptos 0x1::fungible_asset::supply over
+   the published metadata object; Stellar Horizon /assets (balances, claimable balances, pools, contracts); Tron
+   TronGrid triggerconstantcontract totalSupply() and decimals(); XRPL gateway_balances on the issuer (obligations
+   for the currency). Public endpoints only; an endpoint that refuses is logged and the next one is tried; a chain
+   not read today is left missing for that day. Tested in a browser on 28 Nov 2026: every chain answered except
+   Solana (which refuses browsers; tkfunds.mjs reads it daily from GitHub's runner) and Arc (no public endpoint
+   confirmed, so listed as not read). No dependencies (Node 20). STB_NOW: tests only. */
+import fs from 'node:fs';
+const OUT = 'stables.json', KEEP = 1100, NOW = process.env.STB_NOW ? Date.parse(process.env.STB_NOW) : Date.now(), today = new Date(NOW).toISOString().slice(0, 10);
+const list = (env, pub) => [...(process.env[env] || '').split(',').map(x => x.trim()).filter(Boolean), ...pub];
+const UA = { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily public-data copy)' };
+async function post(url, body) { const r = await fetch(url, { method: 'POST', signal: AbortSignal.timeout(20000), headers: { 'content-type': 'application/json', ...UA }, body: JSON.stringify(body) });
+  if (!r.ok) throw new Error(new URL(url).host + ' HTTP ' + r.status); return r.json(); }
+async function get(url) { const r = await fetch(url, { signal: AbortSignal.timeout(20000), headers: UA }); if (!r.ok) throw new Error(new URL(url).host + ' HTTP ' + r.status); return r.json(); }
+const units = (raw, d) => Number(BigInt(raw)) / 10 ** d;
+
+/* endpoints: each chain's own public endpoint first where it publishes one, publicnode second */
+const R = {
+  ethereum: list('ISSUANCE_RPCS', ['https://ethereum-rpc.publicnode.com', 'https://eth.drpc.org']),
+  base: ['https://mainnet.base.org', 'https://base-rpc.publicnode.com'],
+  arbitrum: ['https://arb1.arbitrum.io/rpc', 'https://arbitrum-one-rpc.publicnode.com'],
+  polygon: ['https://polygon-bor-rpc.publicnode.com', 'https://polygon-rpc.com'],
+  avalanche: ['https://api.avax.network/ext/bc/C/rpc', 'https://avalanche-c-chain-rpc.publicnode.com'],
+  optimism: ['https://mainnet.optimism.io', 'https://optimism-rpc.publicnode.com'],
+  hyperevm: ['https://rpc.hyperliquid.xyz/evm'],
+  plasma: ['https://rpc.plasma.to'],
+  xlayer: ['https://rpc.xlayer.tech', 'https://xlayerrpc.okx.com'],
+  linea: ['https://rpc.linea.build', 'https://linea-rpc.publicnode.com'],
+  unichain: ['https://mainnet.unichain.org', 'https://unichain-rpc.publicnode.com'],
+  worldchain: ['https://worldchain-mainnet.g.alchemy.com/public'],
+  celo: ['https://forno.celo.org', 'https://celo-rpc.publicnode.com'],
+  kaia: ['https://public-en.node.kaia.io'],
+  kava: ['https://evm.kava.io', 'https://kava-evm-rpc.publicnode.com'],
+  solana: ['https://api.mainnet-beta.solana.com'],
+  aptos: ['https://fullnode.mainnet.aptoslabs.com/v1'],
+  stellar: ['https://horizon.stellar.org'],
+  tron: ['https://api.trongrid.io'],
+  xrpl: ['https://xrplcluster.com', 'https://s1.ripple.com:51234']
+};
+const CIRCLE = 'https://developers.circle.com/stablecoins/usdc-contract-addresses', TETHER = 'https://tether.to/en/supported-protocols/',
+  PAXOS = 'https://docs.paxos.com/stablecoin/pyusd/mainnet', RIPPLE = 'https://docs.ripple.com/products/stablecoin/overview/token-addresses';
+const ev = (k, addr, src) => ({ k, addr, kind: 'evm', rpcs: R[k], src });
+const COINS = {
+  usdc: { name: 'USDC', issuer: 'Circle', src: CIRCLE, chains: [
+    ev('ethereum', '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', CIRCLE),
+    { k: 'solana', addr: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', kind: 'solana', rpcs: R.solana, src: CIRCLE },
+    ev('base', '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', CIRCLE),
+    ev('arbitrum', '0xaf88d065e77c8cC2239327C5EDb3A432268e5831', CIRCLE),
+    ev('polygon', '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359', CIRCLE),
+    ev('avalanche', '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E', CIRCLE),
+    ev('optimism', '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85', CIRCLE),
+    ev('hyperevm', '0xb88339CB7199b77E23DB6E890353E22632Ba630f', CIRCLE),
+    ev('plasma', '0x2d661C89D812261039AF9764eceaAee884f5F67F', CIRCLE),
+    ev('xlayer', '0xB6CEceAB302E2E4948951eE7843FC24E92933061', CIRCLE),
+    ev('linea', '0x176211869cA2b568f2A7D4EE941E073a821EE1ff', CIRCLE),
+    ev('unichain', '0x078D782b760474a361dDA0AF3839290b0EF57AD6', CIRCLE),
+    ev('worldchain', '0x79A02482A880bCe3F13E09da970dC34dB4cD24D1', CIRCLE),
+    { k: 'aptos', addr: '0xbae207659db88bea0cbead6da0ed00aac12edcdda169e591cd41c94180b46f3b', kind: 'aptos', rpcs: R.aptos, src: CIRCLE },
+    { k: 'stellar', addr: 'USDC:GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN', kind: 'stellar', rpcs: R.stellar, src: CIRCLE }] },
+  usdt: { name: 'USDT', issuer: 'Tether', src: TETHER, chains: [
+    ev('ethereum', '0xdac17f958d2ee523a2206206994597c13d831ec7', TETHER),
+    { k: 'tron', addr: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t', kind: 'tron', rpcs: R.tron, src: TETHER },
+    { k: 'solana', addr: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', kind: 'solana', rpcs: R.solana, src: TETHER },
+    ev('avalanche', '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7', TETHER),
+    ev('celo', '0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e', TETHER),
+    ev('kaia', '0xd077a400968890eacc75cdc901f0356c943e4fdb', TETHER),
+    ev('kava', '0x919C1c267BC06a7039e03fcc2eF738525769109c', TETHER),
+    { k: 'aptos', addr: '0x357b0b74bc833e95a115ad22604854d6b0fca151cecd94111770e5d6ffc9dc2b', kind: 'aptos', rpcs: R.aptos, src: TETHER }] },
+  pyusd: { name: 'PYUSD', issuer: 'Paxos (for PayPal)', src: PAXOS, chains: [
+    ev('ethereum', '0x6c3ea9036406852006290770BEdFcAbA0e23A0e8', PAXOS),
+    { k: 'solana', addr: '2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo', kind: 'solana', rpcs: R.solana, src: PAXOS },
+    ev('arbitrum', '0x46850aD61C2B7d64d08c9C754F45254596696984', PAXOS)] },
+  rlusd: { name: 'RLUSD', issuer: 'Ripple', src: RIPPLE, chains: [
+    { k: 'xrpl', addr: 'rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De', cur: 'RLUSD', kind: 'xrpl', rpcs: R.xrpl, src: RIPPLE },
+    ev('ethereum', '0x8292bb45bf1ee4d140127049757c2e0ff06317ed', RIPPLE),
+    ev('base', '0x8d58c0c60b8d6b88fa98b291a646db34d0f98258', RIPPLE),
+    ev('optimism', '0x8d58c0c60b8d6b88fa98b291a646db34d0f98258', RIPPLE)] } };
+/* listed by the issuer, not read by this job yet (shown on the site as "not read") */
+const NOT_READ = {
+  usdc: ['Arc (no public endpoint confirmed yet)', 'Algorand', 'Celo', 'Codex', 'Cronos', 'EDGE', 'Hedera', 'Injective', 'Ink', 'Monad', 'Morph', 'NEAR', 'Noble', 'Pharos', 'Plume', 'Polkadot Asset Hub', 'Sei', 'Sonic', 'Starknet', 'Sui', 'XDC', 'XRPL', 'ZKsync Era'],
+  usdt: ['Near', 'TON', 'Tezos', 'Liquid', 'Polkadot AssetHub'],
+  pyusd: [],
+  rlusd: ['Ink', 'Robinhood Chain', 'Unichain', 'XRPL EVM Sidechain'] };
+/* the XRPL names a currency longer than three letters by its 40-hex code */
+const xrplCode = c => c.length === 3 ? c : Buffer.from(c, 'ascii').toString('hex').toUpperCase().padEnd(40, '0');
+
+async function supply(c) {
+  for (const rpc of c.rpcs || []) {
+    try {
+      if (c.kind === 'evm') { const call = data => post(rpc, { jsonrpc: '2.0', id: 1, method: 'eth_call', params: [{ to: c.addr, data }, 'latest'] }).then(j => { if (!j.result || j.result === '0x') throw new Error('no result ' + JSON.stringify(j.error || '')); return j.result; });
+        const d = parseInt(await call('0x313ce567'), 16); return [units(await call('0x18160ddd'), d), new URL(rpc).host, d]; }
+      if (c.kind === 'aptos') { const v = await post(rpc + '/view', { function: '0x1::fungible_asset::supply', type_arguments: ['0x1::fungible_asset::Metadata'], arguments: [c.addr] });
+        const d = await post(rpc + '/view', { function: '0x1::fungible_asset::decimals', type_arguments: ['0x1::fungible_asset::Metadata'], arguments: [c.addr] });
+        const s = v && v[0] && v[0].vec && v[0].vec[0]; if (s == null) throw new Error('no supply'); return [units(s, +d[0]), new URL(rpc).host, +d[0]]; }
+      if (c.kind === 'solana') { const j = await post(rpc, { jsonrpc: '2.0', id: 1, method: 'getTokenSupply', params: [c.addr] });
+        const v = j && j.result && j.result.value; if (!v) throw new Error('no result ' + JSON.stringify(j.error || '')); return [+v.uiAmountString, new URL(rpc).host, v.decimals]; }
+      if (c.kind === 'stellar') { const [code, iss] = c.addr.split(':'); const j = await get(rpc + '/assets?asset_code=' + code + '&asset_issuer=' + iss);
+        const x = j._embedded && j._embedded.records && j._embedded.records[0]; if (!x) throw new Error('asset not found'); const b = x.balances || {};
+        const t = ['authorized', 'authorized_to_maintain_liabilities', 'unauthorized'].reduce((a, k) => a + (+b[k] || 0), 0) + (+x.claimable_balances_amount || 0) + (+x.liquidity_pools_amount || 0) + (+x.contracts_amount || 0);
+        return [t, new URL(rpc).host, 7]; }
+      if (c.kind === 'tron') { const call = sel => post(rpc + '/wallet/triggerconstantcontract', { owner_address: c.addr, contract_address: c.addr, function_selector: sel, parameter: '', visible: true })
+          .then(j => { const r = j && j.constant_result && j.constant_result[0]; if (!r) throw new Error('no result ' + JSON.stringify(j && j.result || '')); return '0x' + r; });
+        const d = parseInt(await call('decimals()'), 16); return [units(await call('totalSupply()'), d), new URL(rpc).host, d]; }
+      if (c.kind === 'xrpl') { const j = await post(rpc, { method: 'gateway_balances', params: [{ account: c.addr, ledger_index: 'validated', strict: true }] });
+        const o = j && j.result && j.result.obligations; if (!o) throw new Error('no obligations ' + JSON.stringify(j && j.result && j.result.error || ''));
+        const v = o[xrplCode(c.cur)] != null ? o[xrplCode(c.cur)] : o[c.cur]; if (v == null) throw new Error('currency not in obligations'); return [+v, new URL(rpc).host, 15]; }
+    } catch (e) { console.error(c.k, rpc.replace(/\/\/([^/]+).*/, '//$1'), e.message); }
+  }
+  return [null, null, null];
+}
+async function main() {
+  let prev = null; if (fs.existsSync(OUT)) { try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) { console.error(OUT + ' does not parse; left untouched.'); return; } }
+  const C = (prev && prev.coins) || {}; let ok = 0;
+  for (const [id, f] of Object.entries(COINS)) {
+    const H = (C[id] && C[id].chains) || {};
+    for (const c of f.chains) {
+      const h = H[c.k] || { rows: [] }; Object.assign(h, { addr: c.addr, src: c.src });
+      if (h.rows.some(r => r[0] === today)) { ok++; H[c.k] = h; continue; }
+      const [v, host, d] = await supply(c); if (v != null && isFinite(v)) { h.rows.push([today, Math.round(v * 100) / 100, host]); h.rows = h.rows.slice(-KEEP); h.decimals = d; ok++; console.log(id, c.k, v.toLocaleString('en-US'), 'from', host); }
+      else console.error(id, c.k, 'not read today');
+      H[c.k] = h;
+    }
+    C[id] = { name: f.name, issuer: f.issuer, src: f.src, chains: H, notRead: NOT_READ[id] || [] };
+  }
+  if (!ok) { console.error('no chain read; nothing written'); return; }
+  fs.writeFileSync(OUT, JSON.stringify({ about: 'Stablecoin supply by chain, read from the contracts each issuer lists, once a UTC day (rows: [date, tokens, endpoint]). Addresses from the issuers\' own pages (Circle, Tether, Paxos, Ripple), approved by the founder 28 Nov 2026; a chain counts only if the issuer lists it. notRead names chains the issuer lists that this job does not read yet. Written by tools/stables.mjs.',
+    updated: new Date(NOW).toISOString(), coins: C }) + '\n');
+  console.log(OUT + ' written');
+}
+main().catch(e => { console.error(e); process.exitCode = 0; });
