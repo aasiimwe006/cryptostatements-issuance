@@ -73,6 +73,27 @@ async function chains(prev) {
     console.log('chains', day, top.slice(0, 3).map(r => r.join(' ')).join(', ')); return { about: 'Stablecoin supply by chain, USD value, DefiLlama /stablecoinchains, one row per UTC day as read (the twelve largest chains and the rest summed).', days: held.slice(-KEEP) };
   } catch (e) { console.error('chains', e.message); return prev || null; }
 }
+/* r367 · DEX volume by chain (AP101 step 3): DefiLlama's own per-chain total for the last complete UTC day and its
+   7-day daily average, for a fixed list of chains, plus DefiLlama's total for all chains (the rest summed as other).
+   All DEX volume, not stablecoin-only; an aggregator's figure, shown on the site as labelled context and never filed.
+   One row per UTC day as read; a day held is not overwritten. */
+const DEX_CHAINS = ['Ethereum', 'Solana', 'Base', 'BSC', 'Arbitrum', 'Polygon', 'Tron', 'Avalanche', 'Hyperliquid L1', 'Robinhood Chain', 'Optimism', 'Sui', 'Near', 'Aptos'];
+async function dexChains(prev) {
+  const held = (prev && prev.days) || [], day = iso(NOW - DAY);
+  if (held.some(r => r.date === day)) return prev;
+  const q = '?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true', rows = [];
+  try { const all = await get('https://api.llama.fi/overview/dexs' + q), total = Math.round(+all.totalLastFullDay || 0);
+    for (const c of DEX_CHAINS) {
+      try { const j = await get('https://api.llama.fi/overview/dexs/' + encodeURIComponent(c) + q);
+        const v = +j.totalLastFullDay, a7 = +j.total7d / 7; if (isFinite(v) && v > 0) rows.push([c, Math.round(v), isFinite(a7) ? Math.round(a7) : null]); }
+      catch (e) { console.error('dex', c, e.message); } }
+    if (!rows.length || !total) throw new Error('no rows');
+    rows.sort((a, b) => b[1] - a[1]); const named = rows.reduce((s, r) => s + r[1], 0);
+    held.push({ date: day, read: new Date(NOW).toISOString(), rows, total, other: Math.max(0, total - named), chains: (all.allChains || []).length });
+    console.log('dex', day, rows.slice(0, 3).map(r => r[0] + ' ' + r[1]).join(', '), 'total', total);
+    return { about: 'DEX volume by chain, US dollars: DefiLlama /overview/dexs/{chain}, totalLastFullDay (the last complete UTC day) and total7d / 7, one row per UTC day as read; total is DefiLlama\u2019s all-chain total for the same day, other is total less the chains named. All DEX volume, not stablecoin-only.', days: held.slice(-KEEP) };
+  } catch (e) { console.error('dex', e.message); return prev || null; }
+}
 /* r329 · the whole crypto market: total market capitalisation, 24-hour volume and the bitcoin and ether shares, one row
    per UTC day as read (no free source publishes the history, so the history starts with the first run and grows;
    a day held is not overwritten). CoinGecko's public /global first, then CoinPaprika's /global, then Coinlore's.
@@ -110,6 +131,7 @@ async function main() {
   doc.stablePegs = await pegs(prev && prev.stablePegs);
   doc.stableChains = await chains(prev && prev.stableChains);
   doc.global = await global(prev && prev.global);
+  doc.dexChains = await dexChains(prev && prev.dexChains);
   /* snapshot the completed UTC days not yet held, at most the last 7 (a missed run is caught up) */
   const held = new Set(doc.snapshots.map(s => s.date)), days = [];
   for (let i = 7; i >= 1; i--) { const d = iso(NOW - i * DAY); if (!held.has(d)) days.push(d); }
