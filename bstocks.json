@@ -5308,6 +5308,42 @@
     "of": 21,
     "diffs": {}
    }
+  },
+  {
+   "date": "2026-11-28",
+   "block": 136195626,
+   "time": "2026-11-28T08:06:31Z",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 9929.91845767,
+    "CRCLB": 2345232.51510701,
+    "EWYB": 82684.06725971,
+    "INTCB": 756694.23424169,
+    "MSTRB": 868995.48882977,
+    "MUB": 114248.95556977,
+    "NVDAB": 1371396.50509443,
+    "SNDKB": 81037.58052897,
+    "SPCXB": 827886.79198551,
+    "TSLAB": 42340.10494391,
+    "GOOGLB": 306449.29225264,
+    "QCOMB": 15026.62877964,
+    "COINB": 123546.10073834,
+    "SPYB": 34788.20557492,
+    "WDCB": 6424.26316158,
+    "GLWB": 12491.27150159,
+    "NBISB": 275889.74609337,
+    "SOXLB": 3381284.0980211,
+    "DRAMB": 362720.19287836,
+    "CBRSB": 50754.64244925,
+    "DJTB": 201409.76456669
+   },
+   "crosscheck": {
+    "node": "bsc-rpc.publicnode.com",
+    "block": 136195626,
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
   }
  ],
  "snapshots": [
@@ -5454,6 +5490,35 @@
     "DRAMB": 413156.74797412,
     "CBRSB": 51499.99706003,
     "DJTB": 210272.8722162
+   }
+  },
+  {
+   "asOf": "2026-11-27T23:59:59Z",
+   "block": 136130788,
+   "method": "supply at the latest block minus mints plus burns since the as-of block",
+   "node": "bsc-mainnet.nodereal.io",
+   "values": {
+    "AMDB": 9929.91845767,
+    "CRCLB": 2344388.67504077,
+    "EWYB": 82684.06725971,
+    "INTCB": 756693.13424169,
+    "MSTRB": 868970.24961392,
+    "MUB": 114241.62845817,
+    "NVDAB": 1370785.13996287,
+    "SNDKB": 91388.2993772,
+    "SPCXB": 827720.33288997,
+    "TSLAB": 42327.42995685,
+    "GOOGLB": 292949.81512083,
+    "QCOMB": 15024.92527851,
+    "COINB": 123526.10073834,
+    "SPYB": 34778.18090723,
+    "WDCB": 6424.26316158,
+    "GLWB": 12490.78697196,
+    "NBISB": 275889.74609337,
+    "SOXLB": 3380862.70723958,
+    "DRAMB": 362720.19287836,
+    "CBRSB": 50754.64244925,
+    "DJTB": 201409.76456669
    }
   }
  ],
@@ -5683,9 +5748,348 @@
     }
    },
    "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
+  },
+  {
+   "asOf": "2026-11-06T23:59:59Z",
+   "block": 132100910,
+   "disclosure": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-6-nov-2026_11_09_2026_12-49-53.pdf",
+   "rows": {
+    "AMDB": {
+     "disclosed": 14607,
+     "onchain": 14655.36097029,
+     "difference": 48.36097029
+    },
+    "CRCLB": {
+     "disclosed": 2182796,
+     "onchain": 2199234.8394009,
+     "difference": 16438.8394009
+    },
+    "EWYB": {
+     "disclosed": 59852,
+     "onchain": 73570.65207783,
+     "difference": 13718.65207783
+    },
+    "INTCB": {
+     "disclosed": 1225175,
+     "onchain": 1229142.05857363,
+     "difference": 3967.05857363
+    },
+    "MSTRB": {
+     "disclosed": 821020,
+     "onchain": 850077.24889612,
+     "difference": 29057.24889612
+    },
+    "MUB": {
+     "disclosed": 104597,
+     "onchain": 100344.5144824,
+     "difference": -4252.4855176
+    },
+    "NVDAB": {
+     "disclosed": 263958,
+     "onchain": 265163.09086757,
+     "difference": 1205.09086757
+    },
+    "SNDKB": {
+     "disclosed": 110839,
+     "onchain": 120314.70714725,
+     "difference": 9475.70714725
+    },
+    "SPCXB": {
+     "disclosed": 1528347,
+     "onchain": 1583916.06226541,
+     "difference": 55569.06226541
+    },
+    "TSLAB": {
+     "disclosed": 57144,
+     "onchain": 57231.10548429,
+     "difference": 87.10548429
+    },
+    "GOOGLB": {
+     "disclosed": 399131,
+     "onchain": 414397.89476333,
+     "difference": 15266.89476333
+    },
+    "QCOMB": {
+     "disclosed": 13986,
+     "onchain": 14124.7382285,
+     "difference": 138.7382285
+    },
+    "COINB": {
+     "disclosed": 125971,
+     "onchain": 127073.65513751,
+     "difference": 1102.65513751
+    },
+    "SPYB": {
+     "disclosed": 32048,
+     "onchain": 32000.97858433,
+     "difference": -47.02141567
+    },
+    "WDCB": {
+     "disclosed": 6601,
+     "onchain": 6661.4026637,
+     "difference": 60.4026637
+    },
+    "GLWB": {
+     "disclosed": 11707,
+     "onchain": 11918.25241922,
+     "difference": 211.25241922
+    },
+    "NBISB": {
+     "disclosed": 65892,
+     "onchain": 66109.07814323,
+     "difference": 217.07814323
+    },
+    "SOXLB": {
+     "disclosed": 1301433,
+     "onchain": 1301577.38340458,
+     "difference": 144.38340458
+    },
+    "DRAMB": {
+     "disclosed": 459795,
+     "onchain": 460345.7082057,
+     "difference": 550.7082057
+    },
+    "CBRSB": {
+     "disclosed": 50493,
+     "onchain": 50409.79419343,
+     "difference": -83.20580657
+    },
+    "DJTB": {
+     "disclosed": 209409,
+     "onchain": 210346.73857655,
+     "difference": 937.73857655
+    }
+   },
+   "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
+  },
+  {
+   "asOf": "2026-11-13T23:59:59Z",
+   "block": 133443968,
+   "disclosure": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-13-nov-2026_11_15_2026_18-18-44.pdf",
+   "rows": {
+    "AMDB": {
+     "disclosed": 9239,
+     "onchain": 9232.44703781,
+     "difference": -6.55296219
+    },
+    "CRCLB": {
+     "disclosed": 2191127,
+     "onchain": 2206809.58802613,
+     "difference": 15682.58802613
+    },
+    "EWYB": {
+     "disclosed": 57718,
+     "onchain": 71436.92352587,
+     "difference": 13718.92352587
+    },
+    "INTCB": {
+     "disclosed": 856889,
+     "onchain": 897931.26380265,
+     "difference": 41042.26380265
+    },
+    "MSTRB": {
+     "disclosed": 790037,
+     "onchain": 837428.00730225,
+     "difference": 47391.00730225
+    },
+    "MUB": {
+     "disclosed": 68845,
+     "onchain": 64571.1445151,
+     "difference": -4273.8554849
+    },
+    "NVDAB": {
+     "disclosed": 931411,
+     "onchain": 1082303.28767942,
+     "difference": 150892.28767942
+    },
+    "SNDKB": {
+     "disclosed": 84573,
+     "onchain": 84612.50841998,
+     "difference": 39.50841998
+    },
+    "SPCXB": {
+     "disclosed": 1210122,
+     "onchain": 1487991.64329232,
+     "difference": 277869.64329232
+    },
+    "TSLAB": {
+     "disclosed": 46184,
+     "onchain": 46385.51510728,
+     "difference": 201.51510728
+    },
+    "GOOGLB": {
+     "disclosed": 314532,
+     "onchain": 314721.89070904,
+     "difference": 189.89070904
+    },
+    "QCOMB": {
+     "disclosed": 14088,
+     "onchain": 14227.75382136,
+     "difference": 139.75382136
+    },
+    "COINB": {
+     "disclosed": 123376,
+     "onchain": 124548.3167891,
+     "difference": 1172.3167891
+    },
+    "SPYB": {
+     "disclosed": 32279,
+     "onchain": 33713.45978619,
+     "difference": 1434.45978619
+    },
+    "WDCB": {
+     "disclosed": 6768,
+     "onchain": 6827.79991402,
+     "difference": 59.79991402
+    },
+    "GLWB": {
+     "disclosed": 11508,
+     "onchain": 11705.55976087,
+     "difference": 197.55976087
+    },
+    "NBISB": {
+     "disclosed": 104248,
+     "onchain": 106175.04857495,
+     "difference": 1927.04857495
+    },
+    "SOXLB": {
+     "disclosed": 598222,
+     "onchain": 606326.20911483,
+     "difference": 8104.20911483
+    },
+    "DRAMB": {
+     "disclosed": 413939,
+     "onchain": 414685.85287548,
+     "difference": 746.85287548
+    },
+    "CBRSB": {
+     "disclosed": 53498,
+     "onchain": 53395.39687055,
+     "difference": -102.60312945
+    },
+    "DJTB": {
+     "disclosed": 205176,
+     "onchain": 207927.84970868,
+     "difference": 2751.84970868
+    }
+   },
+   "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
+  },
+  {
+   "asOf": "2026-11-20T23:59:59Z",
+   "block": 134787428,
+   "disclosure": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-20-nov-2026_11_23_2026_06-31-24.pdf",
+   "rows": {
+    "AMDB": {
+     "disclosed": 9154,
+     "onchain": 9896.43314199,
+     "difference": 742.43314199
+    },
+    "CRCLB": {
+     "disclosed": 2297513,
+     "onchain": 2360110.56324465,
+     "difference": 62597.56324465
+    },
+    "EWYB": {
+     "disclosed": 75253,
+     "onchain": 88820.89813017,
+     "difference": 13567.89813017
+    },
+    "INTCB": {
+     "disclosed": 816152,
+     "onchain": 933005.11454209,
+     "difference": 116853.11454209
+    },
+    "MSTRB": {
+     "disclosed": 738833,
+     "onchain": 817528.26078021,
+     "difference": 78695.26078021
+    },
+    "MUB": {
+     "disclosed": 111754,
+     "onchain": 120046.77256806,
+     "difference": 8292.77256806
+    },
+    "NVDAB": {
+     "disclosed": 1239317,
+     "onchain": 1406371.94093158,
+     "difference": 167054.94093158
+    },
+    "SNDKB": {
+     "disclosed": 70830,
+     "onchain": 73240.74009952,
+     "difference": 2410.74009952
+    },
+    "SPCXB": {
+     "disclosed": 819531,
+     "onchain": 840617.53089944,
+     "difference": 21086.53089944
+    },
+    "TSLAB": {
+     "disclosed": 48417,
+     "onchain": 49281.90462178,
+     "difference": 864.90462178
+    },
+    "GOOGLB": {
+     "disclosed": 294320,
+     "onchain": 325010.46076326,
+     "difference": 30690.46076326
+    },
+    "QCOMB": {
+     "disclosed": 13239,
+     "onchain": 14882.26543124,
+     "difference": 1643.26543124
+    },
+    "COINB": {
+     "disclosed": 116813,
+     "onchain": 121968.59809975,
+     "difference": 5155.59809975
+    },
+    "SPYB": {
+     "disclosed": 37250,
+     "onchain": 39226.50273393,
+     "difference": 1976.50273393
+    },
+    "WDCB": {
+     "disclosed": 6419,
+     "onchain": 6488.34666108,
+     "difference": 69.34666108
+    },
+    "GLWB": {
+     "disclosed": 12227,
+     "onchain": 12556.8092395,
+     "difference": 329.8092395
+    },
+    "NBISB": {
+     "disclosed": 130881,
+     "onchain": 130199.10974753,
+     "difference": -681.89025247
+    },
+    "SOXLB": {
+     "disclosed": 2529020,
+     "onchain": 2508971.34840858,
+     "difference": -20048.65159142
+    },
+    "DRAMB": {
+     "disclosed": 407700,
+     "onchain": 413156.74797412,
+     "difference": 5456.74797412
+    },
+    "CBRSB": {
+     "disclosed": 51411,
+     "onchain": 51499.99706003,
+     "difference": 88.99706003
+    },
+    "DJTB": {
+     "disclosed": 209732,
+     "onchain": 210272.8722162,
+     "difference": 540.8722162
+    }
+   },
+   "note": "Certificates disclosed by the issuer vs tokens on BNB Chain at the same second. The shares held at the custodian are not checked: no periodic independent attestation of them is published."
   }
  ],
- "updated": "2026-11-27T08:49:32.111Z",
+ "updated": "2026-11-28T08:06:31.847Z",
  "flows": [
   {
    "date": "2026-10-20",
@@ -11292,6 +11696,168 @@
      "mints": 3,
      "burns": 1,
      "net": 751.08906414
+    }
+   },
+   "check": {
+    "method": "totalSupply at the last block minus totalSupply before the first block, against minted minus burned",
+    "matched": 21,
+    "of": 21,
+    "diffs": {}
+   }
+  },
+  {
+   "date": "2026-11-27",
+   "fromBlock": 135938855,
+   "toBlock": 136130788,
+   "node": "bsc-mainnet.nodereal.io",
+   "tokens": 21,
+   "rows": {
+    "AMDB": {
+     "minted": 175.16877321,
+     "burned": 313.56757359,
+     "mints": 27,
+     "burns": 1,
+     "net": -138.39880038
+    },
+    "CRCLB": {
+     "minted": 8983.51431297,
+     "burned": 19992.47486543,
+     "mints": 42,
+     "burns": 1,
+     "net": -11008.96055246
+    },
+    "EWYB": {
+     "minted": 1630.45733527,
+     "burned": 846.58986059,
+     "mints": 22,
+     "burns": 1,
+     "net": 783.86747468
+    },
+    "INTCB": {
+     "minted": 2181.90077293,
+     "burned": 7187.93750073,
+     "mints": 32,
+     "burns": 1,
+     "net": -5006.0367278
+    },
+    "MSTRB": {
+     "minted": 16357.86526132,
+     "burned": 13823.29045269,
+     "mints": 80,
+     "burns": 1,
+     "net": 2534.57480863
+    },
+    "MUB": {
+     "minted": 2268.32913571,
+     "burned": 1592.62186373,
+     "mints": 104,
+     "burns": 1,
+     "net": 675.70727198
+    },
+    "NVDAB": {
+     "minted": 71111.11517322,
+     "burned": 12665.25793707,
+     "mints": 237,
+     "burns": 1,
+     "net": 58445.85723615
+    },
+    "SNDKB": {
+     "minted": 1202.37316283,
+     "burned": 0,
+     "mints": 110,
+     "burns": 0,
+     "net": 1202.37316283
+    },
+    "SPCXB": {
+     "minted": 31772.90229846,
+     "burned": 45707.61541758,
+     "mints": 170,
+     "burns": 1,
+     "net": -13934.71311912
+    },
+    "TSLAB": {
+     "minted": 928.0609977,
+     "burned": 710.65738096,
+     "mints": 56,
+     "burns": 1,
+     "net": 217.40361674
+    },
+    "GOOGLB": {
+     "minted": 13259.30503388,
+     "burned": 6076.13443162,
+     "mints": 126,
+     "burns": 1,
+     "net": 7183.17060226
+    },
+    "QCOMB": {
+     "minted": 94.17614476,
+     "burned": 68.80624262,
+     "mints": 6,
+     "burns": 1,
+     "net": 25.36990214
+    },
+    "COINB": {
+     "minted": 147.52030204,
+     "burned": 1892.00283467,
+     "mints": 11,
+     "burns": 1,
+     "net": -1744.48253263
+    },
+    "SPYB": {
+     "minted": 367.65047397,
+     "burned": 707.82613429,
+     "mints": 36,
+     "burns": 1,
+     "net": -340.17566032
+    },
+    "WDCB": {
+     "minted": 4.04038263,
+     "burned": 129.00481898,
+     "mints": 3,
+     "burns": 1,
+     "net": -124.96443635
+    },
+    "GLWB": {
+     "minted": 4.0542342,
+     "burned": 32.29679721,
+     "mints": 2,
+     "burns": 1,
+     "net": -28.24256301
+    },
+    "NBISB": {
+     "minted": 37690.34649208,
+     "burned": 1117.3493438,
+     "mints": 182,
+     "burns": 1,
+     "net": 36572.99714828
+    },
+    "SOXLB": {
+     "minted": 98444.21764572,
+     "burned": 18609.95719098,
+     "mints": 187,
+     "burns": 1,
+     "net": 79834.26045474
+    },
+    "DRAMB": {
+     "minted": 64339.61665629,
+     "burned": 7016.58859712,
+     "mints": 12,
+     "burns": 1,
+     "net": 57323.02805917
+    },
+    "CBRSB": {
+     "minted": 1386.10022146,
+     "burned": 608.69941672,
+     "mints": 44,
+     "burns": 1,
+     "net": 777.40080474
+    },
+    "DJTB": {
+     "minted": 388.01749439,
+     "burned": 13159.61573747,
+     "mints": 6,
+     "burns": 1,
+     "net": -12771.59824308
     }
    },
    "check": {
