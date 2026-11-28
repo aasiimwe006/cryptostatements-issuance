@@ -3619,7 +3619,7 @@
    "published": "2026-11-23",
    "src": "https://www.adgm.com/globalassets/market-disclosure/content/disclosure/disclosure-on-outstanding-certificates-as-of-20-nov-2026_11_23_2026_06-31-24.pdf",
    "reporting_entity": "BTech Services Limited",
-   "note": "113 rows; new since 13 Nov: EWZB, EWZSB, NUB, MELIB, EWTB, EWJB, IWMB, ANTB; listed 2026-11-23 09:32:56 (time zone not stated); whole certificates as filed; tickers split across lines in the PDF (GOOGL B, QCOM B, CRWD B) joined",
+   "note": "113 rows; new since 13 Nov: EWZB, EWZSB, NUB, MELIB, EWTB, EWJB, IWMB, ANTB; listed 2026-11-23 09:32:56 (time zone not stated); whole certificates as filed; tickers split across lines in the PDF (GOOGL B, QCOM B, CRWD B) joined; SNDKB shown as 70830, while BTech’s SanDisk split notice (posted 23 Nov) states an 8-for-1 adjustment effective 20 Nov 2026 06:59 GST (72,032.590125 to 576,260.721007), and that notice’s table is labelled LLYB under SNDKB’s ISIN: filed as printed, flagged by the weekly check 28 Nov 2026",
    "rows": {
     "AMDB": {
      "outstanding": 9154,
