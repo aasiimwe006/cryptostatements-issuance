@@ -20,7 +20,13 @@
    for the currency). Public endpoints only; an endpoint that refuses is logged and the next one is tried; a chain
    not read today is left missing for that day. Tested in a browser on 28 Nov 2026: every chain answered except
    Solana (which refuses browsers; tkfunds.mjs reads it daily from GitHub's runner) and Arc (no public endpoint
-   confirmed, so listed as not read). No dependencies (Node 20). STB_NOW: tests only. */
+   confirmed, so listed as not read).
+
+   r369 · Tether's own per-chain figures, once a UTC day: https://app.tether.to/transparency.json (the file behind
+   https://tether.to/en/transparency/?tab=usdt). For each chain Tether names: total authorised, authorised but not
+   issued, quarantined, as Tether states them, with Tether's own update time (the file's id, in Unix seconds). The site
+   uses them to reconcile the contract reads with Tether's net circulation line by line. Copied, never computed
+   beyond the subtraction Tether's page itself shows. No dependencies (Node 20). STB_NOW: tests only. */
 import fs from 'node:fs';
 const OUT = 'stables.json', KEEP = 1100, NOW = process.env.STB_NOW ? Date.parse(process.env.STB_NOW) : Date.now(), today = new Date(NOW).toISOString().slice(0, 10);
 const list = (env, pub) => [...(process.env[env] || '').split(',').map(x => x.trim()).filter(Boolean), ...pub];
@@ -124,6 +130,21 @@ async function supply(c) {
   }
   return [null, null, null];
 }
+const TETHER_FILE = 'https://app.tether.to/transparency.json';
+const TETHER_KEYS = { eth: 'ethereum', tron: 'tron', sol: 'solana', ava: 'avalanche', celo: 'celo', kaia: 'kaia', cosmos: 'kava', aptos: 'aptos', ton: 'ton', near: 'near', tezos: 'tezos', liq: 'liquid', statemint: 'polkadot', bnb: 'bsc', algo: 'algorand', eos: 'eos', omni: 'omni', slp: 'slp', statemine: 'kusama' };
+const TETHER_DEPRECATED = ['algorand', 'eos', 'omni', 'slp', 'kusama'];
+async function tetherNow(prev) {
+  const held = (prev && prev.days) || [];
+  try { const j = await get(TETHER_FILE), u = j && j.data && j.data.usdt; if (!u || !u.id) throw new Error('no usdt block');
+    const asOf = new Date(+u.id * 1000).toISOString(), chains = {};
+    for (const [k, name] of Object.entries(TETHER_KEYS)) { if (u['totaltokens_' + k] == null) continue;
+      chains[name] = [+u['totaltokens_' + k] || 0, +u['reserve_balance_' + k] || 0, +u['quarantined_' + k] || 0]; }
+    for (const k of Object.keys(u)) { const m = k.match(/^totaltokens_(.+)$/); if (m && !TETHER_KEYS[m[1]]) chains[m[1]] = [+u[k] || 0, +u['reserve_balance_' + m[1]] || 0, +u['quarantined_' + m[1]] || 0]; }
+    if (!held.some(d => d.asOf === asOf)) held.push({ date: today, asOf, read: new Date(NOW).toISOString(), chains });
+    console.log('tether file', asOf, Object.keys(chains).length, 'chains');
+    return { about: 'Tether\'s own per-chain figures for USD₮ from ' + TETHER_FILE + ': [total authorised, authorised but not issued, quarantined], with Tether\'s update time (asOf). Net circulation = total - not issued - quarantined, over the chains Tether has not deprecated (' + TETHER_DEPRECATED.join(', ') + ' are deprecated on Tether\'s page).', src: TETHER_FILE, page: 'https://tether.to/en/transparency/?tab=usdt', deprecated: TETHER_DEPRECATED, days: held.slice(-KEEP) };
+  } catch (e) { console.error('tether file', e.message); return prev || null; }
+}
 async function main() {
   let prev = null; if (fs.existsSync(OUT)) { try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) { console.error(OUT + ' does not parse; left untouched.'); return; } }
   const C = (prev && prev.coins) || {}; let ok = 0;
@@ -138,9 +159,10 @@ async function main() {
     }
     C[id] = { name: f.name, issuer: f.issuer, src: f.src, chains: H, notRead: NOT_READ[id] || [] };
   }
-  if (!ok) { console.error('no chain read; nothing written'); return; }
+  const tether = await tetherNow(prev && prev.tether);
+  if (!ok && !tether) { console.error('no chain read; nothing written'); return; }
   fs.writeFileSync(OUT, JSON.stringify({ about: 'Stablecoin supply by chain, read from the contracts each issuer lists, once a UTC day (rows: [date, tokens, endpoint]). Addresses from the issuers\' own pages (Circle, Tether, Paxos, Ripple), approved by the founder 28 Nov 2026; a chain counts only if the issuer lists it. notRead names chains the issuer lists that this job does not read yet. Written by tools/stables.mjs.',
-    updated: new Date(NOW).toISOString(), coins: C }) + '\n');
+    updated: new Date(NOW).toISOString(), coins: C, tether }) + '\n');
   console.log(OUT + ' written');
 }
 main().catch(e => { console.error(e); process.exitCode = 0; });
