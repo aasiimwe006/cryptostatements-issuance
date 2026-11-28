@@ -37,7 +37,7 @@ const OUT = 'stables.json', KEEP = 1100, NOW = process.env.STB_NOW ? Date.parse(
 const list = (env, pub) => [...(process.env[env] || '').split(',').map(x => x.trim()).filter(Boolean), ...pub];
 const UA = { 'user-agent': 'cryptostatements-issuance (GitHub Actions; daily public-data copy)' };
 async function post(url, body) { const r = await fetch(url, { method: 'POST', signal: AbortSignal.timeout(20000), headers: { 'content-type': 'application/json', ...UA }, body: JSON.stringify(body) });
-  if (!r.ok) throw new Error(new URL(url).host + ' HTTP ' + r.status); return r.json(); }
+  if (!r.ok) { const t = await r.text().catch(() => ''); throw new Error(new URL(url).host + ' HTTP ' + r.status + ' ' + t.slice(0, 160)); } return r.json(); }
 async function get(url) { const r = await fetch(url, { signal: AbortSignal.timeout(20000), headers: UA }); if (!r.ok) throw new Error(new URL(url).host + ' HTTP ' + r.status); return r.json(); }
 const units = (raw, d) => Number(BigInt(raw)) / 10 ** d;
 
@@ -170,6 +170,75 @@ async function tetherNow(prev) {
     return { about: 'Tether\'s own per-chain figures for USD₮ from ' + TETHER_FILE + ': [total authorised, authorised but not issued, quarantined], with Tether\'s update time (asOf). Net circulation = total - not issued - quarantined, over the chains Tether has not deprecated (' + TETHER_DEPRECATED.join(', ') + ' are deprecated on Tether\'s page).', src: TETHER_FILE, page: 'https://tether.to/en/transparency/?tab=usdt', deprecated: TETHER_DEPRECATED, days: held.slice(-KEEP) };
   } catch (e) { console.error('tether file', e.message); return prev || null; }
 }
+/* r376 · AP103 step A2 (plan approved by the founder 28 Nov 2026): mints and burns by chain, per complete UTC day.
+   For each EVM chain read for USDC, PYUSD and RLUSD, the job sums the ERC-20 Transfer events from the zero address
+   (tokens created) and to the zero address (tokens destroyed) on the issuer's own contract, over the blocks of one
+   UTC day. The day's blocks are found by their own timestamps. Check: the contract's totalSupply at the day's last
+   block less the total at the block before the day's first, which must equal created less destroyed; when the
+   endpoint does not serve old state the row says "unchecked", never assumed. USD₮ is not read this way: Tether's
+   Ethereum contract issues without Transfer events, and Tether moves issued tokens from its own treasury; its net
+   per-chain file (above) stays the USD₮ figure. Rows: [date, created, destroyed, events created, events destroyed,
+   first block, last block, check, endpoint]. The newest complete day is read, and up to FLOW_CATCHUP earlier days a
+   missed run left empty.
+   Tested in a browser 28 Nov 2026 for 27 Nov: USDC on Ethereum created 603,398,217.42 and destroyed 749,929,016.90
+   (matches supply), Base, Optimism and Avalanche (match supply), Arbitrum and Polygon (read; the endpoints do not serve
+   old state, so unchecked); PYUSD and RLUSD on Ethereum (match supply). HyperEVM answered but rate-limited its log
+   queries from the test browser; a day it refuses is left missing. */
+const TRANSFER = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef', ZERO32 = '0x' + '0'.repeat(64);
+const FLOW_COINS = ['usdc', 'pyusd', 'rlusd'], FLOW_CATCHUP = 3, FLOW_BUDGET = 1500;
+const hex = n => '0x' + n.toString(16);
+/* a rate limit is waited out (2, 4 and 8 seconds) before the endpoint is given up */
+async function rpcCall(rpc, method, params) {
+  for (let i = 0; ; i++) {
+    try { const j = await post(rpc, { jsonrpc: '2.0', id: 1, method, params }); if (j.error || j.result === undefined) throw new Error(method + ' ' + JSON.stringify(j.error || 'no result').slice(0, 140)); return j.result; }
+    catch (e) { if (i >= 3 || !/HTTP 429|rate limit|limit reached/i.test(e.message)) throw e; await new Promise(r => setTimeout(r, 2000 * 2 ** i)); } } }
+/* the first block whose timestamp is at or after t (seconds): interpolation inside a bracket, bisection as fallback */
+async function blockAtOrAfter(rpc, t, cache) {
+  const ts = async n => { if (cache.has(n)) return cache.get(n); const b = await rpcCall(rpc, 'eth_getBlockByNumber', [hex(n), false]); const v = parseInt(b.timestamp, 16); cache.set(n, v); return v; };
+  let hi = parseInt(await rpcCall(rpc, 'eth_blockNumber', []), 16), thi = await ts(hi); if (thi < t) return null;
+  let lo = Math.max(0, hi - 50000), tlo = await ts(lo); for (let w = hi - lo; tlo >= t && lo > 0; w *= 4) { hi = lo; thi = tlo; lo = Math.max(0, lo - 4 * w); tlo = await ts(lo); }
+  for (let i = 0; hi - lo > 1 && i < 60; i++) {
+    let m = lo + Math.round((t - tlo) / Math.max(1, thi - tlo) * (hi - lo)); if (i % 2 || m <= lo || m >= hi) m = Math.floor((lo + hi) / 2);
+    const tm = await ts(m); if (tm >= t) { hi = m; thi = tm; } else { lo = m; tlo = tm; } }
+  return hi;
+}
+/* summed Transfer amounts for one topic filter over [a, b], walked forward in chunks. An endpoint that refuses a range
+   as too wide (drpc's free plan takes 100 blocks, HyperEVM 1,000) halves the chunk and carries on; any other refusal
+   (a rate limit, an outage) ends this endpoint's attempt so the next endpoint is tried. */
+const RANGE_ERR = /HTTP 400|HTTP 413|range|too many|exceed|more than|10000 results|response size/i;
+async function sumLogs(rpc, addr, topics, a, b, st) {
+  let x = a, v = 0n, n = 0, span = st.span || (b - a + 1);
+  while (x <= b) { const y = Math.min(b, x + span - 1);
+    if (++st.calls > FLOW_BUDGET) throw new Error('call budget reached');
+    try { const L = await rpcCall(rpc, 'eth_getLogs', [{ address: addr, topics, fromBlock: hex(x), toBlock: hex(y) }]);
+      for (const l of L) { v += BigInt(l.data === '0x' ? 0 : l.data); n++; } x = y + 1; }
+    catch (e) { if (!RANGE_ERR.test(e.message) || /limit reached|rate/i.test(e.message) || span === 1) throw e; const cap = e.message.match(/(?:over|range|maximum|up to|limited to)[^\d]{0,20}(\d[\d,]*)/i), c = cap ? +cap[1].replace(/,/g, '') : 0; span = c > 0 && c < span ? c : Math.max(1, Math.floor(span / 2)); st.span = span; } }
+  return { v, n };
+}
+async function supplyAt(rpc, addr, n) { try { return BigInt(await rpcCall(rpc, 'eth_call', [{ to: addr, data: '0x18160ddd' }, hex(n)])); } catch (e) { return null; } }
+async function flowDay(c, dec, day, bcache) {
+  const t0 = Date.parse(day + 'T00:00:00Z') / 1000, t1 = t0 + 86400;
+  for (const rpc of c.rpcs || []) {
+    try { const cache = bcache[rpc] || (bcache[rpc] = new Map()), st = { calls: 0 };
+      const a = await blockAtOrAfter(rpc, t0, cache), next = await blockAtOrAfter(rpc, t1, cache); if (a == null || next == null) throw new Error('day not complete on this endpoint');
+      const b = next - 1, mint = await sumLogs(rpc, c.addr, [TRANSFER, ZERO32], a, b, st), burn = await sumLogs(rpc, c.addr, [TRANSFER, null, ZERO32], a, b, st);
+      const s0 = await supplyAt(rpc, c.addr, a - 1), s1 = await supplyAt(rpc, c.addr, b);
+      const check = s0 == null || s1 == null ? 'unchecked' : (s1 - s0 === mint.v - burn.v ? 'matches supply' : 'differs from supply by ' + units((s1 - s0) - (mint.v - burn.v), dec));
+      const r2 = v => Math.round(units(v, dec) * 100) / 100;
+      return [day, r2(mint.v), r2(burn.v), mint.n, burn.n, a, b, check, new URL(rpc).host];
+    } catch (e) { console.error(c.k, 'flows', day, rpc.replace(/\/\/([^/]+).*/, '//$1'), e.message); }
+  }
+  return null;
+}
+async function flowsAll(C) {
+  const bcache = {}, newest = new Date(Date.parse(today) - 86400000).toISOString().slice(0, 10);
+  for (const id of FLOW_COINS) { const f = COINS[id]; for (const c of f.chains) { if (c.kind !== 'evm') continue;
+    const h = C[id] && C[id].chains && C[id].chains[c.k]; if (!h || !h.decimals) continue; h.flows = h.flows || [];
+    for (let k = FLOW_CATCHUP; k >= 0; k--) { const day = new Date(Date.parse(newest) - k * 86400000).toISOString().slice(0, 10);
+      if (h.flows.some(r => r[0] === day)) continue; if (k > 0 && (!h.flows.length || day < h.flows[0][0])) continue;   // catch-up only for days after the first row
+      const r = await flowDay(c, h.decimals, day, bcache); if (r) { h.flows.push(r); console.log(id, c.k, 'flows', day, 'created', r[1].toLocaleString('en-US'), 'destroyed', r[2].toLocaleString('en-US'), r[7]); } }
+    h.flows.sort((x, y) => x[0].localeCompare(y[0])); h.flows = h.flows.slice(-KEEP); } }
+}
 async function main() {
   let prev = null; if (fs.existsSync(OUT)) { try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) { console.error(OUT + ' does not parse; left untouched.'); return; } }
   const C = (prev && prev.coins) || {}; let ok = 0;
@@ -184,9 +253,10 @@ async function main() {
     }
     C[id] = { name: f.name, issuer: f.issuer, src: f.src, chains: H, notRead: NOT_READ[id] || [] };
   }
+  try { await flowsAll(C); } catch (e) { console.error('flows', e.message); }
   const tether = await tetherNow(prev && prev.tether);
   if (!ok && !tether) { console.error('no chain read; nothing written'); return; }
-  fs.writeFileSync(OUT, JSON.stringify({ about: 'Stablecoin supply by chain, read from the contracts each issuer lists, once a UTC day (rows: [date, tokens, endpoint]). Addresses from the issuers\' own pages (Circle, Tether, Paxos, Ripple), approved by the founder 28 Nov 2026; a chain counts only if the issuer lists it. notRead names chains the issuer lists that this job does not read yet. Written by tools/stables.mjs.',
+  fs.writeFileSync(OUT, JSON.stringify({ about: 'Stablecoin supply by chain, read from the contracts each issuer lists, once a UTC day (rows: [date, tokens, endpoint]). Addresses from the issuers\' own pages (Circle, Tether, Paxos, Ripple), approved by the founder 28 Nov 2026; a chain counts only if the issuer lists it. notRead names chains the issuer lists that this job does not read yet. flows (EVM chains, USDC, PYUSD and RLUSD): one row per complete UTC day, [date, tokens created, tokens destroyed, events created, events destroyed, first block, last block, check against totalSupply, endpoint], from Transfer events from and to the zero address on the issuer\'s contract. Written by tools/stables.mjs.',
     updated: new Date(NOW).toISOString(), coins: C, tether }) + '\n');
   console.log(OUT + ' written');
 }
