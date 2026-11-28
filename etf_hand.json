@@ -19,6 +19,12 @@
      "qty": 174722.0998,
      "read": "2026-11-09",
      "by": "founder, Fidelity page (Total bitcoin in fund, as of Nov-06-2026)"
+    },
+    {
+     "date": "2026-11-25",
+     "qty": 169266.2552,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, Fidelity page (Total bitcoin in fund, as of Nov-25-2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -33,6 +39,12 @@
      "qty": 608178.3943,
      "read": "2026-11-09",
      "by": "founder, Fidelity page (Total ether in fund, as of Nov-06-2026)"
+    },
+    {
+     "date": "2026-11-25",
+     "qty": 595951.261,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, Fidelity page (Total ether in fund, as of Nov-25-2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -47,6 +59,12 @@
      "qty": 5314.03,
      "read": "2026-11-09",
      "by": "founder, Franklin Templeton page (Bitcoin in Fund, as of 11/06/2026)"
+    },
+    {
+     "date": "2026-11-27",
+     "qty": 5342.89,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, Franklin Templeton page (Bitcoin in Fund, as of 11/27/2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -61,6 +79,12 @@
      "qty": 20073.16,
      "read": "2026-11-09",
      "by": "founder, Franklin Templeton page (Ether in Fund, as of 11/06/2026)"
+    },
+    {
+     "date": "2026-11-27",
+     "qty": 19694.52,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, Franklin Templeton page (Ether in Fund, as of 11/27/2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -75,6 +99,12 @@
      "qty": 5719.89,
      "read": "2026-11-09",
      "by": "founder, CoinShares page (BRRR Holdings, BITCOIN Shares, as of 11/06/2026)"
+    },
+    {
+     "date": "2026-11-26",
+     "qty": 5662.74,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, CoinShares page (BRRR Holdings, BITCOIN Shares, as of 11/26/2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -89,6 +119,12 @@
      "qty": 11185.09,
      "read": "2026-11-09",
      "by": "founder, 21Shares page (Underlying Assets, ETHEREUM Coin Entitlement, as of Nov 6, 2026)"
+    },
+    {
+     "date": "2026-11-27",
+     "qty": 10641.11,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, 21Shares page (Underlying Assets, ETHEREUM Coin Entitlement, as of Nov 27, 2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -103,6 +139,12 @@
      "qty": 14664,
      "read": "2026-11-09",
      "by": "founder, VanEck page (Holdings, Bitcoin Quantity, as of 11/05/2026)"
+    },
+    {
+     "date": "2026-11-26",
+     "qty": 14240,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, VanEck page (Holdings, Bitcoin Quantity, as of 11/26/2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -117,6 +159,12 @@
      "qty": 45280,
      "read": "2026-11-09",
      "by": "founder, VanEck page (Holdings, Ether Quantity, as of 11/05/2026)"
+    },
+    {
+     "date": "2026-11-26",
+     "qty": 43819,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, VanEck page (Holdings, Ether Quantity, as of 11/26/2026); approved by the founder 28 Nov 2026"
     }
    ]
   },
@@ -131,6 +179,12 @@
      "qty": 2006,
      "read": "2026-11-09",
      "by": "founder, WisdomTree page (Current portfolio, BITCOIN Shares, as of 11/6/2026)"
+    },
+    {
+     "date": "2026-11-27",
+     "qty": 2012,
+     "read": "2026-11-28",
+     "by": "weekly hand-read check in the founder’s browser, WisdomTree page (Current portfolio, BITCOIN Shares, as of 11/27/2026); approved by the founder 28 Nov 2026"
     }
    ]
   }
