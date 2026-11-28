@@ -14,6 +14,11 @@
    Arbitrum, Polygon or Base, so tokens called USDT there are not read. Chains the issuer lists but this job does not
    read yet are named in NOT_READ and shown on the site as not read.
 
+   r370 · added (tested in a browser 28 Nov 2026, each answering): USDC on Arc (Circle's endpoint, chain 5042, per
+   docs.arc.io), Sui (GraphQL coinMetadata.supply; Sui's JSON-RPC is deprecated), NEAR (ft_total_supply) and Noble
+   (bank supply of uusdc); USDT on TON (toncenter jetton master) and NEAR. TON and NEAR USD₮ equal Tether's own
+   total authorised on those chains.
+
    Readers: EVM eth_call totalSupply() and decimals(); Solana getTokenSupply; Aptos 0x1::fungible_asset::supply over
    the published metadata object; Stellar Horizon /assets (balances, claimable balances, pools, contracts); Tron
    TronGrid triggerconstantcontract totalSupply() and decimals(); XRPL gateway_balances on the issuer (obligations
@@ -57,7 +62,12 @@ const R = {
   aptos: ['https://fullnode.mainnet.aptoslabs.com/v1'],
   stellar: ['https://horizon.stellar.org'],
   tron: ['https://api.trongrid.io'],
-  xrpl: ['https://xrplcluster.com', 'https://s1.ripple.com:51234']
+  xrpl: ['https://xrplcluster.com', 'https://s1.ripple.com:51234'],
+  arc: ['https://rpc.mainnet.arc.io', 'https://arc.drpc.org'],
+  sui: ['https://graphql.mainnet.sui.io/graphql'],
+  near: ['https://rpc.mainnet.near.org', 'https://free.rpc.fastnear.com'],
+  noble: ['https://rest.cosmos.directory/noble', 'https://noble-api.polkachu.com'],
+  ton: ['https://toncenter.com/api/v3']
 };
 const CIRCLE = 'https://developers.circle.com/stablecoins/usdc-contract-addresses', TETHER = 'https://tether.to/en/supported-protocols/',
   PAXOS = 'https://docs.paxos.com/stablecoin/pyusd/mainnet', RIPPLE = 'https://docs.ripple.com/products/stablecoin/overview/token-addresses';
@@ -77,6 +87,10 @@ const COINS = {
     ev('linea', '0x176211869cA2b568f2A7D4EE941E073a821EE1ff', CIRCLE),
     ev('unichain', '0x078D782b760474a361dDA0AF3839290b0EF57AD6', CIRCLE),
     ev('worldchain', '0x79A02482A880bCe3F13E09da970dC34dB4cD24D1', CIRCLE),
+    ev('arc', '0x3600000000000000000000000000000000000000', CIRCLE),
+    { k: 'sui', addr: '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC', kind: 'sui', rpcs: R.sui, src: CIRCLE },
+    { k: 'near', addr: '17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1', kind: 'near', rpcs: R.near, src: CIRCLE },
+    { k: 'noble', addr: 'uusdc', kind: 'cosmosbank', dec: 6, rpcs: R.noble, src: CIRCLE },
     { k: 'aptos', addr: '0xbae207659db88bea0cbead6da0ed00aac12edcdda169e591cd41c94180b46f3b', kind: 'aptos', rpcs: R.aptos, src: CIRCLE },
     { k: 'stellar', addr: 'USDC:GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN', kind: 'stellar', rpcs: R.stellar, src: CIRCLE }] },
   usdt: { name: 'USDT', issuer: 'Tether', src: TETHER, chains: [
@@ -87,7 +101,9 @@ const COINS = {
     ev('celo', '0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e', TETHER),
     ev('kaia', '0xd077a400968890eacc75cdc901f0356c943e4fdb', TETHER),
     ev('kava', '0x919C1c267BC06a7039e03fcc2eF738525769109c', TETHER),
-    { k: 'aptos', addr: '0x357b0b74bc833e95a115ad22604854d6b0fca151cecd94111770e5d6ffc9dc2b', kind: 'aptos', rpcs: R.aptos, src: TETHER }] },
+    { k: 'aptos', addr: '0x357b0b74bc833e95a115ad22604854d6b0fca151cecd94111770e5d6ffc9dc2b', kind: 'aptos', rpcs: R.aptos, src: TETHER },
+    { k: 'ton', addr: 'EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs', kind: 'ton', dec: 6, rpcs: R.ton, src: TETHER },
+    { k: 'near', addr: 'usdt.tether-token.near', kind: 'near', rpcs: R.near, src: TETHER }] },
   pyusd: { name: 'PYUSD', issuer: 'Paxos (for PayPal)', src: PAXOS, chains: [
     ev('ethereum', '0x6c3ea9036406852006290770BEdFcAbA0e23A0e8', PAXOS),
     { k: 'solana', addr: '2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo', kind: 'solana', rpcs: R.solana, src: PAXOS },
@@ -99,8 +115,8 @@ const COINS = {
     ev('optimism', '0x8d58c0c60b8d6b88fa98b291a646db34d0f98258', RIPPLE)] } };
 /* listed by the issuer, not read by this job yet (shown on the site as "not read") */
 const NOT_READ = {
-  usdc: ['Arc (no public endpoint confirmed yet)', 'Algorand', 'Celo', 'Codex', 'Cronos', 'EDGE', 'Hedera', 'Injective', 'Ink', 'Monad', 'Morph', 'NEAR', 'Noble', 'Pharos', 'Plume', 'Polkadot Asset Hub', 'Sei', 'Sonic', 'Starknet', 'Sui', 'XDC', 'XRPL', 'ZKsync Era'],
-  usdt: ['Near', 'TON', 'Tezos', 'Liquid', 'Polkadot AssetHub'],
+  usdc: ['Algorand', 'Celo', 'Codex', 'Cronos', 'EDGE', 'Hedera', 'Injective', 'Ink', 'Monad', 'Morph', 'Pharos', 'Plume', 'Polkadot Asset Hub', 'Sei', 'Sonic', 'Starknet', 'XDC', 'XRPL', 'ZKsync Era'],
+  usdt: ['Tezos', 'Liquid', 'Polkadot AssetHub'],
   pyusd: [],
   rlusd: ['Ink', 'Robinhood Chain', 'Unichain', 'XRPL EVM Sidechain'] };
 /* the XRPL names a currency longer than three letters by its 40-hex code */
@@ -126,6 +142,15 @@ async function supply(c) {
       if (c.kind === 'xrpl') { const j = await post(rpc, { method: 'gateway_balances', params: [{ account: c.addr, ledger_index: 'validated', strict: true }] });
         const o = j && j.result && j.result.obligations; if (!o) throw new Error('no obligations ' + JSON.stringify(j && j.result && j.result.error || ''));
         const v = o[xrplCode(c.cur)] != null ? o[xrplCode(c.cur)] : o[c.cur]; if (v == null) throw new Error('currency not in obligations'); return [+v, new URL(rpc).host, 15]; }
+      if (c.kind === 'sui') { const j = await post(rpc, { query: '{ coinMetadata(coinType:"' + c.addr + '") { decimals supply } }' });
+        const m = j && j.data && j.data.coinMetadata; if (!m || m.supply == null) throw new Error('no supply ' + JSON.stringify(j && j.errors || '').slice(0, 120)); return [units(m.supply, +m.decimals), new URL(rpc).host, +m.decimals]; }
+      if (c.kind === 'near') { const call = async meth => { const j = await post(rpc, { jsonrpc: '2.0', id: '1', method: 'query', params: { request_type: 'call_function', finality: 'final', account_id: c.addr, method_name: meth, args_base64: 'e30=' } });
+          if (!j.result || !j.result.result) throw new Error('no result ' + JSON.stringify(j.error || '').slice(0, 120)); return JSON.parse(Buffer.from(j.result.result).toString('utf8')); };
+        const d = +(await call('ft_metadata')).decimals; return [units(await call('ft_total_supply'), d), new URL(rpc).host, d]; }
+      if (c.kind === 'cosmosbank') { const j = await get(rpc + '/cosmos/bank/v1beta1/supply/by_denom?denom=' + encodeURIComponent(c.addr));
+        const a = j && j.amount && j.amount.amount; if (a == null) throw new Error('no amount'); return [units(a, c.dec), new URL(rpc).host, c.dec]; }
+      if (c.kind === 'ton') { const j = await get(rpc + '/jetton/masters?address=' + encodeURIComponent(c.addr) + '&limit=1');
+        const m = j && j.jetton_masters && j.jetton_masters[0]; if (!m) throw new Error('jetton not found'); const d = +((m.jetton_content && m.jetton_content.decimals) || c.dec || 9); return [units(m.total_supply, d), new URL(rpc).host, d]; }
     } catch (e) { console.error(c.k, rpc.replace(/\/\/([^/]+).*/, '//$1'), e.message); }
   }
   return [null, null, null];
