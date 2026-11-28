@@ -18,7 +18,8 @@ process.env.STB_IMPORT = '1';
 const S = await import('./stables.mjs');
 const OUT = 'wire.json', KEEP_DAYS = 30, KEEP_MAX = 3000, FLOW_MIN = 1_000_000, NOW = process.env.PULSE_NOW ? Date.parse(process.env.PULSE_NOW) : Date.now();
 const iso = t => new Date(t).toISOString().replace(/\.\d+Z$/, 'Z');
-const SEC_UA = { 'user-agent': 'CRYPTO STATEMENTS pulse cryptostatements.ai (GitHub Actions)', accept: 'application/json' };
+/* SEC asks automated readers to name a contact e-mail in the User-Agent; without one EDGAR refuses the request (r386). */
+const SEC_UA = { 'user-agent': 'CRYPTO STATEMENTS aasiimwe@hotmail.com', accept: 'application/json' };
 /* followed filers: the forms whose arrival is a line on the Wire */
 const SEC = [
   { cik: 1050446, name: 'Strategy', forms: ['8-K', '10-Q', '10-K'] },
